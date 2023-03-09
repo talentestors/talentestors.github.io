@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2023-03-08T14:12:06.920Z</updated>
+  <updated>2023-03-09T15:14:34.582Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Web前端笔记--Emmet</title>
+    <link href="http://stazxr.cn/2023/03/09/Web%E5%89%8D%E7%AB%AF%E7%AC%94%E8%AE%B0-Emmet/"/>
+    <id>http://stazxr.cn/2023/03/09/Web前端笔记-Emmet/</id>
+    <published>2023-03-09T15:05:49.000Z</published>
+    <updated>2023-03-09T15:14:34.582Z</updated>
+    
+    <summary type="html">
+    
+      前端学习笔记
+    
+    </summary>
+    
+      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="笔记" scheme="http://stazxr.cn/tags/%E7%AC%94%E8%AE%B0/"/>
+    
+      <category term="Note" scheme="http://stazxr.cn/tags/Note/"/>
+    
+      <category term="Web" scheme="http://stazxr.cn/tags/Web/"/>
+    
+  </entry>
   
   <entry>
     <title>《Python编程：从入门到实践（第2版）》</title>
