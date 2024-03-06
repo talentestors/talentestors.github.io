@@ -1,0 +1,67 @@
+<% if (theme.valine && post.comments) { %>
+  <div id="vcomments"></div>
+  <script>
+    window.onload = function () {
+      var valine = new Valine();
+      valine.init({
+        el: '#vcomments',
+        appId: "<%= theme.v_appId %>",
+        appKey: "<%= theme.v_appKey %>",
+        path: window.location.pathname,
+        placeholder: "你是我一生只会遇见一次的惊喜 ..."
+      })
+    }
+  </script>
+  <% } %>
+
+    <% if (theme.waline.enable && post.comments) { %>
+      <script src="//gcore.jsdelivr.net/npm/@waline/client"></script>
+      <div id="waline"></div>
+      <style>
+        #waline textarea {
+          box-sizing: border-box;
+          background: url("<%- url_for(theme.waline.background) %>") 100% 100% no-repeat;
+        }
+      </style>
+      <script>
+        Waline({
+          el: '#waline',
+          serverURL: '<%- theme.waline.serverURL %>',
+          pageSize: '<%- theme.waline.pageSize %>',
+          lang: '<% if (config.language == "zh-cn") {  %>zh-CN<% } else { %>en<% } %>',
+          requiredFields: ['nick', 'mail'], //设置必填项
+          placeholder: '<%= theme.waline.placeholder %>',
+          visitor: '<%- theme.waline.visitor %>',
+          emoji: [
+            'https://gcore.jsdelivr.net/gh/walinejs/emojis@1.0.0/tieba',
+            'https://gcore.jsdelivr.net/gh/walinejs/emojis@1.0.0/bilibili',
+            'https://gcore.jsdelivr.net/gh/walinejs/emojis@1.0.0/weibo',
+          ],
+          avatar: '<%- theme.waline.avatar %>',
+          dark: 'auto',
+        });
+      </script>
+      <% } %>
+
+        <% if (theme.gitalk.enable && post.comments) { %>
+          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
+          <script type="text/javascript"
+            src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
+          <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
+          <div id="gitalk-container"></div>
+          <script type="text/javascript">
+            var gitalk = new Gitalk({
+              clientID: '<%= theme.gitalk.clientID %>',
+              clientSecret: '<%= theme.gitalk.clientSecret %>',
+              // id: decodeURI('<%= page.url %>'),
+              id: md5(location.pathname),
+              repo: '<%= theme.gitalk.repo %>',
+              owner: '<%= theme.gitalk.owner %>',
+              admin: '<%= theme.gitalk.admin %>',
+              // title: 'Blog Comment',
+              proxy: '<%= theme.gitalk.proxy %>'
+            })
+            gitalk.render('gitalk-container')
+          </script>
+          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
+          <% } %>

@@ -1,0 +1,97 @@
+home: 首页
+archives: 文章归档
+about: 关于作者
+categories: 分类
+series: 系列文章
+search: 搜索
+searchPlaceHolder: 请输入关键字
+tags: 标签
+tagcloud: 标签云
+video: 视频资源
+help: 关于本站
+links: 友情链接
+photo: 图集
+book: 悦读
+gossip: 杂谈
+music: 音乐
+cloud: 资源
+Note: 笔记
+DSAA: 数据结构与算法
+C: C语言
+prev: <i class="iconfont icon-back"></i>
+next: <i class="iconfont icon-right"></i>
+comment: 留言
+page: 第 %d 页
+recent_posts: 最新文章
+newer: 上一篇
+older: 下一篇
+share: 分享
+theme_by: Theme by
+rss_feed: RSS Feed
+category: Category
+tag: Tag
+connect: '联系我们'
+post_total_count: 嗯，目前共计%d篇文章
+read_more: '阅读全文'
+contents: 文章目录
+
+none: 无
+insight:
+    hint: '请输入关键词...'
+    posts: '文章'
+    pages: '页面'
+    categories: '分类'
+    tags: '标签'
+    untitled: '(无标题)'
+
+#category
+技术:
+    zh: Geek技术协会
+    en: Geek – Only for Love
+    img: https://s3.stazxr.cn/cdn/img/banner/coding.jpg
+生活:
+    zh: 生活
+    en: live
+    img: https://s3.stazxr.cn/cdn/img/banner/writing.jpg
+资源:
+    zh: 资源
+    en: cloud
+    img: https://s3.stazxr.cn/cdn/img/banner/source.jpg
+随想: 
+    zh: 随想
+    en: \`(>_<)`
+    img: https://s3.stazxr.cn/cdn/img/banner/client.jpg
+转载:
+    zh: 转载
+    en: reprint
+    img: https://s3.stazxr.cn/2023/06/0203.png
+
+#tag
+悦读:
+    img: https://s3.stazxr.cn/cdn/img/banner/reading.jpg
+杂谈:
+    img: https://s3.stazxr.cn/cdn/img/banner/reading.jpg
+划水:
+    img: https://talentestors.gitee.io/img/images/guyuena.jpg
+数据结构与算法:
+    img: https://pic2.zhimg.com/v2-61065822c5c0151c01633b58ef32f930_1440w.jpg
+C语言:
+    img: https://chinese.freecodecamp.org/news/content/images/size/w2000/2021/02/coverc-1.jpg
+C++:
+    img: https://chinese.freecodecamp.org/news/content/images/size/w2000/2021/02/coverc-1.jpg
+操作系统:
+    img: https://pic2.zhimg.com/v2-a200da138969de2296a622e2ba39adef_r.jpg
+笔记:
+    zh: 笔记
+    en: Note
+    img: https://s1.ax1x.com/2023/05/16/p92btRf.png
+Scoop:
+    img: https://img1.imgtp.com/2023/05/13/ooHUGxkP.png
+包管理器:
+    img: https://img1.imgtp.com/2023/05/13/ooHUGxkP.png
+软件:
+    img: https://s1.ax1x.com/2023/05/16/p92x16x.jpg
+Web:
+    img: https://s1.ax1x.com/2023/05/16/p92v1eS.png
+blog:
+    img: https://article.biliimg.com/bfs/article/463304b6f991645ee6596a9c09ec94365a632220.jpg@0e.webp
