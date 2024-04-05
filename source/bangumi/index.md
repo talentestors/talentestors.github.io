@@ -6,7 +6,7 @@ date: 2023-04-17 21:32:48
 keywords:
 description:
 bangumis:
-  - img: https://lain.bgm.tv/pic/cover/l/fe/31/420628_2ZEz0.jpg
+  - img: https://lain.bgm.tv/pic/cover/l/13/c5/400602_ZI8Y9.jpg
     title: 葬送的芙莉莲
     status: 追番中
     progress: 1
