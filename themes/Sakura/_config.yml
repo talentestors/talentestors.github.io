@@ -153,9 +153,9 @@ gitalk:
     distractionFreeMode: false
     # 设置为true，如果是管理员登录，会自动创建issue，如果是false，需要管理员手动添加第一个评论(issue)
     createIssueManually: true 
-    proxy: https://gitalk.stazxr.eu.org/github_access_token
+    proxy: gitalk-stazxr.netlify.app/github_access_token
+    # proxy: https://gitalk.stazxr.eu.org/github_access_token
     # proxy: https://vercel.prohibitorum.top/github_access_token
-    # proxy: https://netnr-proxy.cloudno.de/https://github.com/login/oauth/access_token
 
 # 简易信息聚合,站点共享
 rss: /atom.xml
