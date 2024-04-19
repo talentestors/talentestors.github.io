@@ -436,10 +436,11 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="C语言链表"><a href="#C语言链表" class="headerlink" title="C语言链表"></a>C语言链表</h2><blockquote>
+          <h2 id="C语言链表">C语言链表</h2>
+<blockquote>
 <p><em>代码实现</em></p>
 </blockquote>
-<pre><code class="lang-c">#include &lt;stdio.h&gt;
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 
 typedef int E; /*It stands for shaping element*/
@@ -656,7 +657,8 @@ void SwapLink(Node head,int index1,int index2)&#123;
     temp2-&gt;element = tmp;
 &#125;
 </code></pre>
-<h6 id="Test"><a href="#Test" class="headerlink" title="Test"></a><strong>Test</strong></h6><pre><code class="lang-c">int main()&#123;
+<h6 id="Test"><strong>Test</strong></h6>
+<pre><code class="language-c">int main()&#123;
     struct ListNode head;
     initList(&amp;head);
     for (int i = 1; i &lt;= 10; ++i) &#123;
@@ -675,7 +677,8 @@ void SwapLink(Node head,int index1,int index2)&#123;
     printList(&amp;head);
 &#125;
 </code></pre>
-<h6 id="结果"><a href="#结果" class="headerlink" title="结果"></a><strong>结果</strong></h6><p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt="ppdSgfK.png"></a></p>
+<h6 id="结果"><strong>结果</strong></h6>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt="ppdSgfK.png"></a></p>
 <blockquote>
 <p>作者本人，移植于CSDN</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_44950849/article/details/128152853">https://blog.csdn.net/m0_44950849/article/details/128152853</a></p>
@@ -765,7 +768,7 @@ void SwapLink(Node head,int index1,int index2)&#123;
               owner: 'talentestors',
               admin: 'talentestors',
               // title: 'Blog Comment',
-              proxy: 'https://gitalk-stazxr.netlify.app/github_access_token'
+              proxy: 'https://gitalk.stazxr.eu.org/github_access_token'
             })
             gitalk.render('gitalk-container')
           </script>
@@ -795,7 +798,7 @@ void SwapLink(Node head,int index1,int index2)&#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -807,10 +810,10 @@ void SwapLink(Node head,int index1,int index2)&#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
