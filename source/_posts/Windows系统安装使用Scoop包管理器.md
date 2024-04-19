@@ -378,7 +378,7 @@ Scoop代理
 #设置代理
 scoop config proxy 127.0.0.1:7890
 #关闭代理
-scoop config proxy false
+scoop config proxy false # 2024年4月19日更新 false不在支持 请使用none
 #使用用户代理
 scoop config proxy currentuser@default
 #绕过代理直连
