@@ -729,7 +729,7 @@ scoop config aria2-min-split-size 4M
 <pre><code class="language-shell">#设置代理
 scoop config proxy 127.0.0.1:7890
 #关闭代理
-scoop config proxy false
+scoop config proxy false # 2024年4月19日更新 false不在支持 请使用none
 #使用用户代理
 scoop config proxy currentuser@default
 #绕过代理直连
@@ -849,7 +849,7 @@ scoop config proxy none
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -861,10 +861,10 @@ scoop config proxy none
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
