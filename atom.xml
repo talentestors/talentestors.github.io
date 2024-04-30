@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2024-04-08T08:28:02.006Z</updated>
+  <updated>2024-04-30T16:37:40.653Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于 Tomcat 在 idea 上的中文编码问题</title>
+    <link href="http://stazxr.cn/2024/04/30/%E5%85%B3%E4%BA%8Etomcat%E5%9C%A8idea%E4%B8%8A%E7%9A%84%E4%B8%AD%E6%96%87%E7%BC%96%E7%A0%81%E9%97%AE%E9%A2%98/"/>
+    <id>http://stazxr.cn/2024/04/30/关于tomcat在idea上的中文编码问题/</id>
+    <published>2024-04-30T14:45:14.000Z</published>
+    <updated>2024-04-30T16:37:40.653Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="一、问题引入">一、问题引入</h2><p>在国内，无论是新手还是有一定码龄的开发人员，汉字编码问题一直都是绕不开的魔咒，本文主要对tomcat在jetbrain系列产品idea上的乱码问题提供解决经验。</p><h2 id="二、详情描述">二、详情描述</h2><p>新手在初学Java Web时，兴致冲冲的安装了tomcat 10.x.x 或其他版本→idea新建web项目→试运行:</p><a href="https://s21.ax1x.com/2024/05/01/pkFbiuR.png" data-fancybox="images" data-caption="你好！Hello!!!"><img src="https://s21.ax1x.com/2024/05/01/pkFbiuR.png" /></a><p>大段的红色乱码信息，冲击着初学者的心灵。</p><p>虽然不会实际开发造成影响，但看着这些云里雾里的信息时还是挺~影响心情的。😱</p><blockquote><p>淇℃伅 --&gt; 信息</p><p>鍛戒护琛屽弬鏁帮細 --&gt; 命令行参数：</p></blockquote><h2 id="三、问题分析">三、问题分析</h2><p>在以前的 javase 学习中，中文乱码问题是通过统一编码的方式解决的（GBK和UTF-8）。</p><p>但如下图所示，很明显这次绝对不像之前那样能轻松解决。我们可以看到在idea的console下的输出出现了两种（可能不止两种）不同的流，且两种不同的流使用了两种不同的编码格式。（即白色的<code>你好！Hello!!!</code>可以正常显示，而红色的信息却是乱码）</p><a href="https://s21.ax1x.com/2024/05/01/pkFbSCF.png" data-fancybox="images" data-caption="你好！Hello!!!"><img src="https://s21.ax1x.com/2024/05/01/pkFbSCF.png" /></a><p>这里解释一下：「你好！Hello!!!」这部分信息是我在代码里写的<code>System.out.println(&quot;你好！Hello!!!&quot;);</code>其他是Tomcat的输出的日志信息。</p><p>综上，问题的解决方案应该从Tomcat下手。</p><h2 id="四、解决方案">四、解决方案</h2><h3 id="方法一">方法一</h3><p>作者在遇到这个坑的时候一开始是从问题的根本下手的，既然会出现中文乱码问题那么直接让Tomcat输出英语不就解决了吗！😸</p><p>于是就从网络上找到了解决方法；</p><blockquote><p>Tomcat启动时会检查本地语言环境，来调用对应的i18n文本，中文环境默认会显示中文日志，但在终端中容易出现乱码，虽然乱码问题可以通过修改字符集处理，还是想尝试一下改成英文输出。刚研究了一下，发现可以通过修改参数来设置输出日志的语言，将运行参数中的语言环境设置为英文即可，在此记录一下修改步骤</p><blockquote><p>此文档所使用的环境如下</p><p>Server version name:   Apache Tomcat/9.0.62<br>OS Name:               Windows 10<br>JVM Version:           1.8.0_301-b09</p></blockquote><h2 id="修改catalina">修改catalina</h2><p>修改<code>bin/catalina.bat</code>文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间</p><pre><code class="language-cpp">if not &quot;%CATALINA_LOGGING_CONFIG%&quot; == &quot;&quot; goto noJuliConfigset CATALINA_LOGGING_CONFIG=-Dnopif not exist &quot;%CATALINA_BASE%\conf\logging.properties&quot; goto noJuliConfigset CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot;:noJuliConfig</code></pre><p>将其中的set语句后面添加language配置<code>-Duser.language=en -Duser.region=US</code>，如下</p><pre><code class="language-bash">set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot; -Duser.language=en -Duser.region=US</code></pre><p>注意空格。</p><blockquote><p>提示：如果是在Linux系统，则修改<code>bin/catalina.sh</code>文件</p></blockquote><h2 id="修改时间格式">修改时间格式</h2><p>顺便改一下显示日志中的时间格式，修改<code>conf/logging.properties</code>，在<code>ConsoleHandler</code>区添加<code>timeFormat</code>配置</p><pre><code class="language-undefined">java.util.logging.ConsoleHandler.level = FINEjava.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatterjava.util.logging.ConsoleHandler.encoding = UTF-8org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss</code></pre><p>重启Tomcat检查修改是否生效。</p><p>作者：zhouf_cq<br>链接：<a href="https://www.jianshu.com/p/da8386129a50">https://www.jianshu.com/p/da8386129a50</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p></blockquote><p>不得不说，直接改成英文一定是乱码问题的通解。（直接绕开问题</p><p>但是作者一直都有一个坏毛病（X，就是喜欢把所有工具更到最新。</p><p>于是就在我的第一次更新Tomcat的时候，它又变成了中文。</p><p>Tomcat更新时，会把之前辛苦配置的文件覆盖掉，每次都要改一遍。对于我这种懒人来说，一行命令更新后，我可不想重新再修改一遍（这个不是配置文件，更新后可能会有变动不适合直接copy）。</p><p>于是，我就在idea上花费了一番功夫。</p><h3 id="方法二">方法二</h3><p>我把idea上的配置全部统一成了utf-8。</p><p>文件编码</p><a href="https://s21.ax1x.com/2024/05/01/pkFHjEV.png" data-fancybox="images" data-caption="文件编码"><img src="https://s21.ax1x.com/2024/05/01/pkFHjEV.png" /></a><a href="https://s21.ax1x.com/2024/05/01/pkFHx4U.png" data-fancybox="images" data-caption="文件编码"><img src="https://s21.ax1x.com/2024/05/01/pkFHx4U.png" /></a><p>上面是之前学javase的解决的方法。这次只要在上面的设置基础上添加一个设置。</p><p>setting→Editor→General→Console下，修改成UTF-8</p><a href="https://s21.ax1x.com/2024/05/01/pkFHvNT.png" data-fancybox="images" data-caption="Console"><img src="https://s21.ax1x.com/2024/05/01/pkFHvNT.png" /></a><p>Default Encoding 修改成UTF-8</p><a href="https://s21.ax1x.com/2024/05/01/pkFbp34.png" data-fancybox="images" data-caption="Console"><img src="https://s21.ax1x.com/2024/05/01/pkFbp34.png" /></a><p>OK</p><p>重启Tomcat</p><a href="https://s21.ax1x.com/2024/05/01/pkFbCv9.png" data-fancybox="images" data-caption="Tomcat"><img src="https://s21.ax1x.com/2024/05/01/pkFbCv9.png" /></a><p>可以看到Tomcat日志输出正常了</p><p>五、后续问题</p><p>之前的问题这里并没有完全解决，可以看到<code>System.out.println(&quot;你好！Hello!!!&quot;);</code>输出的中文变成了乱码。</p><a href="https://s21.ax1x.com/2024/05/01/pkFb9gJ.png" data-fancybox="images" data-caption="你好！Hello!!!"><img src="https://s21.ax1x.com/2024/05/01/pkFb9gJ.png" /></a><p>我们只要在idea里面配置一下项目配置就可以了。</p><a href="//images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png" data-fancybox="images" data-caption="你好！Hello!!!"><img src="//images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png" /></a><p>在此处（红色的框）添加一句VM option 参数就可以了。</p><pre><code>-Dfile.encoding=UTF-8</code></pre><a href="//images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png" data-fancybox="images" data-caption="你好！Hello!!!"><img src="//images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png" /></a><p>完美解决！</p><blockquote><p><code>-Dfile.encoding=UTF-8</code>这条参数很常见。</p></blockquote><h2 id="写在最后">写在最后</h2><a href="//images.weserv.nl/?url=images.cnblogs.com/cnblogs_com/blogs/799057/galleries/2331699/o_240430155842_Avg_47_i01.png" data-fancybox="images" data-caption="mrfz黍"><img src="//images.weserv.nl/?url=images.cnblogs.com/cnblogs_com/blogs/799057/galleries/2331699/o_240430155842_Avg_47_i01.png" /></a>]]></content>
+    
+    <summary type="html">
+    
+      关于tomcat在idea上的中文编码问题；在国内，无论是新手还是有一定码龄的开发人员，汉字编码问题一直都是绕不开的魔咒，本文主要对tomcat在jetbrain系列产品idea上的乱码问题提供解决经验。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>转载:线段树专题-xyw813</title>
@@ -505,28 +525,6 @@
     
     
       <category term="悦读" scheme="http://stazxr.cn/tags/%E6%82%A6%E8%AF%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>洛谷主页源码</title>
-    <link href="http://stazxr.cn/2023/02/08/%E6%B4%9B%E8%B0%B7%E4%B8%BB%E9%A1%B5%E6%BA%90%E7%A0%81/"/>
-    <id>http://stazxr.cn/2023/02/08/洛谷主页源码/</id>
-    <published>2023-02-08T13:34:34.000Z</published>
-    <updated>2024-03-18T05:28:57.810Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>哦！妙！！！</p><p><a href="https://www.archlinux.org/"><img src="https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=flat-square&amp;logo=arch-linux&amp;logoColor=ffffff" alt=""></a> <a href="https://www.microsoft.com/windows/windows-11"><img src="https://img.shields.io/badge/Windows-11-4e9eee?style=flat-square&amp;logo=windows&amp;logoColor=ffffff" alt=""></a> <a href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue?style=flat-square&amp;logo=visual-studio-code&amp;logoColor=ffffff" alt=""></a> <a href="https://www.vim.org/"><img src="https://img.shields.io/badge/Linux-vim-57A143?style=flat-square&amp;logo=Vim&amp;logoColor=ffffff" alt=""></a><br><a href="https://www.miyoushe.com/ys/accountCenter/postList?id=195834099"><img src="https://ys.himiku.com/rand/195834099.png" alt="genshin-card"></a><br><a href="https://www.luogu.com.cn/user/844018"><img src="https://api.jerryz.com.cn/api/practice?id=844018" alt="我的练习情况"></a><br><a href="https://www.leetcode.cn/u/talentestors"><img src="https://leetcard.jacoblin.cool/talentestors?theme=unicorn&amp;font=Poly&amp;ext=heatmap&amp;site=cn" alt="Leetcode Stats"></a></p><p><a href="https://www.luogu.com.cn/paste/m8l0ptgy">就丢这里了</a></p><hr><blockquote><p>源码</p><pre><code class="language-text">$&#123;\color&#123;red&#125;哦！妙！！！&#125;$[![](https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=flat-square&amp;logo=arch-linux&amp;logoColor=ffffff)](https://www.archlinux.org/)[![](https://img.shields.io/badge/Windows-11-4e9eee?style=flat-square&amp;logo=windows&amp;logoColor=ffffff)](https://www.microsoft.com/windows/windows-11)[![](https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue?style=flat-square&amp;logo=visual-studio-code&amp;logoColor=ffffff)](https://code.visualstudio.com/)[![](https://img.shields.io/badge/Linux-vim-57A143?style=flat-square&amp;logo=Vim&amp;logoColor=ffffff)](https://www.vim.org/)[![genshin-card](https://ys.himiku.com/rand/195834099.png)](https://www.miyoushe.com/ys/accountCenter/postList?id=195834099)[![我的练习情况](https://api.jerryz.com.cn/api/practice?id=844018)](https://www.luogu.com.cn/user/844018)[![Leetcode Stats](https://leetcard.jacoblin.cool/talentestors?theme=unicorn&amp;font=Poly&amp;ext=heatmap&amp;site=cn)](https://www.leetcode.cn/u/talentestors)[就丢这里了](https://www.luogu.com.cn/paste/m8l0ptgy)</code></pre></blockquote>]]></content>
-    
-    <summary type="html">
-    
-      洛谷主页源码
-    
-    </summary>
-    
-      <category term="随想" scheme="http://stazxr.cn/categories/%E9%9A%8F%E6%83%B3/"/>
-    
-    
-      <category term="划水" scheme="http://stazxr.cn/tags/%E5%88%92%E6%B0%B4/"/>
     
   </entry>
   
