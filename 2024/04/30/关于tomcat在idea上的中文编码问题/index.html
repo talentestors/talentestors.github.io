@@ -465,7 +465,7 @@
 OS Name:               Windows 10<br>
 JVM Version:           1.8.0_301-b09</p>
 </blockquote>
-<h2 id="修改catalina">修改catalina</h2>
+<h4 id="修改catalina">修改catalina</h4>
 <p>修改<code>bin/catalina.bat</code>文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间</p>
 <pre><code class="language-cpp">if not &quot;%CATALINA_LOGGING_CONFIG%&quot; == &quot;&quot; goto noJuliConfig
 set CATALINA_LOGGING_CONFIG=-Dnop
@@ -480,7 +480,7 @@ set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE
 <blockquote>
 <p>提示：如果是在Linux系统，则修改<code>bin/catalina.sh</code>文件</p>
 </blockquote>
-<h2 id="修改时间格式">修改时间格式</h2>
+<h4 id="修改时间格式">修改时间格式</h4>
 <p>顺便改一下显示日志中的时间格式，修改<code>conf/logging.properties</code>，在<code>ConsoleHandler</code>区添加<code>timeFormat</code>配置</p>
 <pre><code class="language-undefined">java.util.logging.ConsoleHandler.level = FINE
 java.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatter
