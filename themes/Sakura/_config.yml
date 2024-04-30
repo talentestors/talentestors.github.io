@@ -15,7 +15,7 @@ mathjax:
   per_page: false
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
-notice: 欢迎来到我的博客！
+notice: 欢迎来到我的博客！为了更好的体验，请将网站加入广告拦截插件白名单，谢谢！
 lazyloadImg: https://s3.stazxr.cn/cdn/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
