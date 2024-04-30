@@ -62,7 +62,7 @@ description: 关于tomcat在idea上的中文编码问题；在国内，无论是
 > > OS Name:               Windows 10
 > > JVM Version:           1.8.0_301-b09
 >
-> ## 修改catalina
+> #### 修改catalina
 >
 > 修改`bin/catalina.bat`文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间
 >
@@ -84,7 +84,7 @@ description: 关于tomcat在idea上的中文编码问题；在国内，无论是
 >
 > > 提示：如果是在Linux系统，则修改`bin/catalina.sh`文件
 >
-> ## 修改时间格式
+> #### 修改时间格式
 >
 > 顺便改一下显示日志中的时间格式，修改`conf/logging.properties`，在`ConsoleHandler`区添加`timeFormat`配置
 >
