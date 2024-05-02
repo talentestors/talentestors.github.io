@@ -7,7 +7,7 @@ authorAbout: 书籍分享
 authorDesc: python入门推荐
 categories: 资源
 comments: true
-photos: https://talentestors.gitee.io/img//images/PythonHead.png
+photos: //gitee.com/talentestors/img/raw/master/images/PythonHead.png
 date: 2023-03-08 21:49:06
 tags:
     - 悦读
