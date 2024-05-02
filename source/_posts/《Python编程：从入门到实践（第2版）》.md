@@ -1,7 +1,7 @@
 ---
 title: 《Python编程：从入门到实践（第2版）》
 author: stazxr
-avatar: https://s3.stazxr.cn/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 书籍分享
 authorDesc: python入门推荐

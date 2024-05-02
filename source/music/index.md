@@ -4,7 +4,7 @@ date: 2022-12-20 23:14:28
 keywords: 喜欢的音乐
 description: 
 comments: false
-photos: https://s3.stazxr.cn/cdn/img/banner/music.jpg
+photos: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/music.jpg
 ---
 
 <!-- <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=100% height=450 src="//music.163.com/outchain/player?type=0&id=8116352529&auto=1&height=430"></iframe> -->

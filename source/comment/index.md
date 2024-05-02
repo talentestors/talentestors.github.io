@@ -4,7 +4,7 @@ date: 2018-12-20 23:13:48
 keywords: 留言板
 description: 
 comments: true
-photos: https://s3.stazxr.cn/cdn/img/banner/comment.jpg
+photos: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/comment.jpg
 ---
 {% raw %}
 <div class="entry-content">

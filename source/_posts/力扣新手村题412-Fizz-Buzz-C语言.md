@@ -1,7 +1,7 @@
 ---
 title: 力扣新手村题412. Fizz Buzz C语言
 author: stazxr
-avatar: https://s3.stazxr.cn/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐

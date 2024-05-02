@@ -1,13 +1,13 @@
 ---
 title: My first blog
 author: stazxr
-avatar: https://s3.stazxr.cn/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 学习使我快乐
 authorDesc: 学习使我快乐
 categories: 随想
 comments: true
-photos: https://s3.stazxr.cn/cdn/img/banner/coding.jpg
+photos: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/coding.jpg
 date: 2023-02-05 11:58:31
 tags:
   - blog

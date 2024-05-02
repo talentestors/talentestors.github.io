@@ -64,7 +64,7 @@ bgclass:
 
 # startdash url, title, desc img
 startdash: 
-  - {url: https://chat.stazxr.cn/, title: ChatGPT, desc: ChatGPT人工智能实验室, img: https://s3.stazxr.cn/2023/05/p9RS1eK.md.png}
+  - {url: https://chat.stazxr.cn/, title: ChatGPT, desc: ChatGPT人工智能实验室, img: //images.weserv.nl/?url=s2.loli.net/2024/05/02/qQl4p2MWvKgn8L7.jpg}
   - {url: http://space.bilibili.com/410052043/, title: Bilibili, desc: 博主的b站视频, img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/startdash/bilibili.jpg}
   - {url: https://talentestors.gitee.io/my-notes/, title: 終わり群星の知识宝库, desc: 知识宝库, img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/startdash/knowledge.png}
 

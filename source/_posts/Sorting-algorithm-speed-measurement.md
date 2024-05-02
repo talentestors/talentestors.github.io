@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: https://s3.stazxr.cn/2023/06/0203.png
+photos: //z1.ax1x.com/2023/10/04/pPOctX9.png
 mathjax: false
 date: 2023-10-04 14:43:46
 tags:
@@ -480,13 +480,13 @@ SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' 
 HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
 
 main: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) $(SRCS) -o "$@"
+    $(CC) $(CFLAGS) $(SRCS) -o "$@"
 
 main-debug: $(SRCS) $(HEADERS)
-	$(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
+    $(CC) $(CFLAGS) -O0 $(SRCS) -o "$@"
 
 clean:
-	rm -f main main-debug
+    rm -f main main-debug
 ```
 
 ## 测试结果

@@ -4,7 +4,7 @@ comments: true
 date: 2019-01-05 21:47:59
 keywords: Lab实验室
 description:
-photos: https://s3.stazxr.cn/cdn/img/banner/lab.jpg
+photos: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/lab.jpg
 ---
 
 ## Chat 测试

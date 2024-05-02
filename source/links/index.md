@@ -5,7 +5,7 @@ date: 2022-12-19 23:11:06
 keywords: 友链
 description: 
 comments: true
-photos: https://s3.stazxr.cn/cdn/img/banner/links.md.png
+photos: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/links.md.png
 links:
   - group: 我的主页
     items:

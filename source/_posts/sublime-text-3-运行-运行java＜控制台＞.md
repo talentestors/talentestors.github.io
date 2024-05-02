@@ -1,7 +1,7 @@
 ---
 title: sublime text 3 运行+运行java＜控制台＞
 author: stazxr
-avatar: https://s3.stazxr.cn/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 学习使我快乐
 authorDesc: 学习使我快乐

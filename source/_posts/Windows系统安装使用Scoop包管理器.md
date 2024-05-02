@@ -1,13 +1,13 @@
 ---
 title: Windows系统安装使用Scoop包管理器
 author: stazxr
-avatar: https://s3.stazxr.cn/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: https://s3.stazxr.cn/2023/04/site_head.png
+photos: //images.weserv.nl/?url=s2.loli.net/2024/05/02/kzEreaHqLZf5VnX.png
 date: 2023-05-12 18:24:59
 tags: 
     - 操作系统
@@ -26,7 +26,7 @@ Scoop是Windows的命令行安装程序。
 
 Scoop一般用来管理绿色软件，即是一种通过解压压缩包即可就地使用的软件，对于比较专业软件（比如Office、Adobe等）支持不好
 
-![img](https://s3.stazxr.cn/2023/04/site_head_mobi.png)
+![img](//img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162343005-1130367297.png)
 
 ## 基础环境配置
 
