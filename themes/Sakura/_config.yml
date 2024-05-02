@@ -16,7 +16,7 @@ mathjax:
   cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML
 
 notice: 欢迎来到我的博客！为了更好的体验，请将网站加入广告拦截插件白名单，谢谢！
-lazyloadImg: https://s3.stazxr.cn/cdn/img/loader/orange.progress-bar-stripe-loader.svg
+lazyloadImg: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg
 
 menus:
   首页: { path: /, fa: fa-fort-awesome faa-shake }
@@ -53,11 +53,11 @@ homePageSortType: -1
 homeArticleShown: 10
 # 背景图片 更好的修改
 bg:
-  - https://s3.stazxr.cn/cdn/img/cover/(1).jpg.webp
-  - https://s3.stazxr.cn/cdn/img/cover/(2).jpg.webp
-  - https://s3.stazxr.cn/cdn/img/cover/(3).jpg.webp
-  - https://s3.stazxr.cn/cdn/img/cover/(4).jpg.webp
-  - https://s3.stazxr.cn/cdn/img/cover/(5).jpg.webp
+  - https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(1).jpg.webp
+  - https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(2).jpg.webp
+  - https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(3).jpg.webp
+  - https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(4).jpg.webp
+  - https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(5).jpg.webp
 
 # 背景图片样式 空 原图效果 filter-dim 阴影 filter-grid 横条 filter-dot 点点
 bgclass: 
@@ -65,8 +65,8 @@ bgclass:
 # startdash url, title, desc img
 startdash: 
   - {url: https://chat.stazxr.cn/, title: ChatGPT, desc: ChatGPT人工智能实验室, img: https://s3.stazxr.cn/2023/05/p9RS1eK.md.png}
-  - {url: http://space.bilibili.com/410052043/, title: Bilibili, desc: 博主的b站视频, img: https://s3.stazxr.cn/cdn/img/startdash/bilibili.jpg}
-  - {url: https://talentestors.gitee.io/my-notes/, title: 終わり群星の知识宝库, desc: 知识宝库, img: https://s3.stazxr.cn/cdn/img/startdash/knowledge.png}
+  - {url: http://space.bilibili.com/410052043/, title: Bilibili, desc: 博主的b站视频, img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/startdash/bilibili.jpg}
+  - {url: https://talentestors.gitee.io/my-notes/, title: 終わり群星の知识宝库, desc: 知识宝库, img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/startdash/knowledge.png}
 
 
 
