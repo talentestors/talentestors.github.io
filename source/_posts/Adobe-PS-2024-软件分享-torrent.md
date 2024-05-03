@@ -5,7 +5,7 @@ avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
-categories: 技术
+categories: 资源
 comments: true
 photos: https://www.filepicker.io/api/file/GcSA3GOUQTKVXPr3pE3j
 mathjax: false
