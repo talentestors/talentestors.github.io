@@ -17,7 +17,7 @@
   
     <title itemprop="name">
       
-        C语言基础排序(demo) | 
+        Tag: Software | 
             終わり群星 | Home
     </title>
     
@@ -400,319 +400,64 @@
   </div>
 </header>
 
-      <link rel="stylesheet" type="text/css" href="/css/sharejs.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+      
 <div class="pattern-center-blank"></div>
-
-  <div class="pattern-center single-center">
-    <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg@500h_1c_1e.webp);" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg@500h_1c_1e.webp">
-    </div>
-    <header class="pattern-header single-header">
-      <h1 class="entry-title">
-      C语言基础排序(demo)</h1>
-      <p class="entry-census">
-        <span>
-          <a href="stazxr.cn">
-            <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
-          </a>
-        </span>
-        <span>
-          <a href="stazxr.cn">stazxr</a>
-        </span>
-        <span class="bull">
-        ·</span>
-        2023-5-15<span class="bull">
-        ·</span>
-        <span id="busuanzi_value_page_pv"></span>次阅读</p>
-    </header>
+<div class="pattern-center ">
+  <div class="pattern-attachment-img">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="Software.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
-
+  <header class="pattern-header ">
+    <h1 class="cat-title">Software</h1>
+  </header>
+</div>
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <div class="toc"></div>
-        <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
-        
-        <div class="entry-content">
-          <h1 id="今日份的丧心病狂"><a href="#今日份的丧心病狂" class="headerlink" title="今日份的丧心病狂"></a>今日份的丧心病狂</h1><p>基础排序</p>
-<p>冒泡、插入、选择（157行警告🤤） :thinking:</p>
-<pre><code class="lang-C">#include &lt;stdio.h&gt;
-#include &lt;stdbool.h&gt;
-
-#define _comp_ comp(int a, int b)
-
-int comp1(int a, int b) &#123; //升序
-    return a - b;
-&#125;
-
-int comp2(int a, int b) &#123; //降序
-    return b - a;
-&#125;
-
-void printArray(int *nums, int size);
-
-void swap(int *a, int *b);
-
-//二分搜索
-int binarySearch(int nums[], int left, int right, int target, int _comp_);
-
-//冒泡排序
-void bubbleSort(int *nums, int size, int _comp_);
-
-//冒泡排序优化
-void bubbleSortPlus(int *nums, int size, int _comp_);
-
-//插入排序
-void insertSort(int *nums, int size, int _comp_);
-
-//插入排序的二分搜索算法优化
-void insertSortPlus(int *nums, int size, int _comp_);
-
-//选择排序
-void selectSort(int *nums, int size, int _comp_);
-
-//选择排序双轴优化
-void selectSortPlus(int *nums, int size, int _comp_);
-
-int main() &#123;
-    int test[10] = &#123;9, 6, 5, 45, 3, 2, 1, 0, 7, 8&#125;;
-    printArray(test, 10);
-    bubbleSort(test, 10, comp2); //冒泡排序
-    printArray(test, 10);
-    bubbleSortPlus(test, 10, comp1); //冒泡排序优化
-    printArray(test, 10);
-    insertSort(test, 10, comp2); //插入排序
-    printArray(test, 10);
-    insertSortPlus(test, 10, comp1); //插入排序二分搜索算法优化
-    printArray(test, 10);
-    selectSort(test, 10, comp2); //选择排序
-    printArray(test, 10);
-    selectSortPlus(test, 10, comp1); //选择排序双轴优化
-    printArray(test, 10);
-    return 0;
-&#125;
-
-void selectSortPlus(int *nums, int size, int _comp_) &#123;
-    int left = 0, right = size - 1;   //相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小
-    while (left &lt; right) &#123;
-        int min = left, max = right;
-        for (int i = left; i &lt;= right; i++) &#123;
-            if (nums[i] &lt; nums[min]) min = i;   //同时找最小的和最大的
-            if (nums[i] &gt; nums[max]) max = i;
-        &#125;
-        if (comp(1, 2) &gt; 0) &#123;
-            swap(&amp;nums[max], &amp;nums[left]);
-            if (min == left) min = max;
-            swap(&amp;nums[min], &amp;nums[right]);
-        &#125; else &#123;
-            swap(&amp;nums[max], &amp;nums[right]);   //这里先把大的换到右边
-            //注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下
-            //如果遍历完发现最小的就是当前右边排序的第一个元素
-            //此时因为已经被换出来了，所以说需要将min改到换出来的那个位置
-            if (min == right) min = max;
-            swap(&amp;nums[min], &amp;nums[left]);   //接着把小的换到左边
-        &#125;
-        left++;    //这一轮完事之后，缩小范围
-        right--;
-    &#125;
-&#125;
-
-void selectSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123; //因为最后一个元素一定是在对应位置上的，所以只需要进行N - 1轮排序
-        int copy = i;
-        for (int j = i + 1; j &lt; size; ++j)   //挨个遍历剩余的元素，并更新
-            if (comp(nums[copy], nums[j]) &gt; 0) copy = j;
-        int tmp = nums[i];    //找出元素之后，开始交换
-        nums[i] = nums[copy];
-        nums[copy] = tmp;
-    &#125;
-&#125;
-
-void insertSortPlus(int *nums, int size, int _comp_) &#123; //二分搜索算法来查找对应的插入位置
-    for (int i = 1; i &lt; size; ++i) &#123;
-        int tmp = nums[i];
-        int j = binarySearch(nums, 0, i - 1, tmp, comp);   //由二分搜索来确定插入位置
-        for (int k = i; k &gt; j; k--) nums[k] = nums[k - 1];   //依然是将后面的元素后移
-        nums[j] = tmp;
-    &#125;
-&#125;
-
-void insertSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 1; i &lt; size; ++i) &#123; //左牌堆默认有序
-        int j = i, tmp = nums[i];
-        while (j &gt; 0 &amp;&amp; comp(nums[j - 1], tmp) &gt; 0) &#123;
-            nums[j] = nums[j - 1]; //不断进行后移操作，把位置腾出来
-            --j;
-        &#125;
-        nums[j] = tmp;
-    &#125;
-&#125;
-
-void bubbleSortPlus(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123; //只需要size-1次即可
-        bool flag = true; //这里使用一个标记，默认为`true`表示数组是有序的
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (comp(nums[j], nums[j + 1]) &gt; 0) &#123;
-                swap(&amp;nums[j], &amp;nums[j + 1]);
-                flag = false; //如果发生交换，说明不是有序的，把标记变成`false`
-            &#125;
-        &#125;
-        if (flag) break;//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出
-    &#125;
-&#125;
-
-void bubbleSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size; ++i) &#123;
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (comp(nums[j], nums[j + 1]) &gt; 0) swap(&amp;nums[j], &amp;nums[j + 1]);
-        &#125;
-    &#125;
-&#125;
-
-int binarySearch(int nums[], int left, int right, int target, int _comp_) &#123;
-    int mid;
-    while (left &lt;= right) &#123;
-        mid = (left + right) &gt;&gt; 1;
-        if (target == nums[mid]) return mid + 1;   //如果插入元素跟中间元素相等，直接返回后一位
-        else if (comp(target, nums[mid]) &lt; 0) &#123;
-            right = mid - 1;   //范围划到左边
-        &#125; else left = mid + 1;   //范围划到右边
-    &#125;
-    return left;   //不断划分范围，left也就是待插入位置了
-&#125;
-
-void swap(int *a, int *b) &#123;
-    int tmp = *a;
-    *a = *b;
-    *b = tmp;
-&#125;
-
-void printArray(int *nums, int size) &#123;
-    for (int i = 0; i &lt; size; ++i) &#123;
-        printf(&quot;%d &quot;, nums[i]);
-    &#125;
-    putchar(&#39;\n&#39;);
-&#125;
-</code></pre>
-<p><strong>output:</strong></p>
-<pre><code>9 6 5 45 3 2 1 0 7 8
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
-</code></pre>
-        </div>
-        <!-- .entry-content -->
-        <div class="single-reward">
-          <div class="reward-open">赏
-            <div class="reward-main">
-              <ul class="reward-row">
-                <li class="alipay-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/donate/AliPayQR.png"></li>
-                <li class="wechat-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/donate/WeChanQR.png"></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent"></div>
-        <footer class="post-footer">
-          <div class="post-lincenses"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow"><i class="fa fa-creative-commons" aria-hidden="true"></i> 知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a></div>
-          <div class="post-tags">
-          </div>
-          <div class="post-share">
-            <div class="social-share sharehidden share-component"></div>
-            <i class="iconfont show-share icon-forward"></i>
-          </div>
-        </footer><!-- .entry-footer -->
-      </article>
-      <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
-      <section class="post-squares nextprev">
-        
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2023/06/14/%E9%97%B2%E7%9D%80%E6%B2%A1%E4%BA%8B%E5%B9%B2/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@.webp" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@.webp">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                闲着没事干</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2023/05/12/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8Scoop%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//images.weserv.nl/?url=s2.loli.net/2024/05/02/kzEreaHqLZf5VnX.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="//images.weserv.nl/?url=s2.loli.net/2024/05/02/kzEreaHqLZf5VnX.png">
-              </div>
-              <span class="label">
-              Next Post</span>
-              <div class="info">
-                <h3>
-                Windows系统安装使用Scoop包管理器</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-      </section>
       
-
-    
-
-        
-          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
-          <script type="text/javascript"
-            src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
-          <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
-          <div id="gitalk-container"></div>
-          <script type="text/javascript">
-            var gitalk = new Gitalk({
-              clientID: '8eda58f7fe8d725ed0e0',
-              clientSecret: '12d646df73cc077afb8d657156feb5553aa2c533',
-              // id: decodeURI(''),
-              id: md5(location.pathname),
-              repo: 'talentestors.github.io',
-              owner: 'talentestors',
-              admin: 'talentestors',
-              // title: 'Blog Comment',
-              proxy: 'https://gitalk.stazxr.eu.org/github_access_token'
-            })
-            gitalk.render('gitalk-container')
-          </script>
-          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
-          
-      <section class="author-profile">
-        <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="stazxr.cn" class="profile gravatar"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg" itemprop="image" alt="stazxr" height="70" width="70"></a>
-          <div class="meta">
-            <span class="title">Author</span>
-            <h3 itemprop="name">
-            <a href="stazxr.cn" itemprop="url" rel="author">stazxr</a>
-            </h3>
-          </div>
+  <!-- 首页默认取最最新文章集 -->
+  
+    <article class="post post-list" itemscope="" itemtype="https://schema.org/BlogPosting">
+  <div class="post-entry">
+    <div class="feature">
+      <a href="/2024/05/03/Adobe-PS-2024-%E8%BD%AF%E4%BB%B6%E5%88%86%E4%BA%AB-torrent/">
+        <div class="overlay">
+          <i class="iconfont icon-text">
+          </i>
         </div>
-        <hr>
-        <p><i class="iconfont icon-write"></i>愿此行，终抵群星！</p>
-      </section>
-    </main><!-- #main -->
-  </div><!-- #primary -->
+        <img width="150" height="150" src="https://www.filepicker.io/api/file/GcSA3GOUQTKVXPr3pE3j" class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="" >
+      </a>
+    </div>
+    <h1 class="entry-title">
+    <a href="/2024/05/03/Adobe-PS-2024-%E8%BD%AF%E4%BB%B6%E5%88%86%E4%BA%AB-torrent/">
+    Adobe PS 2024 软件分享 torrent</a>
+    </h1>
+    <div class="p-time">
+      <i class="iconfont icon-time">
+      </i>
+    2024-5-3</div>
+    <p>
+    Adobe PS 2024 软件分享 torrent</p>
+    <footer class="entry-footer">
+      <div class="post-more">
+        <a href="/2024/05/03/Adobe-PS-2024-%E8%BD%AF%E4%BB%B6%E5%88%86%E4%BA%AB-torrent/">
+          <i class="iconfont icon-caidan">
+          </i>
+        </a>
+      </div>
+    </footer>
+  </div>
+  <hr>
+</article>
+  
+
+
+      <div class="clearer">
+      </div>
+    </main>
+    <!--  -->
+    
+  </div>
 </div>
-
-
-
     </div>    
     <div class="ins-search">
     <div class="ins-search-mask"></div>
