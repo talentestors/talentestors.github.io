@@ -12,6 +12,8 @@ mathjax: false
 date: 2024-05-03 17:18:34
 tags:
     - Software
+    - Adobe
+    - PS
 keywords: Adobe PS 2024, 软件分享, torrent
 description: Adobe PS 2024 软件分享 torrent
 ---
