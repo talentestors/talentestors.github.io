@@ -24,13 +24,11 @@
       <link rel="shortcut icon" href="/images/favicon.ico">
       
         <meta http-equiv="x-dns-prefetch-control" content="on">
-        <link rel="stylesheet"
-          href="https://fonts.font.im/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC"
-          media="all">
+        <link rel="stylesheet" href="https://fonts.font.im/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
         <link rel="dns-prefetch" href="//gcore.jsdelivr.net">
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="all">
         <!-- <link rel="stylesheet" id="saukra_css-css" href="/css/style.css" type="text/css" media="all"> -->
         <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="all">
         <link rel="stylesheet" href="/css/lib.min.css" media="all">
         <link rel="stylesheet" href="/css/font.css" media="all">
         <link rel="stylesheet" href="/css/insight.css" media="all">
@@ -420,9 +418,10 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="今日份的丧心病狂"><a href="#今日份的丧心病狂" class="headerlink" title="今日份的丧心病狂"></a>今日份的丧心病狂</h1><p>基础排序</p>
-<p>冒泡、插入、选择（157行警告🤤） :thinking:</p>
-<pre><code class="lang-C">#include &lt;stdio.h&gt;
+          <h1>今日份的丧心病狂</h1>
+<p>基础排序</p>
+<p>冒泡、插入、选择（157行警告🤤） 🤔</p>
+<pre><code class="language-C">#include &lt;stdio.h&gt;
 #include &lt;stdbool.h&gt;
 
 #define _comp_ comp(int a, int b)
@@ -577,7 +576,7 @@ void printArray(int *nums, int size) &#123;
     for (int i = 0; i &lt; size; ++i) &#123;
         printf(&quot;%d &quot;, nums[i]);
     &#125;
-    putchar(&#39;\n&#39;);
+    putchar('\n');
 &#125;
 </code></pre>
 <p><strong>output:</strong></p>
@@ -589,6 +588,7 @@ void printArray(int *nums, int size) &#123;
 45 9 8 7 6 5 3 2 1 0
 0 1 2 3 5 6 7 8 9 45
 </code></pre>
+
         </div>
         <!-- .entry-content -->
         <div class="single-reward">
@@ -701,7 +701,7 @@ void printArray(int *nums, int size) &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -713,10 +713,10 @@ void printArray(int *nums, int size) &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
