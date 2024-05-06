@@ -15,7 +15,7 @@
   <% } %>
 
     <% if (theme.waline.enable && post.comments) { %>
-      <script src="//gcore.jsdelivr.net/npm/@waline/client"></script>
+      <script data-cfasync="false" async src="//gcore.jsdelivr.net/npm/@waline/client"></script>
       <div id="waline"></div>
       <style>
         #waline textarea {
@@ -23,7 +23,7 @@
           background: url("<%- url_for(theme.waline.background) %>") 100% 100% no-repeat;
         }
       </style>
-      <script>
+      <script data-cfasync="false" async>
         Waline({
           el: '#waline',
           serverURL: '<%- theme.waline.serverURL %>',
@@ -44,12 +44,11 @@
       <% } %>
 
         <% if (theme.gitalk.enable && post.comments) { %>
-          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
-          <script type="text/javascript"
+          <script data-cfasync="false" type="text/javascript"
             src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
           <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
           <div id="gitalk-container"></div>
-          <script type="text/javascript">
+          <script data-cfasync="false" type="text/javascript" async>
             var gitalk = new Gitalk({
               clientID: '<%= theme.gitalk.clientID %>',
               clientSecret: '<%= theme.gitalk.clientSecret %>',
@@ -63,5 +62,5 @@
             })
             gitalk.render('gitalk-container')
           </script>
-          <script src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
+          <script data-cfasync="false" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js" async></script>
           <% } %>
