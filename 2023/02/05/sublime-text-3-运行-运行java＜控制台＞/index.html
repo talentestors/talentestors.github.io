@@ -419,11 +419,11 @@
         
         <div class="entry-content">
           <p>平台：Windows</p>
-<p>1.安装好jdk（8 or 11），并且配置好<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F">环境变量</a></p>
+<p>1.安装好jdk（8 or 11），并且配置好<a target="_blank" rel="noopener" href="https://so.csdn.net/so/search?q=环境变量">环境变量</a></p>
 <p>2.找到 工具—&gt;编译系统—&gt;新编译系统</p>
 <p>ps：英文版为；Tools—&gt;Build system—&gt;New Build system</p>
 <p>3.输入以下代码</p>
-<pre><code class="language-shell"> &#123;
+<pre><code class="lang-shell"> &#123;
 &quot;shell&quot;: true,
 &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;javac -encoding UTF-8 $&#123;file&#125; &amp; java $&#123;file_base_name&#125; &amp;echo. &amp; pause &quot;],
 &quot;file_regex&quot; :&quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
@@ -433,7 +433,7 @@
 &quot;encoding&quot; :&quot;GBK&quot;,
 &#125;
 </code></pre>
-<p>4.保存至C:\Users********\AppData\Roaming\Sublime Text 3\Packages\User</p>
+<p>4.保存至C:\Users*<strong><em>*</em></strong>\AppData\Roaming\Sublime Text 3\Packages\User</p>
 <p>​         文件名为：runjava.sublime-build</p>
 <p>5.在sublime内找到 工具—&gt;编译系统—&gt;runjava</p>
 <p>​          <strong>按  Ctrl + b 就能生成class文件并运行</strong></p>
@@ -730,7 +730,7 @@
 <script type="text/javascript" src="/js/InsightSearch.js"></script>
 <script type="text/javascript" src="/js/jquery.fancybox.min.js"></script>
 <script type="text/javascript" src="/js/zoom.min.js"></script>
-<script data-cfasync="false" async type="text/javascript" src="/js/sakura-app.js"></script>
+<script async type="text/javascript" src="/js/sakura-app.js"></script>
 // <!-- <script src="//unpkg.com/leancloud-storage@4.12.0/dist/av-min.js"></script><script src='//unpkg.com/valine@1.3.4/dist/Valine.min.js'></script> -->
 <script src="/js/botui.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
