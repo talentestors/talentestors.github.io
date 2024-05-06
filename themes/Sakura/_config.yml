@@ -40,7 +40,7 @@ menus:
   , submenus: { 
     我？: {path: /about/, fa: fa-meetup}, 
     主题: {path: /theme-sakura/, fa: fa-blog},
-    gulu~: {path: https://talentestors.gitee.io/herta_kuru/, fa: fa-circle-o-notch },
+    gulu~: {path: https://www.stazxr.cn/herta_kuru/, fa: fa-circle-o-notch },
     Lab: {path: /lab/, fa: fa-cogs },
   } 
   }
