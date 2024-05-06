@@ -13,6 +13,9 @@ description: 图集 images
     }
 </style>
 
+<a data-fancybox="anime" data-caption="Arknights" href="//images.weserv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png">
+    <img src="//images.weserv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we" width="300">
+</a>
 <a data-fancybox="anime" data-caption="Honkai impact" href="//images.weserv.nl/?url=s2.loli.net/2024/05/02/qQl4p2MWvKgn8L7.jpg">
     <img src="//images.weserv.nl/?url=s2.loli.net/2024/05/02/qQl4p2MWvKgn8L7.jpg&we" width="300">
 </a>
@@ -51,9 +54,6 @@ description: 图集 images
 </a>
 <a data-fancybox="anime" data-caption="pixiv" href="//article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@.webp">
     <img src="//article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@1c_1e.webp" width="300">
-</a>
-<a data-fancybox="anime" data-caption="Honkai impact" href="//article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png">
-    <img src="//article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@780h_1c_1e.webp" width="300">
 </a>
 <a data-fancybox="anime" data-caption="Honkai impact" href="//article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg">
     <img src="//article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg@1c_1e.webp" width="300">
