@@ -42,25 +42,23 @@
         });
       </script>
       <% } %>
-
-        <% if (theme.gitalk.enable && post.comments) { %>
-          <script data-cfasync="false" type="text/javascript"
-            src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
-          <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
-          <div id="gitalk-container"></div>
-          <script data-cfasync="false" type="text/javascript" async>
-            var gitalk = new Gitalk({
-              clientID: '<%= theme.gitalk.clientID %>',
-              clientSecret: '<%= theme.gitalk.clientSecret %>',
-              // id: decodeURI('<%= page.url %>'),
-              id: md5(location.pathname),
-              repo: '<%= theme.gitalk.repo %>',
-              owner: '<%= theme.gitalk.owner %>',
-              admin: '<%= theme.gitalk.admin %>',
-              // title: 'Blog Comment',
-              proxy: '<%= theme.gitalk.proxy %>'
-            })
-            gitalk.render('gitalk-container')
-          </script>
-          <script data-cfasync="false" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js" async></script>
-          <% } %>
+      <% if (theme.gitalk.enable && post.comments) { %>
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
+        <script data-cfasync="false" async type="text/javascript" src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
+        <div id="gitalk-container"></div>
+        <script data-cfasync="false" type="text/javascript" async>
+          var gitalk = new Gitalk({
+            clientID: '<%= theme.gitalk.clientID %>',
+            clientSecret: '<%= theme.gitalk.clientSecret %>',
+            // id: decodeURI('<%= page.url %>'),
+            id: md5(location.pathname),
+            repo: '<%= theme.gitalk.repo %>',
+            owner: '<%= theme.gitalk.owner %>',
+            admin: '<%= theme.gitalk.admin %>',
+            // title: 'Blog Comment',
+            proxy: '<%= theme.gitalk.proxy %>'
+          })
+          gitalk.render('gitalk-container')
+        </script>
+        <script data-cfasync="false" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js" defer></script>
+      <% } %>
