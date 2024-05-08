@@ -1,5 +1,5 @@
 ---
-title: cloudflare-display-issue
+title: 记录关于vuepress迁移时cloudflare的Rocket Loader问题
 author: stazxr
 avatar: //gcore.jsdelivr.net/gh/talentestors/cdn/img/custom/avatar.jpg
 authorLink: stazxr.cn
