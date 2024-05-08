@@ -48,19 +48,19 @@ insight:
 技术:
     zh: Geek技术协会
     en: Geek – Only for Love
-    img: https://s3.stazxr.cn/cdn/img/banner/coding.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/coding.jpg
 生活:
     zh: 生活
     en: live
-    img: https://s3.stazxr.cn/cdn/img/banner/writing.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg
 资源:
     zh: 资源
     en: cloud
-    img: https://s3.stazxr.cn/cdn/img/banner/source.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/source.jpg
 随想: 
     zh: 随想
     en: \`(>_<)`
-    img: https://s3.stazxr.cn/cdn/img/banner/client.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/client.jpg
 转载:
     zh: 转载
     en: reprint
@@ -68,9 +68,9 @@ insight:
 
 #tag
 悦读:
-    img: https://s3.stazxr.cn/cdn/img/banner/reading.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/reading.jpg
 杂谈:
-    img: https://s3.stazxr.cn/cdn/img/banner/reading.jpg
+    img: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/reading.jpg
 划水:
     img: https://talentestors.gitee.io/img/images/guyuena.jpg
 数据结构与算法:
