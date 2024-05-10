@@ -1,7 +1,7 @@
 ---
 title: 给定背景颜色的良好文本前景色
 author: stazxr
-avatar: //gcore.jsdelivr.net/gh/talentestors/cdn@lastest/img/custom/avatar.jpg
+avatar: //gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐

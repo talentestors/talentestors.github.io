@@ -1,7 +1,7 @@
 ---
 title: 开源免费、开箱即用的中后台管理模版：vue-pure-admin
 author: stazxr
-avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@lastest/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐

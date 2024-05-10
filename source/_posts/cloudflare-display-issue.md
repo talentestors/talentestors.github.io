@@ -1,7 +1,7 @@
 ---
 title: 记录关于vuepress迁移时cloudflare的Rocket Loader问题
 author: stazxr
-avatar: //gcore.jsdelivr.net/gh/talentestors/cdn@lastest/img/custom/avatar.jpg
+avatar: //gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
