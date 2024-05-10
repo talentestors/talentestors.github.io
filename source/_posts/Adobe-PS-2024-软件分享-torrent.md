@@ -1,7 +1,7 @@
 ---
 title: Adobe PS 2024 软件分享 torrent
 author: stazxr
-avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@lastest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐

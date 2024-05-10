@@ -1,7 +1,7 @@
 ---
 title: javase学习文档
 author: stazxr
-avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn/img/custom/avatar.jpg
+avatar: https://gcore.jsdelivr.net/gh/talentestors/cdn@lastest/img/custom/avatar.jpg
 authorLink: stazxr.cn
 authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
