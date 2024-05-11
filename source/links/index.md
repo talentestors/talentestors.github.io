@@ -28,7 +28,7 @@ links:
     desc: 欢迎交换友链 ꉂ(ˊᗜˋ)
     items:
     - url: https://anselyuki.cn/
-      img: https://anselyuki.cn/img/avatar.webp
+      img: //anselyuki.cn/img/avatar.webp
       name: AnselYuki
       desc: AnselYuki的秘密花园
 
