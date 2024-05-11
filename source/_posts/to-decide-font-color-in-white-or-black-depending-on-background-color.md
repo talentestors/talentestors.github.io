@@ -252,4 +252,4 @@ public class HexColor implements Serializable {
 
 ---
 
-> 参考：[https://stackoverflow.com/a/3943023/112731](https://stackoverflow.com/a/3943023/112731)
+> 参考：<https://stackoverflow.com/a/3943023/112731>
