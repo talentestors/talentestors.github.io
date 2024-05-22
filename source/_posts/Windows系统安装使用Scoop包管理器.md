@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: //images.weserv.nl/?url=s2.loli.net/2024/05/02/kzEreaHqLZf5VnX.png
+photos: //wsrv.nl/?url=s2.loli.net/2024/05/02/kzEreaHqLZf5VnX.png
 date: 2023-05-12 18:24:59
 tags: 
     - 操作系统

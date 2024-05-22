@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: //images.weserv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we
+photos: //wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we
 mathjax: false
 date: 2024-04-30 22:45:14
 tags:
@@ -148,7 +148,7 @@ OK
 
 我们只要在idea里面配置一下项目配置就可以了。
 
-{%fb_img //images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png 你好！Hello!!! %}
+{%fb_img //wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png 你好！Hello!!! %}
 
 在此处（红色的框）添加一句VM option 参数就可以了。
 
@@ -156,7 +156,7 @@ OK
 -Dfile.encoding=UTF-8
 ```
 
-{%fb_img //images.weserv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png 你好！Hello!!! %}
+{%fb_img //wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png 你好！Hello!!! %}
 
 完美解决！
 
@@ -164,4 +164,4 @@ OK
 
 ## 写在最后
 
-{% fb_img //images.weserv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we mrfz黍 %}
+{% fb_img //wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we mrfz黍 %}

@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: https://images.weserv.nl/?url=images.cnblogs.com/cnblogs_com/blogs/799057/galleries/2331699/o_231128163332_infinity-693282.jpg&w=1280&fit=inside&we
+photos: https://wsrv.nl/?url=images.cnblogs.com/cnblogs_com/blogs/799057/galleries/2331699/o_231128163332_infinity-693282.jpg&w=1280&fit=inside&we
 mathjax: false
 date: 2023-11-28 23:40:05
 tags: 

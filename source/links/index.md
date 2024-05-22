@@ -10,7 +10,7 @@ links:
   - group: 我的主页
     items:
     - url: https://gravatar.com/talentestors
-      img: //images.weserv.nl/?url=s2.loli.net/2023/10/23/BfgS7akWcYNFhqT.jpg&w=256&we
+      img: //wsrv.nl/?url=s2.loli.net/2023/10/23/BfgS7akWcYNFhqT.jpg&w=256&we
       name: Gravatar Profile
       desc: Gravatar
 
@@ -20,7 +20,7 @@ links:
       desc: knowledge-lib
 
     - url: https://www.stazxr.cn/
-      img: //images.weserv.nl/?url=avatars.githubusercontent.com/u/78906287?s=400
+      img: //wsrv.nl/?url=avatars.githubusercontent.com/u/78906287?s=400
       name: Blog镜像站
       desc: github-page
 
@@ -33,7 +33,7 @@ links:
       desc: AnselYuki的秘密花园
 
     - url: https://www.flapypan.top/
-      img: //images.weserv.nl/?url=avatars.githubusercontent.com/u/67328567?v=4
+      img: //wsrv.nl/?url=avatars.githubusercontent.com/u/67328567?v=4
       name: flapypan
       desc: 腾包子的点心铺
 
@@ -48,7 +48,7 @@ links:
       desc: 宫水三叶的刷题日记
 
     - url: https://www.himiku.com/
-      img: //images.weserv.nl/?url=gravatar.com/avatar/2fc4cf3560ff5a1cc64ea029896ab235?s=256
+      img: //wsrv.nl/?url=gravatar.com/avatar/2fc4cf3560ff5a1cc64ea029896ab235?s=256
       name: 初之音
       desc: 聆听心中最初的声音
 

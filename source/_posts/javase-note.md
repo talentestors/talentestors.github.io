@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 技术
 comments: true
-photos: //images.weserv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png
+photos: //wsrv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png
 mathjax: false
 date: 2023-08-01 16:00:28
 tags:
@@ -24,4 +24,4 @@ javase 学习文档已更新
 
 查看地址：<https://talentestors.gitee.io/my-notes/codenotes/javase/>
 
-{% fb_img //images.weserv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png miku %}
+{% fb_img //wsrv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png miku %}
