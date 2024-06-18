@@ -289,9 +289,13 @@ int main() {
 
 ## 相关库和函数
 
+### 函数
+
 - [random_device](https://zh.cppreference.com/w/cpp/algorithm/random_shuffle)
 - [mt19937](https://zh.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)
 - [shuffle](https://zh.cppreference.com/w/cpp/algorithm/random_shuffle)
 
-- [#include <random>](https://zh.cppreference.com/w/cpp/header/random)
-- [#include <iomanip>](https://zh.cppreference.com/w/cpp/header/iomanip)
+### 库
+
+- [#include \<random\>](https://zh.cppreference.com/w/cpp/header/random)
+- [#include \<iomanip\>](https://zh.cppreference.com/w/cpp/header/iomanip)
