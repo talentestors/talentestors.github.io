@@ -291,7 +291,7 @@ int main() {
 
 - [random_device](https://zh.cppreference.com/w/cpp/algorithm/random_shuffle)
 - [mt19937](https://zh.cppreference.com/w/cpp/numeric/random/mersenne_twister_engine)
-- [shuffle](https://www.cplusplus.com/reference/algorithm/shuffle/)
+- [shuffle](https://zh.cppreference.com/w/cpp/algorithm/random_shuffle)
 
 - [#include <random>](https://zh.cppreference.com/w/cpp/header/random)
 - [#include <iomanip>](https://zh.cppreference.com/w/cpp/header/iomanip)

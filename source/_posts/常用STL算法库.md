@@ -22,7 +22,7 @@ description: 本文主要汇总C++ STL算法库中常用的一些算法。
 
 重排序给定范围 [first, last] 中的元素，使得这些元素的每个排列拥有相等的出现概率。
 
-### shuffle
+### [shuffle](https://zh.cppreference.com/w/cpp/algorithm/random_shuffle)
 
 #### shuffle 原型
 
@@ -64,4 +64,3 @@ void random_shuffle( RandomIt first, RandomIt last, RandomFunc&& r );
 std::random_shuffle(ps.begin(), ps.end());
 std::random_shuffle(v.begin(), v.end(), std::mt19937());
 ```
-
