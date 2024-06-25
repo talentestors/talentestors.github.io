@@ -287,7 +287,7 @@ int main() {
 
 时间复杂度：$O(n\log^2n)$
 
-## 相关库和函数
+## 相关标准库和函数
 
 ### 函数
 
@@ -297,5 +297,5 @@ int main() {
 
 ### 库
 
-- [#include \<random\>](https://zh.cppreference.com/w/cpp/header/random)
-- [#include \<iomanip\>](https://zh.cppreference.com/w/cpp/header/iomanip)
+- [random](https://zh.cppreference.com/w/cpp/header/random)
+- [iomanip](https://zh.cppreference.com/w/cpp/header/iomanip)
