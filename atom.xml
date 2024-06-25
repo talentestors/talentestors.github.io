@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2024-06-25T03:24:11.717Z</updated>
+  <updated>2024-06-25T15:57:25.913Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开源项目 LinuxMirrors 让换源更简单</title>
+    <link href="http://stazxr.cn/2024/06/25/open-source-LinuxMirrors/"/>
+    <id>http://stazxr.cn/2024/06/25/open-source-LinuxMirrors/</id>
+    <published>2024-06-25T15:39:53.000Z</published>
+    <updated>2024-06-25T15:57:25.913Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="LinuxMirrors">LinuxMirrors</h2><p>以前安装Linux，因为国内的网络环境，总是需要更换系统软件源，这个过程总是很繁琐，而且容易出错。现在找到了一个开源项目，可以一条命令就可以更换系统软件源，非常方便（推荐+1 qwq</p><h3 id="项目地址">项目地址</h3><ul><li>官网: <a href="https://linuxmirrors.cn">LinuxMirrors</a></li><li>GitHub: <a href="https://github.com/SuperManito/LinuxMirrors">LinuxMirrors</a></li><li>Gitee: <a href="https://gitee.com/SuperManito/LinuxMirrors">LinuxMirrors</a></li></ul><h3 id="使用方法">使用方法</h3><p>命令如下：</p><pre><code class="language-bash">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</code></pre><blockquote><p>需使用 ROOT 用户执行脚本<br>切换命令为 sudo -i 或 su root，不同系统环境使用的命令不一样，因为有些系统没有在初始安装时为 ROOT 用户设置固定密码（例如Ubuntu）所以需要使用 sudo 指令来提权</p></blockquote><p>root 密码设置：</p><pre><code class="language-bash">sudo passwd root</code></pre><h3 id="官方介绍">官方介绍</h3><blockquote><p>GNU/Linux 更换系统软件源脚本，让换源更简单</p></blockquote><h4 id="多软件源适配">多软件源适配</h4><p>考察了国内镜像站的系统适配情况，测试了下载速度与IPv6协议的兼容性<br>另外，提供了全网收集的中国大陆教育网镜像站和海外镜像站供选择</p><h4 id="脚本一键运行">脚本一键运行</h4><p>脚本使换源变得更简单，通过交互默认进行更换，并根据用户选择自动配置<br>同时，提供了强大的命令选项，可用于自动化项目以实现无交互操作</p><h4 id="开源，MIT">开源，MIT</h4><p>项目已设立开源许可协议，传播时请在显著位置标注来源和作者<br>请尊重作者的知识成果，建议通过命令直接调用脚本</p>]]></content>
+    
+    <summary type="html">
+    
+      开源项目 LinuxMirrors，GNU/Linux 更换系统软件源脚本，让换源更简单
+    
+    </summary>
+    
+      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Linux" scheme="http://stazxr.cn/tags/Linux/"/>
+    
+      <category term="镜像源" scheme="http://stazxr.cn/tags/%E9%95%9C%E5%83%8F%E6%BA%90/"/>
+    
+      <category term="tools" scheme="http://stazxr.cn/tags/tools/"/>
+    
+  </entry>
   
   <entry>
     <title>P3517 [POI2011] WYK-Plot</title>
@@ -497,36 +523,6 @@
     
     
       <category term="划水" scheme="http://stazxr.cn/tags/%E5%88%92%E6%B0%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言基础排序(demo)</title>
-    <link href="http://stazxr.cn/2023/05/15/C%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80%E6%8E%92%E5%BA%8F-demo/"/>
-    <id>http://stazxr.cn/2023/05/15/C语言基础排序-demo/</id>
-    <published>2023-05-15T07:57:55.000Z</published>
-    <updated>2024-05-02T14:00:19.261Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1>今日份的丧心病狂</h1><p>基础排序</p><p>冒泡、插入、选择（157行警告🤤） 🤔</p><pre><code class="language-C">#include &lt;stdio.h&gt;#include &lt;stdbool.h&gt;#define _comp_ comp(int a, int b)int comp1(int a, int b) &#123; //升序    return a - b;&#125;int comp2(int a, int b) &#123; //降序    return b - a;&#125;void printArray(int *nums, int size);void swap(int *a, int *b);//二分搜索int binarySearch(int nums[], int left, int right, int target, int _comp_);//冒泡排序void bubbleSort(int *nums, int size, int _comp_);//冒泡排序优化void bubbleSortPlus(int *nums, int size, int _comp_);//插入排序void insertSort(int *nums, int size, int _comp_);//插入排序的二分搜索算法优化void insertSortPlus(int *nums, int size, int _comp_);//选择排序void selectSort(int *nums, int size, int _comp_);//选择排序双轴优化void selectSortPlus(int *nums, int size, int _comp_);int main() &#123;    int test[10] = &#123;9, 6, 5, 45, 3, 2, 1, 0, 7, 8&#125;;    printArray(test, 10);    bubbleSort(test, 10, comp2); //冒泡排序    printArray(test, 10);    bubbleSortPlus(test, 10, comp1); //冒泡排序优化    printArray(test, 10);    insertSort(test, 10, comp2); //插入排序    printArray(test, 10);    insertSortPlus(test, 10, comp1); //插入排序二分搜索算法优化    printArray(test, 10);    selectSort(test, 10, comp2); //选择排序    printArray(test, 10);    selectSortPlus(test, 10, comp1); //选择排序双轴优化    printArray(test, 10);    return 0;&#125;void selectSortPlus(int *nums, int size, int _comp_) &#123;    int left = 0, right = size - 1;   //相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小    while (left &lt; right) &#123;        int min = left, max = right;        for (int i = left; i &lt;= right; i++) &#123;            if (nums[i] &lt; nums[min]) min = i;   //同时找最小的和最大的            if (nums[i] &gt; nums[max]) max = i;        &#125;        if (comp(1, 2) &gt; 0) &#123;            swap(&amp;nums[max], &amp;nums[left]);            if (min == left) min = max;            swap(&amp;nums[min], &amp;nums[right]);        &#125; else &#123;            swap(&amp;nums[max], &amp;nums[right]);   //这里先把大的换到右边            //注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下            //如果遍历完发现最小的就是当前右边排序的第一个元素            //此时因为已经被换出来了，所以说需要将min改到换出来的那个位置            if (min == right) min = max;            swap(&amp;nums[min], &amp;nums[left]);   //接着把小的换到左边        &#125;        left++;    //这一轮完事之后，缩小范围        right--;    &#125;&#125;void selectSort(int *nums, int size, int _comp_) &#123;    for (int i = 0; i &lt; size - 1; ++i) &#123; //因为最后一个元素一定是在对应位置上的，所以只需要进行N - 1轮排序        int copy = i;        for (int j = i + 1; j &lt; size; ++j)   //挨个遍历剩余的元素，并更新            if (comp(nums[copy], nums[j]) &gt; 0) copy = j;        int tmp = nums[i];    //找出元素之后，开始交换        nums[i] = nums[copy];        nums[copy] = tmp;    &#125;&#125;void insertSortPlus(int *nums, int size, int _comp_) &#123; //二分搜索算法来查找对应的插入位置    for (int i = 1; i &lt; size; ++i) &#123;        int tmp = nums[i];        int j = binarySearch(nums, 0, i - 1, tmp, comp);   //由二分搜索来确定插入位置        for (int k = i; k &gt; j; k--) nums[k] = nums[k - 1];   //依然是将后面的元素后移        nums[j] = tmp;    &#125;&#125;void insertSort(int *nums, int size, int _comp_) &#123;    for (int i = 1; i &lt; size; ++i) &#123; //左牌堆默认有序        int j = i, tmp = nums[i];        while (j &gt; 0 &amp;&amp; comp(nums[j - 1], tmp) &gt; 0) &#123;            nums[j] = nums[j - 1]; //不断进行后移操作，把位置腾出来            --j;        &#125;        nums[j] = tmp;    &#125;&#125;void bubbleSortPlus(int *nums, int size, int _comp_) &#123;    for (int i = 0; i &lt; size - 1; ++i) &#123; //只需要size-1次即可        bool flag = true; //这里使用一个标记，默认为`true`表示数组是有序的        for (int j = 0; j &lt; size - i - 1; ++j) &#123;            if (comp(nums[j], nums[j + 1]) &gt; 0) &#123;                swap(&amp;nums[j], &amp;nums[j + 1]);                flag = false; //如果发生交换，说明不是有序的，把标记变成`false`            &#125;        &#125;        if (flag) break;//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出    &#125;&#125;void bubbleSort(int *nums, int size, int _comp_) &#123;    for (int i = 0; i &lt; size; ++i) &#123;        for (int j = 0; j &lt; size - i - 1; ++j) &#123;            if (comp(nums[j], nums[j + 1]) &gt; 0) swap(&amp;nums[j], &amp;nums[j + 1]);        &#125;    &#125;&#125;int binarySearch(int nums[], int left, int right, int target, int _comp_) &#123;    int mid;    while (left &lt;= right) &#123;        mid = (left + right) &gt;&gt; 1;        if (target == nums[mid]) return mid + 1;   //如果插入元素跟中间元素相等，直接返回后一位        else if (comp(target, nums[mid]) &lt; 0) &#123;            right = mid - 1;   //范围划到左边        &#125; else left = mid + 1;   //范围划到右边    &#125;    return left;   //不断划分范围，left也就是待插入位置了&#125;void swap(int *a, int *b) &#123;    int tmp = *a;    *a = *b;    *b = tmp;&#125;void printArray(int *nums, int size) &#123;    for (int i = 0; i &lt; size; ++i) &#123;        printf(&quot;%d &quot;, nums[i]);    &#125;    putchar('\n');&#125;</code></pre><p><strong>output:</strong></p><pre><code>9 6 5 45 3 2 1 0 7 845 9 8 7 6 5 3 2 1 00 1 2 3 5 6 7 8 9 4545 9 8 7 6 5 3 2 1 00 1 2 3 5 6 7 8 9 4545 9 8 7 6 5 3 2 1 00 1 2 3 5 6 7 8 9 45</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        
-        
-          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;
-        
-      
-    
-    </summary>
-    
-      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="C语言" scheme="http://stazxr.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-      <category term="数据结构与算法" scheme="http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
     
   </entry>
   
