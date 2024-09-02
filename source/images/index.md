@@ -67,3 +67,6 @@ description: 图集 images
 <a data-fancybox="anime" data-caption="Elaina" href="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png">
     <img src="//wsrv.nl/?url=images.cnblogs.com/cnblogs_com/blogs/799057/galleries/2331699/o_231128163332_infinity-693282.jpg&we" width="300">
 </a>
+<a data-fancybox="anime" data-caption="Frieren" href="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&we">
+    <img src="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&we" width="300">
+</a>

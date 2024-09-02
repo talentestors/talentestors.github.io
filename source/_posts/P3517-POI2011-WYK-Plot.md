@@ -11,6 +11,7 @@ photos: //wsrv.nl/?url=i0.hdslb.com/bfs/new_dyn/d9074a3c0573f89de45c05212cb44efd
 mathjax: true
 date: 2024-06-18 19:47:27
 tags:
+    - 算法
     - 计算几何
     - 随机增量法
     - 二分套二分
