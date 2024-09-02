@@ -23,7 +23,7 @@ description: Dinic算法和LuoGu P1343 地震逃生
 
 > [Dinic](https://www.bilibili.com/video/BV1j64y1R7yK/) 算法，它由 Dinitz 在 1970 年提出。Dinic 算法可以找到网络中的最大流。Dinic 算法的时间复杂度低于 Edmonds-Karp 算法。
 
-时间复杂度：$O(V^2E)$(V：点数，E：边数)
+时间复杂度：$O(V^2E)$ (V：点数，E：边数)
 
 ### 算法介绍
 
