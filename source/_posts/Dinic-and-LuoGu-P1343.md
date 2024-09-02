@@ -8,7 +8,7 @@ authorDesc: 学习使我快乐
 categories: 技术
 comments: true
 photos: //wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&h=923&w=2048&fit=cover&we
-mathjax: false
+mathjax: true
 date: 2024-09-02 15:04:06
 tags:
     - 算法
