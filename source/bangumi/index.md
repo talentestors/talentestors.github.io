@@ -6,6 +6,14 @@ date: 2023-04-17 21:32:48
 keywords:
 description:
 bangumis:
+  - img: https://lain.bgm.tv/pic/cover/l/cd/38/27364_1ZFmr.jpg
+    title: 冰菓
+    status: 已追完
+    progress: 100
+    jp: 氷菓
+    time: 2012-4-22 SUN.
+    desc: 以节能为座右铭的高中生折木奉太郎， 为一个小小的原因而加入了濒临废社的“古典文学部”。古典文学部的社员，包括他在社里认识的好奇宝宝，也就是女主角千反田爱瑠，还有他从国中就认识的伊原摩耶花和福部里志。这是他们四人以神山高中为舞台，对一桩桩事件展开推理的青春学园推理剧。“我很好奇！”奉太郎平静的灰色高中生活，因为千反田的这一句话而为之一变！
+ 
   - img: https://lain.bgm.tv/pic/cover/l/13/c5/400602_ZI8Y9.jpg
     title: 葬送的芙莉莲
     status: 已追完
