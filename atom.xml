@@ -348,9 +348,9 @@
       <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="__builtin__" scheme="http://stazxr.cn/tags/builtin/"/>
-    
       <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
+    
+      <category term="__builtin__" scheme="http://stazxr.cn/tags/builtin/"/>
     
   </entry>
   
