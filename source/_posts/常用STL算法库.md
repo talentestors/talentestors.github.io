@@ -69,9 +69,9 @@ std::random_shuffle(v.begin(), v.end(), std::mt19937());
 
 将整数转换为字符串。
 
-（1）【头文件】#include \<cstdlib>
+（1）【头文件】`#include <cstdlib>`
 
-（2）【函数原型】char *itoa(int value, char *string, int radix);
+（2）【函数原型】`char *itoa(int value, char *string, int radix);`
 
 （3）【参数说明】
 
