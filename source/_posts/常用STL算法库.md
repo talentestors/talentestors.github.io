@@ -129,7 +129,7 @@ int main(){
 
 在字符串中查找子串。
 
-C 库函数 char *strstr(const char *haystack, const char *needle) 在字符串 haystack 中查找第一次出现字符串 needle 的位置，不包含终止符 '\0'。
+C 库函数 `char *strstr(const char *haystack, const char *needle)` 在字符串 haystack 中查找第一次出现字符串 needle 的位置，不包含终止符 '\0'。
 
 ```cpp  
 #include <stdio.h>
