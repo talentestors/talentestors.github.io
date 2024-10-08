@@ -180,5 +180,4 @@ int main() {
     else cout << res << ' ' << (int) ceil(tot * 1.0 / res) << '\n';
     return 0;
 }
-
 ```
