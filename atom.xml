@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2024-09-02T12:33:23.253Z</updated>
+  <updated>2024-10-08T03:16:14.695Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>常用STL算法库汇总</title>
+    <link href="http://stazxr.cn/2024/10/08/%E5%B8%B8%E7%94%A8STL%E7%AE%97%E6%B3%95%E5%BA%93/"/>
+    <id>http://stazxr.cn/2024/10/08/常用STL算法库/</id>
+    <published>2024-10-08T03:16:11.000Z</published>
+    <updated>2024-10-08T03:16:14.695Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="shuffle-洗牌算法">shuffle 洗牌算法</h2><p>重排序给定范围 [first, last] 中的元素，使得这些元素的每个排列拥有相等的出现概率。</p><h3 id="shuffle"><a href="https://zh.cppreference.com/w/cpp/algorithm/random_shuffle">shuffle</a></h3><h4 id="shuffle-原型">shuffle 原型</h4><pre><code class="language-cpp">template&lt; class RandomIt, class URBG &gt;void shuffle( RandomIt first, RandomIt last, URBG&amp;&amp; g );</code></pre><h4 id="shuffle-使用">shuffle 使用</h4><pre><code class="language-cpp">#include &lt;random&gt;   // random_device, mt19937#include &lt;algorithm&gt;    // shufflestd::shuffle(ps.begin(), ps.end(), std::random_device());std::random_device rd;std::mt19937 g(rd());std::shuffle(v.begin(), v.end(), g);</code></pre><h3 id="random-shuffle">random_shuffle</h3><p>C++14 中弃用，C++17 中移除</p><h4 id="random-shuffle-原型">random_shuffle 原型</h4><pre><code class="language-cpp">template&lt; class RandomIt &gt;void random_shuffle( RandomIt first, RandomIt last );template&lt; class RandomIt, class RandomFunc &gt;void random_shuffle( RandomIt first, RandomIt last, RandomFunc&amp;&amp; r );</code></pre><h4 id="random-shuffle-使用">random_shuffle 使用</h4><pre><code class="language-cpp">std::random_shuffle(ps.begin(), ps.end());std::random_shuffle(v.begin(), v.end(), std::mt19937());</code></pre><h2 id="itoa-整数转字符串">itoa 整数转字符串</h2><p>将整数转换为字符串。</p><p>（1）【头文件】#include &lt;cstdlib&gt;</p><p>（2）【函数原型】char *itoa(int value, char *string, int radix);</p><p>（3）【参数说明】</p><ul><li>value：要转换的数据。</li><li>string：目标字符串的地址。</li><li>radix：转换后的进制数，可以是10进制、16进制等，范围必须在 2-36。</li></ul><pre><code class="language-cpp">#include &lt;iostream&gt;#include &lt;cstdlib&gt;using namespace std;int main()&#123;    int num = 100;    char str[25];    itoa(num, str, 10);    cout &lt;&lt; str; //输出100     return 0;&#125;</code></pre><p>itoa并不是一个标准的C函数，它是Windows特有的，如果要写跨平台的程序，需要用sprintf。C标准库中有sprintf，功能比这个更强，用法跟printf类似：</p><pre><code class="language-cpp">char str[255];sprintf(str, &quot;%x&quot;, 100); //将100转为16进制表示的字符串。</code></pre><h2 id="atoi-字符串转整数">atoi 字符串转整数</h2><p>将字符串转换为整数。</p><p><a href="https://zh.cppreference.com/w/cpp/string/byte/atoi">https://zh.cppreference.com/w/cpp/string/byte/atoi</a></p><p>（1）【头文件】#include &lt;stdlib.h&gt;</p><p>（2）【函数原型】int atoi (const char * str);</p><p>（3）【函数说明】atoi() 函数会扫描参数 str 字符串，跳过前面的空白字符（例如空格，tab缩进等），直到遇上数字或正负符号才开始做转换，而再遇到 非数字 或 字符串结束时(’\0’) 才结束转换，并将结果返回。函数返回转换后的整型数；如果 str 不能转换成 int 或者 str 为空字符串，那么将返回 0。</p><pre><code class="language-cpp">#include &lt;iostream&gt;#include &lt;cstdlib&gt;using namespace std;int main()&#123;    const char *s = &quot; 134&quot;;    int num = atoi(s);    cout &lt;&lt; num; //输出：134     return 0;&#125;</code></pre><h2 id="strstr-字符串查找">strstr() 字符串查找</h2><p>在字符串中查找子串。</p><p>C 库函数 char *strstr(const char *haystack, const char *needle) 在字符串 haystack 中查找第一次出现字符串 needle 的位置，不包含终止符 ‘\0’。</p><pre><code class="language-cpp">#include &lt;stdio.h&gt;#include &lt;string.h&gt; int main()&#123;   const char haystack[20] = &quot;RUNOOB&quot;;   const char needle[10] = &quot;NOOB&quot;;   char *ret;    ret = strstr(haystack, needle);    printf(&quot;子字符串是： %s\n&quot;, ret);      return(0);&#125;</code></pre><h2 id="strncmp-字符串字典序比较">strncmp() 字符串字典序比较</h2><ul><li>str1 – 要进行比较的第一个字符串。</li><li>str2 – 要进行比较的第二个字符串。</li><li>n – 要比较的最大字符数。</li></ul><p>该函数返回值如下：</p><ul><li>如果返回值 &lt; 0，则表示 str1 小于 str2。</li><li>如果返回值 &gt; 0，则表示 str1 大于 str2。</li><li>如果返回值 = 0，则表示 str1 等于 str2。</li></ul><pre><code class="language-cpp">#include &lt;stdio.h&gt;#include &lt;string.h&gt;int main () &#123;   char str1[15];   char str2[15];   int ret;   strcpy(str1, &quot;abcdef&quot;);   strcpy(str2, &quot;ABCDEF&quot;);   ret = strncmp(str1, str2, 4);   if(ret &lt; 0) &#123;      printf(&quot;str1 小于 str2&quot;);   &#125;   else if(ret &gt; 0) &#123;      printf(&quot;str2 小于 str1&quot;);   &#125; else &#123;      printf(&quot;str1 等于 str2&quot;);   &#125;   return(0);&#125;</code></pre><h2 id="tr1-unordered-set-tr1-unordered-map">tr1/unordered_set tr1/unordered_map</h2><blockquote><p>自 C++11 标准起，四种基于 哈希 实现的无序关联式容器正式纳入了 C++ 的标准模板库中，分别是：unordered_set，unordered_multiset，unordered_map，unordered_multimap。</p></blockquote><h3 id="编译器不支持-C-11-的使用方法">编译器不支持 C++11 的使用方法</h3><p>在 C++11 之前，无序关联式容器属于 C++ 的 TR1 扩展。所以，如果编译器不支持 C++11，在使用时需要在头文件的名称中加入 tr1/ 前缀，并且使用 std::tr1 命名空间。如 #include &lt;unordered_map&gt; 需要改成 #include &lt;tr1/unordered_map&gt;；std::unordered_map 需要改为 std::tr1::unordered_map（如果使用 using namespace std;，则为 tr1::unordered_map）。</p><h3 id="自定义哈希函数">自定义哈希函数</h3><pre><code class="language-cpp">struct my_hash &#123;  static uint64_t splitmix64(uint64_t x) &#123;    x += 0x9e3779b97f4a7c15;    x = (x ^ (x &gt;&gt; 30)) * 0xbf58476d1ce4e5b9;    x = (x ^ (x &gt;&gt; 27)) * 0x94d049bb133111eb;    return x ^ (x &gt;&gt; 31);  &#125;  size_t operator()(uint64_t x) const &#123;    static const uint64_t FIXED_RANDOM =        chrono::steady_clock::now().time_since_epoch().count();    return splitmix64(x + FIXED_RANDOM);  &#125;  // 针对 std::pair&lt;int, int&gt; 作为主键类型的哈希函数  size_t operator()(pair&lt;uint64_t, uint64_t&gt; x) const &#123;    static const uint64_t FIXED_RANDOM =        chrono::steady_clock::now().time_since_epoch().count();    return splitmix64(x.first + FIXED_RANDOM) ^           (splitmix64(x.second + FIXED_RANDOM) &gt;&gt; 1);  &#125;&#125;;</code></pre><p>写完自定义的哈希函数后，就可以通过 <code>unordered_map&lt;int, int, my_hash&gt; my_map;</code> 或者 <code>unordered_map&lt;pair&lt;int, int&gt;, int, my_hash&gt; my_pair_map;</code> 的定义方式将自定义的哈希函数传入容器了。</p><blockquote><pre><code class="language-cpp">unordered_map&lt;il, int&gt; numbers;// 调负载因子和预留空间，防止hash冲突导致的性能下降numbers.reserve(1024), numbers.max_load_factor(0.75);</code></pre></blockquote><h2 id="next-permutation-全排列">next_permutation 全排列</h2><p>全排列是一种经典的组合数学问题，给定一个数字集合，求这个数字集合的所有排列。</p><h3 id="next-permutation"><a href="https://zh.cppreference.com/w/cpp/algorithm/next_permutation">next_permutation</a></h3><h4 id="next-permutation-原型">next_permutation 原型</h4><pre><code class="language-cpp">template&lt; class BidirIt &gt;bool next_permutation( BidirIt first, BidirIt last );</code></pre><h4 id="next-permutation-使用">next_permutation 使用</h4><pre><code class="language-cpp">#include &lt;algorithm&gt;    // next_permutationstd::vector&lt;int&gt; v = &#123;1, 2, 3&#125;;do &#123;    for (int i : v) &#123;        std::cout &lt;&lt; i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';&#125; while (std::next_permutation(v.begin(), v.end()));&#125; while (std::next_permutation(v.begin(), v.end()));</code></pre><h3 id="prev-permutation-上一个排列">prev_permutation 上一个排列</h3><h4 id="prev-permutation-原型">prev_permutation 原型</h4><pre><code class="language-cpp">template&lt; class BidirIt &gt;bool prev_permutation( BidirIt first, BidirIt last );</code></pre><h4 id="prev-permutation-使用">prev_permutation 使用</h4><pre><code class="language-cpp">#include &lt;algorithm&gt;    // prev_permutationstd::vector&lt;int&gt; v = &#123;3, 2, 1&#125;;do &#123;    for (int i : v) &#123;        std::cout &lt;&lt; i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';&#125; while (std::prev_permutation(v.begin(), v.end()));</code></pre><h2 id="bitset-位运算">bitset 位运算</h2><p>std::bitset 是标准库中的一个存储 0/1 的大小不可变容器。严格来讲，它并不属于 STL。</p><h3 id="bitset"><a href="https://zh.cppreference.com/w/cpp/utility/bitset">bitset</a></h3><ul><li>count(): 返回 true 的数量。</li><li>size(): 返回 bitset 的大小。</li><li>test(pos): 它和 vector 中的 at() 的作用是一样的，和 [] 运算符的区别就是越界检查。</li><li>any(): 若存在某一位是 true 则返回 true，否则返回 false。</li><li>none(): 若所有位都是 false 则返回 true，否则返回 false。</li><li>all(): 若所有位都是 true 则返回 true，否则返回 false。</li><li>set(): 将整个 bitset 设置成 true。</li><li>set(pos, val = true): 将某一位设置成 true/false。</li><li>reset(): 将整个 bitset 设置成 false。</li><li>reset(pos): 将某一位设置成 false。相当于 set(pos, false)。</li><li>flip(): 翻转每一位。（0\leftrightarrow1，相当于异或一个全是 1 的 bitset）</li><li>flip(pos): 翻转某一位。</li><li>to_string(): 返回转换成的字符串表达。</li><li>to_ulong(): 返回转换成的 unsigned long 表达（long 在 NT 及 32 位 POSIX 系统下与 int 一样，在 64 位 POSIX 下与 long long 一样）。</li><li>to_ullong():（C++11 起）返回转换成的 unsigned long long 表达。</li></ul><h2 id="accumulate-和-reduce-累计">accumulate 和 reduce 累计</h2><pre><code class="language-cpp">vector&lt;ll&gt; v(10);for (int i = 0; i &lt; 10; i++) &#123;    v[i] = i + 1;&#125;cout &lt;&lt; accumulate(v.begin(), v.end(), 0) &lt;&lt; endl;cout &lt;&lt; reduce(v.begin(), v.end(), 0) &lt;&lt; endl;</code></pre><h2 id="max-element-min-element">max_element, min_element</h2><p>求最值</p><h2 id="reverse反转序列">reverse反转序列</h2><pre><code class="language-cpp">reverse(v.begin(), v.end());</code></pre><h2 id="nth-element-部分排序算法">nth_element 部分排序算法</h2><pre><code class="language-cpp">#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;algorithm&gt;#include &lt;functional&gt; int main()&#123;    std::vector&lt;int&gt; v&#123;5, 6, 4, 3, 2, 6, 7, 9, 3&#125;;     std::nth_element(v.begin(), v.begin() + v.size()/2, v.end());    std::cout &lt;&lt; &quot;The median is &quot; &lt;&lt; v[v.size()/2] &lt;&lt; '\n';     std::nth_element(v.begin(), v.begin()+1, v.end(), std::greater&lt;int&gt;());    std::cout &lt;&lt; &quot;The second largest element is &quot; &lt;&lt; v[1] &lt;&lt; '\n';&#125;</code></pre><h2 id="lower-bound-upper-bound">lower_bound, upper_bound</h2><p>二分查找</p><pre><code class="language-cpp">lower_bound(v.begin(), v.end(), 20, cmp)upper_bound(v.begin(), v.end(), 20, cmp)</code></pre><h2 id="partial-sum-adjacent-difference-部分和与部分差">partial_sum adjacent_difference 部分和与部分差</h2><pre><code class="language-cpp">#include &lt;iostream&gt;#include &lt;vector&gt;#include &lt;numeric&gt;int main() &#123;    std::vector&lt;int&gt; v = &#123;1, 2, 3, 4, 5&#125;;    std::vector&lt;int&gt; p(v.size());    std::vector&lt;int&gt; d(v.size());    std::partial_sum(v.begin(), v.end(), p.begin());    std::adjacent_difference(v.begin(), v.end(), d.begin());    for (int i : p) &#123;        std::cout &lt;&lt; i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';    for (int i : d) &#123;        std::cout &lt;&lt; i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';    return 0;&#125;</code></pre><h2 id="iota">iota</h2><p>以始于 value 并重复地求值 ++value 的顺序递增值填充范围 [first, last) 。</p><pre><code class="language-cpp">#include &lt;iostream&gt;int main() &#123;    std::vector&lt;int&gt; v(10);    std::iota(v.begin(), v.end(), 1);    for (int i : v) &#123;        std::cout &lt;&lt; i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';    return 0;&#125;// output: 1 2 3 4 5 6 7 8 9 10</code></pre><h2 id="std-includes-判断一个序列是否包含另一个序列">std::includes 判断一个序列是否包含另一个序列</h2><pre><code class="language-cpp">#include &lt;iostream&gt;int main() &#123;    std::vector&lt;int&gt; v1 = &#123;1, 2, 3, 4, 5, 6, 7, 8, 9&#125;;    std::vector&lt;int&gt; v2 = &#123;3, 4, 5&#125;;    std::vector&lt;int&gt; v3 = &#123;3, 4, 5, 10&#125;;    std::cout &lt;&lt; std::includes(v1.begin(), v1.end(), v2.begin(), v2.end()) &lt;&lt; '\n';    std::cout &lt;&lt; std::includes(v1.begin(), v1.end(), v3.begin(), v3.end()) &lt;&lt; '\n';    return 0;&#125;</code></pre><h2 id="unique">unique</h2><pre><code class="language-cpp">#include &lt;iostream&gt;int main() &#123;    std::vector&lt;int&gt; v = &#123;1, 2, 2, 3, 3, 3, 4, 4, 4, 4&#125;;    auto last = std::unique(v.begin(), v.end());    for (auto i = v.begin(); i != last; ++i) &#123;        std::cout &lt;&lt; *i &lt;&lt; ' ';    &#125;    std::cout &lt;&lt; '\n';    return 0;&#125;</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      本文主要汇总C++ STL算法库中常用的一些算法。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
+    
+      <category term="算法" scheme="http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="STL" scheme="http://stazxr.cn/tags/STL/"/>
+    
+  </entry>
   
   <entry>
     <title>dinic算法和LuoGu P1343 地震逃生</title>
@@ -95,32 +121,6 @@
       <category term="随机增量法" scheme="http://stazxr.cn/tags/%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F%E6%B3%95/"/>
     
       <category term="二分套二分" scheme="http://stazxr.cn/tags/%E4%BA%8C%E5%88%86%E5%A5%97%E4%BA%8C%E5%88%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>常用STL算法库汇总</title>
-    <link href="http://stazxr.cn/2024/05/22/%E5%B8%B8%E7%94%A8STL%E7%AE%97%E6%B3%95%E5%BA%93/"/>
-    <id>http://stazxr.cn/2024/05/22/常用STL算法库/</id>
-    <published>2024-05-22T01:08:11.000Z</published>
-    <updated>2024-06-18T15:57:21.452Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="shuffle-洗牌算法">shuffle 洗牌算法</h2><p>重排序给定范围 [first, last] 中的元素，使得这些元素的每个排列拥有相等的出现概率。</p><h3 id="shuffle"><a href="https://zh.cppreference.com/w/cpp/algorithm/random_shuffle">shuffle</a></h3><h4 id="shuffle-原型">shuffle 原型</h4><pre><code class="language-cpp">template&lt; class RandomIt, class URBG &gt;void shuffle( RandomIt first, RandomIt last, URBG&amp;&amp; g );</code></pre><h4 id="shuffle-使用">shuffle 使用</h4><pre><code class="language-cpp">#include &lt;random&gt;   // random_device, mt19937#include &lt;algorithm&gt;    // shufflestd::shuffle(ps.begin(), ps.end(), std::random_device());std::random_device rd;std::mt19937 g(rd());std::shuffle(v.begin(), v.end(), g);</code></pre><h3 id="random-shuffle">random_shuffle</h3><p>C++14 中弃用，C++17 中移除</p><h4 id="random-shuffle-原型">random_shuffle 原型</h4><pre><code class="language-cpp">template&lt; class RandomIt &gt;void random_shuffle( RandomIt first, RandomIt last );template&lt; class RandomIt, class RandomFunc &gt;void random_shuffle( RandomIt first, RandomIt last, RandomFunc&amp;&amp; r );</code></pre><h4 id="random-shuffle-使用">random_shuffle 使用</h4><pre><code class="language-cpp">std::random_shuffle(ps.begin(), ps.end());std::random_shuffle(v.begin(), v.end(), std::mt19937());</code></pre>]]></content>
-    
-    <summary type="html">
-    
-      本文主要汇总C++ STL算法库中常用的一些算法。
-    
-    </summary>
-    
-      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
-    
-      <category term="算法" scheme="http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/"/>
-    
-      <category term="STL" scheme="http://stazxr.cn/tags/STL/"/>
     
   </entry>
   
@@ -428,9 +428,9 @@
       <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="C语言" scheme="http://stazxr.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
       <category term="数据结构与算法" scheme="http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C语言" scheme="http://stazxr.cn/tags/C%E8%AF%AD%E8%A8%80/"/>
     
   </entry>
   
