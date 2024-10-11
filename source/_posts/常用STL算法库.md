@@ -448,6 +448,30 @@ int main() {
 }
 ```
 
+## rotate 旋转
+
+进行元素范围上的左旋转
+
+```cpp
+#include <iostream>
+
+int main() {
+    vector<int> a{1,2,3,4,5,6,7,8,9};
+    copy(a.begin(), a.end(), ostream_iterator<int>(cout, " "));
+    cout << endl;
+    std::rotate(a.begin(), a.begin()+5, a.end());
+    copy(a.begin(), a.end(), ostream_iterator<int>(cout, " "));
+    return 0;
+}
+```
+
+输出：
+
+```text
+1 2 3 4 5 6 7 8 9 
+6 7 8 9 1 2 3 4 5 
+```
+
 ## 大小写转换
 
 ### 大写转小写
