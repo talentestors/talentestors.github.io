@@ -404,7 +404,7 @@
         </span>
         <span class="bull">
         ·</span>
-        2024-10-8<span class="bull">
+        2024-10-11<span class="bull">
         ·</span>
         <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -546,6 +546,143 @@ int main () &#123;
    return(0);
 &#125;
 </code></pre>
+<h2 id="vector-容器">vector 容器</h2>
+<p>C++ 中的 vector 是一种序列容器，它允许你在运行时动态地插入和删除元素。</p>
+<p>vector 是基于数组的数据结构，但它可以自动管理内存，这意味着你不需要手动分配和释放内存。</p>
+<p>与 C++ 数组相比，vector 具有更多的灵活性和功能，使其成为 C++ 中常用的数据结构之一。</p>
+<p>vector 是 C++ 标准模板库（STL）的一部分，提供了灵活的接口和高效的操作。</p>
+<p><strong>基本特性:</strong></p>
+<ul>
+<li><strong>动态大小</strong>：<code>vector</code> 的大小可以根据需要自动增长和缩小。</li>
+<li><strong>连续存储</strong>：<code>vector</code> 中的元素在内存中是连续存储的，这使得访问元素非常快速。</li>
+<li><strong>可迭代</strong>：<code>vector</code> 可以被迭代，你可以使用循环（如 <code>for</code> 循环）来访问它的元素。</li>
+<li><strong>元素类型</strong>：<code>vector</code> 可以存储任何类型的元素，包括内置类型、对象、指针等。</li>
+</ul>
+<p><strong>使用场景：</strong></p>
+<ul>
+<li>当你需要一个可以动态增长和缩小的数组时。</li>
+<li>当你需要频繁地在序列的末尾添加或移除元素时。</li>
+<li>当你需要一个可以高效随机访问元素的容器时。</li>
+</ul>
+<p>要使用 vector，首先需要包含 <strong>&lt;vector&gt;</strong> 头文件：</p>
+<pre><code class="language-cpp">#include &lt;vector&gt;
+</code></pre>
+<h3 id="创建-Vector">创建 Vector</h3>
+<p>创建一个 vector 可以像创建其他变量一样简单：</p>
+<pre><code class="language-cpp">std::vector&lt;int&gt; myVector; // 创建一个存储整数的空 vector
+</code></pre>
+<p>这将创建一个空的整数向量,也可以在创建时指定初始大小和初始值：</p>
+<pre><code class="language-cpp">std::vector&lt;int&gt; myVector(5); // 创建一个包含 5 个整数的 vector，每个值都为默认值（0）
+std::vector&lt;int&gt; myVector(5, 10); // 创建一个包含 5 个整数的 vector，每个值都为 10
+</code></pre>
+<p>或：</p>
+<pre><code class="language-cpp">std::vector&lt;int&gt; vec; // 默认初始化一个空的 vector
+std::vector&lt;int&gt; vec2 = &#123;1, 2, 3, 4&#125;; // 初始化一个包含元素的 vector
+</code></pre>
+<h3 id="添加元素">添加元素</h3>
+<p>可以使用 push_back 方法向 vector 中添加元素：</p>
+<pre><code class="language-cpp">myVector.push_back(7); // 将整数 7 添加到 vector 的末尾
+</code></pre>
+<h3 id="访问元素">访问元素</h3>
+<p>可以使用下标操作符 [] 或 at() 方法访问 vector 中的元素：</p>
+<pre><code class="language-cpp">int x = myVector[0]; // 获取第一个元素
+int y = myVector.at(1); // 获取第二个元素
+</code></pre>
+<h3 id="获取大小">获取大小</h3>
+<p>可以使用 size() 方法获取 vector 中元素的数量：</p>
+<pre><code class="language-cpp">int size = myVector.size(); // 获取 vector 中的元素数量
+</code></pre>
+<h3 id="迭代访问">迭代访问</h3>
+<p>可以使用迭代器遍历 vector 中的元素：</p>
+<pre><code class="language-cpp">for (auto it = myVector.begin(); it != myVector.end(); ++it) &#123;
+    std::cout &lt;&lt; *it &lt;&lt; &quot; &quot;;
+&#125;
+</code></pre>
+<p>或者使用范围循环：</p>
+<pre><code class="language-cpp">for (int element : myVector) &#123;
+    std::cout &lt;&lt; element &lt;&lt; &quot; &quot;;
+&#125;
+</code></pre>
+<h3 id="删除元素">删除元素</h3>
+<p>可以使用 erase() 方法删除 vector 中的元素：</p>
+<pre><code class="language-cpp">myVector.erase(myVector.begin() + 2); // 删除第三个元素
+</code></pre>
+<h3 id="清空-Vector">清空 Vector</h3>
+<p>可以使用 clear() 方法清空 vector 中的所有元素：</p>
+<pre><code class="language-cpp">myVector.clear(); // 清空 vector
+</code></pre>
+<h2 id="C-容器类-priority-queue">C++ 容器类 <code>&lt;priority_queue&gt;</code></h2>
+<p>在 C++ 中，<code>&lt;priority_queue&gt;</code> 是标准模板库（STL）的一部分，用于实现优先队列。</p>
+<p>优先队列是一种特殊的队列，它允许我们快速访问队列中具有最高（或最低）优先级的元素。</p>
+<p>在 C++ 中，<code>priority_queue</code> 默认是一个最大堆，这意味着队列的顶部元素总是具有最大的值。</p>
+<p><code>priority_queue</code> 是一个容器适配器，它提供了对底层容器的堆操作。它不提供迭代器，也不支持随机访问。</p>
+<h3 id="语法">语法</h3>
+<p>以下是 <code>priority_queue</code> 的基本语法：</p>
+<pre><code class="language-cpp">#include &lt;queue&gt;
+
+// 声明一个整型优先队列
+priority_queue&lt;int&gt; pq;
+
+// 声明一个自定义类型的优先队列，需要提供比较函数
+struct compare &#123;
+    bool operator()(int a, int b) &#123;
+        return a &gt; b; // 这里定义了最小堆
+    &#125;
+&#125;;
+priority_queue&lt;int, vector&lt;int&gt;, compare&gt; pq_min;
+</code></pre>
+<h3 id="常用操作">常用操作</h3>
+<ul>
+<li><code>empty()</code>: 检查队列是否为空。</li>
+<li><code>size()</code>: 返回队列中的元素数量。</li>
+<li><code>top()</code>: 返回队列顶部的元素（不删除它）。</li>
+<li><code>push()</code>: 向队列添加一个元素。</li>
+<li><code>pop()</code>: 移除队列顶部的元素。</li>
+</ul>
+<h2 id="自定义优先级">自定义优先级</h2>
+<p>如果你需要一个最小堆，可以通过自定义比较函数来实现：</p>
+<h2 id="实例">实例</h2>
+<pre><code class="language-cpp">#include &lt;iostream&gt;
+#include &lt;queue&gt;
+#include &lt;vector&gt;
+
+struct compare &#123;
+  bool operator()(int a, int b) &#123;
+    return a &gt; b; // 定义最小堆
+  &#125;
+&#125;;
+
+int main() &#123;
+  // 创建一个自定义类型的优先队列，使用最小堆
+  std::priority_queue&lt;int, std::vector&lt;int&gt;, compare&gt; pq_min;
+
+  // 向优先队列中添加元素
+  pq_min.push(30);
+  pq_min.push(10);
+  pq_min.push(50);
+  pq_min.push(20);
+
+  // 输出队列中的元素
+  std::cout &lt;&lt; &quot;最小堆中的元素：&quot; &lt;&lt; std::endl;
+  while (!pq_min.empty()) &#123;
+    std::cout &lt;&lt; pq_min.top() &lt;&lt; std::endl;
+    pq_min.pop();
+  &#125;
+
+  return 0;
+&#125;
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="language-text">最小堆中的元素：
+10
+20
+30
+50
+</code></pre>
+<p><code>&lt;priority_queue&gt;</code> 是C++ STL中一个非常有用的容器，特别适合需要快速访问最高或最低优先级元素的场景。通过自定义比较函数，我们可以轻松地实现最大堆或最小堆。希望这篇文章能帮助初学者更好地理解和使用 <code>priority_queue</code>。</p>
+<blockquote>
+<p>默认从大到小<code>priority_queue&lt;int, std::vector&lt;int&gt;, greater&lt;&gt;&gt; pq_min;</code></p>
+</blockquote>
 <h2 id="tr1-unordered-set-tr1-unordered-map">tr1/unordered_set tr1/unordered_map</h2>
 <blockquote>
 <p>自 C++11 标准起，四种基于 哈希 实现的无序关联式容器正式纳入了 C++ 的标准模板库中，分别是：unordered_set，unordered_multiset，unordered_map，unordered_multimap。</p>
@@ -803,36 +940,19 @@ int main() &#123;
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+        
           
-            <div class="post-nepre half previous">
+            <div class="post-nepre full next">
           
-            <a href="/2024/10/08/%E9%BB%91%E9%A2%98%E8%AE%B0%E5%BD%95-2D-Geometry-110-in-1/" rel="prev">
+            <a href="/2024/10/08/%E9%BB%91%E9%A2%98%E8%AE%B0%E5%BD%95-2D-Geometry-110-in-1/" rel="next">
               <div class="background">
                 <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//s21.ax1x.com/2024/10/08/pAGs9X9.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="//s21.ax1x.com/2024/10/08/pAGs9X9.jpg">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                黑题记录-2D Geometry 110 in 1!</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
-        
-          
-            <div class="post-nepre half next">
-          
-            <a href="/2024/09/02/Dinic-and-LuoGu-P1343/" rel="next">
-              <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&h=923&w=2048&fit=cover&we" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&h=923&w=2048&fit=cover&we">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                dinic算法和LuoGu P1343 地震逃生</h3>
+                黑题记录-2D Geometry 110 in 1!</h3>
                 <hr>
               </div>
             </a>
