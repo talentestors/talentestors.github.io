@@ -9,7 +9,7 @@ categories: 技术
 comments: true
 photos: //gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/coding.jpg
 mathjax: false
-date: 2024-010-8 11:16:11
+date: 2024-10-11 10:16:11
 tags:
     - C++
     - STL
@@ -186,6 +186,205 @@ int main () {
    return(0);
 }
 ```
+
+## vector 容器
+
+C++ 中的 vector 是一种序列容器，它允许你在运行时动态地插入和删除元素。
+
+vector 是基于数组的数据结构，但它可以自动管理内存，这意味着你不需要手动分配和释放内存。
+
+与 C++ 数组相比，vector 具有更多的灵活性和功能，使其成为 C++ 中常用的数据结构之一。
+
+vector 是 C++ 标准模板库（STL）的一部分，提供了灵活的接口和高效的操作。
+
+**基本特性:**
+
+- **动态大小**：`vector` 的大小可以根据需要自动增长和缩小。
+- **连续存储**：`vector` 中的元素在内存中是连续存储的，这使得访问元素非常快速。
+- **可迭代**：`vector` 可以被迭代，你可以使用循环（如 `for` 循环）来访问它的元素。
+- **元素类型**：`vector` 可以存储任何类型的元素，包括内置类型、对象、指针等。
+
+**使用场景：**
+
+- 当你需要一个可以动态增长和缩小的数组时。
+- 当你需要频繁地在序列的末尾添加或移除元素时。
+- 当你需要一个可以高效随机访问元素的容器时。
+
+要使用 vector，首先需要包含 **\<vector>** 头文件：
+
+```cpp
+#include <vector>
+```
+
+### 创建 Vector
+
+创建一个 vector 可以像创建其他变量一样简单：
+
+```cpp
+std::vector<int> myVector; // 创建一个存储整数的空 vector
+```
+
+这将创建一个空的整数向量,也可以在创建时指定初始大小和初始值：
+
+```cpp
+std::vector<int> myVector(5); // 创建一个包含 5 个整数的 vector，每个值都为默认值（0）
+std::vector<int> myVector(5, 10); // 创建一个包含 5 个整数的 vector，每个值都为 10
+```
+
+或：
+
+```cpp
+std::vector<int> vec; // 默认初始化一个空的 vector
+std::vector<int> vec2 = {1, 2, 3, 4}; // 初始化一个包含元素的 vector
+```
+
+### 添加元素
+
+可以使用 push_back 方法向 vector 中添加元素：
+
+```cpp
+myVector.push_back(7); // 将整数 7 添加到 vector 的末尾
+```
+
+### 访问元素
+
+可以使用下标操作符 [] 或 at() 方法访问 vector 中的元素：
+
+```cpp
+int x = myVector[0]; // 获取第一个元素
+int y = myVector.at(1); // 获取第二个元素
+```
+
+### 获取大小
+
+可以使用 size() 方法获取 vector 中元素的数量：
+
+```cpp
+int size = myVector.size(); // 获取 vector 中的元素数量
+```
+
+### 迭代访问
+
+可以使用迭代器遍历 vector 中的元素：
+
+```cpp
+for (auto it = myVector.begin(); it != myVector.end(); ++it) {
+    std::cout << *it << " ";
+}
+```
+
+或者使用范围循环：
+
+```cpp
+for (int element : myVector) {
+    std::cout << element << " ";
+}
+```
+
+### 删除元素
+
+可以使用 erase() 方法删除 vector 中的元素：
+
+```cpp
+myVector.erase(myVector.begin() + 2); // 删除第三个元素
+```
+
+### 清空 Vector
+
+可以使用 clear() 方法清空 vector 中的所有元素：
+
+```cpp
+myVector.clear(); // 清空 vector
+```
+
+## C++ 容器类 `<priority_queue>`
+
+在 C++ 中，`<priority_queue>` 是标准模板库（STL）的一部分，用于实现优先队列。
+
+优先队列是一种特殊的队列，它允许我们快速访问队列中具有最高（或最低）优先级的元素。
+
+在 C++ 中，`priority_queue` 默认是一个最大堆，这意味着队列的顶部元素总是具有最大的值。
+
+`priority_queue` 是一个容器适配器，它提供了对底层容器的堆操作。它不提供迭代器，也不支持随机访问。
+
+### 语法
+
+以下是 `priority_queue` 的基本语法：
+
+```cpp
+#include <queue>
+
+// 声明一个整型优先队列
+priority_queue<int> pq;
+
+// 声明一个自定义类型的优先队列，需要提供比较函数
+struct compare {
+    bool operator()(int a, int b) {
+        return a > b; // 这里定义了最小堆
+    }
+};
+priority_queue<int, vector<int>, compare> pq_min;
+```
+
+### 常用操作
+
+- `empty()`: 检查队列是否为空。
+- `size()`: 返回队列中的元素数量。
+- `top()`: 返回队列顶部的元素（不删除它）。
+- `push()`: 向队列添加一个元素。
+- `pop()`: 移除队列顶部的元素。
+
+## 自定义优先级
+
+如果你需要一个最小堆，可以通过自定义比较函数来实现：
+
+## 实例
+
+```cpp
+#include <iostream>
+#include <queue>
+#include <vector>
+
+struct compare {
+  bool operator()(int a, int b) {
+    return a > b; // 定义最小堆
+  }
+};
+
+int main() {
+  // 创建一个自定义类型的优先队列，使用最小堆
+  std::priority_queue<int, std::vector<int>, compare> pq_min;
+
+  // 向优先队列中添加元素
+  pq_min.push(30);
+  pq_min.push(10);
+  pq_min.push(50);
+  pq_min.push(20);
+
+  // 输出队列中的元素
+  std::cout << "最小堆中的元素：" << std::endl;
+  while (!pq_min.empty()) {
+    std::cout << pq_min.top() << std::endl;
+    pq_min.pop();
+  }
+
+  return 0;
+}
+```
+
+输出结果：
+
+```text
+最小堆中的元素：
+10
+20
+30
+50
+```
+
+`<priority_queue>` 是C++ STL中一个非常有用的容器，特别适合需要快速访问最高或最低优先级元素的场景。通过自定义比较函数，我们可以轻松地实现最大堆或最小堆。希望这篇文章能帮助初学者更好地理解和使用 `priority_queue`。
+
+> 默认从大到小`priority_queue<int, std::vector<int>, greater<>> pq_min;`
 
 ## tr1/unordered_set tr1/unordered_map
 
