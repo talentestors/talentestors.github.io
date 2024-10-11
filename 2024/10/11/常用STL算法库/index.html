@@ -912,6 +912,17 @@ int main() &#123;
 <h3 id="小写转大写">小写转大写</h3>
 <pre><code class="language-cpp">char c = toupper(a);
 </code></pre>
+<h2 id="advance">advance</h2>
+<p>增加给定的迭代器 it 向前 n 个元素。</p>
+<p>如果 n 为负，那么迭代器会自减。此时 <code>InputIt</code> 必须满足<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/named_req/BidirectionalIterator"><em>老式双向迭代器</em> <em>(LegacyBidirectionalIterator)</em> </a>的要求，否则行为未定义。</p>
+<pre><code class="language-cpp">set a = &#123;1, 2, 3, 4, 5, 6, 7, 8, 9, 10&#125;;
+auto it = a.begin();
+advance(it, 3);
+cout &lt;&lt; *it &lt;&lt; endl;
+</code></pre>
+<blockquote>
+<p>other: <code>next()</code> 和 <code>prev()</code></p>
+</blockquote>
 
         </div>
         <!-- .entry-content -->
@@ -1006,7 +1017,7 @@ int main() &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -1018,10 +1029,10 @@ int main() &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
