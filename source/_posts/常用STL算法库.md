@@ -684,3 +684,18 @@ char c = tolower(a);
 ```cpp
 char c = toupper(a);
 ```
+
+## advance
+
+增加给定的迭代器 it 向前 n 个元素。
+
+如果 n 为负，那么迭代器会自减。此时 `InputIt` 必须满足[*老式双向迭代器* *(LegacyBidirectionalIterator)* ](https://zh.cppreference.com/w/cpp/named_req/BidirectionalIterator)的要求，否则行为未定义。
+
+```cpp
+set a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+auto it = a.begin();
+advance(it, 3);
+cout << *it << endl;
+```
+
+> other: `next()` 和 `prev()`
