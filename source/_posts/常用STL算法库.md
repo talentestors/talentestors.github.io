@@ -447,3 +447,17 @@ int main() {
     return 0;
 }
 ```
+
+## 大小写转换
+
+### 大写转小写
+
+```cpp
+char c = tolower(a);
+```
+
+### 小写转大写
+
+```cpp
+char c = toupper(a);
+```
