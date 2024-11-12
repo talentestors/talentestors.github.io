@@ -30,105 +30,69 @@ description: 本题有多组数据。数据组数不超过 $10^3$。对于每行
 ### 询问 $(001)_2$：求外接圆
 
 - 输入格式：`CircumscribedCircle` $x_1$ $y_1$ $x_2$ $y_2$ $x_3$ $y_3$
-
 - 输出格式：`(x,y,r)`，其中 $x,y$ 描述圆心的位置，$r$ 表示圆的半径。
-
 - 描述：给定三角形，顶点分别为 $(x_1,y_1)$，$(x_2,y_2)$，$(x_3,y_3)$，求出这个三角形的外接圆的圆心和半径。
-
 - 约定：**保证三点不共线**。
 
 ### 询问 $(010)_2$：求内切圆
 
 - 输入格式：`InscribedCircle` $x_1$ $y_1$ $x_2$ $y_2$ $x_3$ $y_3$
-
 - 输出格式：`(x,y,r)`，其中 $x,y$ 描述圆心的位置，$r$ 表示圆的半径。
-
 - 描述：给定三角形，顶点分别为 $(x_1,y_1)$，$(x_2,y_2)$，$(x_3,y_3)$，求出这个三角形的内切圆的圆心和半径。
-
 - 约定：**保证三点不共线。**
 
 ### 询问 $(011)_2$：过一点求切线
 
 - 输入格式：`TangentLineThroughPoint` $x_c$ $y_c$ $r$ $x_p$ $y_p$
-
-- 输出格式：`[angle1,angle2]` 
-    - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）实数 $\theta$，以角度描述切线的倾斜角。**注意单位是角度，你需要保证 $\boldsymbol{\theta \in \left[0,180\right)}$。**
-
-    - **你需要保证列表中的元素是升序排列的。**
-
-    - 若无解，输出空列表 `[]`。
-
+- 输出格式：`[angle1,angle2]`
+  - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）实数 $\theta$，以角度描述切线的倾斜角。**注意单位是角度，你需要保证 $\boldsymbol{\theta \in \left[0,180\right)}$。**
+  - **你需要保证列表中的元素是升序排列的。**
+  - 若无解，输出空列表 `[]`。
 - 描述：给定一个以 $(x_c,y_c)$ 为圆心，$r$ 为半径的圆 $C$ 和一个点 $(x_p,y_p)$，求出过 $P$ 且与圆 $C$ 相切的**所有**直线。
 
 ### 询问 $(100)_2$：求与一条已知直线相切、过已知点且固定半径的圆
 
-- 输入格式：`CircleThroughAPointAndTangentToALineWithRadius` $x_p$ $y_p$ $x_1$ $y_1$ $x_2$ $y_2$ $r$
-
+- 输入格式：`CircleThroughAPointAndTangentToALineWithRadius` $x_p$ $y_p$ $x_1$ $y_1$ $x_2$ $y_2$ $r$=
 - 输出格式：`[(x1,y1),(x2,y2)]`
-
-    - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
-
-    - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
-
-    - 若无解，输出空列表 `[]`。
-
+  - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
+  - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
+  - 若无解，输出空列表 `[]`。
 - 描述：给定过 $(x_1,y_1)$ 和 $(x_2,y_2)$ 的直线 $l$，点 $P(x_p,y_p)$ 和半径 $r$。你需要求出**所有**的圆 $O$，满足以下条件：
-
-    - $O$ 与 $l$ 相切。
-    - 点 $P$ 在圆 $O$ 上。
-    - $O$ 的半径为 $r$。
+  - $O$ 与 $l$ 相切。
+  - 点 $P$ 在圆 $O$ 上。
+  - $O$ 的半径为 $r$。
 
 ### 询问 $(101)_2$：求与两条已知直线相切且固定半径的圆
 
 - 输入格式：`CircleTangentToTwoLinesWithRadius` $x_1$ $y_1$ $x_2$ $y_2$ $x_3$ $y_3$ $x_4$ $y_4$ $r$
-
 - 输出格式：`[(x1,y1),(x2,y2)]`
-
-
-    - 同询问 $(100)_2$ 中的输出。
-
-    - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
-
-    - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
-
-    - 若无解，输出空列表 `[]`。
-
+  - 同询问 $(100)_2$ 中的输出。
+  - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
+  - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
+  - 若无解，输出空列表 `[]`。
 - 描述：给定过 $(x_1,y_1)$ 和 $(x_2,y_2)$ 的直线 $l_1$，过 $(x_3,y_3)$ 和 $(x_4,y_4)$ 的直线 $l_2$ 和半径 $r$。你需要求出**所有**的圆 $O$，满足以下条件：
-
-    - $O$ 与 $l_1$ 和 $l_2$ 都相切。
-    - $O$ 的半径为 $r$。
-   
+  - $O$ 与 $l_1$ 和 $l_2$ 都相切。
+  - $O$ 的半径为 $r$。
 - 约定：**保证 $\boldsymbol{l_1}$ 不与 $\boldsymbol{l_2}$ 平行。**
 
 ### 询问 $(110)_2$：求固定半径的公共外切圆
 
 - 输入格式：`CircleTangentToTwoDisjointCirclesWithRadius` $x_1$ $y_1$ $r_1$ $x_2$ $y_2$ $r_2$ $r$
-
 - 输出格式：`[(x1,y1),(x2,y2)]`
-
-    - 同询问 $(100)_2$ 中的输出。
-
-    - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
-
-    - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
-
-    - 若无解，输出空列表 `[]`。
-
+  - 同询问 $(100)_2$ 中的输出。
+  - 输出一个列表（类似 Python 中的数组），列表中含有几个（**或者 $\boldsymbol{0}$ 个**）二元组 $(x,y)$，描述一个圆的圆心。
+  - **你需要保证列表中的元素以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
+  - 若无解，输出空列表 `[]`。
 - 描述：给定圆 $C_1$，半径为 $r_1$，圆心坐标为 $(x_1,y_1)$ 和圆 $C_2$，半径为 $r_2$，圆心坐标为 $(x_2,y_2)$。且给定 $r$。你需要求出**所有**的圆 $O$，满足以下条件：
-
-    - $O$ 与 $C_1$ 和 $C_2$ **外切**。也就是说，$O$ 不能把 $C_1$ 或者 $C_2$ 包含在（$O$）内。
-    - $O$ 的半径为 $r$。
+  - $O$ 与 $C_1$ 和 $C_2$ **外切**。也就是说，$O$ 不能把 $C_1$ 或者 $C_2$ 包含在（$O$）内。
+  - $O$ 的半径为 $r$。
 
 请注意：
 
 - 输出时，对于列表元素是实数的情况，你需要保证列表中的元素是**升序**的。
-
 - 输出时，对于列表元素是二元组 $(x,y)$ 的情况，你需要保证这些二元组**以 $x$ 为第一关键字，$y$ 为第二关键字升序排列。**
-
 - 无解的时候输出空列表 `[]`。
-
 - **你的输出中不应包含空格。**
-
 - **每个输出的数字保留 $6$ 位小数。**
 
 ## 输入格式
@@ -151,25 +115,25 @@ $\text{\small{Translated by @Starrykiller.}}$
 
 ## 题目描述
 
-[problemUrl]: https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=278&page=show_problem&problem=3726
+[problemUrl]: <https://uva.onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&category=278&page=show_problem&problem=3726>
 
 [PDF](https://uva.onlinejudge.org/external/123/p12304.pdf)
 
-![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/f2f92fa4104568423c96f6bda855810bbcc19ee7.png)
+![img](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/f2f92fa4104568423c96f6bda855810bbcc19ee7.png)
 
 ## 输入格式
 
-![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/80f791819d1d9d45e0420f0492baec19d8eced23.png)
+![img](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/80f791819d1d9d45e0420f0492baec19d8eced23.png)
 
 ## 输出格式
 
-![](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/75244e2394bc6b5d4010f858366da1198eef71a8.png)
+![img](https://cdn.luogu.com.cn/upload/vjudge_pic/UVA12304/75244e2394bc6b5d4010f858366da1198eef71a8.png)
 
 ## 样例 #1
 
 ### 样例输入 #1
 
-```
+```text
 CircumscribedCircle 0 0 20 1 8 17
 InscribedCircle 0 0 20 1 8 17
 TangentLineThroughPoint 200 200 100 40 150
@@ -186,7 +150,7 @@ CircleTangentToTwoDisjointCirclesWithRadius 100 100 80 300 250 70 50
 
 ### 样例输出 #1
 
-```
+```text
 (9.734940,5.801205,11.332389)
 (9.113006,6.107686,5.644984)
 [53.977231,160.730818]
