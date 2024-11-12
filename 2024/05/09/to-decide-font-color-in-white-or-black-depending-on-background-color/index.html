@@ -418,21 +418,19 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="引入">引入</h2>
-<p>之前想做一个网页色卡，需要背景颜色和文字颜色对比良好。已获得更好视觉效果。这里分享一下如何根据背景颜色自动选择黑色或白色作为文本颜色。</p>
-<p>就像这样</p>
-<a target="_blank" rel="noopener" href="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" data-fancybox="images" data-caption="exmple"><img src="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" /></a>
-<pre><code class="language-javascript">/* 
+          <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>之前想做一个网页色卡，需要背景颜色和文字颜色对比良好。已获得更好视觉效果。这里分享一下如何根据背景颜色自动选择黑色或白色作为文本颜色。</p>
+<p>就像这样<br><a target="_blank" rel="noopener" href="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" data-fancybox="images" data-caption="exmple"><img src="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" /></a></p>
+<pre><code class="lang-javascript">/* 
 用于填充字符串 `str` 到指定长度 `len`，默认为 2
-例如：padZero('F', 2) =&gt; '0F' */
+例如：padZero(&#39;F&#39;, 2) =&gt; &#39;0F&#39; */
 function padZero(str, len) &#123;
     len = len || 2;
-    const zeros = new Array(len).join('0');
+    const zeros = new Array(len).join(&#39;0&#39;);
     return (zeros + str).slice(-len);
 &#125;
 
 function invertColor(hex, bw) &#123;
-    if (hex.indexOf('#') === 0) &#123;
+    if (hex.indexOf(&#39;#&#39;) === 0) &#123;
         hex = hex.slice(1);
     &#125;
     // convert 3-digit hex to 6-digits.
@@ -440,7 +438,7 @@ function invertColor(hex, bw) &#123;
         hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
     &#125;
     if (hex.length !== 6) &#123;
-        throw new Error('Invalid HEX color.');
+        throw new Error(&#39;Invalid HEX color.&#39;);
     &#125;
     let r = parseInt(hex.slice(0, 2), 16),
         g = parseInt(hex.slice(2, 4), 16),
@@ -448,8 +446,8 @@ function invertColor(hex, bw) &#123;
     if (bw) &#123;
         // https://stackoverflow.com/a/3943023/112731
         return (r * 0.299 + g * 0.587 + b * 0.114) &gt; 186
-            ? '#000000'
-            : '#FFFFFF';
+            ? &#39;#000000&#39;
+            : &#39;#FFFFFF&#39;;
     &#125;
     // invert color components
     r = (255 - r).toString(16);
@@ -463,7 +461,7 @@ function invertColor(hex, bw) &#123;
 <p>当第二个参数为 <code>false</code> 时，返回背景颜色的反色 HEX 值。</p>
 <p>这里<code>(r * 0.299 + g * 0.587 + b * 0.114) &gt; 186</code> 186 的阈值是基于理论的，但可以根据口味进行调整。</p>
 <p>还实现了一个Java类HexColor, 它可以实现合适文本前景色效果。</p>
-<pre><code class="language-java">package cn.stazxr.tools;
+<pre><code class="lang-java">package cn.stazxr.tools;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -475,7 +473,7 @@ import java.util.Objects;
  * @version 1.0.0
  * @since 1.0.0
  * @auther stazxr
- * @see &lt;a href=&quot;https://stazxr.cn&quot;&gt;stazxr's blog&lt;/a&gt;
+ * @see &lt;a href=&quot;https://stazxr.cn&quot;&gt;stazxr&#39;s blog&lt;/a&gt;
  */
 public class HexColor implements Serializable &#123;
     @Serial
@@ -549,7 +547,7 @@ public class HexColor implements Serializable &#123;
      * @return string with zero padded
      */
     private String padZero(String str) &#123;
-        return String.format(&quot;%&quot; + 2 + &quot;s&quot;, str).replace(' ', '0').toUpperCase();
+        return String.format(&quot;%&quot; + 2 + &quot;s&quot;, str).replace(&#39; &#39;, &#39;0&#39;).toUpperCase();
     &#125;
 
     /**
@@ -632,7 +630,6 @@ public class HexColor implements Serializable &#123;
         return &quot;#&quot; + hexColor;
     &#125;
 &#125;
-
 </code></pre>
 <p>效果如下：</p>
 <a target="_blank" rel="noopener" href="https://s21.ax1x.com/2024/05/10/pkZ3rkD.png" data-fancybox="images" data-caption="exmple"><img src="https://s21.ax1x.com/2024/05/10/pkZ3rkD.png" /></a>
