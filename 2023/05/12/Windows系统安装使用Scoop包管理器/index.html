@@ -662,31 +662,38 @@ scoop-search jdk
 scoop install scoop-completion
 </code></pre>
 <p>我的安装列表</p>
-<pre><code>adb
-anaconda3
-aria2
-cmake
-dark
-innounp
-mingw
-openjdk11
-openjdk8-redhat
-oraclejdk-lts
-python
-scoop-completion
-scoop-search
-sudo
-xmake
-7zip
-dotnet-sdk-lts
-git
-nodejs
-nodejs-lts
-pandoc
-picgo
-powertoys
-snipaste-beta
-utools 
+<pre><code class="language-shell">adb                  35.0.2
+age                  1.2.0
+alist                3.39.1
+aria2                1.37.0-1
+dark                 3.14
+dotnet-sdk-lts       8.0.404
+fastfetch            2.28.0
+go                   1.23.3
+innounp              1.76
+lua                  5.4.7-2
+maven                3.9.9
+msys2                2024-07-27
+neovim               0.10.2
+nodejs-lts           22.11.0
+oraclejdk-lts        21.0.4
+python               3.13.0
+rustup-gnu           1.27.1
+scoop-completion     0.3.0
+scoop-search         1.5.0
+sudo                 0.2020.01.26
+visualvm             2.1.10
+zulufx17-jdk         17.54.21
+7zip                 24.08
+everything           1.4.1.1026
+git                  2.47.0.2
+JetBrainsMono-NF     3.2.1
+NerdFontsSymbolsOnly 3.2.1
+pandoc               3.5
+picgo                2.3.1
+qbittorrent-enhanced 5.0.0.10
+snipaste-beta        2.9.2-Beta
+starship             1.21.1
 </code></pre>
 <h2 id="附录">附录</h2>
 <p>常用命令</p>
@@ -717,6 +724,28 @@ scoop config proxy currentuser@default
 #绕过代理直连
 scoop config proxy none
 </code></pre>
+<hr>
+<h3 id="2024-11-25更新">2024/11/25更新</h3>
+<p>最近把Windows11升级到了24H2，24H2系统自带了sudo所以就把scoop安装的sudo卸载掉了。</p>
+<p>下面教你如何启用24H2的 <code>sudo</code></p>
+<p>首先你应该先升级到24H2</p>
+<ul>
+<li>然后转到设置-&gt;系统-&gt;开发人员选项<a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/3092919/202411/3092919-20241125183949037-273049344.png" data-fancybox="images" data-caption="Windows11"><img src="https://img2024.cnblogs.com/blog/3092919/202411/3092919-20241125183949037-273049344.png" /></a></li>
+<li>保证开发人员模式是打开的，然后打开<code>启用sudo</code>开关</li>
+<li>以管理员身份打开powershell或者cmd，执行<code>sudo config --enable normal</code>命令</li>
+</ul>
+<pre><code class="language-bash">sudo config --enable normal
+sudo config --enable 启用模式
+</code></pre>
+<blockquote>
+<p>模式可选：<code>forceNewWindow</code>、<code>disableInput</code>、<code>normal</code>，“在新窗口中”、“禁用输入”、“内联”模式。</p>
+<p>比如内联模式，就和linux终端一样。<br>
+sudo config --enable normal</p>
+</blockquote>
+<p>关于sudo：<a target="_blank" rel="noopener" href="https://github.com/microsoft/sudo">https://github.com/microsoft/sudo</a></p>
+<hr>
+<p><em>ps: fastfetch好好玩</em></p>
+<a target="_blank" rel="noopener" href="https://img2024.cnblogs.com/blog/3092919/202411/3092919-20241125184041961-1997380663.png" data-fancybox="images" data-caption="fastfetch"><img src="https://img2024.cnblogs.com/blog/3092919/202411/3092919-20241125184041961-1997380663.png" /></a>
 
         </div>
         <!-- .entry-content -->
