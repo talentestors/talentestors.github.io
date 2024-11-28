@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2024-10-11T06:55:17.462Z</updated>
+  <updated>2024-11-28T11:32:57.557Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在 Java 中设置输出流的字符集</title>
+    <link href="http://stazxr.cn/2024/11/28/%E5%9C%A8-Java-%E4%B8%AD%E8%AE%BE%E7%BD%AE%E8%BE%93%E5%87%BA%E6%B5%81%E7%9A%84%E5%AD%97%E7%AC%A6%E9%9B%86/"/>
+    <id>http://stazxr.cn/2024/11/28/在-Java-中设置输出流的字符集/</id>
+    <published>2024-11-28T11:26:29.000Z</published>
+    <updated>2024-11-28T11:32:57.557Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>在 Java 开发中，处理字符集是一个常见的需求，尤其是在涉及到输入输出操作时。本文将通过一个简单的示例，展示如何使用 <code>System.setOut</code> 方法来设置标准输出流的字符集，并验证其效果。</p><h2 id="示例代码">示例代码</h2><p>我们来看以下代码片段：</p><pre><code class="language-java">import java.io.PrintStream;import java.nio.charset.StandardCharsets;public class CharsetExample &#123;    public static void main(String[] args) &#123;        // 设置标准输出流的字符集为 UTF-8        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));                // 打印当前输出流的字符集        System.out.println(System.out.charset());    &#125;&#125;</code></pre><h3 id="代码解析">代码解析</h3><ol><li><p><strong>导入必要的类</strong>：</p><ul><li>我们需要导入 <code>PrintStream</code> 和 <code>StandardCharsets</code> 类，以便能够创建新的输出流并指定字符集。</li></ul></li><li><p><strong>设置输出流</strong>：</p><ul><li><code>System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));</code> 这一行代码的作用是将标准输出流（<code>System.out</code>）重新设置为一个新的 <code>PrintStream</code> 实例。这个实例使用了 UTF-8 编码，这是一种广泛使用的字符编码方式，能够支持多种语言和符号。</li></ul></li><li><p><strong>打印字符集</strong>：</p><ul><li><code>System.out.println(System.out.charset());</code> 这一行代码用于打印当前输出流的字符集。通过这种方式，我们可以确认我们的设置是否成功。(注意：<code>System.out.charset()</code> 是jdk 18 中新增的方法)</li></ul></li></ol><blockquote><p><code>System.setOut()</code> 用在static代码块中，可以确保在程序运行时第一时间设置输出流的字符集，同时只执行一次。</p></blockquote><h3 id="输出结果">输出结果</h3><p>当你运行上述代码时，控制台将输出当前设置的字符集，例如：</p><pre><code class="language-shell">UTF-8</code></pre><p>这表明我们的标准输出流现在已经成功地设置为 UTF-8 编码。</p><h2 id="为什么选择-UTF-8？">为什么选择 UTF-8？</h2><p>UTF-8 是一种变长编码，可以表示 Unicode 字符集中的所有字符。它能够兼容 ASCII，并且在网络传输和文件存储中具有良好的通用性。因此，在处理多语言文本或需要支持特殊符号的应用程序时，使用 UTF-8 是一个明智的选择。</p><h2 id="总结">总结</h2><p>在 Java 中，通过 <code>System.setOut</code> 方法设置标准输出流的字符集，可以确保你的应用程序在处理文本输出时不会遇到编码问题。这个简单的示例展示了如何实现这一点，以及如何验证设置是否成功。通过使用 UTF-8 编码，你可以更好地支持多语言环境和各种字符。</p><p>希望这篇博客能帮助你理解如何在 Java 中有效地管理输出流的字符集！如果你有任何问题或进一步的讨论，请随时留言。</p>]]></content>
+    
+    <summary type="html">
+    
+      本文介绍了如何在 Java 中使用 System.setOut 方法设置标准输出流的字符集为 UTF-8，并通过示例代码展示了如何验证这一设置。UTF-8 编码的优势以及在多语言环境中的应用也得到了讨论。
+    
+    </summary>
+    
+      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+      <category term="Java" scheme="http://stazxr.cn/tags/Java/"/>
+    
+      <category term="编码" scheme="http://stazxr.cn/tags/%E7%BC%96%E7%A0%81/"/>
+    
+      <category term="字符集" scheme="http://stazxr.cn/tags/%E5%AD%97%E7%AC%A6%E9%9B%86/"/>
+    
+      <category term="输出流" scheme="http://stazxr.cn/tags/%E8%BE%93%E5%87%BA%E6%B5%81/"/>
+    
+      <category term="UTF-8" scheme="http://stazxr.cn/tags/UTF-8/"/>
+    
+      <category term="PrintStream" scheme="http://stazxr.cn/tags/PrintStream/"/>
+    
+      <category term="编程技巧" scheme="http://stazxr.cn/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>常用STL算法库汇总</title>
@@ -34,9 +68,9 @@
       <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
-    
       <category term="算法" scheme="http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
     
       <category term="STL" scheme="http://stazxr.cn/tags/STL/"/>
     
@@ -266,9 +300,9 @@
     
       <category term="数据结构" scheme="http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
-      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
-    
       <category term="算法" scheme="http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+      <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
     
       <category term="线段树" scheme="http://stazxr.cn/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
@@ -503,32 +537,6 @@
       <category term="质数筛" scheme="http://stazxr.cn/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/"/>
     
       <category term="深搜" scheme="http://stazxr.cn/tags/%E6%B7%B1%E6%90%9C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javase学习文档</title>
-    <link href="http://stazxr.cn/2023/08/01/javase-note/"/>
-    <id>http://stazxr.cn/2023/08/01/javase-note/</id>
-    <published>2023-08-01T08:00:28.000Z</published>
-    <updated>2024-05-22T03:46:33.806Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="javase学习文档（更新）">javase学习文档（更新）</h2><p>javase 学习文档已更新</p><p>查看地址：<a href="https://talentestors.gitee.io/my-notes/codenotes/javase/">https://talentestors.gitee.io/my-notes/codenotes/javase/</a></p><a href="//wsrv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png" data-fancybox="images" data-caption="miku"><img src="//wsrv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png" /></a>]]></content>
-    
-    <summary type="html">
-    
-      Javase学习笔记
-    
-    </summary>
-    
-      <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-      <category term="笔记" scheme="http://stazxr.cn/tags/%E7%AC%94%E8%AE%B0/"/>
-    
-      <category term="Note" scheme="http://stazxr.cn/tags/Note/"/>
-    
-      <category term="Java" scheme="http://stazxr.cn/tags/Java/"/>
     
   </entry>
   
