@@ -70,3 +70,6 @@ description: 图集 images
 <a data-fancybox="anime" data-caption="Frieren" href="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&we">
     <img src="//wsrv.nl/?url=s2.loli.net/2024/09/02/bXEcFipYq24gZ5J.jpg&we" width="300">
 </a>
+<a data-fancybox="anime" data-caption="Honkai impact" href="//wsrv.nl/?url=i0.hdslb.com/bfs/new_dyn/60f0536dc0d1d3d197beb2c999585ce6133934.png&we">
+    <img src="//wsrv.nl/?url=i0.hdslb.com/bfs/new_dyn/60f0536dc0d1d3d197beb2c999585ce6133934.png&we" width="300">
+</a>
