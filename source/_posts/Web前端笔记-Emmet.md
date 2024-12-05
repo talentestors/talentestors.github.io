@@ -21,4 +21,4 @@ description: 前端学习笔记
 
 web 前端笔记已更新
 
-查看地址：<https://talentestors.gitee.io/my-notes/codenotes/web/>
+查看地址：<https://lib.stazxr.cn/codenotes/web/>
