@@ -418,13 +418,15 @@
         <!--<div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>用C语言编写，用于测试不同排序算法对数据排序的效率和速度。</p>
+          <h2 id="简介">简介</h2>
+<p>用C语言编写，用于测试不同排序算法对数据排序的效率和速度。</p>
 <p>程序可以测试冒泡排序、冒泡排序优化、插入排序、插入排序优化、选择排序、选择排序优化、快速排序、双轴快速排序、归并排序和希尔排序等十种排序算法，单位时间为毫秒。</p>
 <p>程序运行时，需要确保程序根目录下存在data文件夹，且该文件夹中含有TestData.md和data.txt两个文件。若不存在该文件夹，程序将无法导出数据。</p>
 <blockquote>
 <p>本项目对于学习和理解排序算法的实现原理，以及对不同算法在不同场景下的优劣进行了较为详细的探究和总结，适合于算法初学者和算法爱好者参考学习。</p>
 </blockquote>
-<h3 id="待测试的排序算法"><a href="#待测试的排序算法" class="headerlink" title="待测试的排序算法"></a>待测试的排序算法</h3><ul>
+<h3 id="待测试的排序算法">待测试的排序算法</h3>
+<ul>
 <li>冒泡排序</li>
 <li>冒泡排序优化</li>
 <li>插入排序</li>
@@ -436,7 +438,8 @@
 <li>归并排序</li>
 <li>希尔排序</li>
 </ul>
-<h3 id="结果保存"><a href="#结果保存" class="headerlink" title="结果保存"></a>结果保存</h3><p>测试数据保存到文件中</p>
+<h3 id="结果保存">结果保存</h3>
+<p>测试数据保存到文件中</p>
 <p>排序结果输出到控制台，并保存到文件中。</p>
 <p>文件内容以Markdown的表格格式保存，方便后续使用。</p>
 <p>文件名：TestData.md、data.txt</p>
@@ -445,14 +448,19 @@
 </ul>
 <p>程序根目录</p>
 <ul>
-<li>data<br>&nbsp;- TestData.md<br>&nbsp;- data.txt</li>
+<li>data<br>
+ - TestData.md<br>
+ - data.txt</li>
 </ul>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>系统生成随机数</p>
-<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<h2 id="测试用例">测试用例</h2>
+<p>系统生成随机数</p>
+<h2 id="测试环境">测试环境</h2>
+<ul>
 <li>inscode</li>
 <li>windows 11(本机)</li>
 </ul>
-<h2 id="测试源码"><a href="#测试源码" class="headerlink" title="测试源码"></a>测试源码</h2><pre><code class="lang-c">#include &lt;stdio.h&gt;
+<h2 id="测试源码">测试源码</h2>
+<pre><code class="language-c">#include &lt;stdio.h&gt;
 #include &lt;stdbool.h&gt;
 #include &lt;string.h&gt;
 #include &lt;stdlib.h&gt;
@@ -837,7 +845,7 @@ inline void fprintArray(int *nums, FILE *fp) &#123;
     for (int i = 0; i &lt; SIZE; ++i) &#123;
         fprintf(fp, &quot;%d,&quot;, nums[i]);
     &#125;
-    fputc(&#39;\n&#39;, fp);
+    fputc('\n', fp);
     fflush(fp);
 &#125;
 
@@ -849,13 +857,14 @@ void random_nums(int *nums) &#123;
     &#125;
 &#125;
 </code></pre>
-<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><pre><code class="lang-makefile">all: main
+<h3 id="Makefile">Makefile</h3>
+<pre><code class="language-makefile">all: main
 
 CC = clang
 override CFLAGS += -g -Wno-everything -pthread -lm
 
-SRCS = $(shell find . -name &#39;.ccls-cache&#39; -type d -prune -o -type f -name &#39;*.c&#39; -print)
-HEADERS = $(shell find . -name &#39;.ccls-cache&#39; -type d -prune -o -type f -name &#39;*.h&#39; -print)
+SRCS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.c' -print)
+HEADERS = $(shell find . -name '.ccls-cache' -type d -prune -o -type f -name '*.h' -print)
 
 main: $(SRCS) $(HEADERS)
     $(CC) $(CFLAGS) $(SRCS) -o &quot;$@&quot;
@@ -866,10 +875,12 @@ main-debug: $(SRCS) $(HEADERS)
 clean:
     rm -f main main-debug
 </code></pre>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><a target="_blank" rel="noopener" href="https://z1.ax1x.com/2023/10/04/pPOctX9.png" data-fancybox="images" data-caption="结果"><img src="https://z1.ax1x.com/2023/10/04/pPOctX9.png" /></a>
-<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><p>inscode在线运行<br>地址：<a href="&#x6d;&#x61;&#105;&#108;&#116;&#111;&#58;&#x68;&#x74;&#116;&#x70;&#x73;&#58;&#x2f;&#x2f;&#105;&#x6e;&#115;&#x63;&#x6f;&#100;&#101;&#x2e;&#x63;&#115;&#x64;&#x6e;&#46;&#x6e;&#101;&#x74;&#47;&#64;&#115;&#116;&#97;&#x7a;&#120;&#x72;&#47;&#67;&#x2d;&#83;&#111;&#114;&#116;&#x69;&#x6e;&#103;&#x2d;&#97;&#108;&#103;&#x6f;&#x72;&#105;&#x74;&#x68;&#x6d;&#x2d;&#116;&#101;&#x73;&#116;">&#x68;&#x74;&#116;&#x70;&#x73;&#58;&#x2f;&#x2f;&#105;&#x6e;&#115;&#x63;&#x6f;&#100;&#101;&#x2e;&#x63;&#115;&#x64;&#x6e;&#46;&#x6e;&#101;&#x74;&#47;&#64;&#115;&#116;&#97;&#x7a;&#120;&#x72;&#47;&#67;&#x2d;&#83;&#111;&#114;&#116;&#x69;&#x6e;&#103;&#x2d;&#97;&#108;&#103;&#x6f;&#x72;&#105;&#x74;&#x68;&#x6d;&#x2d;&#116;&#101;&#x73;&#116;</a></p>
+<h2 id="测试结果">测试结果</h2>
+<a target="_blank" rel="noopener" href="https://z1.ax1x.com/2023/10/04/pPOctX9.png" data-fancybox="images" data-caption="结果"><img src="https://z1.ax1x.com/2023/10/04/pPOctX9.png" /></a>
+<h3 id="杂项">杂项</h3>
+<p>inscode在线运行<br>
+地址：<a target="_blank" rel="noopener" href="https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test">https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test</a></p>
 <iframe width="100%" height="500px" src="https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test/embed" scrolling="no" frameborder="no" allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
 <p>源码克隆：<a target="_blank" rel="noopener" href="https://gitcode.net/m0_44950849/C.git">https://gitcode.net/m0_44950849/C.git</a></p>
 
         </div>
