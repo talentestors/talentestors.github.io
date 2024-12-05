@@ -7,7 +7,7 @@ authorAbout: 愿此行，终抵群星！
 authorDesc: 学习使我快乐
 categories: 转载
 comments: true
-photos: https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554257384.png
+photos: https://s21.ax1x.com/2024/12/05/pATk6ED.png
 date: 2023-09-14 21:55:32
 tags: 
     - vue
@@ -38,22 +38,22 @@ vue-pure-admin采用了当下最为流线的技术栈，其中主要包括：
 UI设计：<https://www.bilibili.com/video/BV17g411T7rq>
 接下来一起欣赏下vue-pure-admin的效果吧：
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554257384.png 登录界面 %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATk6ED.png 登录界面 %}
 <center>登录界面</center>
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554273600.png Dashboard %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATACaF.png Dashboard %}
 <center>Dashboard</center>
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554291171.png 流程图组件 %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATAKaD.png 流程图组件 %}
 <center>流程图组件</center>
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554303193.png 表单设计组件 %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATAMIe.png 表单设计组件 %}
 <center>表单设计组件</center>
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554329445.png 文本编辑器组件 %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATAlPH.png 文本编辑器组件 %}
 <center>文本编辑器组件</center>
 
-{% fb_img https://blog.didispace.com/images2/202308/tj-opensource-vue-pure-admin/1691554339369.png PPT在线操作组件 %}
+{% fb_img https://s21.ax1x.com/2024/12/05/pATA1Gd.png PPT在线操作组件 %}
 <center>PPT在线操作组件</center>
 
 这里就简单预览一下，其实还有更多有意思的组件展示，留给大家自己去探索吧！最后，奉上相关地址，喜欢的直接冲吧！
