@@ -22,6 +22,6 @@ description: Javase学习笔记
 
 javase 学习文档已更新
 
-查看地址：<https://talentestors.gitee.io/my-notes/codenotes/javase/>
+查看地址：<https://lib.stazxr.cn/codenotes/java/javase/>
 
 {% fb_img //wsrv.nl/?url=img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162054428-139522669.png miku %}
