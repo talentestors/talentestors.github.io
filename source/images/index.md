@@ -61,9 +61,6 @@ description: 图集 images
 <a data-fancybox="anime" data-caption="Honkai impact" href="//article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg">
     <img src="//article.biliimg.com/bfs/article/2f874abc60a9bb992b1fa826c3fd46a5607c45e5.jpg@1c_1e.webp" width="300">
 </a>
-<a data-fancybox="anime" data-caption="Honkai impact" href="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png">
-    <img src="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png@2000h_1c_1e.webp" width="300">
-</a>
 <a data-fancybox="anime" data-caption="Honkai impact" href="//wsrv.nl/?url=article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png&we">
     <img src="//wsrv.nl/?url=article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png&we" width="300">
 </a>
