@@ -64,7 +64,10 @@ description: 图集 images
 <a data-fancybox="anime" data-caption="Honkai impact" href="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png">
     <img src="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png@2000h_1c_1e.webp" width="300">
 </a>
-<a data-fancybox="anime" data-caption="mahiro" href="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png">
+<a data-fancybox="anime" data-caption="Honkai impact" href="//wsrv.nl/?url=article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png&we">
+    <img src="//wsrv.nl/?url=article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png&we" width="300">
+</a>
+<a data-fancybox="anime" data-caption="mahiro" href="//wsrv.nl/?url=s2.loli.net/2024/01/24/sbU8Sm4HdWNCf96.jpg&we">
     <img src="//wsrv.nl/?url=s2.loli.net/2024/01/24/sbU8Sm4HdWNCf96.jpg&we" width="300">
 </a>
 <a data-fancybox="anime" data-caption="Elaina" href="//article.biliimg.com/bfs/article/0ab44f3e19308ea7f6598c1e79003e1c8120dcfc.png">
