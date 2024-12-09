@@ -16,6 +16,9 @@ description: 图集 images
 <a data-fancybox="anime" data-caption="Arknights" href="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png">
     <img src="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we" width="300">
 </a>
+<a data-fancybox="anime" data-caption="mafumafu" href="///wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202412/3092919-20241209134147291-1034749257.png&we">
+    <img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202412/3092919-20241209134147291-1034749257.png&we" width="300">
+</a>
 <a data-fancybox="anime" data-caption="Honkai impact" href="//wsrv.nl/?url=s2.loli.net/2024/05/02/qQl4p2MWvKgn8L7.jpg">
     <img src="//wsrv.nl/?url=s2.loli.net/2024/05/02/qQl4p2MWvKgn8L7.jpg&we" width="300">
 </a>
