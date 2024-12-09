@@ -1,5 +1,5 @@
 ---
-title: JDK 18 以上使用标准输出流中文输出乱码问题
+title: JDK 18 及以上使用标准输出流中文输出乱码问题
 author: stazxr
 avatar: //gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg
 authorLink: stazxr.cn
@@ -16,7 +16,7 @@ tags:
     - Tomcat
     - 乱码
 keywords: JDK, Java, Tomcat, 乱码, 控制台输出, UTF-8, GBK
-description: JDK 18 以上使用标准输出流中文输出乱码问题解决方案
+description: JDK 18 及以上使用标准输出流中文输出乱码问题解决方案
 ---
 
 
