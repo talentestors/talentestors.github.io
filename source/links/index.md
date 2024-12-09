@@ -53,7 +53,7 @@ links:
       desc: 聆听心中最初的声音
 
     - url: https://www.eririspace.cn/
-      img: //www.eririspace.cn/medias/err2.jpg
+      img: //www.eririspace.cn/favicon.jpeg
       name: 金毛败犬の秘密空间
       desc: 梦想是成为golang后端工程师！（失败了，变成 C++ 后台开发实习生了呜呜呜...）
 
