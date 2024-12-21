@@ -1,37 +1,48 @@
-$(document).ready(function() {
-  if (window.location.pathname === '/') {
+$(document).ready(function () {
+  if (window.location.pathname === "/") {
     return; // 如果是首页，则不运行这段代码
   }
 
-  $('article img').each(function() {
-    if ($(this).parent().hasClass('fancybox')) return;
-    if ($(this).hasClass('nofancybox')) return;
-    var alt = this.alt || 'stazxr'; // 如果 alt 为空，则默认为 'stazxr'
-    var imgSrc = $(this).attr('src');
-    var dataSrc = $(this).attr('data-src') || imgSrc;
+  // 阻止所有带有 fancybox-button 类的按钮提交表单
+  $(document).on("click", ".fancybox-button", function (event) {
+    event.preventDefault(); // 阻止默认行为（提交表单）
+  });
+
+  // 阻止除 <a> 标签以外的所有带有 fancybox 类的元素的点击事件
+  $(document).on("click", ".fancybox:not(a)", function (event) {
+    event.preventDefault(); // 阻止默认行为
+  });
+
+  $("article img").each(function () {
+    if ($(this).parent().hasClass("fancybox")) return;
+    if ($(this).hasClass("nofancybox")) return;
+    if ($(this).hasClass("is-fancybox")) return; // 检查是否已经处理过
+
+    var alt = this.alt || "stazxr"; // 如果 alt 为空，则默认为 'stazxr'
+    var imgSrc = $(this).attr("src");
+    var dataSrc = $(this).attr("data-src") || imgSrc;
     // 处理 alt 内容
     var fancybox = alt;
     var caption = alt;
-    if (alt.includes('-')) {
-      var parts = alt.split('-');
+    if (alt.includes("-")) {
+      var parts = alt.split("-");
       fancybox = parts[0];
       caption = parts[1];
     }
     var fancyboxLink = `<a data-fancybox="${fancybox}" data-caption="${caption}" href="${dataSrc}">
-                          <img src="${imgSrc}" alt="${alt}"/>
+                          <img src="${imgSrc}" alt="${alt}" class="is-fancybox"/>
                         </a>`;
-    $(this).replaceWith(fancyboxLink);
+    $(this).wrap(fancyboxLink);
   });
 
-  $(this).find('.fancybox').each(function() {
-    $(this).attr('rel', 'article');
-  });
-});
-
-$(document).ready(function() {
-  $("a[href$='.jpg'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']").attr('rel', 'gallery').fancybox({
-    helpers : {
-      title: { type: 'inside' }
-    }
-  });
+  $("a[href$='.jpg'],a[href$='.png'],a[href$='.gif'],a[href$='.webp']")
+    .attr("rel", "gallery")
+    .fancybox({
+      helpers: {
+        title: { type: "inside" },
+      },
+      afterClose: function () {
+        return false;
+      },
+    });
 });
