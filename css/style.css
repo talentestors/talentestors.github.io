@@ -7194,14 +7194,13 @@ li > ol {
   position: -webkit-sticky;
   position: sticky;
   top: 100px;
+  overflow-y: auto;
+  max-height: 75vh;
 }
 @media (max-width: 860px) {
   .toc-container {
     display: none;
   }
-}
-.toc {
-  overflow-y: auto;
 }
 .toc > .toc-list {
   overflow: hidden;
@@ -7209,6 +7208,9 @@ li > ol {
 }
 .toc > .toc-list li {
   list-style: none;
+}
+.toc > .toc-list li:hover {
+  color: #66ccff;
 }
 .toc-list {
   margin: 0;
