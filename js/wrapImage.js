@@ -3,16 +3,6 @@ $(document).ready(function () {
     return; // 如果是首页，则不运行这段代码
   }
 
-  // 阻止所有带有 fancybox-button 类的按钮提交表单
-  $(document).on("click", ".fancybox-button", function (event) {
-    event.preventDefault(); // 阻止默认行为（提交表单）
-  });
-
-  // 阻止除 <a> 标签以外的所有带有 fancybox 类的元素的点击事件
-  $(document).on("click", ".fancybox:not(a)", function (event) {
-    event.preventDefault(); // 阻止默认行为
-  });
-
   $("article img").each(function () {
     if ($(this).parent().hasClass("fancybox")) return;
     if ($(this).hasClass("nofancybox")) return;
@@ -40,9 +30,6 @@ $(document).ready(function () {
     .fancybox({
       helpers: {
         title: { type: "inside" },
-      },
-      afterClose: function () {
-        return false;
       },
     });
 });
