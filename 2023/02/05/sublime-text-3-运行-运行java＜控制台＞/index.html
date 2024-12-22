@@ -477,7 +477,7 @@
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
       <article id="post-1" class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
-        <!-- <div class="toc"></div> -->
+        <div class="toc"></div>
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
@@ -486,7 +486,7 @@
 <p>2.找到 工具—&gt;编译系统—&gt;新编译系统</p>
 <p>ps：英文版为；Tools—&gt;Build system—&gt;New Build system</p>
 <p>3.输入以下代码</p>
-<pre><code class="shell"> &#123;
+<pre><code class="hljs language-shell"> &#123;
 &quot;shell&quot;: true,
 &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;javac -encoding UTF-8 $&#123;file&#125; &amp; java $&#123;file_base_name&#125; &amp;echo. &amp; pause &quot;],
 &quot;file_regex&quot; :&quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
@@ -803,7 +803,7 @@
     }
     /* ]]> */
   </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
+<script defer data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
 <script>
   $(document).ready(function () {
     if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
