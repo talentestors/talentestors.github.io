@@ -3,7 +3,7 @@ $(document).ready(function () {
     return; // 如果是首页，则不运行这段代码
   }
 
-  $("article img").each(function () {
+  $("article img").not("#gitalk-container img").each(function () {
     if ($(this).parent().hasClass("fancybox")) return;
     if ($(this).hasClass("nofancybox")) return;
     if ($(this).hasClass("is-fancybox")) return; // 检查是否已经处理过
