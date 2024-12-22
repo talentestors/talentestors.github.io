@@ -748,7 +748,7 @@ int main() {
         </footer><!-- .entry-footer -->
       </article>
       <!-- #post-## -->
-      <div class="toc" style="background: none;"></div>
+      <div data-cfasync="false" class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
           
@@ -838,7 +838,7 @@ int main() {
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -850,10 +850,10 @@ int main() {
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -1022,7 +1022,7 @@ int main() {
     /* ]]> */
   </script>
 <script data-cfasync="false" src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.min.js"></script>
-<script defer>
+<script defer data-cfasync="false">
   $(document).ready(function () {
     if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
       if ($(".pattern-center").length > 0) { //有图的情况
