@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/2024/02/09/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</loc>
+    <loc>http://stazxr.cn/2024/04/07/%E8%BD%AC%E8%BD%BD-%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%B8%93%E9%A2%98-xyw813/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/2024/04/07/%E8%BD%AC%E8%BD%BD-%E7%BA%BF%E6%AE%B5%E6%A0%91%E4%B8%93%E9%A2%98-xyw813/</loc>
+    <loc>http://stazxr.cn/2024/02/09/%E6%96%B0%E5%B9%B4%E5%BF%AB%E4%B9%90/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
@@ -119,15 +119,6 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/2023/09/10/luogu-P1036-Select-a-number/</loc>
-    
-    <lastmod>2024-12-20</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>http://stazxr.cn/2023/08/01/javase-note/</loc>
     
     <lastmod>2024-12-20</lastmod>
@@ -138,6 +129,15 @@
   
   <url>
     <loc>http://stazxr.cn/2024/05/09/to-decide-font-color-in-white-or-black-depending-on-background-color/</loc>
+    
+    <lastmod>2024-12-20</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/2023/09/10/luogu-P1036-Select-a-number/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
@@ -470,27 +470,6 @@
 
   
   <url>
-    <loc>http://stazxr.cn/tags/Software/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/Adobe/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/PS/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://stazxr.cn/tags/408/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -582,6 +561,27 @@
   </url>
   
   <url>
+    <loc>http://stazxr.cn/tags/Software/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/Adobe/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/PS/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -597,69 +597,6 @@
   
   <url>
     <loc>http://stazxr.cn/tags/web/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/Dinic/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E5%9B%BE%E8%AE%BA/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F%E6%B3%95/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E4%BA%8C%E5%88%86%E5%A5%97%E4%BA%8C%E5%88%86/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E7%AC%94%E8%AE%B0/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/Note/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/Web/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -694,7 +631,21 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E5%BA%94%E7%94%A8/</loc>
+    <loc>http://stazxr.cn/tags/%E7%BD%91%E7%BB%9C%E6%B5%81/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/Dinic/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E5%9B%BE%E8%AE%BA/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -708,21 +659,49 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
+    <loc>http://stazxr.cn/tags/%E7%AC%94%E8%AE%B0/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/Scoop/</loc>
+    <loc>http://stazxr.cn/tags/Note/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E8%BD%AF%E4%BB%B6/</loc>
+    <loc>http://stazxr.cn/tags/Web/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F%E6%B3%95/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E4%BA%8C%E5%88%86%E5%A5%97%E4%BA%8C%E5%88%86/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -750,35 +729,21 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/</loc>
+    <loc>http://stazxr.cn/tags/%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E6%B7%B1%E6%90%9C/</loc>
+    <loc>http://stazxr.cn/tags/Scoop/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/Linux/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/tools/</loc>
+    <loc>http://stazxr.cn/tags/%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -786,27 +751,6 @@
   
   <url>
     <loc>http://stazxr.cn/tags/Swing/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/vue/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E5%88%92%E6%B0%B4/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -834,6 +778,62 @@
   </url>
   
   <url>
+    <loc>http://stazxr.cn/tags/Linux/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E9%95%9C%E5%83%8F%E6%BA%90/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/tools/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E6%B7%B1%E6%90%9C/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/vue/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E5%88%92%E6%B0%B4/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://stazxr.cn/tags/LeetCode/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
@@ -842,6 +842,34 @@
   
   <url>
     <loc>http://stazxr.cn/tags/C/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/C-C/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/VSCode/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/MSYS2/</loc>
+    <lastmod>2024-12-22</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E8%90%8C%E6%96%B0/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -897,28 +925,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/C-C/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/VSCode/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/MSYS2/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E8%90%8C%E6%96%B0/</loc>
+    <loc>http://stazxr.cn/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -926,13 +933,6 @@
   
   <url>
     <loc>http://stazxr.cn/tags/%E6%96%B0%E5%B9%B4/</loc>
-    <lastmod>2024-12-22</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
     <lastmod>2024-12-22</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
