@@ -481,7 +481,7 @@
 <p>2.找到 工具—&gt;编译系统—&gt;新编译系统</p>
 <p>ps：英文版为；Tools—&gt;Build system—&gt;New Build system</p>
 <p>3.输入以下代码</p>
-<pre><code class="shell"> &#123;
+<pre><code class="hljs language-shell"> &#123;
 &quot;shell&quot;: true,
 &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;javac -encoding UTF-8 $&#123;file&#125; &amp; java $&#123;file_base_name&#125; &amp;echo. &amp; pause &quot;],
 &quot;file_regex&quot; :&quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
@@ -571,27 +571,26 @@
       </section>
       
 
-    
-      
-        <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
-        <script data-cfasync="false" async type="text/javascript" src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
-        <script data-cfasync="false" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
-        <div id="gitalk-container"></div>
-        <script data-cfasync="false" type="text/javascript" async>
-          var gitalk = new Gitalk({
-            clientID: '8eda58f7fe8d725ed0e0',
-            clientSecret: '12d646df73cc077afb8d657156feb5553aa2c533',
-            // id: decodeURI(''),
-            id: md5(location.pathname),
-            repo: 'talentestors.github.io',
-            owner: 'talentestors',
-            admin: 'talentestors',
-            // title: 'Blog Comment',
-            proxy: 'https://gitalk.stazxr.eu.org/github_access_token'
-          })
-          gitalk.render('gitalk-container')
-        </script>
-      
+
+  <link rel="stylesheet" href="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.css">
+  <script data-cfasync="false" type="text/javascript">
+    var gitalk = new Gitalk({
+      clientID: '8eda58f7fe8d725ed0e0',
+      clientSecret: '12d646df73cc077afb8d657156feb5553aa2c533',
+      // id: decodeURI(''),
+      id: md5(location.pathname),
+      repo: 'talentestors.github.io',
+      owner: 'talentestors',
+      admin: 'talentestors',
+      // title: 'Blog Comment',
+      proxy: 'https://gitalk.stazxr.eu.org/github_access_token'
+    })
+    gitalk.render('gitalk-container')
+  </script>
+  <script data-cfasync="false" type="text/javascript" src="https://gcore.jsdelivr.net/gh/talentestors/JavaScript-MD5@1.0/js/md5.min.js"></script>
+  <script data-cfasync="false" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/js/gitalk/gitalk.min.js"></script>
+  <div id="gitalk-container"></div>
+
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
           <a href="stazxr.cn" class="profile gravatar"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg" itemprop="image" alt="stazxr" height="70" width="70"></a>
@@ -616,7 +615,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -628,10 +627,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
