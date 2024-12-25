@@ -3990,9 +3990,6 @@ a.page-numbers {
   background: 0 0 !important;
   color: #69d2e7;
 }
-.comment-respond input[type="submit"]:hover {
-  background: #5aa738;
-}
 .comment-respond input:active,
 .comment-respond input:focus,
 .comment-respond textarea:active,
