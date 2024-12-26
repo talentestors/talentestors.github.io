@@ -476,7 +476,7 @@
         
         <div class="entry-content">
           <p>最近在重构博客主题，给主题添加一些新功能，并修复了一些bug（修不完的，绝对修不完的 🙀）</p>
-<p>我给博客新增了 <code>giscus</code> 和 <code>utteranc</code> 两种评论系统，并将 <code>gitalk</code> 更换为了 <code>giscus</code>。</p>
+<p>我给博客新增了 <code>giscus</code> 和 <code>utteranc</code> 两种评论系统，并将自己博客的 <code>gitalk</code> 更换为了 <code>giscus</code>。</p>
 <p><code>giscus</code> 是基于 GitHub Discussions 的评论系统，<code>utteranc</code> 是基于 GitHub Issues 的评论系统。</p>
 <p>下面简单介绍这两种评论系统。</p>
 <h2 id="utteranc"><a href="#utteranc" class="headerlink" title="utteranc"></a>utteranc</h2><p>官网地址：<a target="_blank" rel="noopener" href="https://utteranc.es/">utteranc</a></p>
@@ -620,7 +620,7 @@ giscus:
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -632,10 +632,10 @@ giscus:
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
