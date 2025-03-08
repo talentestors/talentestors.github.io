@@ -6,7 +6,7 @@
   <link href="http://stazxr.cn/atom.xml" rel="self"/>
   
   <link href="http://stazxr.cn/"/>
-  <updated>2025-03-08T09:06:00.334Z</updated>
+  <updated>2024-12-26T15:16:04.848Z</updated>
   <id>http://stazxr.cn/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>follow</title>
-    <link href="http://stazxr.cn/2025/03/08/follow/"/>
-    <id>http://stazxr.cn/2025/03/08/follow/</id>
-    <published>2025-03-08T09:05:12.000Z</published>
-    <updated>2025-03-08T09:06:00.334Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>This message is used to verify that this feed (feedId:121103790153360384) belongs to me (userId:86639187941627904). Join me in enjoying the next generation information browser <a href="https://follow.is/">https://follow.is</a>.</p>]]></content>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;&#92;assets&#92;css&#92;APlayer.min.css&quot;&gt;&lt;script src=&quot;&#92;assets&#92;js&#92;APlayer.min.js&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
-    
-    
-  </entry>
   
   <entry>
     <title>重构评论系统</title>
@@ -108,9 +83,9 @@
     <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="题解" scheme="http://stazxr.cn/tags/%E9%A2%98%E8%A7%A3/"/>
-    
     <category term="算法" scheme="http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="题解" scheme="http://stazxr.cn/tags/%E9%A2%98%E8%A7%A3/"/>
     
     <category term="CodeForces" scheme="http://stazxr.cn/tags/CodeForces/"/>
     
@@ -525,6 +500,29 @@
     <category term="C++" scheme="http://stazxr.cn/tags/C/"/>
     
     <category term="__builtin__" scheme="http://stazxr.cn/tags/builtin/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用 Swing 实现一个简易的动态时钟。</title>
+    <link href="http://stazxr.cn/2023/12/13/javaSwing-DynamicClock/"/>
+    <id>http://stazxr.cn/2023/12/13/javaSwing-DynamicClock/</id>
+    <published>2023-12-13T08:46:47.000Z</published>
+    <updated>2024-12-20T17:22:45.371Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要介绍如何使用 Java Swing 实现一个简易的动态时钟。</p><h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><ul><li>JDK 版本随意</li></ul><h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="Swing-简介"><a href="#Swing-简介" class="headerlink" title="Swing 简介"></a>Swing 简介</h3><p>Swing 是 Java 的一个 GUI 工具包，它提供了一套丰富的组件，用于开发图形用户界面（GUI）应用程序，这些组件既可用于 Java 应用程序，也可用于 Applet。</p><h3 id="Swing-组件"><a href="#Swing-组件" class="headerlink" title="Swing 组件"></a>Swing 组件</h3><p>JFrame 是一个顶层容器，它包含并管理其他 Swing 组件。Component 是所有 Swing 组件的超类。我们将使用 JFrame 和 JPanel 来创建一个简单的窗口。添加我们自定义的组件到 JFrame 中。</p><h2 id="自定义的组件-ClockPanel-的实现"><a href="#自定义的组件-ClockPanel-的实现" class="headerlink" title="自定义的组件 ClockPanel 的实现"></a>自定义的组件 ClockPanel 的实现</h2><pre><code class="java">private static class ClockPanel extends Component &#123;    private static final SimpleDateFormat DATE_FORMAT;    private static final SimpleDateFormat TIME_FORMAT;    static &#123;        DATE_FORMAT = new SimpleDateFormat(&quot;yyyy&#39;年&#39;MM&#39;月&#39;dd&#39;日&#39;&quot;);        TIME_FORMAT = new SimpleDateFormat(&quot;HH:mm:ss&quot;);    &#125;    @Override    public void paint(Graphics g) &#123;        super.paint(g);        g.setColor(Color.BLACK);        g.fillRect(0, 0, getWidth(), getHeight());        g.setColor(Color.WHITE);        g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 30));        g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), 20, 100);        g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), 20, 140);    &#125;&#125;</code></pre><p>获取时间需要用到 <strong>Calender</strong> 类，再使用 <strong>SimpleDateFormat</strong> 类去对我们的日期进行自定义的格式化。</p><h2 id="另附源码"><a href="#另附源码" class="headerlink" title="另附源码"></a>另附源码</h2><pre><code class="java">import javax.swing.*;import java.awt.*;import java.text.SimpleDateFormat;import java.util.Calendar;/** * Package: cn.stazxr * 动态时钟 * * @Author: stazxr * @Create: 2023/12/12 * @Version: v1.0 **/public class DynamicClock &#123;    // 标识位    private static boolean flag = true;    public static void main(String[] args) &#123;        JFrame frame = new JFrame(&quot;动态时钟 作者：stazxr.cn&quot;);        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);        frame.setMinimumSize(new Dimension(350, 230));        frame.setLocationRelativeTo(null);        JPanel panel = new JPanel() &#123;            @Override            public void paint(Graphics g) &#123;                super.paint(g);                g.setColor(Color.WHITE);                g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 40));                g.drawString(&quot;当前时间：&quot;, 10, 50);            &#125;        &#125;;        panel.setBackground(Color.BLACK);        panel.setBounds(0, 0, 350, 60);        frame.add(panel);        ClockPanel comp = new ClockPanel();        comp.setBounds(0, 60, 350, 140);        frame.add(comp);        frame.setVisible(true);        Thread thread = new Thread(() -&gt; &#123;            while (flag) &#123;                comp.repaint();                try &#123;                    Thread.sleep(500);                &#125; catch (InterruptedException e) &#123;                    throw new RuntimeException(e);                &#125;            &#125;        &#125;);        frame.addWindowListener(new java.awt.event.WindowAdapter() &#123;            @Override            public void windowClosing(java.awt.event.WindowEvent e) &#123;                //  结束线程                flag = false;                try &#123;                    Thread.sleep(500);                &#125; catch (InterruptedException ex) &#123;                    throw new RuntimeException(ex);                &#125;                thread.interrupt();            &#125;        &#125;);        thread.start();        while (!thread.isInterrupted()) &#123;            Thread.yield();        &#125;        System.out.println(&quot;exited&quot;);    &#125;    private static class ClockPanel extends Component &#123;        private static final SimpleDateFormat DATE_FORMAT;        private static final SimpleDateFormat TIME_FORMAT;        static &#123;            DATE_FORMAT = new SimpleDateFormat(&quot;yyyy&#39;年&#39;MM&#39;月&#39;dd&#39;日&#39;&quot;);            TIME_FORMAT = new SimpleDateFormat(&quot;HH:mm:ss&quot;);        &#125;        @Override        public void paint(Graphics g) &#123;            super.paint(g);            g.setColor(Color.BLACK);            g.fillRect(0, 0, getWidth(), getHeight());            g.setColor(Color.WHITE);            g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 30));            g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), 20, 100);            g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), 20, 140);        &#125;    &#125;&#125;</code></pre><p>效果展示：</p><p>![DynamicClock](<a href="https://s11.ax1x.com/2023/12/13/pifcaCQ.png">https://s11.ax1x.com/2023/12/13/pifcaCQ.png</a> DynamicClock %}<a href="<a" data-fancybox="images" data-caption="href=https://s2.loli.net/2023/12/13/5QJx9mdlpqtAnfh.gif>https://s2.loli.net/2023/12/13/5QJx9mdlpqtAnfh.gif</a>)</p>"><img src="<a" /></a>]]></content>
+    
+    
+    <summary type="html">用 Java Swing 实现一个简易的动态时钟。</summary>
+    
+    
+    
+    <category term="技术" scheme="http://stazxr.cn/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="Java" scheme="http://stazxr.cn/tags/Java/"/>
+    
+    <category term="Swing" scheme="http://stazxr.cn/tags/Swing/"/>
     
   </entry>
   
