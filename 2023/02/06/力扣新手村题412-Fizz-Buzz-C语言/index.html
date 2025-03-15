@@ -479,80 +479,67 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>412. Fizz Buzz</h2>
-<p>力扣链接:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fizz-buzz/">Fizz Buzz</a></p>
+          <h2 id="412-Fizz-Buzz"><a href="#412-Fizz-Buzz" class="headerlink" title="412. Fizz Buzz"></a>412. Fizz Buzz</h2><p>力扣链接:<a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fizz-buzz/">Fizz Buzz</a></p>
 <p>给你一个整数 n ，找出从 1 到 n 各个整数的 Fizz Buzz 表示，并用字符串数组 answer（下标从 1 开始）返回结果，其中：</p>
 <ul>
-<li>
-<p><code>answer[i] == &quot;FizzBuzz&quot;</code>如果 i 同时是 3 和 5 的倍数。</p>
+<li><p><code>answer[i] == &quot;FizzBuzz&quot;</code>如果 i 同时是 3 和 5 的倍数。</p>
 </li>
-<li>
-<p><code>answer[i] == &quot;Fizz&quot;</code> 如果 i 是 3 的倍数。</p>
+<li><p><code>answer[i] == &quot;Fizz&quot;</code> 如果 i 是 3 的倍数。</p>
 </li>
-<li>
-<p><code>answer[i] == &quot;Buzz&quot;</code> 如果 i 是 5 的倍数。</p>
+<li><p><code>answer[i] == &quot;Buzz&quot;</code> 如果 i 是 5 的倍数。</p>
 </li>
-<li>
-<p><code>answer[i] == i</code> （以字符串形式）如果上述条件全不满足。</p>
+<li><p><code>answer[i] == i</code> （以字符串形式）如果上述条件全不满足。</p>
 </li>
 </ul>
 <p>示例 1：</p>
-<pre><code class="hljs"> 输入：n = 3
+<pre><code> 输入：n = 3
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;]
 </code></pre>
 <p>示例 2：</p>
-<pre><code class="hljs"> 输入：n = 5
+<pre><code> 输入：n = 5
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;,&quot;4&quot;,&quot;Buzz&quot;]
 </code></pre>
 <p>示例 3：</p>
-<pre><code class="hljs"> 输入：n = 15
+<pre><code> 输入：n = 15
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;,&quot;4&quot;,&quot;Buzz&quot;,&quot;Fizz&quot;,&quot;7&quot;,&quot;8&quot;,&quot;Fizz&quot;,&quot;Buzz&quot;,&quot;11&quot;,&quot;Fizz&quot;,&quot;13&quot;,&quot;14&quot;,&quot;FizzBuzz&quot;]
 </code></pre>
 <blockquote>
 <p>提示： <code>1 &lt;= n &lt;= 104</code></p>
 </blockquote>
-<h3 id="代码实现">代码实现</h3>
-<pre><code class="hljs language-C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="C">#include &lt;stdlib.h&gt;
+#include &lt;stdio.h&gt;
 
-<span class="hljs-type">char</span> ** <span class="hljs-title function_">fizzBuzz</span><span class="hljs-params">(<span class="hljs-type">int</span> n, <span class="hljs-type">int</span>* returnSize)</span>&#123;
-    *returnSize = n;<span class="hljs-comment">//必须加的部分，表示数组的元素个数</span>
-        <span class="hljs-comment">//不加LeetCode无法输出结果</span>
-    <span class="hljs-comment">/*最重要的部分，需要对二级指针有一定的理解*/</span>
-    <span class="hljs-type">char</span> **pChar = (<span class="hljs-type">char</span> ** )<span class="hljs-built_in">malloc</span>(n * <span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span> *));<span class="hljs-comment">/*等同于char *p[n];指针数组*/</span>
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; ++i)
-        *(pChar+i) = (<span class="hljs-type">char</span> * ) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">char</span>)*<span class="hljs-number">9</span>);
+char ** fizzBuzz(int n, int* returnSize)&#123;
+    *returnSize = n;//必须加的部分，表示数组的元素个数
+        //不加LeetCode无法输出结果
+    /*最重要的部分，需要对二级指针有一定的理解*/
+    char **pChar = (char ** )malloc(n * sizeof(char *));/*等同于char *p[n];指针数组*/
+    for (int i = 0; i &lt; n; ++i)
+        *(pChar+i) = (char * ) malloc(sizeof(char)*9);
        
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; ++i) &#123;
-        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">15</span> == <span class="hljs-number">0</span>) pChar[i<span class="hljs-number">-1</span>] = <span class="hljs-string">&quot;FizzBuzz&quot;</span>;
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">3</span> == <span class="hljs-number">0</span>) pChar[i<span class="hljs-number">-1</span>] = <span class="hljs-string">&quot;Fizz&quot;</span>;
-        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (i % <span class="hljs-number">5</span> == <span class="hljs-number">0</span>) pChar[i<span class="hljs-number">-1</span>] = <span class="hljs-string">&quot;Buzz&quot;</span>;
-        <span class="hljs-keyword">else</span> <span class="hljs-built_in">sprintf</span>(pChar[i<span class="hljs-number">-1</span>],<span class="hljs-string">&quot;%d&quot;</span>,i);
+    for (int i = 1; i &lt;= n; ++i) &#123;
+        if (i % 15 == 0) pChar[i-1] = &quot;FizzBuzz&quot;;
+        else if (i % 3 == 0) pChar[i-1] = &quot;Fizz&quot;;
+        else if (i % 5 == 0) pChar[i-1] = &quot;Buzz&quot;;
+        else sprintf(pChar[i-1],&quot;%d&quot;,i);
     &#125;
-    <span class="hljs-keyword">return</span> pChar;
+    return pChar;
 &#125;
 </code></pre>
 <blockquote>
-<p>分析：
-该题最重要的是如何使用二级指针，动态分配二维Char数组</p>
+<p>分析：<br>该题最重要的是如何使用二级指针，动态分配二维Char数组</p>
 </blockquote>
-<h3 id="知识点">知识点</h3>
-<h4 id="sprintf函数">sprintf函数</h4>
-<p>sprintf指的是字符串格式化命令,主要功能是把格式化的数据写入某个字符串中</p>
-<h5 id="sprintf原型"><code>sprintf</code>原型</h5>
-<pre><code class="hljs language-C"><span class="hljs-type">int</span> <span class="hljs-title function_">sprintf</span> <span class="hljs-params">(<span class="hljs-type">char</span> *__restrict, <span class="hljs-type">const</span> <span class="hljs-type">char</span> *__restrict, ...)</span>
-               _<span class="hljs-title function_">ATTRIBUTE</span> <span class="hljs-params">((__format__ (__printf__, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>)))</span>;
+<h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="sprintf函数"><a href="#sprintf函数" class="headerlink" title="sprintf函数"></a>sprintf函数</h4><p>sprintf指的是字符串格式化命令,主要功能是把格式化的数据写入某个字符串中</p>
+<h5 id="sprintf原型"><a href="#sprintf原型" class="headerlink" title="sprintf原型"></a><code>sprintf</code>原型</h5><pre><code class="C">int sprintf (char *__restrict, const char *__restrict, ...)
+               _ATTRIBUTE ((__format__ (__printf__, 2, 3)));
 </code></pre>
-<p>在本题中主要解决整数的传入字符串的问题
-<code>sprintf(pChar[i-1],&quot;%d&quot;,i);  //不要把一个整数对应一个“%s”</code></p>
-<h6 id="优点">优点</h6>
-<ul>
+<p> 在本题中主要解决整数的传入字符串的问题<br><code>sprintf(pChar[i-1],&quot;%d&quot;,i);  //不要把一个整数对应一个“%s”</code></p>
+<h6 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h6><ul>
 <li>简单方便</li>
 <li>可以格式化给字符串赋值</li>
 <li>可对写入字符数做出限制，防止buffer溢出</li>
 </ul>
-<h5 id="返回值">返回值</h5>
-<p>如果成功，则返回写入的字符总数，不包括字符串追加在字符串末尾的空字符。如果失败，则返回一个负数。</p>
+<h5 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h5><p>如果成功，则返回写入的字符总数，不包括字符串追加在字符串末尾的空字符。如果失败，则返回一个负数。</p>
 <blockquote>
 <p>总结 ：题目简单，只有二级指针和sprintf函数两个点</p>
 <ul>
@@ -560,6 +547,7 @@
 </ul>
 </blockquote>
 <hr>
+
 <blockquote>
 <p>作者本人，移植于CSDN</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_44950849/article/details/128112092">https://blog.csdn.net/m0_44950849/article/details/128112092</a></p>
@@ -679,7 +667,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -691,10 +679,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
