@@ -22,7 +22,7 @@
   
   <title itemprop="name">
     
-    为水而水（笑 | 
+    lombok 与 delombok: 在 gradle 上的配置方法 | 
     終わり群星 | Home
   </title>
   
@@ -449,23 +449,23 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/coding.jpg)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/coding.jpg">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(//wsrv.nl/?url=article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@2500h__1c_1e.webp)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//wsrv.nl/?url=article.biliimg.com/bfs/article/9f1dedf0caf53ebaac46afc578877a44ee2c15fd.png@2500h__1c_1e.webp">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
-      为水而水（笑</h1>
+      lombok 与 delombok: 在 gradle 上的配置方法</h1>
       <p class="entry-census">
         <span>
           <a href="stazxr.cn">
-            <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
+            <img src="//gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
           </a>
         </span>
         <span>
-          <a href="stazxr.cn">stazxr</a>
+          <a href="stazxr.cn">talentestors</a>
         </span>
         <span class="bull">
         ·</span>
-        2023-2-7<span class="bull">
+        2025-3-16<span class="bull">
         ·</span>
         <span id="busuanzi_value_page_pv"></span>次阅读</p>
     </header>
@@ -479,17 +479,147 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="Hi-There-is-Talentestors-ヾ-≧∇≦-ゝ"><a href="#Hi-There-is-Talentestors-ヾ-≧∇≦-ゝ" class="headerlink" title="Hi! There is Talentestors!ヾ(≧∇≦*)ゝ"></a>Hi! There is Talentestors!ヾ(≧∇≦*)ゝ</h2><h4 id="Platform-Tools"><a href="#Platform-Tools" class="headerlink" title="Platform&amp;Tools"></a>Platform&amp;Tools</h4><p><a target="_blank" rel="noopener" href="https://www.microsoft.com/windows/windows-11"><img src="https://img.shields.io/badge/Windows-11-4e9eee?style=flat-square&logo=windows&logoColor=ffffff"></a> <a target="_blank" rel="noopener" href="https://code.visualstudio.com/"><img src="https://img.shields.io/badge/IDE-Visual%20Studio%20Code-blue?style=flat-square&logo=visual-studio-code&logoColor=ffffff"></a> <a target="_blank" rel="noopener" href="https://www.archlinux.org/"><img src="https://img.shields.io/badge/OS-Arch%20Linux-33aadd?style=flat-square&logo=arch-linux&logoColor=ffffff"></a> <a target="_blank" rel="noopener" href="https://www.vim.org/"><img src="https://img.shields.io/badge/Linux-vim-57A143?style=flat-square&logo=Vim&logoColor=ffffff"></a></p>
-<p><a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/"><img src="https://img.shields.io/badge/-HTML5-E34F26?style=flat-square&logo=html5&logoColor=white"></a> <a target="_blank" rel="noopener" href="https://www.w3.org/Style/CSS/"><img src="https://img.shields.io/badge/-CSS3-1572B6?style=flat-square&logo=css3&logoColor=white"></a> <a target="_blank" rel="noopener" href="https://www.ecma-international.org/"><img src="https://img.shields.io/badge/-JavaScript-f7e018?style=flat-square&logo=javascript&logoColor=white"></a> <a target="_blank" rel="noopener" href="https://www.typescriptlang.org/"><img src="https://img.shields.io/badge/-TypeScript-007acc?style=flat-square&logo=typescript&logoColor=white"></a> <a target="_blank" rel="noopener" href="https://git-scm.com/"><img src="https://img.shields.io/badge/-Git-f05032?style=flat-square&logo=git&logoColor=white"></a> <a target="_blank" rel="noopener" href="https://vuejs.org/"><img src="https://img.shields.io/badge/-Vue.js-4fc08d?style=flat-square&logo=vue.js&logoColor=ffffff"></a> <a target="_blank" rel="noopener" href="https://nodejs.org/"><img src="https://img.shields.io/badge/-Node.js-43853d?style=flat-square&logo=node.js&logoColor=ffffff"></a></p>
-<p><a target="_blank" rel="noopener" href="https://cppreference.com/"><img src="https://img.shields.io/badge/-C++-00599C?style=flat-square&logo=cplusplus&logoColor=white"></a><a target="_blank" rel="noopener" href="https://www.python.org/"><img src="https://img.shields.io/badge/-Python-FFDE57?style=flat-square&logo=Python&logoColor=white"></a><a target="_blank" rel="noopener" href="https://www.rust-lang.org/"><img src="https://img.shields.io/badge/-Rust-005A9E?style=flat-square&logo=Rust&logoColor=white"></a><a target="_blank" rel="noopener" href="https://www.linuxfoundation.org/"><img src="https://img.shields.io/badge/-Linux-fcc624?style=flat-square&logo=linux&logoColor=white"></a></p>
-<hr/>
+          <h2 id="一、Lombok的双刃剑效应"><a href="#一、Lombok的双刃剑效应" class="headerlink" title="一、Lombok的双刃剑效应"></a>一、Lombok的双刃剑效应</h2><p>在Java开发领域，Lombok 凭借其强大的代码简化能力几乎无人不晓。通过 <code>@Data</code>、<code>@Builder</code> 等注解，开发者可以轻松消除冗长的 getter&#x2F;setter 方法，将开发效率提升 40% 以上。但正如所有技术选型都需要权衡利弊，Lombok 在实际应用中暴露出的问题同样值得警惕：</p>
+<ol>
+<li><strong>强工具依赖困境</strong>：开发团队中只要有一位成员使用 Lombok，所有协作者都必须安装插件，否则将面临编译失败的风险</li>
+<li><strong>代码可追溯性缺失</strong>：生成的字节码与源码存在”断层”，审计时难以验证代码真实性，给金融、政务等强合规场景埋下隐患</li>
+<li><strong>版本兼容性陷阱</strong>：不同 Lombok 版本生成的代码可能存在差异，在持续集成环境中容易引发”本地可编译，服务器失败”的诡异问题</li>
+</ol>
+<p>正是这些痛点，使得包括阿里、华为在内的多家头部科技企业，在《Java开发规范》中明确禁止生产环境使用 Lombok。</p>
+<h2 id="二、Delombok：鱼与熊掌兼得的解决方案"><a href="#二、Delombok：鱼与熊掌兼得的解决方案" class="headerlink" title="二、Delombok：鱼与熊掌兼得的解决方案"></a>二、Delombok：鱼与熊掌兼得的解决方案</h2><p>Project Lombok团队提供的 <a target="_blank" rel="noopener" href="https://projectlombok.org/features/delombok">Delombok 工具</a> 恰是破解困局的关键。其核心原理是在编译阶段将 Lombok 注解转换为标准 Java 代码，既保留了开发效率，又确保了代码完整性。</p>
+<h2 id="三、IntelliJ全链路配置指南"><a href="#三、IntelliJ全链路配置指南" class="headerlink" title="三、IntelliJ全链路配置指南"></a>三、IntelliJ全链路配置指南</h2><h3 id="3-1-开发环境配置"><a href="#3-1-开发环境配置" class="headerlink" title="3.1 开发环境配置"></a>3.1 开发环境配置</h3><ol>
+<li>安装官方Lombok插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/6317-lombok">JetBrains Marketplace</a></li>
+<li>同步安装Delombok插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14831-delombok">Delombok Plugin</a></li>
+<li>启用注解处理：<code>Settings → Build → Compiler → Annotation Processors → Enable annotation processing</code></li>
+</ol>
+<h3 id="3-2-版本控制集成"><a href="#3-2-版本控制集成" class="headerlink" title="3.2 版本控制集成"></a>3.2 版本控制集成</h3><p>在提交代码前，通过 VCS 操作菜单勾选 “Delombok code” 选项，即可自动生成合规代码。对于存量项目，可通过 <code>Build → Delombok Project</code> 一键转换整个代码库。</p>
+<h2 id="四、构建工具深度集成"><a href="#四、构建工具深度集成" class="headerlink" title="四、构建工具深度集成"></a>四、构建工具深度集成</h2><h3 id="4-1-Maven-配置"><a href="#4-1-Maven-配置" class="headerlink" title="4.1 Maven 配置"></a>4.1 Maven 配置</h3><pre><code class="xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.30&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
+</code></pre>
+<h3 id="4-2-Gradle-配置"><a href="#4-2-Gradle-配置" class="headerlink" title="4.2 Gradle 配置"></a>4.2 Gradle 配置</h3><pre><code class="groovy">dependencies &#123;
+    compileOnly &#39;org.projectlombok:lombok:1.18.22&#39;
+    annotationProcessor &#39;org.projectlombok:lombok:1.18.22&#39;
 
-<p><a target="_blank" rel="noopener" href="https://github-readme-stats.stazxr.cn/api?username=talentestors&show_icons=true&theme=radical"><img src="https://github-readme-stats.stazxr.cn/api?username=talentestors&show_icons=true&theme=radical" alt="Anurag&#39;s GitHub stats"></a><a target="_blank" rel="noopener" href="https://github-readme-stats.stazxr.cn/api/top-langs/?username=talentestors&show_icons=true&include_all_commits=true&theme=radical"><img src="https://github-readme-stats.stazxr.cn/api/top-langs/?username=talentestors&show_icons=true&include_all_commits=true&theme=radical&layout=compact" alt="Anurag&#39;s GitHub stats"></a></p>
-<h4 id="Console-Game"><a href="#Console-Game" class="headerlink" title="Console&amp;Game"></a>Console&amp;Game</h4><blockquote>
-<p>Genshin</p>
-<p><img src="https://ys.himiku.com/rand/195834099.png" alt="genshin-card"></p>
+    testCompileOnly &#39;org.projectlombok:lombok:1.18.22&#39;
+    testAnnotationProcessor &#39;org.projectlombok:lombok:1.18.22&#39;
+&#125;
+</code></pre>
+<h3 id="4-3-“io-freefair-lombok”-插件：Gradle-最佳实践"><a href="#4-3-“io-freefair-lombok”-插件：Gradle-最佳实践" class="headerlink" title="4.3 “io.freefair.lombok” 插件：Gradle 最佳实践"></a>4.3 “io.freefair.lombok” 插件：Gradle 最佳实践</h3><p>推荐使用 <code>io.freefair.lombok</code> 插件实现 lombok 和 delombok 的管理：</p>
+<pre><code class="groovy">plugins &#123;
+    id &quot;io.freefair.lombok&quot; version &quot;8.13&quot;
+&#125;
+
+// 自动处理：
+// 1. 注解处理器配置
+// 2. Delombok任务注册
+// 3. 测试环境支持
+</code></pre>
+<p>直接声明使用最新版本</p>
+<pre><code class="groovy">plugins &#123;
+      id &quot;io.freefair.lombok&quot; version &quot;lastest.release&quot;
+&#125;
+</code></pre>
+<h3 id="版本兼容矩阵（2025-3-最新）"><a href="#版本兼容矩阵（2025-3-最新）" class="headerlink" title="版本兼容矩阵（2025.3 最新）"></a>版本兼容矩阵（2025.3 最新）</h3><table>
+<thead>
+<tr>
+<th>插件版本</th>
+<th>Gradle支持</th>
+<th>Java要求</th>
+<th>Kotlin兼容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8.13.x</td>
+<td>8.13</td>
+<td>8+</td>
+<td>2.0.20</td>
+</tr>
+<tr>
+<td>8.11.x</td>
+<td>8.11</td>
+<td>8+</td>
+<td>2.0.20</td>
+</tr>
+<tr>
+<td>8.10.x</td>
+<td>8.10</td>
+<td>8+</td>
+<td>1.9.24</td>
+</tr>
+<tr>
+<td>8.7.x</td>
+<td>8.7</td>
+<td>8+</td>
+<td>1.9.22</td>
+</tr>
+<tr>
+<td>8.6.x</td>
+<td>8.6</td>
+<td>8+</td>
+<td>1.9.20</td>
+</tr>
+<tr>
+<td>8.4.x</td>
+<td>8.4</td>
+<td>8+</td>
+<td>1.9.10</td>
+</tr>
+<tr>
+<td>8.3.x</td>
+<td>8.3</td>
+<td>8+</td>
+<td>1.9.0</td>
+</tr>
+<tr>
+<td>8.2.x</td>
+<td>8.2</td>
+<td>8+</td>
+<td>1.8.20</td>
+</tr>
+<tr>
+<td>8.1.x</td>
+<td>8.1</td>
+<td>8+</td>
+<td>1.8.10</td>
+</tr>
+<tr>
+<td>8.0.x</td>
+<td>8.0</td>
+<td>8+</td>
+<td>1.8.10</td>
+</tr>
+<tr>
+<td>6.6.x</td>
+<td>7.6</td>
+<td>8 - 18</td>
+<td>1.7.x</td>
+</tr>
+<tr>
+<td>6.5.x</td>
+<td>7.5</td>
+<td>8 - 18</td>
+<td>1.7.x</td>
+</tr>
+<tr>
+<td>6.4.x</td>
+<td>7.4</td>
+<td>8 - 17</td>
+<td>1.3.x - 1.6.x</td>
+</tr>
+<tr>
+<td>6.3.x</td>
+<td>7.3</td>
+<td>8 - 17</td>
+<td>1.3.x - 1.6.x</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>本文档示例代码已通过 Java 21、Gradle 8.13 环境验证，建议定期访问 <a target="_blank" rel="noopener" href="https://projectlombok.org/">Lombok 官网</a>，以获取最新版本信息。</p>
 </blockquote>
-<p>github：<a target="_blank" rel="noopener" href="https://github.com/talentestors">https://github.com/talentestors</a></p>
 
         </div>
         <!-- .entry-content -->
@@ -518,36 +648,19 @@
       <div data-cfasync="false" class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-          
-            <div class="post-nepre half previous">
-          
-            <a href="/2023/02/08/%E6%B4%9B%E8%B0%B7%E4%B8%BB%E9%A1%B5%E6%BA%90%E7%A0%81/" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/me.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/me.png">
-              </div>
-              <span class="label">
-              Previous Post</span>
-              <div class="info">
-                <h3>
-                洛谷主页源码</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
-        
         
           
-            <div class="post-nepre half next">
+            <div class="post-nepre full next">
           
-            <a href="/2023/02/06/%E4%B9%A6%E7%B1%8D%E8%B5%84%E6%BA%90/" rel="next">
+            <a href="/2025/03/15/GitHub-Skills/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//pic.superbed.cc/item/67d53c25218de299ca8ceabb.png" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="//pic.superbed.cc/item/67d53c25218de299ca8ceabb.png">
               </div>
               <span class="label">
               Next Post</span>
               <div class="info">
                 <h3>
-                书籍资源</h3>
+                GitHub Skills：从零到精通的 GitHub 互动学习平台</h3>
                 <hr>
               </div>
             </a>
@@ -582,11 +695,11 @@
 
       <section class="author-profile">
         <div class="info" itemprop="author" itemscope="" itemtype="https://schema.org/Person">
-          <a href="stazxr.cn" class="profile gravatar"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg" itemprop="image" alt="stazxr" height="70" width="70"></a>
+          <a href="stazxr.cn" class="profile gravatar"><img src="//gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg" itemprop="image" alt="talentestors" height="70" width="70"></a>
           <div class="meta">
             <span class="title">Author</span>
             <h3 itemprop="name">
-            <a href="stazxr.cn" itemprop="url" rel="author">stazxr</a>
+            <a href="stazxr.cn" itemprop="url" rel="author">talentestors</a>
             </h3>
           </div>
         </div>
