@@ -486,10 +486,10 @@
 <li><strong>版本兼容性陷阱</strong>：不同 Lombok 版本生成的代码可能存在差异，在持续集成环境中容易引发”本地可编译，服务器失败”的诡异问题</li>
 </ol>
 <p>正是这些痛点，使得包括阿里、华为在内的多家头部科技企业，在《Java开发规范》中明确禁止生产环境使用 Lombok。</p>
-<h2 id="二、Delombok：鱼与熊掌兼得的解决方案"><a href="#二、Delombok：鱼与熊掌兼得的解决方案" class="headerlink" title="二、Delombok：鱼与熊掌兼得的解决方案"></a>二、Delombok：鱼与熊掌兼得的解决方案</h2><p>Project Lombok团队提供的 <a target="_blank" rel="noopener" href="https://projectlombok.org/features/delombok">Delombok 工具</a> 恰是破解困局的关键。其核心原理是在编译阶段将 Lombok 注解转换为标准 Java 代码，既保留了开发效率，又确保了代码完整性。</p>
+<h2 id="二、Delombok：鱼与熊掌兼得的解决方案"><a href="#二、Delombok：鱼与熊掌兼得的解决方案" class="headerlink" title="二、Delombok：鱼与熊掌兼得的解决方案"></a>二、Delombok：鱼与熊掌兼得的解决方案</h2><p>Project Lombok 团队提供的 <a target="_blank" rel="noopener" href="https://projectlombok.org/features/delombok">Delombok 工具</a> 恰是破解困局的关键。其核心原理是在编译阶段将 Lombok 注解转换为标准 Java 代码，既保留了开发效率，又确保了代码完整性。</p>
 <h2 id="三、IntelliJ全链路配置指南"><a href="#三、IntelliJ全链路配置指南" class="headerlink" title="三、IntelliJ全链路配置指南"></a>三、IntelliJ全链路配置指南</h2><h3 id="3-1-开发环境配置"><a href="#3-1-开发环境配置" class="headerlink" title="3.1 开发环境配置"></a>3.1 开发环境配置</h3><ol>
-<li>安装官方Lombok插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/6317-lombok">JetBrains Marketplace</a></li>
-<li>同步安装Delombok插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14831-delombok">Delombok Plugin</a></li>
+<li>安装官方 Lombok 插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/6317-lombok">JetBrains Marketplace</a></li>
+<li>同步安装 Delombok 插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14831-delombok">Delombok Plugin</a></li>
 <li>启用注解处理：<code>Settings → Build → Compiler → Annotation Processors → Enable annotation processing</code></li>
 </ol>
 <h3 id="3-2-版本控制集成"><a href="#3-2-版本控制集成" class="headerlink" title="3.2 版本控制集成"></a>3.2 版本控制集成</h3><p>在提交代码前，通过 VCS 操作菜单勾选 “Delombok code” 选项，即可自动生成合规代码。对于存量项目，可通过 <code>Build → Delombok Project</code> 一键转换整个代码库。</p>
@@ -515,7 +515,7 @@
 
 // 自动处理：
 // 1. 注解处理器配置
-// 2. Delombok任务注册
+// 2. Delombok 任务注册
 // 3. 测试环境支持
 </code></pre>
 <p>直接声明使用最新版本</p>
@@ -717,7 +717,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -729,10 +729,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
