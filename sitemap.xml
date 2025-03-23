@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://stazxr.cn/bangumi/index.html</loc>
+    <loc>http://stazxr.cn/bangumis/index.html</loc>
     
     <lastmod>2025-03-23</lastmod>
     
@@ -11,7 +11,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/bangumis/index.html</loc>
+    <loc>http://stazxr.cn/bangumi/index.html</loc>
     
     <lastmod>2025-03-23</lastmod>
     
@@ -227,7 +227,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/2023/09/10/luogu-P1036-Select-a-number/</loc>
+    <loc>http://stazxr.cn/2023/08/01/javase-note/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
@@ -236,7 +236,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/2023/08/01/javase-note/</loc>
+    <loc>http://stazxr.cn/2023/09/10/luogu-P1036-Select-a-number/</loc>
     
     <lastmod>2024-12-20</lastmod>
     
@@ -592,42 +592,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E9%A2%98%E8%A7%A3/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://stazxr.cn/tags/%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/CodeForces/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/Div-2/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/C-CPP/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -655,21 +620,35 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/GitHub/</loc>
+    <loc>http://stazxr.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/GitHub-Actions/</loc>
+    <loc>http://stazxr.cn/tags/%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E8%AF%BE%E7%A8%8B/</loc>
+    <loc>http://stazxr.cn/tags/CodeForces/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/Div-2/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/C-CPP/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -684,27 +663,6 @@
   
   <url>
     <loc>http://stazxr.cn/tags/web/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F%E6%B3%95/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E4%BA%8C%E5%88%86%E5%A5%97%E4%BA%8C%E5%88%86/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -733,6 +691,48 @@
   
   <url>
     <loc>http://stazxr.cn/tags/%E4%B9%B1%E7%A0%81/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E9%9A%8F%E6%9C%BA%E5%A2%9E%E9%87%8F%E6%B3%95/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E4%BA%8C%E5%88%86%E5%A5%97%E4%BA%8C%E5%88%86/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/GitHub/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/GitHub-Actions/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E8%AF%BE%E7%A8%8B/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -781,6 +781,20 @@
   </url>
   
   <url>
+    <loc>http://stazxr.cn/tags/%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/builtin/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>http://stazxr.cn/tags/cloudflare/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -795,14 +809,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/builtin/</loc>
+    <loc>http://stazxr.cn/tags/Swing/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -830,13 +837,6 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/Swing/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://stazxr.cn/tags/%E8%B4%A8%E6%95%B0%E7%AD%9B/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -845,6 +845,13 @@
   
   <url>
     <loc>http://stazxr.cn/tags/%E6%B7%B1%E6%90%9C/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/vue/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -872,7 +879,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/vue/</loc>
+    <loc>http://stazxr.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -901,13 +908,6 @@
   
   <url>
     <loc>http://stazxr.cn/tags/%E5%88%92%E6%B0%B4/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://stazxr.cn/tags/%E6%82%A6%E8%AF%BB/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -970,13 +970,6 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/STL/</loc>
-    <lastmod>2025-03-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://stazxr.cn/tags/C-C/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
@@ -1012,7 +1005,7 @@
   </url>
   
   <url>
-    <loc>http://stazxr.cn/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
+    <loc>http://stazxr.cn/tags/STL/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1041,6 +1034,13 @@
   
   <url>
     <loc>http://stazxr.cn/tags/utteranc/</loc>
+    <lastmod>2025-03-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://stazxr.cn/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/</loc>
     <lastmod>2025-03-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
