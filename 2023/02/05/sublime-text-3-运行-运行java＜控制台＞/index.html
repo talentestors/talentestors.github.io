@@ -484,7 +484,7 @@
 <p>2.找到 工具—&gt;编译系统—&gt;新编译系统</p>
 <p>ps：英文版为；Tools—&gt;Build system—&gt;New Build system</p>
 <p>3.输入以下代码</p>
-<pre><code class="hljs language-shell"> &#123;
+<pre><code class="shell"> &#123;
 &quot;shell&quot;: true,
 &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;javac -encoding UTF-8 $&#123;file&#125; &amp; java $&#123;file_base_name&#125; &amp;echo. &amp; pause &quot;],
 &quot;file_regex&quot; :&quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
