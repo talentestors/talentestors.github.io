@@ -79,7 +79,7 @@
     /*End of Initial Variables*/
   </script>
   <script async type="text/javascript">
-    var bg = "https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(1).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(2).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(3).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(4).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/cover/(5).jpg.webp".split(",");
+    var bg = "https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(1).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(2).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(3).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(4).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(5).jpg.webp".split(",");
     var bgindex = Math.floor(Math.random() * bg.length);
     if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
       alert('朋友，IE浏览器未适配哦~');
@@ -121,7 +121,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://stazxr.cn">
-          <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
+          <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -135,7 +135,7 @@
               
                 <li>
                   <a href="http://github.com/talentestors" target="_blank" class="social-github" title="github">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/social/github.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/github.png">
                   </a>
                 </li>
               
@@ -143,7 +143,7 @@
               
                 <li>
                   <a href="https://gitee.com/talentestors" target="_blank" class="social-github" title="gitee">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/social/gitee.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/gitee.png">
                   </a>
                 </li>
               
@@ -151,7 +151,7 @@
               
                 <li>
                   <a href="http://space.bilibili.com/410052043" target="_blank" class="social-github" title="bilibili">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/social/bilibili.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/bilibili.png">
                   </a>
                 </li>
               
@@ -159,7 +159,7 @@
               
                 <li>
                   <a href="https://music.163.com/#/user/home?id=3573964708" target="_blank" class="social-github" title="wangyiyun">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/social/wangyiyun.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/wangyiyun.png">
                   </a>
                 </li>
               
@@ -167,7 +167,7 @@
               
                 <li>
                   <a href="https://www.zhihu.com/people/talentestors" target="_blank" class="social-github" title="zhihu">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/social/zhihu.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/zhihu.png">
                   </a>
                 </li>
               
@@ -447,7 +447,7 @@
 <div class="pattern-center-blank"></div>
 <div class="pattern-center ">
   <div class="pattern-attachment-img">
-    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162343005-1130367297.png" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="//img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162343005-1130367297.png" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
   </div>
   <header class="pattern-header ">
     <h1 class="cat-title">Scoop</h1>
@@ -506,7 +506,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -518,10 +518,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -627,7 +627,7 @@
           }
           window.addEventListener('load', restoreButtonText);
           var script = document.createElement('script');
-          script.src = 'https://gcore.jsdelivr.net/gh/wallleap/cdn@latest/js/sakura.js';
+          script.src = 'https://gcore.jsdelivr.net/gh/wallleap/cdn@2.0/js/sakura.js';
           function toggleScript() {
             var button = document.getElementById('toggle');
             if (button.innerHTML == '打开樱花特效') {
@@ -752,7 +752,7 @@ id="canvas_sakura"></canvas>
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">終わり群星</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -1041,7 +1041,7 @@ id="canvas_sakura"></canvas>
   </div>
     <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/custom/avatar.jpg">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">終わり群星</p>
   <p style="text-align: center; word-spacing: 20px;">
