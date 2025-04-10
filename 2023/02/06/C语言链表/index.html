@@ -79,7 +79,7 @@
     /*End of Initial Variables*/
   </script>
   <script async type="text/javascript">
-    var bg = "https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(1).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(2).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(3).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(4).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/cover/(5).jpg.webp".split(",");
+    var bg = "https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/cover/(1).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/cover/(2).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/cover/(3).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/cover/(4).jpg.webp,https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/cover/(5).jpg.webp".split(",");
     var bgindex = Math.floor(Math.random() * bg.length);
     if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
       alert('朋友，IE浏览器未适配哦~');
@@ -121,7 +121,7 @@
     <div class="focusinfo no-select">
       <div class="header-tou">
         <a href="https://stazxr.cn">
-          <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
+          <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/custom/avatar.jpg">
         </a>
       </div>
       <div class="header-info">
@@ -135,7 +135,7 @@
               
                 <li>
                   <a href="http://github.com/talentestors" target="_blank" class="social-github" title="github">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/github.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/social/github.png">
                   </a>
                 </li>
               
@@ -143,7 +143,7 @@
               
                 <li>
                   <a href="https://gitee.com/talentestors" target="_blank" class="social-github" title="gitee">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/gitee.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/social/gitee.png">
                   </a>
                 </li>
               
@@ -151,7 +151,7 @@
               
                 <li>
                   <a href="http://space.bilibili.com/410052043" target="_blank" class="social-github" title="bilibili">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/bilibili.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/social/bilibili.png">
                   </a>
                 </li>
               
@@ -159,7 +159,7 @@
               
                 <li>
                   <a href="https://music.163.com/#/user/home?id=3573964708" target="_blank" class="social-github" title="wangyiyun">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/wangyiyun.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/social/wangyiyun.png">
                   </a>
                 </li>
               
@@ -167,7 +167,7 @@
               
                 <li>
                   <a href="https://www.zhihu.com/people/talentestors" target="_blank" class="social-github" title="zhihu">
-                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/social/zhihu.png">
+                    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/social/zhihu.png">
                   </a>
                 </li>
               
@@ -449,7 +449,7 @@
 
   <div class="pattern-center single-center">
     <!-- 有配图默认渲染第一张 -->
-    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2023/03/22/ppdSgfK.png)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png">
+    <div class="pattern-attachment-img lazyload" style="background-image: url(https://s1.ax1x.com/2023/03/22/ppdSgfK.png)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png">
     </div>
     <header class="pattern-header single-header">
       <h1 class="entry-title">
@@ -479,249 +479,246 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>C语言链表</h2>
-<blockquote>
+          <h2 id="C语言链表"><a href="#C语言链表" class="headerlink" title="C语言链表"></a>C语言链表</h2><blockquote>
 <p><em>代码实现</em></p>
 </blockquote>
-<pre><code class="hljs language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<pre><code class="c">#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
 
-<span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> E; <span class="hljs-comment">/*It stands for shaping element*/</span>
+typedef int E; /*It stands for shaping element*/
 
-<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> &#123;</span>
+struct ListNode &#123;
     E element;
-    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> * <span class="hljs-title">next</span>;</span> <span class="hljs-comment">/*保存下一个节点的地址*/</span>
+    struct ListNode * next; /*保存下一个节点的地址*/
 &#125;;
 
-<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> * <span class="hljs-title">Node</span>;</span> <span class="hljs-comment">/*将“ListNode *&quot;命名为”Node“*/</span>
+typedef struct ListNode * Node; /*将“ListNode *&quot;命名为”Node“*/
 
-<span class="hljs-comment">/**
+/**
  * 初始化链表
  * @param node 传入头结点指针
- */</span>
-<span class="hljs-type">void</span>  <span class="hljs-title function_">initList</span><span class="hljs-params">(Node node)</span>&#123;
-    node-&gt;next = <span class="hljs-literal">NULL</span>;
+ */
+void  initList(Node node)&#123;
+    node-&gt;next = NULL;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 计算链表的节点数不计头结点
  * @param head 传入头结点指针
  * @return 返回节点数目
- */</span>
-<span class="hljs-type">int</span> <span class="hljs-title function_">sizeList</span><span class="hljs-params">(Node head)</span>&#123;
-    <span class="hljs-type">int</span> i = <span class="hljs-number">-1</span>;
-    <span class="hljs-keyword">while</span> (head) &#123;
+ */
+int sizeList(Node head)&#123;
+    int i = -1;
+    while (head) &#123;
         head = head-&gt;next;
         i++;
     &#125;
-    <span class="hljs-keyword">return</span> i;
+    return i;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 随机位置插入节点
  * @param head 传入头结点指针
  * @param element 传入新节点的元素
  * @param index 传入插入位置
  * @return 位置不合法或插入失败返回0，成功返回1
- */</span>
-<span class="hljs-type">_Bool</span> <span class="hljs-title function_">insertList</span><span class="hljs-params">(Node head,E element,<span class="hljs-type">int</span> index)</span>&#123;
-    <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">while</span> (--index) &#123;
+ */
+_Bool insertList(Node head,E element,int index)&#123;
+    if (index &lt; 1) return 0;
+    while (--index) &#123;
         head = head-&gt;next;
-        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        if (head == NULL) return 0;
     &#125;
-    Node node = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> ListNode));
-    <span class="hljs-keyword">if</span>(node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;   <span class="hljs-comment">//创建一个新的结点，如果内存空间申请失败返回0</span>
+    Node node = malloc(sizeof(struct ListNode));
+    if(node == NULL) return 0;   //创建一个新的结点，如果内存空间申请失败返回0
     node-&gt;element = element;
     node-&gt;next = head-&gt;next;
-    head-&gt;next = node;   <span class="hljs-comment">//接着将前驱结点指向新的这个结点</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    head-&gt;next = node;   //接着将前驱结点指向新的这个结点
+    return 1;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 头插：在头结点后插入新节点
  * @param head 传入头结点指针
  * @param data 传入新节点的元素
  * @return 插入失败返回0，成功返回1
- */</span>
-<span class="hljs-type">_Bool</span> <span class="hljs-title function_">InsertToHead</span><span class="hljs-params">(Node head, E data)</span> &#123;
-    <span class="hljs-keyword">if</span> (insertList(head, data, <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+ */
+_Bool InsertToHead(Node head, E data) &#123;
+    if (insertList(head, data, 1)) return 1;
+    return 0;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 尾插：在尾结点后插入新节点
  * @param head 传入头结点指针
  * @param data 传入新节点的元素
  * @return 插入失败返回0，成功返回1
- */</span>
-<span class="hljs-type">_Bool</span> <span class="hljs-title function_">InsertToTail</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> data)</span> &#123;
-    <span class="hljs-keyword">if</span> (insertList(head, data, sizeList(head) + <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+ */
+_Bool InsertToTail(Node head, int data) &#123;
+    if (insertList(head, data, sizeList(head) + 1)) return 1;
+    return 0;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 删除指定节点
  * @param head 传入头结点指针
  * @param index 传入删除节点的位置
  * @return 位置不合法或结点异常返回0，成功返回1
- */</span>
-<span class="hljs-type">_Bool</span> <span class="hljs-title function_">deleteList</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index)</span>&#123;
-    <span class="hljs-keyword">if</span>(index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;   <span class="hljs-comment">//大体和上面是一样的</span>
-    <span class="hljs-keyword">while</span> (--index) &#123;
+ */
+_Bool deleteList(Node head, int index)&#123;
+    if(index &lt; 1) return 0;   //大体和上面是一样的
+    while (--index) &#123;
         head = head-&gt;next;
-        <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        if(head == NULL) return 0;
     &#125;
-    <span class="hljs-keyword">if</span>(head-&gt;next == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    if(head-&gt;next == NULL) return 0;
 
     Node tmp = head-&gt;next;
     head-&gt;next = head-&gt;next-&gt;next;
-    <span class="hljs-built_in">free</span>(tmp);
-    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    free(tmp);
+    return 1;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 修改元素
  * @param head 传入头结点指针
  * @param index 传入修改节点的位置
  * @param change 元素的新值
  * @return 位置不合法或结点异常返回0，成功返回1
- */</span>
-<span class="hljs-type">_Bool</span> <span class="hljs-title function_">SetElement</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index, E change)</span> &#123;
-    <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">1</span>) &#123;
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;no exist!\n&quot;</span>);
-        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+ */
+_Bool SetElement(Node head, int index, E change) &#123;
+    if (index &lt; 1) &#123;
+        printf(&quot;no exist!\n&quot;);
+        return 0;
     &#125;
-    <span class="hljs-keyword">while</span> (--index) &#123;
+    while (--index) &#123;
         head = head-&gt;next;
-        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) &#123;
-            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;no exist!\n&quot;</span>);
-            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+        if (head == NULL) &#123;
+            printf(&quot;no exist!\n&quot;);
+            return 0;
         &#125;
     &#125;
     head-&gt;next-&gt;element = change;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    return 1;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 获取元素的值
  * @param head 传入头结点指针
  * @param index 传入获取节点元素的位置
  * @return 返回这个元素
- */</span>
-E * <span class="hljs-title function_">getList</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index)</span>&#123;
-    <span class="hljs-keyword">if</span>(index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    <span class="hljs-keyword">do</span> &#123;
+ */
+E * getList(Node head, int index)&#123;
+    if(index &lt; 1) return 0;
+    do &#123;
         head = head-&gt;next;
-        <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-    &#125; <span class="hljs-keyword">while</span> (--index);
-    <span class="hljs-keyword">return</span> &amp;head-&gt;element;
+        if(head == NULL) return 0;
+    &#125; while (--index);
+    return &amp;head-&gt;element;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 查找元素，获取前驱节点
  * @param head 传入头结点指针
  * @param target 查找目标
  * @return 目标的前驱节点
- */</span>
-Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> target)</span> &#123;
-    <span class="hljs-keyword">while</span> (head-&gt;next != <span class="hljs-literal">NULL</span> &amp;&amp; target &gt; <span class="hljs-number">0</span>) &#123;
+ */
+Node SearchLink_Pointer(Node head, int target) &#123;
+    while (head-&gt;next != NULL &amp;&amp; target &gt; 0) &#123;
         head = head-&gt;next;
         target--;
     &#125;
-    <span class="hljs-keyword">return</span> head;
+    return head;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 查找元素，获取节点的位置
  * @param head 传入头结点指针
  * @param element 查找目标
  * @return 节点的位置
- */</span>
-<span class="hljs-type">int</span> <span class="hljs-title function_">findList</span><span class="hljs-params">(Node head, E element)</span>&#123;
+ */
+int findList(Node head, E element)&#123;
     head = head-&gt;next;
-    <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;
-    <span class="hljs-keyword">while</span> (head) &#123;
-        <span class="hljs-keyword">if</span>(head-&gt;element == element) <span class="hljs-keyword">return</span> i;
+    int i = 1;
+    while (head) &#123;
+        if(head-&gt;element == element) return i;
         head = head-&gt;next;
         i++;
     &#125;
-    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
+    return -1;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 对链表进行冒泡排序
  * @param head 传入头结点指针
  * @param length 传入链表的长度（不包括头结点）
- */</span>
-<span class="hljs-type">void</span> <span class="hljs-title function_">sortLink_B</span><span class="hljs-params">(Node head,<span class="hljs-type">int</span> length)</span>&#123;
-    <span class="hljs-type">int</span> temp;
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; ++i) &#123;
-        <span class="hljs-type">_Bool</span> flag = <span class="hljs-number">1</span>;
+ */
+void sortLink_B(Node head,int length)&#123;
+    int temp;
+    for (int i = 0; i &lt; length; ++i) &#123;
+        _Bool flag = 1;
         Node node = head-&gt;next;
-        <span class="hljs-keyword">while</span> (head -&gt; next != <span class="hljs-literal">NULL</span>) &#123;
-            <span class="hljs-keyword">if</span> (head-&gt;element &gt; head-&gt;next-&gt;element) &#123;
+        while (head -&gt; next != NULL) &#123;
+            if (head-&gt;element &gt; head-&gt;next-&gt;element) &#123;
                 temp = head-&gt;element;
                 head-&gt;element = head-&gt;next-&gt;element;
                 head-&gt;next-&gt;element = temp;
-                flag = <span class="hljs-number">0</span>;
+                flag = 0;
             &#125;
             head = head-&gt;next;
         &#125;
-        <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">break</span>;
-        <span class="hljs-keyword">else</span> head = node;
+        if (flag) break;
+        else head = node;
     &#125;
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 打印链表
  * @param head 传入头结点指针
- */</span>
-<span class="hljs-type">void</span> <span class="hljs-title function_">printList</span><span class="hljs-params">(Node head)</span>&#123;
-    <span class="hljs-keyword">while</span> (head-&gt;next) &#123;
+ */
+void printList(Node head)&#123;
+    while (head-&gt;next) &#123;
         head = head-&gt;next;
-        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, head-&gt;element);   <span class="hljs-comment">//因为头结点不存放数据，所以从第二个开始打印</span>
+        printf(&quot;%d &quot;, head-&gt;element);   //因为头结点不存放数据，所以从第二个开始打印
     &#125;
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
+    printf(&quot;\n&quot;);
 &#125;
 
-<span class="hljs-comment">/**
+/**
  * 链表元素交换
  * @param head 传入头结点指针
  * @param index1 待交换的节点位置
  * @param index2 待交换的节点位置
- */</span>
-<span class="hljs-type">void</span> <span class="hljs-title function_">SwapLink</span><span class="hljs-params">(Node head,<span class="hljs-type">int</span> index1,<span class="hljs-type">int</span> index2)</span>&#123;
+ */
+void SwapLink(Node head,int index1,int index2)&#123;
     Node temp1, temp2;
     temp1 = SearchLink_Pointer(head, index1);
     temp2 = SearchLink_Pointer(head, index2);
-    <span class="hljs-type">int</span> tmp = temp1-&gt;element;
+    int tmp = temp1-&gt;element;
     temp1-&gt;element = temp2-&gt;element;
     temp2-&gt;element = tmp;
 &#125;
 </code></pre>
-<h6 id="Test"><strong>Test</strong></h6>
-<pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;
-    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> <span class="hljs-title">head</span>;</span>
+<h6 id="Test"><a href="#Test" class="headerlink" title="Test"></a><strong>Test</strong></h6><pre><code class="c">int main()&#123;
+    struct ListNode head;
     initList(&amp;head);
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; ++i) &#123;
-        insertList(&amp;head, i * <span class="hljs-number">100</span>, i);
+    for (int i = 1; i &lt;= 10; ++i) &#123;
+        insertList(&amp;head, i * 100, i);
     &#125;
     printList(&amp;head);
-    deleteList(&amp;head,<span class="hljs-number">4</span>);
-    SetElement(&amp;head,<span class="hljs-number">4</span>,<span class="hljs-number">666</span>);
+    deleteList(&amp;head,4);
+    SetElement(&amp;head,4,666);
     printList(&amp;head);
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *getList(&amp;head,<span class="hljs-number">3</span>));
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, findList(&amp;head,<span class="hljs-number">100</span>));
-    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, sizeList(&amp;head));
-    SwapLink(&amp;head,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>);
+    printf(&quot;%d\n&quot;, *getList(&amp;head,3));
+    printf(&quot;%d\n&quot;, findList(&amp;head,100));
+    printf(&quot;%d\n&quot;, sizeList(&amp;head));
+    SwapLink(&amp;head,2,5);
     printList(&amp;head);
     sortLink_B(&amp;head, sizeList(&amp;head));
     printList(&amp;head);
 &#125;
 </code></pre>
-<h6 id="结果"><strong>结果</strong></h6>
-<p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt=""></a></p>
+<h6 id="结果"><a href="#结果" class="headerlink" title="结果"></a><strong>结果</strong></h6><p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt="ppdSgfK.png"></a></p>
 <blockquote>
 <p>作者本人，移植于CSDN</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_44950849/article/details/128152853">https://blog.csdn.net/m0_44950849/article/details/128152853</a></p>
@@ -734,8 +731,8 @@ Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hl
           <div class="reward-open">赏
             <div class="reward-main">
               <ul class="reward-row">
-                <li class="alipay-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/donate/AliPayQR.png"></li>
-                <li class="wechat-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/donate/WeChanQR.png"></li>
+                <li class="alipay-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/custom/donate/AliPayQR.png"></li>
+                <li class="wechat-code"><img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/custom/donate/WeChanQR.png"></li>
               </ul>
             </div>
           </div>
@@ -760,7 +757,7 @@ Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hl
           
             <a href="/2023/02/06/%E4%B9%A6%E7%B1%8D%E8%B5%84%E6%BA%90/" rel="prev">
               <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@latest/img/banner/writing.jpg">
               </div>
               <span class="label">
               Previous Post</span>
@@ -778,7 +775,7 @@ Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hl
           
             <a href="/2023/02/06/%E5%8A%9B%E6%89%A3%E6%96%B0%E6%89%8B%E6%9D%91%E9%A2%98412-Fizz-Buzz-C%E8%AF%AD%E8%A8%80/" rel="next">
               <div class="background">
-                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg">
+                <img class="lazyload" src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)" src="https://static.leetcode.cn/cn-mono-assets/production/assets/logo-dark-cn.c42314a8.svg">
               </div>
               <span class="label">
               Next Post</span>
@@ -809,7 +806,7 @@ Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hl
           giscus.setAttribute('data-reactions-enabled', '1');
           giscus.setAttribute('data-emit-metadata', '0');
           giscus.setAttribute('data-input-position', 'top');
-          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/css/giscus.min.css');
+          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/css/giscus.min.css');
           giscus.setAttribute('data-lang', 'zh-CN');
           giscus.setAttribute('data-loading', 'lazy');
           document.getElementById('giscus-container').appendChild(giscus);
@@ -962,7 +959,7 @@ Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hl
           }
           window.addEventListener('load', restoreButtonText);
           var script = document.createElement('script');
-          script.src = 'https://gcore.jsdelivr.net/gh/wallleap/cdn@2.0/js/sakura.js';
+          script.src = 'https://gcore.jsdelivr.net/gh/wallleap/cdn@2.1/js/sakura.js';
           function toggleScript() {
             var button = document.getElementById('toggle');
             if (button.innerHTML == '打开樱花特效') {
@@ -1087,7 +1084,7 @@ id="canvas_sakura"></canvas>
   </section>
   <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">終わり群星</p>
   <p style="text-align: center; word-spacing: 20px;">
@@ -1376,7 +1373,7 @@ id="canvas_sakura"></canvas>
   </div>
     <div id="mo-nav" class="">
   <div class="m-avatar">
-    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.0/img/custom/avatar.jpg">
+    <img src="https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/img/custom/avatar.jpg">
   </div>
   <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">終わり群星</p>
   <p style="text-align: center; word-spacing: 20px;">
