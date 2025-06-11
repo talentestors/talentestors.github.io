@@ -479,13 +479,15 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>用C语言编写，用于测试不同排序算法对数据排序的效率和速度。</p>
+          <h2>简介</h2>
+<p>用C语言编写，用于测试不同排序算法对数据排序的效率和速度。</p>
 <p>程序可以测试冒泡排序、冒泡排序优化、插入排序、插入排序优化、选择排序、选择排序优化、快速排序、双轴快速排序、归并排序和希尔排序等十种排序算法，单位时间为毫秒。</p>
 <p>程序运行时，需要确保程序根目录下存在data文件夹，且该文件夹中含有TestData.md和data.txt两个文件。若不存在该文件夹，程序将无法导出数据。</p>
 <blockquote>
 <p>本项目对于学习和理解排序算法的实现原理，以及对不同算法在不同场景下的优劣进行了较为详细的探究和总结，适合于算法初学者和算法爱好者参考学习。</p>
 </blockquote>
-<h3 id="待测试的排序算法"><a href="#待测试的排序算法" class="headerlink" title="待测试的排序算法"></a>待测试的排序算法</h3><ul>
+<h3 id="待测试的排序算法">待测试的排序算法</h3>
+<ul>
 <li>冒泡排序</li>
 <li>冒泡排序优化</li>
 <li>插入排序</li>
@@ -497,7 +499,8 @@
 <li>归并排序</li>
 <li>希尔排序</li>
 </ul>
-<h3 id="结果保存"><a href="#结果保存" class="headerlink" title="结果保存"></a>结果保存</h3><p>测试数据保存到文件中</p>
+<h3 id="结果保存">结果保存</h3>
+<p>测试数据保存到文件中</p>
 <p>排序结果输出到控制台，并保存到文件中。</p>
 <p>文件内容以Markdown的表格格式保存，方便后续使用。</p>
 <p>文件名：TestData.md、data.txt</p>
@@ -506,216 +509,221 @@
 </ul>
 <p>程序根目录</p>
 <ul>
-<li>data<br>&nbsp;- TestData.md<br>&nbsp;- data.txt</li>
+<li>data
+ - TestData.md
+ - data.txt</li>
 </ul>
-<h2 id="测试用例"><a href="#测试用例" class="headerlink" title="测试用例"></a>测试用例</h2><p>系统生成随机数</p>
-<h2 id="测试环境"><a href="#测试环境" class="headerlink" title="测试环境"></a>测试环境</h2><ul>
+<h2>测试用例</h2>
+<p>系统生成随机数</p>
+<h2>测试环境</h2>
+<ul>
 <li>inscode</li>
 <li>windows 11(本机)</li>
 </ul>
-<h2 id="测试源码"><a href="#测试源码" class="headerlink" title="测试源码"></a>测试源码</h2><pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdbool.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;time.h&gt;
-#include &lt;sys/time.h&gt;
-#include &lt;stdint.h&gt;
+<h2>测试源码</h2>
+<pre><code class="hljs language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdbool.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;time.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;sys/time.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdint.h&gt;</span></span>
 
-#define llong long long
-#define SIZE 100000
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> llong long long</span>
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> SIZE 100000</span>
 
-inline void fprintArray(int *nums, FILE *fp);
+<span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title function_">fprintArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, FILE *fp)</span>;
 
-inline void swap(int *a, int *b);
+<span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span>;
 
-//二分搜索
-int binarySearch(int nums[], int left, int right, int target);
+<span class="hljs-comment">//二分搜索</span>
+<span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span> nums[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> target)</span>;
 
-//冒泡排序
-void bubbleSort(int *nums, int size);
+<span class="hljs-comment">//冒泡排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-//冒泡排序优化
-void bubbleSortPlus(int *nums, int size);
+<span class="hljs-comment">//冒泡排序优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-//插入排序
-void insertSort(int *nums, int size);
+<span class="hljs-comment">//插入排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-//插入排序的二分搜索算法优化
-void insertSortPlus(int *nums, int size);
+<span class="hljs-comment">//插入排序的二分搜索算法优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-//选择排序
-void selectSort(int *nums, int size);
+<span class="hljs-comment">//选择排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-//选择排序双轴优化
-void selectSortPlus(int *nums, int size);
+<span class="hljs-comment">//选择排序双轴优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-// 生成随机数数组
-void random_nums(int *nums);
+<span class="hljs-comment">// 生成随机数数组</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">random_nums</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums)</span>;
 
-//快速排序
-void quickSort(int arr[], int left, int right);
+<span class="hljs-comment">//快速排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span>;
 
-//双轴快速排序
-void dualPivotQuickSort(int arr[], int start, int end);
+<span class="hljs-comment">//双轴快速排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">dualPivotQuickSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span>;
 
-//归并函数
-void merge(int arr[], int left, int mid, int right);
+<span class="hljs-comment">//归并函数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> mid, <span class="hljs-type">int</span> right)</span>;
 
-//归并排序
-void mergeSort(int arr[], int left, int right);
+<span class="hljs-comment">//归并排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">mergeSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span>;
 
-//希尔排序
-void shellSort(int arr[], int size);
+<span class="hljs-comment">//希尔排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">shellSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> size)</span>;
 
-//获取时间（毫秒级）
-llong getCurrentTime();
+<span class="hljs-comment">//获取时间（毫秒级）</span>
+llong <span class="hljs-title function_">getCurrentTime</span><span class="hljs-params">()</span>;
 
-//copy Array
-void copyArray(int *nums, int *arr);
+<span class="hljs-comment">//copy Array</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">copyArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> *arr)</span>;
 
-void Backspace(const char *str);
-int main() &#123;
+<span class="hljs-type">void</span> <span class="hljs-title function_">Backspace</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str)</span>;
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
     llong sec1, sec2;
-    printf(&quot;初始化中请稍后...\n&quot;);
-    int *nums = (int *) malloc(sizeof(int) * SIZE); //定义数组
-    int *array = (int *) malloc(sizeof(int) * SIZE); //定义数组
-   system(&quot;clear&quot;);
-    printf(&quot;\t\t排序算法测试\n\t输入测试组数:\t&quot;);
-    int num;
-    if(scanf(&quot;%d&quot;, &amp;num) == 1) &#123;
-        printf(&quot;开始运行..\t请稍后... \n&quot;);
-    &#125; else &#123;
-        printf(&quot;异常请输入数字!\n&quot;);
-        exit(-1);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;初始化中请稍后...\n&quot;</span>);
+    <span class="hljs-type">int</span> *nums = (<span class="hljs-type">int</span> *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * SIZE); <span class="hljs-comment">//定义数组</span>
+    <span class="hljs-type">int</span> *<span class="hljs-built_in">array</span> = (<span class="hljs-type">int</span> *) <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-type">int</span>) * SIZE); <span class="hljs-comment">//定义数组</span>
+   system(<span class="hljs-string">&quot;clear&quot;</span>);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\t\t排序算法测试\n\t输入测试组数:\t&quot;</span>);
+    <span class="hljs-type">int</span> num;
+    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">scanf</span>(<span class="hljs-string">&quot;%d&quot;</span>, &amp;num) == <span class="hljs-number">1</span>) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;开始运行..\t请稍后... \n&quot;</span>);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;异常请输入数字!\n&quot;</span>);
+        <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
     &#125;
-    FILE *file = fopen(&quot;./data/TestData.md&quot;, &quot;w&quot;);
-    //排序
-    fprintf(file, &quot;# 排序算法测试(单位毫秒)\n\n&quot;);
-    fprintf(file,&quot;| 冒泡排序 | 冒泡排序优化 | 插入排序 | 插入排序优化 | 选择排序 | 选择排序优化 | 快速排序 | 双轴快速排序 | 归并排序 | 希尔排序 |\n&quot;);
-    fprintf(file, &quot;|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n&quot;);
-    FILE *data_num = fopen(&quot;./data/data.txt&quot;, &quot;w&quot;);
-    for (int i = 1; i &lt;= num; ++i) &#123;
-        char str[51];
-        sprintf(str,&quot;初始化第%d组数据中..&quot;,i);
-        printf(&quot;%s&quot;,str);
-        fflush(stdout);
-        fprintf(file, &quot;|&quot;);
-        random_nums(array); //生成随机数组
+    FILE *file = fopen(<span class="hljs-string">&quot;./data/TestData.md&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>);
+    <span class="hljs-comment">//排序</span>
+    <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;# 排序算法测试(单位毫秒)\n\n&quot;</span>);
+    <span class="hljs-built_in">fprintf</span>(file,<span class="hljs-string">&quot;| 冒泡排序 | 冒泡排序优化 | 插入排序 | 插入排序优化 | 选择排序 | 选择排序优化 | 快速排序 | 双轴快速排序 | 归并排序 | 希尔排序 |\n&quot;</span>);
+    <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|\n&quot;</span>);
+    FILE *data_num = fopen(<span class="hljs-string">&quot;./data/data.txt&quot;</span>, <span class="hljs-string">&quot;w&quot;</span>);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= num; ++i) &#123;
+        <span class="hljs-type">char</span> str[<span class="hljs-number">51</span>];
+        <span class="hljs-built_in">sprintf</span>(str,<span class="hljs-string">&quot;初始化第%d组数据中..&quot;</span>,i);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s&quot;</span>,str);
+        fflush(<span class="hljs-built_in">stdout</span>);
+        <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;|&quot;</span>);
+        random_nums(<span class="hljs-built_in">array</span>); <span class="hljs-comment">//生成随机数组</span>
         Backspace(str);
-        printf(&quot;第%d组数据       (数据量: %d)\n&quot;, i,SIZE);
-        for (int test_count = 1; test_count &lt;= 10; ++test_count) &#123;
-            copyArray(nums, array); //复制原始数据
-            switch (test_count) &#123;
-                case 1:
-                    printf(&quot;冒泡排序： &quot;);
-                    fflush(stdout);
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;第%d组数据       (数据量: %d)\n&quot;</span>, i,SIZE);
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> test_count = <span class="hljs-number">1</span>; test_count &lt;= <span class="hljs-number">10</span>; ++test_count) &#123;
+            copyArray(nums, <span class="hljs-built_in">array</span>); <span class="hljs-comment">//复制原始数据</span>
+            <span class="hljs-keyword">switch</span> (test_count) &#123;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;冒泡排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     bubbleSort(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 2:
-                    printf(&quot;冒泡排序优化： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;冒泡排序优化： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     bubbleSortPlus(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 3:
-                    printf(&quot;插入排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;插入排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     insertSort(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 4:
-                    printf(&quot;插入排序优化： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">4</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;插入排序优化： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     insertSortPlus(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 5:
-                    printf(&quot;选择排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">5</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;选择排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     selectSort(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 6:
-                    printf(&quot;选择排序优化： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">6</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;选择排序优化： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     selectSortPlus(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
-                case 7:
-                    printf(&quot;快速排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">7</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;快速排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
-                    quickSort(nums, 0, SIZE - 1);
+                    quickSort(nums, <span class="hljs-number">0</span>, SIZE - <span class="hljs-number">1</span>);
                     sec2 = getCurrentTime();
-                    break;
-                case 8:
-                    printf(&quot;双轴快速排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">8</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;双轴快速排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
-                    dualPivotQuickSort(nums, 0, SIZE - 1);
+                    dualPivotQuickSort(nums, <span class="hljs-number">0</span>, SIZE - <span class="hljs-number">1</span>);
                     sec2 = getCurrentTime();
-                    break;
-                case 9:
-                    printf(&quot;归并排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">9</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;归并排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
-                    mergeSort(nums, 0, SIZE - 1);
+                    mergeSort(nums, <span class="hljs-number">0</span>, SIZE - <span class="hljs-number">1</span>);
                     sec2 = getCurrentTime();
-                    break;
-                case 10:
-                    printf(&quot;希尔排序： &quot;);
-                    fflush(stdout);
+                    <span class="hljs-keyword">break</span>;
+                <span class="hljs-keyword">case</span> <span class="hljs-number">10</span>:
+                    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;希尔排序： &quot;</span>);
+                    fflush(<span class="hljs-built_in">stdout</span>);
                     sec1 = getCurrentTime();
                     shellSort(nums, SIZE);
                     sec2 = getCurrentTime();
-                    break;
+                    <span class="hljs-keyword">break</span>;
             &#125;
-            printf(&quot;%lld毫秒\n&quot;, sec2 - sec1);
-            fprintf(file, &quot;%lld|&quot;, sec2 - sec1);
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%lld毫秒\n&quot;</span>, sec2 - sec1);
+            <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;%lld|&quot;</span>, sec2 - sec1);
         &#125;
-        fprintf(file, &quot;\n&quot;);
+        <span class="hljs-built_in">fprintf</span>(file, <span class="hljs-string">&quot;\n&quot;</span>);
         fflush(file);
-        fprintArray(array, data_num);
+        fprintArray(<span class="hljs-built_in">array</span>, data_num);
     &#125;
     fclose(file);
     fclose(data_num);
-    free(nums);
-    free(array);
-    return 0;
+    <span class="hljs-built_in">free</span>(nums);
+    <span class="hljs-built_in">free</span>(<span class="hljs-built_in">array</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 
-void Backspace(const char *str)&#123;
-    system(&quot;sleep 2&quot;);
-    for(int i = 0;i &lt; strlen(str);i++)
-        printf(&quot;\b&quot;);
-    fflush(stdout);
+<span class="hljs-type">void</span> <span class="hljs-title function_">Backspace</span><span class="hljs-params">(<span class="hljs-type">const</span> <span class="hljs-type">char</span> *str)</span>&#123;
+    system(<span class="hljs-string">&quot;sleep 2&quot;</span>);
+    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>;i &lt; <span class="hljs-built_in">strlen</span>(str);i++)
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\b&quot;</span>);
+    fflush(<span class="hljs-built_in">stdout</span>);
 &#125;
 
-void copyArray(int *nums, int *arr) &#123;
-    for (int i = 0; i &lt; SIZE; ++i) &#123;
+<span class="hljs-type">void</span> <span class="hljs-title function_">copyArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> *arr)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; SIZE; ++i) &#123;
         nums[i] = arr[i];
     &#125;
 &#125;
 
-llong getCurrentTime() &#123;
-    struct timeval tv;
-    gettimeofday(&amp;tv, NULL);    //该函数在sys/time.h头文件中
-    return tv.tv_sec * 1000 + tv.tv_usec / 1000;
+llong <span class="hljs-title function_">getCurrentTime</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">timeval</span> <span class="hljs-title">tv</span>;</span>
+    gettimeofday(&amp;tv, <span class="hljs-literal">NULL</span>);    <span class="hljs-comment">//该函数在sys/time.h头文件中</span>
+    <span class="hljs-keyword">return</span> tv.tv_sec * <span class="hljs-number">1000</span> + tv.tv_usec / <span class="hljs-number">1000</span>;
 &#125;
 
-void shellSort(int arr[], int size) &#123;
-    int gap, i, j, temp;
-    for (gap = size / 2; gap &gt; 0; gap /= 2) &#123;
-        for (i = gap; i &lt; size; i++) &#123;
+<span class="hljs-type">void</span> <span class="hljs-title function_">shellSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-type">int</span> gap, i, j, temp;
+    <span class="hljs-keyword">for</span> (gap = size / <span class="hljs-number">2</span>; gap &gt; <span class="hljs-number">0</span>; gap /= <span class="hljs-number">2</span>) &#123;
+        <span class="hljs-keyword">for</span> (i = gap; i &lt; size; i++) &#123;
             temp = arr[i];
-            for (j = i; j &gt;= gap &amp;&amp; arr[j - gap] &gt; temp; j -= gap) &#123;
+            <span class="hljs-keyword">for</span> (j = i; j &gt;= gap &amp;&amp; arr[j - gap] &gt; temp; j -= gap) &#123;
                 arr[j] = arr[j - gap];
             &#125;
             arr[j] = temp;
@@ -723,214 +731,217 @@ void shellSort(int arr[], int size) &#123;
     &#125;
 &#125;
 
-void merge(int arr[], int left, int mid, int right) &#123;
-    int n1 = mid - left + 1;
-    int n2 = right - mid;
-    int L[n1], R[n2];
-    int i, j, k;
-    for (i = 0; i &lt; n1; i++)
+<span class="hljs-type">void</span> <span class="hljs-title function_">merge</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> mid, <span class="hljs-type">int</span> right)</span> &#123;
+    <span class="hljs-type">int</span> n1 = mid - left + <span class="hljs-number">1</span>;
+    <span class="hljs-type">int</span> n2 = right - mid;
+    <span class="hljs-type">int</span> L[n1], R[n2];
+    <span class="hljs-type">int</span> i, j, k;
+    <span class="hljs-keyword">for</span> (i = <span class="hljs-number">0</span>; i &lt; n1; i++)
         L[i] = arr[left + i];
-    for (j = 0; j &lt; n2; j++)
-        R[j] = arr[mid + 1 + j];
-    i = 0;
-    j = 0;
+    <span class="hljs-keyword">for</span> (j = <span class="hljs-number">0</span>; j &lt; n2; j++)
+        R[j] = arr[mid + <span class="hljs-number">1</span> + j];
+    i = <span class="hljs-number">0</span>;
+    j = <span class="hljs-number">0</span>;
     k = left;
-    while (i &lt; n1 &amp;&amp; j &lt; n2) &#123;
-        if (L[i] &lt;= R[j]) &#123;
+    <span class="hljs-keyword">while</span> (i &lt; n1 &amp;&amp; j &lt; n2) &#123;
+        <span class="hljs-keyword">if</span> (L[i] &lt;= R[j]) &#123;
             arr[k] = L[i];
             i++;
-        &#125; else &#123;
+        &#125; <span class="hljs-keyword">else</span> &#123;
             arr[k] = R[j];
             j++;
         &#125;
         k++;
     &#125;
-    while (i &lt; n1) &#123;
+    <span class="hljs-keyword">while</span> (i &lt; n1) &#123;
         arr[k] = L[i];
         i++;
         k++;
     &#125;
-    while (j &lt; n2) &#123;
+    <span class="hljs-keyword">while</span> (j &lt; n2) &#123;
         arr[k] = R[j];
         j++;
         k++;
     &#125;
 &#125;
 
-void mergeSort(int arr[], int left, int right) &#123;
-    if (left &lt; right) &#123;
-        int mid = left + (right - left) / 2;
+<span class="hljs-type">void</span> <span class="hljs-title function_">mergeSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;
+    <span class="hljs-keyword">if</span> (left &lt; right) &#123;
+        <span class="hljs-type">int</span> mid = left + (right - left) / <span class="hljs-number">2</span>;
         mergeSort(arr, left, mid);
-        mergeSort(arr, mid + 1, right);
+        mergeSort(arr, mid + <span class="hljs-number">1</span>, right);
         merge(arr, left, mid, right);
     &#125;
 &#125;
 
-void quickSort(int arr[], int left, int right) &#123;
-    if (left &gt;= right) return;
-    int l = left, r = right;
-    int base = arr[left];
-    while (l &lt; r) &#123;
-        while (l &lt; r &amp;&amp; arr[r] &gt;= base) --r;
-        while (l &lt; r &amp;&amp; arr[l] &lt;= base) ++l;
+<span class="hljs-type">void</span> <span class="hljs-title function_">quickSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span> &#123;
+    <span class="hljs-keyword">if</span> (left &gt;= right) <span class="hljs-keyword">return</span>;
+    <span class="hljs-type">int</span> l = left, r = right;
+    <span class="hljs-type">int</span> base = arr[left];
+    <span class="hljs-keyword">while</span> (l &lt; r) &#123;
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; arr[r] &gt;= base) --r;
+        <span class="hljs-keyword">while</span> (l &lt; r &amp;&amp; arr[l] &lt;= base) ++l;
         swap(&amp;arr[l], &amp;arr[r]);
     &#125;
     arr[left] = arr[l];
     arr[l] = base;
-    quickSort(arr, left, l - 1);
-    quickSort(arr, l + 1, right);
+    quickSort(arr, left, l - <span class="hljs-number">1</span>);
+    quickSort(arr, l + <span class="hljs-number">1</span>, right);
 &#125;
 
-void dualPivotQuickSort(int arr[], int start, int end) &#123;
-    if (start &gt;= end) return;     //首先结束条件还是跟之前快速排序一样，因为不可能无限制地分下去，分到只剩一个或零个元素时该停止了
-    if (arr[start] &gt; arr[end])    //先把首尾两个基准进行比较，看看谁更大
-        swap(&amp;arr[start], &amp;arr[end]);    //把大的换到后面去
-    int pivot1 = arr[start], pivot2 = arr[end];    //取出两个基准元素
-    int left = start, right = end, mid = left + 1;   //因为分了三块区域，此时需要三个指针来存放
-    while (mid &lt; right) &#123;
-        if (arr[mid] &lt; pivot1)     //如果mid所指向的元素小于基准1，说明需要放到最左边
-            swap(&amp;arr[++left], &amp;arr[mid++]);   //直接跟最左边交换，然后left和mid都向前移动
-        else if (arr[mid] &lt;= pivot2) &#123;    //在如果不小于基准1但是小于基准2，说明在中间
-            mid++;   //因为mid本身就是在中间的，所以说只需要向前缩小范围就行
-        &#125; else &#123;    //最后就是在右边的情况了
-            while (arr[--right] &gt; pivot2 &amp;&amp; right &gt; mid);
-            if (mid &gt;= right) break;
+<span class="hljs-type">void</span> <span class="hljs-title function_">dualPivotQuickSort</span><span class="hljs-params">(<span class="hljs-type">int</span> arr[], <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> &#123;
+    <span class="hljs-keyword">if</span> (start &gt;= end) <span class="hljs-keyword">return</span>;     <span class="hljs-comment">//首先结束条件还是跟之前快速排序一样，因为不可能无限制地分下去，分到只剩一个或零个元素时该停止了</span>
+    <span class="hljs-keyword">if</span> (arr[start] &gt; arr[end])    <span class="hljs-comment">//先把首尾两个基准进行比较，看看谁更大</span>
+        swap(&amp;arr[start], &amp;arr[end]);    <span class="hljs-comment">//把大的换到后面去</span>
+    <span class="hljs-type">int</span> pivot1 = arr[start], pivot2 = arr[end];    <span class="hljs-comment">//取出两个基准元素</span>
+    <span class="hljs-type">int</span> left = start, right = end, mid = left + <span class="hljs-number">1</span>;   <span class="hljs-comment">//因为分了三块区域，此时需要三个指针来存放</span>
+    <span class="hljs-keyword">while</span> (mid &lt; right) &#123;
+        <span class="hljs-keyword">if</span> (arr[mid] &lt; pivot1)     <span class="hljs-comment">//如果mid所指向的元素小于基准1，说明需要放到最左边</span>
+            swap(&amp;arr[++left], &amp;arr[mid++]);   <span class="hljs-comment">//直接跟最左边交换，然后left和mid都向前移动</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (arr[mid] &lt;= pivot2) &#123;    <span class="hljs-comment">//在如果不小于基准1但是小于基准2，说明在中间</span>
+            mid++;   <span class="hljs-comment">//因为mid本身就是在中间的，所以说只需要向前缩小范围就行</span>
+        &#125; <span class="hljs-keyword">else</span> &#123;    <span class="hljs-comment">//最后就是在右边的情况了</span>
+            <span class="hljs-keyword">while</span> (arr[--right] &gt; pivot2 &amp;&amp; right &gt; mid);
+            <span class="hljs-keyword">if</span> (mid &gt;= right) <span class="hljs-keyword">break</span>;
             swap(&amp;arr[mid], &amp;arr[right]);
         &#125;
     &#125;
-    swap(&amp;arr[start], &amp;arr[left]);    //最后基准1跟left交换位置，正好左边的全部比基准1小
-    swap(&amp;arr[end], &amp;arr[right]);     //最后基准2跟right交换位置，正好右边的全部比基准2大
-    dualPivotQuickSort(arr, start, left - 1);    //继续对三个区域再次进行双轴快速排序
-    dualPivotQuickSort(arr, left + 1, right - 1);
-    dualPivotQuickSort(arr, right + 1, end);
+    swap(&amp;arr[start], &amp;arr[left]);    <span class="hljs-comment">//最后基准1跟left交换位置，正好左边的全部比基准1小</span>
+    swap(&amp;arr[end], &amp;arr[right]);     <span class="hljs-comment">//最后基准2跟right交换位置，正好右边的全部比基准2大</span>
+    dualPivotQuickSort(arr, start, left - <span class="hljs-number">1</span>);    <span class="hljs-comment">//继续对三个区域再次进行双轴快速排序</span>
+    dualPivotQuickSort(arr, left + <span class="hljs-number">1</span>, right - <span class="hljs-number">1</span>);
+    dualPivotQuickSort(arr, right + <span class="hljs-number">1</span>, end);
 &#125;
 
-void selectSortPlus(int *nums, int size) &#123;
-    int left = 0, right = size - 1;   //相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小
-    while (left &lt; right) &#123;
-        int min = left, max = right;
-        for (int i = left; i &lt;= right; i++) &#123;
-            if (nums[i] &lt; nums[min]) min = i;   //同时找最小的和最大的
-            if (nums[i] &gt; nums[max]) max = i;
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, right = size - <span class="hljs-number">1</span>;   <span class="hljs-comment">//相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小</span>
+    <span class="hljs-keyword">while</span> (left &lt; right) &#123;
+        <span class="hljs-type">int</span> min = left, max = right;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = left; i &lt;= right; i++) &#123;
+            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[min]) min = i;   <span class="hljs-comment">//同时找最小的和最大的</span>
+            <span class="hljs-keyword">if</span> (nums[i] &gt; nums[max]) max = i;
         &#125;
-        swap(&amp;nums[max], &amp;nums[right]);   //这里先把大的换到右边
-        //注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下
-        //如果遍历完发现最小的就是当前右边排序的第一个元素
-        //此时因为已经被换出来了，所以说需要将min改到换出来的那个位置
-        if (min == right) min = max;
-        swap(&amp;nums[min], &amp;nums[left]);   //接着把小的换到左边
-        left++;    //这一轮完事之后，缩小范围
+        swap(&amp;nums[max], &amp;nums[right]);   <span class="hljs-comment">//这里先把大的换到右边</span>
+        <span class="hljs-comment">//注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下</span>
+        <span class="hljs-comment">//如果遍历完发现最小的就是当前右边排序的第一个元素</span>
+        <span class="hljs-comment">//此时因为已经被换出来了，所以说需要将min改到换出来的那个位置</span>
+        <span class="hljs-keyword">if</span> (min == right) min = max;
+        swap(&amp;nums[min], &amp;nums[left]);   <span class="hljs-comment">//接着把小的换到左边</span>
+        left++;    <span class="hljs-comment">//这一轮完事之后，缩小范围</span>
         right--;
     &#125;
 &#125;
 
-void selectSort(int *nums, int size) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123;
-        int copy = i;
-        for (int j = i + 1; j &lt; size; ++j)   //挨个遍历剩余的元素，并更新
-            if (nums[copy] &gt; nums[j]) copy = j;
-        int tmp = nums[i];    //找出元素之后，开始交换
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size - <span class="hljs-number">1</span>; ++i) &#123;
+        <span class="hljs-type">int</span> copy = i;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; size; ++j)   <span class="hljs-comment">//挨个遍历剩余的元素，并更新</span>
+            <span class="hljs-keyword">if</span> (nums[copy] &gt; nums[j]) copy = j;
+        <span class="hljs-type">int</span> tmp = nums[i];    <span class="hljs-comment">//找出元素之后，开始交换</span>
         nums[i] = nums[copy];
         nums[copy] = tmp;
     &#125;
 &#125;
 
-void insertSortPlus(int *nums, int size) &#123; //二分搜索算法来查找对应的插入位置
-    for (int i = 1; i &lt; size; ++i) &#123;
-        int tmp = nums[i];
-        int j = binarySearch(nums, 0, i - 1, tmp);   //由二分搜索来确定插入位置
-        for (int k = i; k &gt; j; k--) nums[k] = nums[k - 1];   //依然是将后面的元素后移
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123; <span class="hljs-comment">//二分搜索算法来查找对应的插入位置</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; size; ++i) &#123;
+        <span class="hljs-type">int</span> tmp = nums[i];
+        <span class="hljs-type">int</span> j = binarySearch(nums, <span class="hljs-number">0</span>, i - <span class="hljs-number">1</span>, tmp);   <span class="hljs-comment">//由二分搜索来确定插入位置</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &gt; j; k--) nums[k] = nums[k - <span class="hljs-number">1</span>];   <span class="hljs-comment">//依然是将后面的元素后移</span>
         nums[j] = tmp;
     &#125;
 &#125;
 
-void insertSort(int *nums, int size) &#123;
-    for (int i = 1; i &lt; size; ++i) &#123; //左牌堆默认有序
-        int j = i, tmp = nums[i];
-        while (j &gt; 0 &amp;&amp; nums[j - 1] &gt; tmp) &#123;
-            nums[j] = nums[j - 1]; //不断进行后移操作，把位置腾出来
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; size; ++i) &#123; <span class="hljs-comment">//左牌堆默认有序</span>
+        <span class="hljs-type">int</span> j = i, tmp = nums[i];
+        <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; nums[j - <span class="hljs-number">1</span>] &gt; tmp) &#123;
+            nums[j] = nums[j - <span class="hljs-number">1</span>]; <span class="hljs-comment">//不断进行后移操作，把位置腾出来</span>
             --j;
         &#125;
         nums[j] = tmp;
     &#125;
 &#125;
 
-void bubbleSortPlus(int *nums, int size) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123; //只需要size-1次即可
-        bool flag = true; //这里使用一个标记，默认为`true`表示数组是有序的
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (nums[j] &gt; nums[j + 1]) &#123;
-                swap(&amp;nums[j], &amp;nums[j + 1]);
-                flag = false; //如果发生交换，说明不是有序的，把标记变成`false`
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size - <span class="hljs-number">1</span>; ++i) &#123; <span class="hljs-comment">//只需要size-1次即可</span>
+        <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>; <span class="hljs-comment">//这里使用一个标记，默认为`true`表示数组是有序的</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; size - i - <span class="hljs-number">1</span>; ++j) &#123;
+            <span class="hljs-keyword">if</span> (nums[j] &gt; nums[j + <span class="hljs-number">1</span>]) &#123;
+                swap(&amp;nums[j], &amp;nums[j + <span class="hljs-number">1</span>]);
+                flag = <span class="hljs-literal">false</span>; <span class="hljs-comment">//如果发生交换，说明不是有序的，把标记变成`false`</span>
             &#125;
         &#125;
-        if (flag) break;//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出
+        <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">break</span>;<span class="hljs-comment">//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出</span>
     &#125;
 &#125;
 
-void bubbleSort(int *nums, int size) &#123;
-    for (int i = 0; i &lt; size; ++i) &#123;
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (nums[j] &gt; nums[j + 1]) swap(&amp;nums[j], &amp;nums[j + 1]);
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++i) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; size - i - <span class="hljs-number">1</span>; ++j) &#123;
+            <span class="hljs-keyword">if</span> (nums[j] &gt; nums[j + <span class="hljs-number">1</span>]) swap(&amp;nums[j], &amp;nums[j + <span class="hljs-number">1</span>]);
         &#125;
     &#125;
 &#125;
 
-int binarySearch(int nums[], int left, int right, int target) &#123;
-    int mid;
-    while (left &lt;= right) &#123;
-        mid = (left + right) &gt;&gt; 1;
-        if (target == nums[mid]) return mid + 1;   //如果插入元素跟中间元素相等，直接返回后一位
-        else if (target &lt; nums[mid]) &#123;
-            right = mid - 1;   //范围划到左边
-        &#125; else left = mid + 1;   //范围划到右边
+<span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span> nums[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> target)</span> &#123;
+    <span class="hljs-type">int</span> mid;
+    <span class="hljs-keyword">while</span> (left &lt;= right) &#123;
+        mid = (left + right) &gt;&gt; <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (target == nums[mid]) <span class="hljs-keyword">return</span> mid + <span class="hljs-number">1</span>;   <span class="hljs-comment">//如果插入元素跟中间元素相等，直接返回后一位</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (target &lt; nums[mid]) &#123;
+            right = mid - <span class="hljs-number">1</span>;   <span class="hljs-comment">//范围划到左边</span>
+        &#125; <span class="hljs-keyword">else</span> left = mid + <span class="hljs-number">1</span>;   <span class="hljs-comment">//范围划到右边</span>
     &#125;
-    return left;   //不断划分范围，left也就是待插入位置了
+    <span class="hljs-keyword">return</span> left;   <span class="hljs-comment">//不断划分范围，left也就是待插入位置了</span>
 &#125;
 
-inline void swap(int *a, int *b) &#123;
-    int tmp = *a;
+<span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span> &#123;
+    <span class="hljs-type">int</span> tmp = *a;
     *a = *b;
     *b = tmp;
 &#125;
 
-inline void fprintArray(int *nums, FILE *fp) &#123;
-    for (int i = 0; i &lt; SIZE; ++i) &#123;
-        fprintf(fp, &quot;%d,&quot;, nums[i]);
+<span class="hljs-keyword">inline</span> <span class="hljs-type">void</span> <span class="hljs-title function_">fprintArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, FILE *fp)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; SIZE; ++i) &#123;
+        <span class="hljs-built_in">fprintf</span>(fp, <span class="hljs-string">&quot;%d,&quot;</span>, nums[i]);
     &#125;
-    fputc(&#39;\n&#39;, fp);
+    fputc(<span class="hljs-string">&#x27;\n&#x27;</span>, fp);
     fflush(fp);
 &#125;
 
-void random_nums(int *nums) &#123;
-    // 设置种子，保证每次运行程序生成的随机数都不同
-    srand(time(NULL) + rand());
-    for (int i = 0; i &lt; SIZE; i++) &#123;
+<span class="hljs-type">void</span> <span class="hljs-title function_">random_nums</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums)</span> &#123;
+    <span class="hljs-comment">// 设置种子，保证每次运行程序生成的随机数都不同</span>
+    srand(time(<span class="hljs-literal">NULL</span>) + rand());
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; SIZE; i++) &#123;
         nums[i] = rand();
     &#125;
 &#125;
 </code></pre>
-<h3 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h3><pre><code class="makefile">all: main
+<h3 id="Makefile">Makefile</h3>
+<pre><code class="hljs language-makefile"><span class="hljs-section">all: main</span>
 
 CC = clang
-override CFLAGS += -g -Wno-everything -pthread -lm
+<span class="hljs-keyword">override</span> CFLAGS += -g -Wno-everything -pthread -lm
 
-SRCS = $(shell find . -name &#39;.ccls-cache&#39; -type d -prune -o -type f -name &#39;*.c&#39; -print)
-HEADERS = $(shell find . -name &#39;.ccls-cache&#39; -type d -prune -o -type f -name &#39;*.h&#39; -print)
+SRCS = <span class="hljs-variable">$(<span class="hljs-built_in">shell</span> find . -name &#x27;.ccls-cache&#x27; -type d -prune -o -type f -name &#x27;*.c&#x27; -print)</span>
+HEADERS = <span class="hljs-variable">$(<span class="hljs-built_in">shell</span> find . -name &#x27;.ccls-cache&#x27; -type d -prune -o -type f -name &#x27;*.h&#x27; -print)</span>
 
-main: $(SRCS) $(HEADERS)
-    $(CC) $(CFLAGS) $(SRCS) -o &quot;$@&quot;
+<span class="hljs-section">main: <span class="hljs-variable">$(SRCS)</span> <span class="hljs-variable">$(HEADERS)</span></span>
+    <span class="hljs-variable">$(CC)</span> <span class="hljs-variable">$(CFLAGS)</span> <span class="hljs-variable">$(SRCS)</span> -o <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span>
 
-main-debug: $(SRCS) $(HEADERS)
-    $(CC) $(CFLAGS) -O0 $(SRCS) -o &quot;$@&quot;
+<span class="hljs-section">main-debug: <span class="hljs-variable">$(SRCS)</span> <span class="hljs-variable">$(HEADERS)</span></span>
+    <span class="hljs-variable">$(CC)</span> <span class="hljs-variable">$(CFLAGS)</span> -O0 <span class="hljs-variable">$(SRCS)</span> -o <span class="hljs-string">&quot;<span class="hljs-variable">$@</span>&quot;</span>
 
-clean:
+<span class="hljs-section">clean:</span>
     rm -f main main-debug
 </code></pre>
-<h2 id="测试结果"><a href="#测试结果" class="headerlink" title="测试结果"></a>测试结果</h2><p><img src="https://z1.ax1x.com/2023/10/04/pPOctX9.png" alt="结果"></p>
-<h3 id="杂项"><a href="#杂项" class="headerlink" title="杂项"></a>杂项</h3><p>inscode在线运行<br>地址：<a target="_blank" rel="noopener" href="https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test">https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test</a></p>
+<h2>测试结果</h2>
+<p><img src="https://z1.ax1x.com/2023/10/04/pPOctX9.png" alt=""></p>
+<h3 id="杂项">杂项</h3>
+<p>inscode在线运行
+地址：<a target="_blank" rel="noopener" href="https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test">https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test</a></p>
 <iframe width="100%" height="500px" src="https://inscode.csdn.net/@stazxr/C-Sorting-algorithm-test/embed" scrolling="no" frameborder="no" allowfullscreen="" sandbox="allow-forms allow-pointer-lock allow-popups allow-same-origin allow-scripts allow-modals"></iframe>
-
 <p>源码克隆：<a target="_blank" rel="noopener" href="https://gitcode.net/m0_44950849/C.git">https://gitcode.net/m0_44950849/C.git</a></p>
 
         </div>

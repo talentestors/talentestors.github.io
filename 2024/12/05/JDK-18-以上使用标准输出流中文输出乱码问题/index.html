@@ -479,48 +479,53 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>起因是 tomcat 调用servlet输出的<code>System.out.println</code>(也就是所说的控制台输出流)中文乱码，但是其他输出没有受到影响。</p>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>运行环境：JDK 21, Tomcat 10</p>
+          <h2>问题描述</h2>
+<p>起因是 tomcat 调用servlet输出的<code>System.out.println</code>(也就是所说的控制台输出流)中文乱码，但是其他输出没有受到影响。</p>
+<h2>问题分析</h2>
+<p>运行环境：JDK 21, Tomcat 10</p>
 <p>我所有的代码都是UTF-8编码的，而且在IDEA中设置了UTF-8编码。</p>
 <p>并且Tomcat也配置了<code>-Dfile.encoding=UTF-8</code>选项</p>
 <p>通过查看<code>System.out</code>的编码方式，发现是<code>GBK</code>，但是在控制台的编码方式是<code>UTF-8</code>。</p>
-<pre><code class="java">System.out.println(System.out.charset());   // System.out.charset()方法自jdk18起
-// output: GBK
+<pre><code class="hljs language-java">System.out.println(System.out.charset());   <span class="hljs-comment">// System.out.charset()方法自jdk18起</span>
+<span class="hljs-comment">// output: GBK</span>
 </code></pre>
 <p>使用jdk17的时候没有问题，但是使用jdk21就会出现乱码问题。</p>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>参考<a target="_blank" rel="noopener" href="https://openjdk.org/jeps/400">JEP 400: UTF-8 by Default (openjdk.org)</a>通过调用getProperty方法获取默认字符集</p>
-<pre><code class="java">System.out.println(&quot;Java Runtime version &quot; + System.getProperty(&quot;java.runtime.version&quot;));
-System.out.println(&quot;----------------------------------------------------------&quot;);
-//全局默认编码 JDK21是UTF
-System.out.println(&quot;Charset.defaultCharset()                    = &quot; + Charset.defaultCharset());
-//默认文件的编码，这个应该是字节码文件
-System.out.println(&quot;System.getProperty(\&quot;file.encoding\&quot;)       = &quot; + Charset.defaultCharset().displayName()); 
-//获取的是本地的字符集编码，中文windows系统应该是GBK
-System.out.println(&quot;System.getProperty(\&quot;native.encoding\&quot;)     = &quot; + System.getProperty(&quot;native.encoding&quot;));
-System.out.println(&quot;System.getProperty(\&quot;sun.jnu.encoding\&quot;)    = &quot; + System.getProperty(&quot;sun.jnu.encoding&quot;));
-//这个是输出流的默认字符集编码
-System.out.println(&quot;System.getProperty(\&quot;sun.stdout.encoding\&quot;) = &quot; + System.getProperty(&quot;sun.stdout.encoding&quot;));
-//这个是错误流的默认编码
-System.out.println(&quot;System.getProperty(\&quot;sun.stderr.encoding\&quot;) = &quot; + System.getProperty(&quot;sun.stderr.encoding&quot;));
-//console默认编码
-System.out.println(&quot;System.console().charset()                  = &quot; + System.console().charset());
-//当前输出流的编码
-System.out.println(&quot;System.out.charset()                        = &quot; + System.out.charset());
-System.out.println(&quot;----------------------------------------------------------&quot;);
+<h2>解决方案</h2>
+<p>参考<a target="_blank" rel="noopener" href="https://openjdk.org/jeps/400">JEP 400: UTF-8 by Default (openjdk.org)</a>通过调用getProperty方法获取默认字符集</p>
+<pre><code class="hljs language-java">System.out.println(<span class="hljs-string">&quot;Java Runtime version &quot;</span> + System.getProperty(<span class="hljs-string">&quot;java.runtime.version&quot;</span>));
+System.out.println(<span class="hljs-string">&quot;----------------------------------------------------------&quot;</span>);
+<span class="hljs-comment">//全局默认编码 JDK21是UTF</span>
+System.out.println(<span class="hljs-string">&quot;Charset.defaultCharset()                    = &quot;</span> + Charset.defaultCharset());
+<span class="hljs-comment">//默认文件的编码，这个应该是字节码文件</span>
+System.out.println(<span class="hljs-string">&quot;System.getProperty(\&quot;file.encoding\&quot;)       = &quot;</span> + Charset.defaultCharset().displayName()); 
+<span class="hljs-comment">//获取的是本地的字符集编码，中文windows系统应该是GBK</span>
+System.out.println(<span class="hljs-string">&quot;System.getProperty(\&quot;native.encoding\&quot;)     = &quot;</span> + System.getProperty(<span class="hljs-string">&quot;native.encoding&quot;</span>));
+System.out.println(<span class="hljs-string">&quot;System.getProperty(\&quot;sun.jnu.encoding\&quot;)    = &quot;</span> + System.getProperty(<span class="hljs-string">&quot;sun.jnu.encoding&quot;</span>));
+<span class="hljs-comment">//这个是输出流的默认字符集编码</span>
+System.out.println(<span class="hljs-string">&quot;System.getProperty(\&quot;sun.stdout.encoding\&quot;) = &quot;</span> + System.getProperty(<span class="hljs-string">&quot;sun.stdout.encoding&quot;</span>));
+<span class="hljs-comment">//这个是错误流的默认编码</span>
+System.out.println(<span class="hljs-string">&quot;System.getProperty(\&quot;sun.stderr.encoding\&quot;) = &quot;</span> + System.getProperty(<span class="hljs-string">&quot;sun.stderr.encoding&quot;</span>));
+<span class="hljs-comment">//console默认编码</span>
+System.out.println(<span class="hljs-string">&quot;System.console().charset()                  = &quot;</span> + System.console().charset());
+<span class="hljs-comment">//当前输出流的编码</span>
+System.out.println(<span class="hljs-string">&quot;System.out.charset()                        = &quot;</span> + System.out.charset());
+System.out.println(<span class="hljs-string">&quot;----------------------------------------------------------&quot;</span>);
 </code></pre>
 <p>在一般的情况下<code>System.getProperty(&quot;sun.stdout.encoding&quot;)</code>和<code>System.getProperty(&quot;sun.stderr.encoding&quot;)</code>的值是<code>UTF-8</code>，但是在Tomcat中是<code>null</code>。</p>
 <p>tomcat 10 不会指定输出流的字符编码</p>
 <p>所以我们需要在启动tomcat的时候指定输出流的字符编码</p>
 <p>是在启动配置中的 VM options 添加参数：</p>
-<pre><code class="shell">-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
+<pre><code class="hljs language-shell">-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8
 </code></pre>
 <p>这种方法只能解决所设置程序的编码问题，若需解决 Javadoc 的乱码，则需在-D前添加-J。</p>
-<pre><code class="shell">-J-Dstdout.encoding=UTF-8 -J-Dstderr.encoding=UTF-8
+<pre><code class="hljs language-shell">-J-Dstdout.encoding=UTF-8 -J-Dstderr.encoding=UTF-8
 </code></pre>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>乱码问题只出现在jdk18及以上的版本，因为<a target="_blank" rel="noopener" href="https://openjdk.org/jeps/400">Java 18 中将默认编码改为了 UTF-8</a>，但没有改动System.out和System.err的编码。</p>
+<h2>总结</h2>
+<p>乱码问题只出现在jdk18及以上的版本，因为<a target="_blank" rel="noopener" href="https://openjdk.org/jeps/400">Java 18 中将默认编码改为了 UTF-8</a>，但没有改动System.out和System.err的编码。</p>
 <p>所以使用jdk17没有问题，但是在使用jdk21就会出现乱码问题。</p>
 <p>只要在 VM options 中添加 <code>-Dstdout.encoding=UTF-8 -Dstderr.encoding=UTF-8</code> 即可设置输出流的编码。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<h2>参考</h2>
+<ul>
 <li><a target="_blank" rel="noopener" href="https://openjdk.org/jeps/400">JEP 400: UTF-8 by Default (openjdk.org)</a></li>
 <li><a target="_blank" rel="noopener" href="https://openjdk.java.net/jeps/400">https://openjdk.java.net/jeps/400</a></li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/641993780">解决 Java 18 以上 IDEA 中文输出乱码问题（知乎）</a></li>
