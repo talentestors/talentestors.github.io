@@ -479,246 +479,249 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="C语言链表"><a href="#C语言链表" class="headerlink" title="C语言链表"></a>C语言链表</h2><blockquote>
+          <h2>C语言链表</h2>
+<blockquote>
 <p><em>代码实现</em></p>
 </blockquote>
-<pre><code class="c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+<pre><code class="hljs language-c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
 
-typedef int E; /*It stands for shaping element*/
+<span class="hljs-keyword">typedef</span> <span class="hljs-type">int</span> E; <span class="hljs-comment">/*It stands for shaping element*/</span>
 
-struct ListNode &#123;
+<span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> &#123;</span>
     E element;
-    struct ListNode * next; /*保存下一个节点的地址*/
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> * <span class="hljs-title">next</span>;</span> <span class="hljs-comment">/*保存下一个节点的地址*/</span>
 &#125;;
 
-typedef struct ListNode * Node; /*将“ListNode *&quot;命名为”Node“*/
+<span class="hljs-keyword">typedef</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> * <span class="hljs-title">Node</span>;</span> <span class="hljs-comment">/*将“ListNode *&quot;命名为”Node“*/</span>
 
-/**
+<span class="hljs-comment">/**
  * 初始化链表
  * @param node 传入头结点指针
- */
-void  initList(Node node)&#123;
-    node-&gt;next = NULL;
+ */</span>
+<span class="hljs-type">void</span>  <span class="hljs-title function_">initList</span><span class="hljs-params">(Node node)</span>&#123;
+    node-&gt;next = <span class="hljs-literal">NULL</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 计算链表的节点数不计头结点
  * @param head 传入头结点指针
  * @return 返回节点数目
- */
-int sizeList(Node head)&#123;
-    int i = -1;
-    while (head) &#123;
+ */</span>
+<span class="hljs-type">int</span> <span class="hljs-title function_">sizeList</span><span class="hljs-params">(Node head)</span>&#123;
+    <span class="hljs-type">int</span> i = <span class="hljs-number">-1</span>;
+    <span class="hljs-keyword">while</span> (head) &#123;
         head = head-&gt;next;
         i++;
     &#125;
-    return i;
+    <span class="hljs-keyword">return</span> i;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 随机位置插入节点
  * @param head 传入头结点指针
  * @param element 传入新节点的元素
  * @param index 传入插入位置
  * @return 位置不合法或插入失败返回0，成功返回1
- */
-_Bool insertList(Node head,E element,int index)&#123;
-    if (index &lt; 1) return 0;
-    while (--index) &#123;
+ */</span>
+<span class="hljs-type">_Bool</span> <span class="hljs-title function_">insertList</span><span class="hljs-params">(Node head,E element,<span class="hljs-type">int</span> index)</span>&#123;
+    <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span> (--index) &#123;
         head = head-&gt;next;
-        if (head == NULL) return 0;
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
-    Node node = malloc(sizeof(struct ListNode));
-    if(node == NULL) return 0;   //创建一个新的结点，如果内存空间申请失败返回0
+    Node node = <span class="hljs-built_in">malloc</span>(<span class="hljs-keyword">sizeof</span>(<span class="hljs-keyword">struct</span> ListNode));
+    <span class="hljs-keyword">if</span>(node == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;   <span class="hljs-comment">//创建一个新的结点，如果内存空间申请失败返回0</span>
     node-&gt;element = element;
     node-&gt;next = head-&gt;next;
-    head-&gt;next = node;   //接着将前驱结点指向新的这个结点
-    return 1;
+    head-&gt;next = node;   <span class="hljs-comment">//接着将前驱结点指向新的这个结点</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 头插：在头结点后插入新节点
  * @param head 传入头结点指针
  * @param data 传入新节点的元素
  * @return 插入失败返回0，成功返回1
- */
-_Bool InsertToHead(Node head, E data) &#123;
-    if (insertList(head, data, 1)) return 1;
-    return 0;
+ */</span>
+<span class="hljs-type">_Bool</span> <span class="hljs-title function_">InsertToHead</span><span class="hljs-params">(Node head, E data)</span> &#123;
+    <span class="hljs-keyword">if</span> (insertList(head, data, <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 尾插：在尾结点后插入新节点
  * @param head 传入头结点指针
  * @param data 传入新节点的元素
  * @return 插入失败返回0，成功返回1
- */
-_Bool InsertToTail(Node head, int data) &#123;
-    if (insertList(head, data, sizeList(head) + 1)) return 1;
-    return 0;
+ */</span>
+<span class="hljs-type">_Bool</span> <span class="hljs-title function_">InsertToTail</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> data)</span> &#123;
+    <span class="hljs-keyword">if</span> (insertList(head, data, sizeList(head) + <span class="hljs-number">1</span>)) <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 删除指定节点
  * @param head 传入头结点指针
  * @param index 传入删除节点的位置
  * @return 位置不合法或结点异常返回0，成功返回1
- */
-_Bool deleteList(Node head, int index)&#123;
-    if(index &lt; 1) return 0;   //大体和上面是一样的
-    while (--index) &#123;
+ */</span>
+<span class="hljs-type">_Bool</span> <span class="hljs-title function_">deleteList</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index)</span>&#123;
+    <span class="hljs-keyword">if</span>(index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;   <span class="hljs-comment">//大体和上面是一样的</span>
+    <span class="hljs-keyword">while</span> (--index) &#123;
         head = head-&gt;next;
-        if(head == NULL) return 0;
+        <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
-    if(head-&gt;next == NULL) return 0;
+    <span class="hljs-keyword">if</span>(head-&gt;next == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 
     Node tmp = head-&gt;next;
     head-&gt;next = head-&gt;next-&gt;next;
-    free(tmp);
-    return 1;
+    <span class="hljs-built_in">free</span>(tmp);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 修改元素
  * @param head 传入头结点指针
  * @param index 传入修改节点的位置
  * @param change 元素的新值
  * @return 位置不合法或结点异常返回0，成功返回1
- */
-_Bool SetElement(Node head, int index, E change) &#123;
-    if (index &lt; 1) &#123;
-        printf(&quot;no exist!\n&quot;);
-        return 0;
+ */</span>
+<span class="hljs-type">_Bool</span> <span class="hljs-title function_">SetElement</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index, E change)</span> &#123;
+    <span class="hljs-keyword">if</span> (index &lt; <span class="hljs-number">1</span>) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;no exist!\n&quot;</span>);
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
     &#125;
-    while (--index) &#123;
+    <span class="hljs-keyword">while</span> (--index) &#123;
         head = head-&gt;next;
-        if (head == NULL) &#123;
-            printf(&quot;no exist!\n&quot;);
-            return 0;
+        <span class="hljs-keyword">if</span> (head == <span class="hljs-literal">NULL</span>) &#123;
+            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;no exist!\n&quot;</span>);
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
         &#125;
     &#125;
     head-&gt;next-&gt;element = change;
-    return 1;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 获取元素的值
  * @param head 传入头结点指针
  * @param index 传入获取节点元素的位置
  * @return 返回这个元素
- */
-E * getList(Node head, int index)&#123;
-    if(index &lt; 1) return 0;
-    do &#123;
+ */</span>
+E * <span class="hljs-title function_">getList</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> index)</span>&#123;
+    <span class="hljs-keyword">if</span>(index &lt; <span class="hljs-number">1</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">do</span> &#123;
         head = head-&gt;next;
-        if(head == NULL) return 0;
-    &#125; while (--index);
-    return &amp;head-&gt;element;
+        <span class="hljs-keyword">if</span>(head == <span class="hljs-literal">NULL</span>) <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    &#125; <span class="hljs-keyword">while</span> (--index);
+    <span class="hljs-keyword">return</span> &amp;head-&gt;element;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 查找元素，获取前驱节点
  * @param head 传入头结点指针
  * @param target 查找目标
  * @return 目标的前驱节点
- */
-Node SearchLink_Pointer(Node head, int target) &#123;
-    while (head-&gt;next != NULL &amp;&amp; target &gt; 0) &#123;
+ */</span>
+Node <span class="hljs-title function_">SearchLink_Pointer</span><span class="hljs-params">(Node head, <span class="hljs-type">int</span> target)</span> &#123;
+    <span class="hljs-keyword">while</span> (head-&gt;next != <span class="hljs-literal">NULL</span> &amp;&amp; target &gt; <span class="hljs-number">0</span>) &#123;
         head = head-&gt;next;
         target--;
     &#125;
-    return head;
+    <span class="hljs-keyword">return</span> head;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 查找元素，获取节点的位置
  * @param head 传入头结点指针
  * @param element 查找目标
  * @return 节点的位置
- */
-int findList(Node head, E element)&#123;
+ */</span>
+<span class="hljs-type">int</span> <span class="hljs-title function_">findList</span><span class="hljs-params">(Node head, E element)</span>&#123;
     head = head-&gt;next;
-    int i = 1;
-    while (head) &#123;
-        if(head-&gt;element == element) return i;
+    <span class="hljs-type">int</span> i = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">while</span> (head) &#123;
+        <span class="hljs-keyword">if</span>(head-&gt;element == element) <span class="hljs-keyword">return</span> i;
         head = head-&gt;next;
         i++;
     &#125;
-    return -1;
+    <span class="hljs-keyword">return</span> <span class="hljs-number">-1</span>;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 对链表进行冒泡排序
  * @param head 传入头结点指针
  * @param length 传入链表的长度（不包括头结点）
- */
-void sortLink_B(Node head,int length)&#123;
-    int temp;
-    for (int i = 0; i &lt; length; ++i) &#123;
-        _Bool flag = 1;
+ */</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">sortLink_B</span><span class="hljs-params">(Node head,<span class="hljs-type">int</span> length)</span>&#123;
+    <span class="hljs-type">int</span> temp;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; length; ++i) &#123;
+        <span class="hljs-type">_Bool</span> flag = <span class="hljs-number">1</span>;
         Node node = head-&gt;next;
-        while (head -&gt; next != NULL) &#123;
-            if (head-&gt;element &gt; head-&gt;next-&gt;element) &#123;
+        <span class="hljs-keyword">while</span> (head -&gt; next != <span class="hljs-literal">NULL</span>) &#123;
+            <span class="hljs-keyword">if</span> (head-&gt;element &gt; head-&gt;next-&gt;element) &#123;
                 temp = head-&gt;element;
                 head-&gt;element = head-&gt;next-&gt;element;
                 head-&gt;next-&gt;element = temp;
-                flag = 0;
+                flag = <span class="hljs-number">0</span>;
             &#125;
             head = head-&gt;next;
         &#125;
-        if (flag) break;
-        else head = node;
+        <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">else</span> head = node;
     &#125;
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 打印链表
  * @param head 传入头结点指针
- */
-void printList(Node head)&#123;
-    while (head-&gt;next) &#123;
+ */</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">printList</span><span class="hljs-params">(Node head)</span>&#123;
+    <span class="hljs-keyword">while</span> (head-&gt;next) &#123;
         head = head-&gt;next;
-        printf(&quot;%d &quot;, head-&gt;element);   //因为头结点不存放数据，所以从第二个开始打印
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, head-&gt;element);   <span class="hljs-comment">//因为头结点不存放数据，所以从第二个开始打印</span>
     &#125;
-    printf(&quot;\n&quot;);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;\n&quot;</span>);
 &#125;
 
-/**
+<span class="hljs-comment">/**
  * 链表元素交换
  * @param head 传入头结点指针
  * @param index1 待交换的节点位置
  * @param index2 待交换的节点位置
- */
-void SwapLink(Node head,int index1,int index2)&#123;
+ */</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">SwapLink</span><span class="hljs-params">(Node head,<span class="hljs-type">int</span> index1,<span class="hljs-type">int</span> index2)</span>&#123;
     Node temp1, temp2;
     temp1 = SearchLink_Pointer(head, index1);
     temp2 = SearchLink_Pointer(head, index2);
-    int tmp = temp1-&gt;element;
+    <span class="hljs-type">int</span> tmp = temp1-&gt;element;
     temp1-&gt;element = temp2-&gt;element;
     temp2-&gt;element = tmp;
 &#125;
 </code></pre>
-<h6 id="Test"><a href="#Test" class="headerlink" title="Test"></a><strong>Test</strong></h6><pre><code class="c">int main()&#123;
-    struct ListNode head;
+<h6 id="Test"><strong>Test</strong></h6>
+<pre><code class="hljs language-c"><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span>&#123;
+    <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">ListNode</span> <span class="hljs-title">head</span>;</span>
     initList(&amp;head);
-    for (int i = 1; i &lt;= 10; ++i) &#123;
-        insertList(&amp;head, i * 100, i);
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; ++i) &#123;
+        insertList(&amp;head, i * <span class="hljs-number">100</span>, i);
     &#125;
     printList(&amp;head);
-    deleteList(&amp;head,4);
-    SetElement(&amp;head,4,666);
+    deleteList(&amp;head,<span class="hljs-number">4</span>);
+    SetElement(&amp;head,<span class="hljs-number">4</span>,<span class="hljs-number">666</span>);
     printList(&amp;head);
-    printf(&quot;%d\n&quot;, *getList(&amp;head,3));
-    printf(&quot;%d\n&quot;, findList(&amp;head,100));
-    printf(&quot;%d\n&quot;, sizeList(&amp;head));
-    SwapLink(&amp;head,2,5);
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, *getList(&amp;head,<span class="hljs-number">3</span>));
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, findList(&amp;head,<span class="hljs-number">100</span>));
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, sizeList(&amp;head));
+    SwapLink(&amp;head,<span class="hljs-number">2</span>,<span class="hljs-number">5</span>);
     printList(&amp;head);
     sortLink_B(&amp;head, sizeList(&amp;head));
     printList(&amp;head);
 &#125;
 </code></pre>
-<h6 id="结果"><a href="#结果" class="headerlink" title="结果"></a><strong>结果</strong></h6><p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt="ppdSgfK.png"></a></p>
+<h6 id="结果"><strong>结果</strong></h6>
+<p><a target="_blank" rel="noopener" href="https://imgse.com/i/ppdSgfK"><img src="https://s1.ax1x.com/2023/03/22/ppdSgfK.png" alt=""></a></p>
 <blockquote>
 <p>作者本人，移植于CSDN</p>
 <p>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_44950849/article/details/128152853">https://blog.csdn.net/m0_44950849/article/details/128152853</a></p>
@@ -838,7 +841,7 @@ void SwapLink(Node head,int index1,int index2)&#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -850,10 +853,10 @@ void SwapLink(Node head,int index1,int index2)&#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
