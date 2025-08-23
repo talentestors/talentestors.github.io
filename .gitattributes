@@ -1,0 +1,12 @@
+* text=auto
+
+*.html linguist-language=Markdown
+*.htm linguist-language=Markdown
+*.mhtml linguist-language=Markdown
+*.xhtml linguist-language=Markdown
+*.js linguist-language=Markdown
+*.css linguist-language=Markdown
+
+*.pdf linguist-generated=true
+*.zip linguist-generated=true
+*.7z linguist-generated=true
