@@ -479,14 +479,17 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="用-C-语言实现字符串全排列"><a href="#用-C-语言实现字符串全排列" class="headerlink" title="用 C 语言实现字符串全排列"></a>用 C 语言实现字符串全排列</h2><blockquote>
-<p>字符串全排列是指给定一个字符串，输出它的所有可能的排列方式<br>例如，给定字符串”abc”，全排列有”abc”，”acb”，”bac”，”bca”，”cab”，”cba”</p>
+          <h2>用 C 语言实现字符串全排列</h2>
+<blockquote>
+<p>字符串全排列是指给定一个字符串，输出它的所有可能的排列方式
+例如，给定字符串&quot;abc&quot;，全排列有&quot;abc&quot;，“acb”，“bac”，“bca”，“cab”，“cba”</p>
 </blockquote>
 <p>一种常用的方法是使用递归和回溯的思想</p>
 <p>首先，我们定义一个 swap 函数，用来交换两个字符的位置</p>
 <p>然后，我们定义一个 permutation 函数，用来递归生成全排列</p>
 <p>permutation 函数接受三个参数：str 是要排列的字符串，start 是当前处理的位置，end 是字符串的最后一个位置</p>
-<p>permutation 函数的基本思路是：<br>如果 start 等于 end，说明只有一个字符，直接输出 str</p>
+<p>permutation 函数的基本思路是：
+如果 start 等于 end，说明只有一个字符，直接输出 str</p>
 <p>否则，从 start 到 end 遍历每个位置 i，将 str[start]和 str[i]交换，然后递归处理 start+1 到 end 的位置</p>
 <p>递归返回后，再将 <code>str[start]</code>和 <code>str[i]</code>交换回来，恢复原来的顺序，这叫做回溯</p>
 <p>这样就可以保证每个位置都被不同的字符填充过一次，生成所有可能的排列</p>
@@ -495,52 +498,53 @@
 <ul>
 <li>使用标准库函数<code>&lt;string.h&gt;</code>中的<code>strdup</code>函数来复制一个字符串</li>
 </ul>
-<pre><code class="C">// 用C语言实现字符串全排列
-#include &lt;stdio.h&gt;
-#include &lt;string.h&gt;
-#include &lt;stdlib.h&gt;
+<pre><code class="hljs language-C"><span class="hljs-comment">// 用C语言实现字符串全排列</span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;string.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdlib.h&gt;</span></span>
 
-//定义一个swap函数，使用指针参数
-void swap(char *a, char *b) &#123;
-    char temp = *a;
+<span class="hljs-comment">//定义一个swap函数，使用指针参数</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">char</span> *a, <span class="hljs-type">char</span> *b)</span> &#123;
+    <span class="hljs-type">char</span> temp = *a;
     *a = *b;
     *b = temp;
 &#125;
 
-void permutation(char *str, int start, int end) // 递归生成全排列
+<span class="hljs-type">void</span> <span class="hljs-title function_">permutation</span><span class="hljs-params">(<span class="hljs-type">char</span> *str, <span class="hljs-type">int</span> start, <span class="hljs-type">int</span> end)</span> <span class="hljs-comment">// 递归生成全排列</span>
 &#123;
-    if (start == end) // 如果只有一个字符，直接输出
+    <span class="hljs-keyword">if</span> (start == end) <span class="hljs-comment">// 如果只有一个字符，直接输出</span>
     &#123;
-        printf(&quot;%s\n&quot;, str);
-    &#125; else &#123;
-        for (int i = start; i &lt;= end; i++) // 枚举每个位置
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%s\n&quot;</span>, str);
+    &#125; <span class="hljs-keyword">else</span> &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = start; i &lt;= end; i++) <span class="hljs-comment">// 枚举每个位置</span>
         &#123;
-            swap(&amp;str[start], &amp;str[i]); // 将当前位置和后面的位置交换
-            permutation(str, start + 1, end); // 递归处理剩余的位置
-            swap(&amp;str[start], &amp;str[i]); // 回溯时恢复原来的顺序
+            swap(&amp;str[start], &amp;str[i]); <span class="hljs-comment">// 将当前位置和后面的位置交换</span>
+            permutation(str, start + <span class="hljs-number">1</span>, end); <span class="hljs-comment">// 递归处理剩余的位置</span>
+            swap(&amp;str[start], &amp;str[i]); <span class="hljs-comment">// 回溯时恢复原来的顺序</span>
         &#125;
     &#125;
 &#125;
 
-int main() &#123;
-    char *str = strdup(&quot;abc&quot;); // 输入的字符串
-    int len = strlen(str); // 字符串长度
-    if (len &gt; 0) // 如果字符串不为空
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">char</span> *str = strdup(<span class="hljs-string">&quot;abc&quot;</span>); <span class="hljs-comment">// 输入的字符串</span>
+    <span class="hljs-type">int</span> len = <span class="hljs-built_in">strlen</span>(str); <span class="hljs-comment">// 字符串长度</span>
+    <span class="hljs-keyword">if</span> (len &gt; <span class="hljs-number">0</span>) <span class="hljs-comment">// 如果字符串不为空</span>
     &#123;
-        permutation(str, 0, len - 1); // 从第0个位置到最后一个位置生成全排列
+        permutation(str, <span class="hljs-number">0</span>, len - <span class="hljs-number">1</span>); <span class="hljs-comment">// 从第0个位置到最后一个位置生成全排列</span>
     &#125;
-    free(str); // 释放内存
-    return 0;
+    <span class="hljs-built_in">free</span>(str); <span class="hljs-comment">// 释放内存</span>
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 </code></pre>
 <p><em>运行结果</em></p>
-<pre><code class="text">acb
+<pre><code class="hljs language-text">acb
 bac
 bca
 cba
 cab
 </code></pre>
-<h3 id="用-strdup-函数，有什么好处？"><a href="#用-strdup-函数，有什么好处？" class="headerlink" title="用 strdup 函数，有什么好处？"></a>用 strdup 函数，有什么好处？</h3><p>strdup 函数的作用是将一个字符串的内容复制到另一个字符串上，并返回一个指向新字符串的指针。使用 strdup 函数有以下好处：</p>
+<h3 id="用-strdup-函数，有什么好处？">用 strdup 函数，有什么好处？</h3>
+<p>strdup 函数的作用是将一个字符串的内容复制到另一个字符串上，并返回一个指向新字符串的指针。使用 strdup 函数有以下好处：</p>
 <ul>
 <li>可以避免修改原始字符串，因为新字符串有自己的内存空间。</li>
 <li>可以动态分配内存，不需要提前知道字符串的长度。</li>
@@ -666,7 +670,7 @@ cab
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -678,10 +682,10 @@ cab
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

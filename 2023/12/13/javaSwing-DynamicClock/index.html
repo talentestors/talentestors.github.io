@@ -479,94 +479,101 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要介绍如何使用 Java Swing 实现一个简易的动态时钟。</p>
-<h3 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h3><ul>
+          <h2>前言</h2>
+<p>本文主要介绍如何使用 Java Swing 实现一个简易的动态时钟。</p>
+<h3 id="开发环境">开发环境</h3>
+<ul>
 <li>JDK 版本随意</li>
 </ul>
-<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="Swing-简介"><a href="#Swing-简介" class="headerlink" title="Swing 简介"></a>Swing 简介</h3><p>Swing 是 Java 的一个 GUI 工具包，它提供了一套丰富的组件，用于开发图形用户界面（GUI）应用程序，这些组件既可用于 Java 应用程序，也可用于 Applet。</p>
-<h3 id="Swing-组件"><a href="#Swing-组件" class="headerlink" title="Swing 组件"></a>Swing 组件</h3><p>JFrame 是一个顶层容器，它包含并管理其他 Swing 组件。Component 是所有 Swing 组件的超类。我们将使用 JFrame 和 JPanel 来创建一个简单的窗口。添加我们自定义的组件到 JFrame 中。</p>
-<h2 id="自定义的组件-ClockPanel-的实现"><a href="#自定义的组件-ClockPanel-的实现" class="headerlink" title="自定义的组件 ClockPanel 的实现"></a>自定义的组件 ClockPanel 的实现</h2><pre><code class="java">private static class ClockPanel extends Component &#123;
-    private static final SimpleDateFormat DATE_FORMAT;
-    private static final SimpleDateFormat TIME_FORMAT;
-    static &#123;
-        DATE_FORMAT = new SimpleDateFormat(&quot;yyyy&#39;年&#39;MM&#39;月&#39;dd&#39;日&#39;&quot;);
-        TIME_FORMAT = new SimpleDateFormat(&quot;HH:mm:ss&quot;);
+<h2>开始</h2>
+<h3 id="Swing-简介">Swing 简介</h3>
+<p>Swing 是 Java 的一个 GUI 工具包，它提供了一套丰富的组件，用于开发图形用户界面（GUI）应用程序，这些组件既可用于 Java 应用程序，也可用于 Applet。</p>
+<h3 id="Swing-组件">Swing 组件</h3>
+<p>JFrame 是一个顶层容器，它包含并管理其他 Swing 组件。Component 是所有 Swing 组件的超类。我们将使用 JFrame 和 JPanel 来创建一个简单的窗口。添加我们自定义的组件到 JFrame 中。</p>
+<h2>自定义的组件 ClockPanel 的实现</h2>
+<pre><code class="hljs language-java"><span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClockPanel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Component</span> &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> SimpleDateFormat DATE_FORMAT;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> SimpleDateFormat TIME_FORMAT;
+    <span class="hljs-keyword">static</span> &#123;
+        DATE_FORMAT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy&#x27;年&#x27;MM&#x27;月&#x27;dd&#x27;日&#x27;&quot;</span>);
+        TIME_FORMAT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;HH:mm:ss&quot;</span>);
     &#125;
-    @Override
-    public void paint(Graphics g) &#123;
-        super.paint(g);
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span> &#123;
+        <span class="hljs-built_in">super</span>.paint(g);
         g.setColor(Color.BLACK);
-        g.fillRect(0, 0, getWidth(), getHeight());
+        g.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, getWidth(), getHeight());
         g.setColor(Color.WHITE);
-        g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 30));
-        g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), 20, 100);
-        g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), 20, 140);
+        g.setFont(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Font</span>(<span class="hljs-string">&quot;微软雅黑&quot;</span>, Font.BOLD, <span class="hljs-number">30</span>));
+        g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), <span class="hljs-number">20</span>, <span class="hljs-number">100</span>);
+        g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), <span class="hljs-number">20</span>, <span class="hljs-number">140</span>);
     &#125;
 &#125;
 </code></pre>
 <p>获取时间需要用到 <strong>Calender</strong> 类，再使用 <strong>SimpleDateFormat</strong> 类去对我们的日期进行自定义的格式化。</p>
-<h2 id="另附源码"><a href="#另附源码" class="headerlink" title="另附源码"></a>另附源码</h2><pre><code class="java">import javax.swing.*;
-import java.awt.*;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
+<h2>另附源码</h2>
+<pre><code class="hljs language-java"><span class="hljs-keyword">import</span> javax.swing.*;
+<span class="hljs-keyword">import</span> java.awt.*;
+<span class="hljs-keyword">import</span> java.text.SimpleDateFormat;
+<span class="hljs-keyword">import</span> java.util.Calendar;
 
-/**
+<span class="hljs-comment">/**
  * Package: cn.stazxr
  * 动态时钟
  *
- * @Author: stazxr
- * @Create: 2023/12/12
- * @Version: v1.0
- **/
-public class DynamicClock &#123;
+ * <span class="hljs-doctag">@Author</span>: stazxr
+ * <span class="hljs-doctag">@Create</span>: 2023/12/12
+ * <span class="hljs-doctag">@Version</span>: v1.0
+ **/</span>
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DynamicClock</span> &#123;
 
-    // 标识位
-    private static boolean flag = true;
+    <span class="hljs-comment">// 标识位</span>
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">boolean</span> <span class="hljs-variable">flag</span> <span class="hljs-operator">=</span> <span class="hljs-literal">true</span>;
 
-    public static void main(String[] args) &#123;
-        JFrame frame = new JFrame(&quot;动态时钟 作者：stazxr.cn&quot;);
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;
+        <span class="hljs-type">JFrame</span> <span class="hljs-variable">frame</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JFrame</span>(<span class="hljs-string">&quot;动态时钟 作者：stazxr.cn&quot;</span>);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setMinimumSize(new Dimension(350, 230));
-        frame.setLocationRelativeTo(null);
+        frame.setMinimumSize(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Dimension</span>(<span class="hljs-number">350</span>, <span class="hljs-number">230</span>));
+        frame.setLocationRelativeTo(<span class="hljs-literal">null</span>);
 
-        JPanel panel = new JPanel() &#123;
-            @Override
-            public void paint(Graphics g) &#123;
-                super.paint(g);
+        <span class="hljs-type">JPanel</span> <span class="hljs-variable">panel</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">JPanel</span>() &#123;
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span> &#123;
+                <span class="hljs-built_in">super</span>.paint(g);
                 g.setColor(Color.WHITE);
-                g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 40));
-                g.drawString(&quot;当前时间：&quot;, 10, 50);
+                g.setFont(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Font</span>(<span class="hljs-string">&quot;微软雅黑&quot;</span>, Font.BOLD, <span class="hljs-number">40</span>));
+                g.drawString(<span class="hljs-string">&quot;当前时间：&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-number">50</span>);
             &#125;
         &#125;;
         panel.setBackground(Color.BLACK);
-        panel.setBounds(0, 0, 350, 60);
+        panel.setBounds(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">350</span>, <span class="hljs-number">60</span>);
         frame.add(panel);
 
-        ClockPanel comp = new ClockPanel();
-        comp.setBounds(0, 60, 350, 140);
+        <span class="hljs-type">ClockPanel</span> <span class="hljs-variable">comp</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ClockPanel</span>();
+        comp.setBounds(<span class="hljs-number">0</span>, <span class="hljs-number">60</span>, <span class="hljs-number">350</span>, <span class="hljs-number">140</span>);
         frame.add(comp);
 
-        frame.setVisible(true);
-        Thread thread = new Thread(() -&gt; &#123;
-            while (flag) &#123;
+        frame.setVisible(<span class="hljs-literal">true</span>);
+        <span class="hljs-type">Thread</span> <span class="hljs-variable">thread</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Thread</span>(() -&gt; &#123;
+            <span class="hljs-keyword">while</span> (flag) &#123;
                 comp.repaint();
-                try &#123;
-                    Thread.sleep(500);
-                &#125; catch (InterruptedException e) &#123;
-                    throw new RuntimeException(e);
+                <span class="hljs-keyword">try</span> &#123;
+                    Thread.sleep(<span class="hljs-number">500</span>);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException e) &#123;
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(e);
                 &#125;
             &#125;
         &#125;);
 
-        frame.addWindowListener(new java.awt.event.WindowAdapter() &#123;
-            @Override
-            public void windowClosing(java.awt.event.WindowEvent e) &#123;
-                //  结束线程
-                flag = false;
-                try &#123;
-                    Thread.sleep(500);
-                &#125; catch (InterruptedException ex) &#123;
-                    throw new RuntimeException(ex);
+        frame.addWindowListener(<span class="hljs-keyword">new</span> <span class="hljs-title class_">java</span>.awt.event.WindowAdapter() &#123;
+            <span class="hljs-meta">@Override</span>
+            <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">windowClosing</span><span class="hljs-params">(java.awt.event.WindowEvent e)</span> &#123;
+                <span class="hljs-comment">//  结束线程</span>
+                flag = <span class="hljs-literal">false</span>;
+                <span class="hljs-keyword">try</span> &#123;
+                    Thread.sleep(<span class="hljs-number">500</span>);
+                &#125; <span class="hljs-keyword">catch</span> (InterruptedException ex) &#123;
+                    <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RuntimeException</span>(ex);
                 &#125;
                 thread.interrupt();
             &#125;
@@ -574,40 +581,39 @@ public class DynamicClock &#123;
 
         thread.start();
 
-        while (!thread.isInterrupted()) &#123;
-            Thread.yield();
+        <span class="hljs-keyword">while</span> (!thread.isInterrupted()) &#123;
+            Thread.<span class="hljs-keyword">yield</span>();
         &#125;
-        System.out.println(&quot;exited&quot;);
+        System.out.println(<span class="hljs-string">&quot;exited&quot;</span>);
     &#125;
 
-    private static class ClockPanel extends Component &#123;
+    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClockPanel</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Component</span> &#123;
 
-        private static final SimpleDateFormat DATE_FORMAT;
-        private static final SimpleDateFormat TIME_FORMAT;
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> SimpleDateFormat DATE_FORMAT;
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> SimpleDateFormat TIME_FORMAT;
 
-        static &#123;
-            DATE_FORMAT = new SimpleDateFormat(&quot;yyyy&#39;年&#39;MM&#39;月&#39;dd&#39;日&#39;&quot;);
-            TIME_FORMAT = new SimpleDateFormat(&quot;HH:mm:ss&quot;);
+        <span class="hljs-keyword">static</span> &#123;
+            DATE_FORMAT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;yyyy&#x27;年&#x27;MM&#x27;月&#x27;dd&#x27;日&#x27;&quot;</span>);
+            TIME_FORMAT = <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleDateFormat</span>(<span class="hljs-string">&quot;HH:mm:ss&quot;</span>);
         &#125;
 
-        @Override
-        public void paint(Graphics g) &#123;
-            super.paint(g);
+        <span class="hljs-meta">@Override</span>
+        <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">paint</span><span class="hljs-params">(Graphics g)</span> &#123;
+            <span class="hljs-built_in">super</span>.paint(g);
             g.setColor(Color.BLACK);
-            g.fillRect(0, 0, getWidth(), getHeight());
+            g.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, getWidth(), getHeight());
             g.setColor(Color.WHITE);
-            g.setFont(new Font(&quot;微软雅黑&quot;, Font.BOLD, 30));
-            g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), 20, 100);
-            g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), 20, 140);
+            g.setFont(<span class="hljs-keyword">new</span> <span class="hljs-title class_">Font</span>(<span class="hljs-string">&quot;微软雅黑&quot;</span>, Font.BOLD, <span class="hljs-number">30</span>));
+            g.drawString(DATE_FORMAT.format(Calendar.getInstance().getTime()), <span class="hljs-number">20</span>, <span class="hljs-number">100</span>);
+            g.drawString(TIME_FORMAT.format(Calendar.getInstance().getTime()), <span class="hljs-number">20</span>, <span class="hljs-number">140</span>);
         &#125;
     &#125;
 &#125;
 </code></pre>
 <p>效果展示：</p>
-<p><img src="https://s11.ax1x.com/2023/12/13/pifcaCQ.png" alt="DynamicClock"></p>
-<p><img src="https://wsrv.nl/?url=s2.loli.net/2023/12/13/5QJx9mdlpqtAnfh.gif" alt="DynamicClock"></p>
+<p><img src="https://s11.ax1x.com/2023/12/13/pifcaCQ.png" alt=""></p>
+<p><img src="https://wsrv.nl/?url=s2.loli.net/2023/12/13/5QJx9mdlpqtAnfh.gif" alt=""></p>
 <p style="text-align: center; color: #66CCFF;"><b>END</b></p>
-
 <hr>
 <a data-fancybox="anime" data-caption="pixiv" target="_blank" rel="noopener" href="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png">
     <img src="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png" width="600">
@@ -726,7 +732,7 @@ public class DynamicClock &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -738,10 +744,10 @@ public class DynamicClock &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
