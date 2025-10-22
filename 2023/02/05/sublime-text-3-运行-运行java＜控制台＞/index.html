@@ -484,7 +484,7 @@
 <p>2.找到 工具—&gt;编译系统—&gt;新编译系统</p>
 <p>ps：英文版为；Tools—&gt;Build system—&gt;New Build system</p>
 <p>3.输入以下代码</p>
-<pre><code class="shell"> &#123;
+<pre><code class="hljs language-shell"> &#123;
 &quot;shell&quot;: true,
 &quot;cmd&quot;: [&quot;start&quot;, &quot;cmd&quot;, &quot;/c&quot;, &quot;javac -encoding UTF-8 $&#123;file&#125; &amp; java $&#123;file_base_name&#125; &amp;echo. &amp; pause &quot;],
 &quot;file_regex&quot; :&quot;^(...*?):([0-9]*):?([0-9]*)&quot;,
@@ -622,7 +622,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -634,10 +634,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
