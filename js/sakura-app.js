@@ -2001,7 +2001,7 @@ $(function () {
     "%c talentestors %c",
     "background:#24272A; color:#ffffff",
     "",
-    "https://www.stazxr.cn/"
+    "https://www.yuhiri.me/"
   );
   console.log(
     "%c Github %c",

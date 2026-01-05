@@ -11,7 +11,7 @@ $(document).ready(function () {
       if ($(this).hasClass("nofancybox")) return;
       if ($(this).hasClass("is-fancybox")) return; // 检查是否已经处理过
 
-      var alt = this.alt || "stazxr"; // 如果 alt 为空，则默认为 'stazxr'
+      var alt = this.alt || "yuhiri"; // 如果 alt 为空，则默认为 'yuhiri'
       var imgSrc = $(this).attr("src");
       var dataSrc = $(this).attr("data-src") || imgSrc;
       // 处理 alt 内容
