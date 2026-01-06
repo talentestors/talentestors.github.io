@@ -209,9 +209,9 @@
     
     <category term="CodeForces" scheme="http://yuhiri.me/tags/CodeForces/"/>
     
-    <category term="Div3" scheme="http://yuhiri.me/tags/Div3/"/>
-    
     <category term="C/CPP" scheme="http://yuhiri.me/tags/C-CPP/"/>
+    
+    <category term="Div3" scheme="http://yuhiri.me/tags/Div3/"/>
     
   </entry>
   
@@ -359,9 +359,9 @@
     
     <category term="CodeForces" scheme="http://yuhiri.me/tags/CodeForces/"/>
     
-    <category term="C/CPP" scheme="http://yuhiri.me/tags/C-CPP/"/>
-    
     <category term="Div2" scheme="http://yuhiri.me/tags/Div2/"/>
+    
+    <category term="C/CPP" scheme="http://yuhiri.me/tags/C-CPP/"/>
     
   </entry>
   
@@ -442,9 +442,9 @@
     <category term="技术" scheme="http://yuhiri.me/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="C++" scheme="http://yuhiri.me/tags/C/"/>
-    
     <category term="算法" scheme="http://yuhiri.me/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="C++" scheme="http://yuhiri.me/tags/C/"/>
     
     <category term="STL" scheme="http://yuhiri.me/tags/STL/"/>
     
