@@ -111,6 +111,7 @@
 
     gtag('config', 'G-NP3J9EFMPN');
   </script>
+  <meta name="baidu-site-verification" content="codeva-FUXEtNSWPD" />
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.18/dist/katex.min.css">
 
@@ -488,10 +489,8 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>DDoS 攻击与 CC 攻击</h2>
-<p>在数字世界的战场上，确保在线服务的稳定与流畅是每个运营者的核心任务。然而，总有不怀好意的攻击者试图让我们的服务陷入瘫痪。其中，<strong>DDoS 攻击</strong>和 <strong>CC 攻击</strong>是最令人头疼的两种手段。它们虽同属“拒绝服务攻击”的大家族，但攻击理念和方式却大相径庭。</p>
-<h3 id="1-DDoS-攻击（分布式拒绝服务攻击）">1. DDoS 攻击（分布式拒绝服务攻击）</h3>
-<p>通过分布在全球的僵尸网络（Botnet）向目标服务器发送海量请求，耗尽带宽、硬件资源或协议处理能力，导致服务瘫痪。</p>
+          <h2 id="DDoS-攻击与-CC-攻击"><a href="#DDoS-攻击与-CC-攻击" class="headerlink" title="DDoS 攻击与 CC 攻击"></a>DDoS 攻击与 CC 攻击</h2><p>在数字世界的战场上，确保在线服务的稳定与流畅是每个运营者的核心任务。然而，总有不怀好意的攻击者试图让我们的服务陷入瘫痪。其中，<strong>DDoS 攻击</strong>和 <strong>CC 攻击</strong>是最令人头疼的两种手段。它们虽同属“拒绝服务攻击”的大家族，但攻击理念和方式却大相径庭。</p>
+<h3 id="1-DDoS-攻击（分布式拒绝服务攻击）"><a href="#1-DDoS-攻击（分布式拒绝服务攻击）" class="headerlink" title="1. DDoS 攻击（分布式拒绝服务攻击）"></a>1. DDoS 攻击（分布式拒绝服务攻击）</h3><p>通过分布在全球的僵尸网络（Botnet）向目标服务器发送海量请求，耗尽带宽、硬件资源或协议处理能力，导致服务瘫痪。</p>
 <p>攻击层次主要集中在网络层、传输层（如 UDP 洪水、SYN 洪水、ICMP 洪水）。</p>
 <p>特点：</p>
 <ul>
@@ -505,15 +504,13 @@
 <li>使用高防 IP 或 CDN 分散流量。</li>
 <li>配置防火墙规则限制协议请求速率（如 SYN 请求）。</li>
 </ul>
-<h4 id="🛡️-Cloudflare-如何防御-DDoS-攻击">🛡️ Cloudflare 如何防御 DDoS 攻击</h4>
-<p>Cloudflare 防御 DDoS 攻击的核心，可以概括为“全局调度，边缘拦截”。</p>
+<h4 id="🛡️-Cloudflare-如何防御-DDoS-攻击"><a href="#🛡️-Cloudflare-如何防御-DDoS-攻击" class="headerlink" title="🛡️ Cloudflare 如何防御 DDoS 攻击"></a>🛡️ Cloudflare 如何防御 DDoS 攻击</h4><p>Cloudflare 防御 DDoS 攻击的核心，可以概括为“全局调度，边缘拦截”。</p>
 <p>海量容量与智能调度：Cloudflare 构建了一个拥有超过 449 Tbps 网络容量的全球 Anycast 网络。当攻击流量涌来时，会被分散到全球 300 多个数据中心的边缘节点，避免单点被压垮。</p>
 <p>多层次协同防御：Cloudflare 的防护体系覆盖网络层（L3）、传输层（L4）到应用层（L7）。</p>
-<p>L3/L4 防御：在数据包到达服务器网卡时，内核中的 L4Drop 程序（基于 eXpress Data Path, XDP）会第一时间根据已有规则丢弃恶意包。同时，运行在每个边缘服务器上的 dosd 程序会持续分析流量样本，一旦检测到攻击，能即时生成签名并推送缓解规则。</p>
-<p>L7 防御：对于 HTTP/HTTPS 洪水攻击，dosd 同样会分析请求样本，并通过 Web 应用防火墙（WAF）等组件对攻击请求进行封堵、速率限制或发起质询。</p>
-<h3 id="2-CC-攻击（Challenge-Collapsar，挑战黑洞攻击）">2. CC 攻击（Challenge Collapsar，挑战黑洞攻击）</h3>
-<p>一种应用层 DDoS 攻击，通过模拟正常用户行为（如频繁请求动态页面、API 接口），消耗服务器 CPU、数据库等资源。</p>
-<p>攻击层次集中在应用层（如 HTTP/HTTPS）</p>
+<p>L3&#x2F;L4 防御：在数据包到达服务器网卡时，内核中的 L4Drop 程序（基于 eXpress Data Path, XDP）会第一时间根据已有规则丢弃恶意包。同时，运行在每个边缘服务器上的 dosd 程序会持续分析流量样本，一旦检测到攻击，能即时生成签名并推送缓解规则。</p>
+<p>L7 防御：对于 HTTP&#x2F;HTTPS 洪水攻击，dosd 同样会分析请求样本，并通过 Web 应用防火墙（WAF）等组件对攻击请求进行封堵、速率限制或发起质询。</p>
+<h3 id="2-CC-攻击（Challenge-Collapsar，挑战黑洞攻击）"><a href="#2-CC-攻击（Challenge-Collapsar，挑战黑洞攻击）" class="headerlink" title="2. CC 攻击（Challenge Collapsar，挑战黑洞攻击）"></a>2. CC 攻击（Challenge Collapsar，挑战黑洞攻击）</h3><p>一种应用层 DDoS 攻击，通过模拟正常用户行为（如频繁请求动态页面、API 接口），消耗服务器 CPU、数据库等资源。</p>
+<p>攻击层次集中在应用层（如 HTTP&#x2F;HTTPS）</p>
 <p>特点：</p>
 <ul>
 <li>低流量、高成本请求：单次请求可能触发复杂操作（如数据库查询），导致服务器资源过载。</li>
@@ -526,13 +523,11 @@
 <li>限制单个 IP 的请求频率（如人机验证、验证码）。</li>
 <li>优化代码逻辑，缓存高频请求结果。</li>
 </ul>
-<h4 id="🚫-Cloudflare-如何缓解-CC-攻击">🚫 Cloudflare 如何缓解 CC 攻击</h4>
-<p>C 攻击更狡猾，它模拟正常用户频繁请求动态页面（如登录、搜索），从而耗尽服务器的 CPU 和数据库资源。Cloudflare 的应对策略侧重于“行为分析，精准拦截”。</p>
+<h4 id="🚫-Cloudflare-如何缓解-CC-攻击"><a href="#🚫-Cloudflare-如何缓解-CC-攻击" class="headerlink" title="🚫 Cloudflare 如何缓解 CC 攻击"></a>🚫 Cloudflare 如何缓解 CC 攻击</h4><p>C 攻击更狡猾，它模拟正常用户频繁请求动态页面（如登录、搜索），从而耗尽服务器的 CPU 和数据库资源。Cloudflare 的应对策略侧重于“行为分析，精准拦截”。</p>
 <p>速率限制：这是防御 CC 攻击最基本有效的手段。你可以基于 IP、会话或全局维度，设置特定时间窗口内允许的请求次数，从而直接限制单个“用户”的请求频率。</p>
 <p>质询与验证：当检测到可疑行为时，Cloudflare 可以自动发起挑战，要求访问者通过 JavaScript 计算或验证码（CAPTCHA）来证明自己是真人。恶意机器人通常无法通过此验证。</p>
 <p>WAF 与精准规则：利用 Cloudflare 的 WAF，你可以编写自定义规则来拦截具有特定攻击特征的请求，例如异常的用户代理（User-Agent）、畸长的 Referer，或针对某个敏感 API 接口的密集访问。</p>
-<h3 id="基础防御配置指南">基础防御配置指南</h3>
-<p>对于 Cloudflare 用户，可以采取以下几个关键步骤来激活防护：</p>
+<h3 id="基础防御配置指南"><a href="#基础防御配置指南" class="headerlink" title="基础防御配置指南"></a>基础防御配置指南</h3><p>对于 Cloudflare 用户，可以采取以下几个关键步骤来激活防护：</p>
 <ol>
 <li>开启“遭受攻击”模式：在域名概览的“快速操作”中，一键开启此模式。它会强制对所有访问者进行验证，有效应对正在进行的应用层攻击。</li>
 <li>启用 Web 应用程序防火墙（WAF）：在“防火墙”应用的“托管规则”选项卡中，确保 WAF 处于开启状态。并善用其中的“速率限制规则”来防御 CC 攻击。</li>
@@ -545,7 +540,7 @@
 <li><a target="_blank" rel="noopener" href="https://www.cloudflare-cn.com/ddos/">分布式拒绝服务(DDoS)防护</a></li>
 <li><a target="_blank" rel="noopener" href="https://developers.cloudflare.com/support/">Cloudflare Docs</a></li>
 </ul>
-<p><img src="//pic.imgdd.cc/item/691ef9a2c828c4c6defa1e1c.jpg" alt=""></p>
+<p><img src="//pic.imgdd.cc/item/691ef9a2c828c4c6defa1e1c.jpg" alt="DDoS-and-CC"></p>
 
         </div>
         <!-- .entry-content -->
@@ -660,7 +655,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -672,10 +667,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

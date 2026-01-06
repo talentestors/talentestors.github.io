@@ -111,6 +111,7 @@
 
     gtag('config', 'G-NP3J9EFMPN');
   </script>
+  <meta name="baidu-site-verification" content="codeva-FUXEtNSWPD" />
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.16.18/dist/katex.min.css">
 
@@ -491,17 +492,16 @@
           <blockquote>
 <p>为什么 C++函数可以安全地返回大对象而不担心性能？答案就是返回值优化。</p>
 </blockquote>
-<p>在 C<ins>编程中，我们经常被教导要避免按值返回大对象，因为担心复制开销。但现代 C</ins>通过<strong>返回值优化(Return Value Optimization, RVO)</strong> 彻底改变了这一局面。</p>
-<h2>什么是返回值优化？</h2>
-<p><strong>返回值优化</strong>是 C++编译器的一项关键优化技术，它允许编译器<strong>消除函数返回时不必要的对象复制操作</strong>，直接在调用处构造返回值。</p>
-<p>考虑这个看似&quot;危险&quot;的代码：</p>
-<pre><code class="hljs language-cpp"><span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">create_large_vector</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">data</span><span class="hljs-params">(<span class="hljs-number">1000000</span>)</span></span>; <span class="hljs-comment">// 100万个元素</span>
-    <span class="hljs-comment">// ... 填充数据 ...</span>
-    <span class="hljs-keyword">return</span> data; <span class="hljs-comment">// 传统认知：这里会发生昂贵复制</span>
+<p>在 C++编程中，我们经常被教导要避免按值返回大对象，因为担心复制开销。但现代 C++通过<strong>返回值优化(Return Value Optimization, RVO)</strong> 彻底改变了这一局面。</p>
+<h2 id="什么是返回值优化？"><a href="#什么是返回值优化？" class="headerlink" title="什么是返回值优化？"></a>什么是返回值优化？</h2><p><strong>返回值优化</strong>是 C++编译器的一项关键优化技术，它允许编译器<strong>消除函数返回时不必要的对象复制操作</strong>，直接在调用处构造返回值。</p>
+<p>考虑这个看似”危险”的代码：</p>
+<pre><code class="cpp">std::vector&lt;int&gt; create_large_vector() &#123;
+    std::vector&lt;int&gt; data(1000000); // 100万个元素
+    // ... 填充数据 ...
+    return data; // 传统认知：这里会发生昂贵复制
 &#125;
 
-<span class="hljs-keyword">auto</span> result = <span class="hljs-built_in">create_large_vector</span>(); <span class="hljs-comment">// 但实际上可能零复制！</span>
+auto result = create_large_vector(); // 但实际上可能零复制！
 </code></pre>
 <p>没有 RVO 时，这个操作需要：</p>
 <ol>
@@ -512,86 +512,80 @@
 <li>析构函数内的 <code>data</code></li>
 </ol>
 <p><strong>两次复制 + 两次析构</strong>，对于大对象简直是性能灾难！</p>
-<h2>RVO 的工作原理</h2>
-<h3 id="基本原理">基本原理</h3>
-<p>RVO 的核心思想很简单：<strong>在调用者的栈帧上直接构造返回值</strong>。</p>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 从程序员视角</span>
-std::vector&lt;<span class="hljs-type">int</span>&gt; result = <span class="hljs-built_in">create_large_vector</span>();
+<h2 id="RVO-的工作原理"><a href="#RVO-的工作原理" class="headerlink" title="RVO 的工作原理"></a>RVO 的工作原理</h2><h3 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h3><p>RVO 的核心思想很简单：<strong>在调用者的栈帧上直接构造返回值</strong>。</p>
+<pre><code class="cpp">// 从程序员视角
+std::vector&lt;int&gt; result = create_large_vector();
 
-<span class="hljs-comment">// 编译器优化后的等效代码</span>
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">create_large_vector</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt;* hidden_param)</span> </span>&#123;
-    <span class="hljs-keyword">new</span> (hidden_param) std::<span class="hljs-built_in">vector</span>&lt;<span class="hljs-type">int</span>&gt;(<span class="hljs-number">1000000</span>); <span class="hljs-comment">// 在指定地址直接构造</span>
-    <span class="hljs-comment">// ... 填充数据 ...</span>
-    <span class="hljs-comment">// 无需返回，对象已在目标位置</span>
+// 编译器优化后的等效代码
+void create_large_vector(std::vector&lt;int&gt;* hidden_param) &#123;
+    new (hidden_param) std::vector&lt;int&gt;(1000000); // 在指定地址直接构造
+    // ... 填充数据 ...
+    // 无需返回，对象已在目标位置
 &#125;
 
-std::vector&lt;<span class="hljs-type">int</span>&gt; result; <span class="hljs-comment">// 只是预留空间</span>
-<span class="hljs-built_in">create_large_vector</span>(&amp;result); <span class="hljs-comment">// 传递地址，直接构造</span>
+std::vector&lt;int&gt; result; // 只是预留空间
+create_large_vector(&amp;result); // 传递地址，直接构造
 </code></pre>
-<h3 id="RVO-的两种形式">RVO 的两种形式</h3>
-<h4 id="1-URVO-Unnamed-RVO">1. URVO (Unnamed RVO)</h4>
-<pre><code class="hljs language-cpp"><span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">create_vector</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">return</span> std::vector&lt;<span class="hljs-type">int</span>&gt;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;; <span class="hljs-comment">// 直接返回临时对象</span>
+<h3 id="RVO-的两种形式"><a href="#RVO-的两种形式" class="headerlink" title="RVO 的两种形式"></a>RVO 的两种形式</h3><h4 id="1-URVO-Unnamed-RVO"><a href="#1-URVO-Unnamed-RVO" class="headerlink" title="1. URVO (Unnamed RVO)"></a>1. URVO (Unnamed RVO)</h4><pre><code class="cpp">std::vector&lt;int&gt; create_vector() &#123;
+    return std::vector&lt;int&gt;&#123;1, 2, 3, 4, 5&#125;; // 直接返回临时对象
 &#125;
 </code></pre>
-<h4 id="2-NRVO-Named-RVO">2. NRVO (Named RVO)</h4>
-<pre><code class="hljs language-cpp"><span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">create_vector</span><span class="hljs-params">()</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>, <span class="hljs-number">4</span>, <span class="hljs-number">5</span>&#125;; <span class="hljs-comment">// 有名字的局部对象</span>
-    result.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">6</span>);
-    <span class="hljs-keyword">return</span> result; <span class="hljs-comment">// 返回命名对象</span>
+<h4 id="2-NRVO-Named-RVO"><a href="#2-NRVO-Named-RVO" class="headerlink" title="2. NRVO (Named RVO)"></a>2. NRVO (Named RVO)</h4><pre><code class="cpp">std::vector&lt;int&gt; create_vector() &#123;
+    std::vector&lt;int&gt; result&#123;1, 2, 3, 4, 5&#125;; // 有名字的局部对象
+    result.push_back(6);
+    return result; // 返回命名对象
 &#125;
 </code></pre>
 <p>NRVO 比 URVO 更复杂，因为它需要分析具名局部对象的生命周期，但现代编译器都能很好处理。</p>
-<h2>验证 RVO：眼见为实</h2>
-<p>让我们通过实际代码验证 RVO 的效果：</p>
-<pre><code class="hljs language-cpp"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;iostream&gt;</span></span>
-<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;vector&gt;</span></span>
+<h2 id="验证-RVO：眼见为实"><a href="#验证-RVO：眼见为实" class="headerlink" title="验证 RVO：眼见为实"></a>验证 RVO：眼见为实</h2><p>让我们通过实际代码验证 RVO 的效果：</p>
+<pre><code class="cpp">#include &lt;iostream&gt;
+#include &lt;vector&gt;
 
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">Traceable</span> &#123;
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">Traceable</span>() &#123; std::cout &lt;&lt; <span class="hljs-string">&quot;默认构造\n&quot;</span>; &#125;
-    <span class="hljs-built_in">Traceable</span>(<span class="hljs-type">int</span> value) : <span class="hljs-built_in">value_</span>(value) &#123;
-        std::cout &lt;&lt; <span class="hljs-string">&quot;有参构造: &quot;</span> &lt;&lt; value_ &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+class Traceable &#123;
+public:
+    Traceable() &#123; std::cout &lt;&lt; &quot;默认构造\n&quot;; &#125;
+    Traceable(int value) : value_(value) &#123;
+        std::cout &lt;&lt; &quot;有参构造: &quot; &lt;&lt; value_ &lt;&lt; &quot;\n&quot;;
     &#125;
-    <span class="hljs-built_in">Traceable</span>(<span class="hljs-type">const</span> Traceable&amp; other) : <span class="hljs-built_in">value_</span>(other.value_) &#123;
-        std::cout &lt;&lt; <span class="hljs-string">&quot;复制构造: &quot;</span> &lt;&lt; value_ &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    Traceable(const Traceable&amp; other) : value_(other.value_) &#123;
+        std::cout &lt;&lt; &quot;复制构造: &quot; &lt;&lt; value_ &lt;&lt; &quot;\n&quot;;
     &#125;
-    <span class="hljs-built_in">Traceable</span>(Traceable&amp;&amp; other) <span class="hljs-keyword">noexcept</span> : <span class="hljs-built_in">value_</span>(other.value_) &#123;
-        std::cout &lt;&lt; <span class="hljs-string">&quot;移动构造: &quot;</span> &lt;&lt; value_ &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
-        other.value_ = <span class="hljs-number">-1</span>;
+    Traceable(Traceable&amp;&amp; other) noexcept : value_(other.value_) &#123;
+        std::cout &lt;&lt; &quot;移动构造: &quot; &lt;&lt; value_ &lt;&lt; &quot;\n&quot;;
+        other.value_ = -1;
     &#125;
-    ~<span class="hljs-built_in">Traceable</span>() &#123;
-        std::cout &lt;&lt; <span class="hljs-string">&quot;析构: &quot;</span> &lt;&lt; value_ &lt;&lt; <span class="hljs-string">&quot;\n&quot;</span>;
+    ~Traceable() &#123;
+        std::cout &lt;&lt; &quot;析构: &quot; &lt;&lt; value_ &lt;&lt; &quot;\n&quot;;
     &#125;
 
-<span class="hljs-keyword">private</span>:
-    <span class="hljs-type">int</span> value_ = <span class="hljs-number">0</span>;
+private:
+    int value_ = 0;
 &#125;;
 
-<span class="hljs-comment">// 测试NRVO</span>
-<span class="hljs-function">Traceable <span class="hljs-title">create_with_nrvo</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-function">Traceable <span class="hljs-title">obj</span><span class="hljs-params">(<span class="hljs-number">42</span>)</span></span>;
-    std::cout &lt;&lt; <span class="hljs-string">&quot;--- 函数内对象创建完成 ---\n&quot;</span>;
-    <span class="hljs-keyword">return</span> obj;
+// 测试NRVO
+Traceable create_with_nrvo() &#123;
+    Traceable obj(42);
+    std::cout &lt;&lt; &quot;--- 函数内对象创建完成 ---\n&quot;;
+    return obj;
 &#125;
 
-<span class="hljs-comment">// 测试URVO</span>
-<span class="hljs-function">Traceable <span class="hljs-title">create_with_urvo</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">Traceable</span>(<span class="hljs-number">42</span>);
+// 测试URVO
+Traceable create_with_urvo() &#123;
+    return Traceable(42);
 &#125;
 
-<span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>&#123;
-    std::cout &lt;&lt; <span class="hljs-string">&quot;=== NRVO 测试 ===\n&quot;</span>;
-    <span class="hljs-keyword">auto</span> obj1 = <span class="hljs-built_in">create_with_nrvo</span>();
+int main() &#123;
+    std::cout &lt;&lt; &quot;=== NRVO 测试 ===\n&quot;;
+    auto obj1 = create_with_nrvo();
 
-    std::cout &lt;&lt; <span class="hljs-string">&quot;\n=== URVO 测试 ===\n&quot;</span>;
-    <span class="hljs-keyword">auto</span> obj2 = <span class="hljs-built_in">create_with_urvo</span>();
+    std::cout &lt;&lt; &quot;\n=== URVO 测试 ===\n&quot;;
+    auto obj2 = create_with_urvo();
 
-    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+    return 0;
 &#125;
 </code></pre>
 <p><strong>开启优化时的输出(<code>-O2</code>):</strong></p>
-<pre><code class="hljs language-text">=== NRVO 测试 ===
+<pre><code class="text">=== NRVO 测试 ===
 有参构造: 42
 --- 函数内对象创建完成 ---
 析构: 42
@@ -601,7 +595,7 @@ std::vector&lt;<span class="hljs-type">int</span>&gt; result; <span class="hljs-
 析构: 42
 </code></pre>
 <p><strong>关闭优化时的输出(<code>-O0 -fno-elide-constructors</code>):</strong></p>
-<pre><code class="hljs language-text">=== NRVO 测试 ===
+<pre><code class="text">=== NRVO 测试 ===
 有参构造: 42
 --- 函数内对象创建完成 ---
 移动构造: 42
@@ -617,117 +611,107 @@ std::vector&lt;<span class="hljs-type">int</span>&gt; result; <span class="hljs-
 析构: 42
 </code></pre>
 <p><strong>开启优化后，所有复制和移动构造完全消失！</strong></p>
-<h2>什么时候会发生 RVO？</h2>
-<h3 id="理想情况（几乎总是优化）">理想情况（几乎总是优化）</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 1. 直接返回临时对象 - 几乎总是优化</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">case1</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">return</span> std::vector&lt;<span class="hljs-type">int</span>&gt;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>&#125;;
+<h2 id="什么时候会发生-RVO？"><a href="#什么时候会发生-RVO？" class="headerlink" title="什么时候会发生 RVO？"></a>什么时候会发生 RVO？</h2><h3 id="理想情况（几乎总是优化）"><a href="#理想情况（几乎总是优化）" class="headerlink" title="理想情况（几乎总是优化）"></a>理想情况（几乎总是优化）</h3><pre><code class="cpp">// 1. 直接返回临时对象 - 几乎总是优化
+std::vector&lt;int&gt; case1() &#123;
+    return std::vector&lt;int&gt;&#123;1, 2, 3&#125;;
 &#125;
 
-<span class="hljs-comment">// 2. 返回局部变量（单一返回路径）- 现代编译器都能优化</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">case2</span><span class="hljs-params">()</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result;
-    result.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">1</span>);
-    <span class="hljs-keyword">return</span> result;
+// 2. 返回局部变量（单一返回路径）- 现代编译器都能优化
+std::vector&lt;int&gt; case2() &#123;
+    std::vector&lt;int&gt; result;
+    result.push_back(1);
+    return result;
 &#125;
 
-<span class="hljs-comment">// 3. 条件表达式中的临时对象 - 现代编译器能优化</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">case3</span><span class="hljs-params">(<span class="hljs-type">bool</span> flag)</span> </span>&#123;
-    <span class="hljs-keyword">return</span> flag ? std::vector&lt;<span class="hljs-type">int</span>&gt;&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125; : std::vector&lt;<span class="hljs-type">int</span>&gt;&#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;
+// 3. 条件表达式中的临时对象 - 现代编译器能优化
+std::vector&lt;int&gt; case3(bool flag) &#123;
+    return flag ? std::vector&lt;int&gt;&#123;1, 2&#125; : std::vector&lt;int&gt;&#123;3, 4&#125;;
 &#125;
 </code></pre>
-<h3 id="C-17-的强制-RVO">C++17 的强制 RVO</h3>
-<p>C++17 标准对某些情况<strong>强制要求 RVO</strong>：</p>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// C++17 强制RVO的情况：</span>
-<span class="hljs-function">MyClass <span class="hljs-title">create</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">return</span> <span class="hljs-built_in">MyClass</span>();  <span class="hljs-comment">// 返回纯右值(prvalue)，必须RVO</span>
+<h3 id="C-17-的强制-RVO"><a href="#C-17-的强制-RVO" class="headerlink" title="C++17 的强制 RVO"></a>C++17 的强制 RVO</h3><p>C++17 标准对某些情况<strong>强制要求 RVO</strong>：</p>
+<pre><code class="cpp">// C++17 强制RVO的情况：
+MyClass create() &#123;
+    return MyClass();  // 返回纯右值(prvalue)，必须RVO
 &#125;
 
-<span class="hljs-comment">// 但NRVO仍然是可选优化：</span>
-<span class="hljs-function">MyClass <span class="hljs-title">create</span><span class="hljs-params">()</span> </span>&#123;
+// 但NRVO仍然是可选优化：
+MyClass create() &#123;
     MyClass obj;
-    <span class="hljs-keyword">return</span> obj;  <span class="hljs-comment">// 返回左值，NRVO可选</span>
+    return obj;  // 返回左值，NRVO可选
 &#125;
 </code></pre>
-<h2>可能阻止 RVO 的情况及解决方案</h2>
-<h3 id="情况-1：多返回路径（不同对象）">情况 1：多返回路径（不同对象）</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 可能阻止NRVO</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">bad_example1</span><span class="hljs-params">(<span class="hljs-type">bool</span> flag)</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; a&#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; b&#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;
+<h2 id="可能阻止-RVO-的情况及解决方案"><a href="#可能阻止-RVO-的情况及解决方案" class="headerlink" title="可能阻止 RVO 的情况及解决方案"></a>可能阻止 RVO 的情况及解决方案</h2><h3 id="情况-1：多返回路径（不同对象）"><a href="#情况-1：多返回路径（不同对象）" class="headerlink" title="情况 1：多返回路径（不同对象）"></a>情况 1：多返回路径（不同对象）</h3><pre><code class="cpp">// 可能阻止NRVO
+std::vector&lt;int&gt; bad_example1(bool flag) &#123;
+    std::vector&lt;int&gt; a&#123;1, 2&#125;;
+    std::vector&lt;int&gt; b&#123;3, 4&#125;;
 
-    <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">return</span> a;  <span class="hljs-comment">// 返回a</span>
-    <span class="hljs-keyword">else</span> <span class="hljs-keyword">return</span> b;       <span class="hljs-comment">// 返回b - 可能阻止NRVO</span>
+    if (flag) return a;  // 返回a
+    else return b;       // 返回b - 可能阻止NRVO
 &#125;
 
-<span class="hljs-comment">// 改进：单一返回路径</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">good_example1</span><span class="hljs-params">(<span class="hljs-type">bool</span> flag)</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result;
-    <span class="hljs-keyword">if</span> (flag) &#123;
-        result = &#123;<span class="hljs-number">1</span>, <span class="hljs-number">2</span>&#125;;
-    &#125; <span class="hljs-keyword">else</span> &#123;
-        result = &#123;<span class="hljs-number">3</span>, <span class="hljs-number">4</span>&#125;;
+// 改进：单一返回路径
+std::vector&lt;int&gt; good_example1(bool flag) &#123;
+    std::vector&lt;int&gt; result;
+    if (flag) &#123;
+        result = &#123;1, 2&#125;;
+    &#125; else &#123;
+        result = &#123;3, 4&#125;;
     &#125;
-    <span class="hljs-keyword">return</span> result;  <span class="hljs-comment">// 单一返回路径，利于NRVO</span>
+    return result;  // 单一返回路径，利于NRVO
 &#125;
 </code></pre>
-<h3 id="情况-2：返回函数参数">情况 2：返回函数参数</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 无法RVO：参数不是局部变量</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">bad_example2</span><span class="hljs-params">(std::vector&lt;<span class="hljs-type">int</span>&gt; input)</span> </span>&#123;
-    input.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">99</span>);
-    <span class="hljs-keyword">return</span> input;  <span class="hljs-comment">// 无法NRVO</span>
+<h3 id="情况-2：返回函数参数"><a href="#情况-2：返回函数参数" class="headerlink" title="情况 2：返回函数参数"></a>情况 2：返回函数参数</h3><pre><code class="cpp">// 无法RVO：参数不是局部变量
+std::vector&lt;int&gt; bad_example2(std::vector&lt;int&gt; input) &#123;
+    input.push_back(99);
+    return input;  // 无法NRVO
 &#125;
 
-<span class="hljs-comment">// 改进：按引用传递，返回新对象</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">good_example2</span><span class="hljs-params">(<span class="hljs-type">const</span> std::vector&lt;<span class="hljs-type">int</span>&gt;&amp; input)</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result = input;
-    result.<span class="hljs-built_in">push_back</span>(<span class="hljs-number">99</span>);
-    <span class="hljs-keyword">return</span> result;  <span class="hljs-comment">// 可以NRVO</span>
+// 改进：按引用传递，返回新对象
+std::vector&lt;int&gt; good_example2(const std::vector&lt;int&gt;&amp; input) &#123;
+    std::vector&lt;int&gt; result = input;
+    result.push_back(99);
+    return result;  // 可以NRVO
 &#125;
 </code></pre>
-<h3 id="情况-3：错误使用-std-move">情况 3：错误使用 std::move</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 不要这样做！可能阻止RVO</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">wrong_way</span><span class="hljs-params">()</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result;
-    <span class="hljs-comment">// ... 填充数据 ...</span>
-    <span class="hljs-keyword">return</span> std::<span class="hljs-built_in">move</span>(result);  <span class="hljs-comment">// 显式移动可能阻止NRVO！</span>
+<h3 id="情况-3：错误使用-std-move"><a href="#情况-3：错误使用-std-move" class="headerlink" title="情况 3：错误使用 std::move"></a>情况 3：错误使用 std::move</h3><pre><code class="cpp">// 不要这样做！可能阻止RVO
+std::vector&lt;int&gt; wrong_way() &#123;
+    std::vector&lt;int&gt; result;
+    // ... 填充数据 ...
+    return std::move(result);  // 显式移动可能阻止NRVO！
 &#125;
 
-<span class="hljs-comment">// 正确做法：信任编译器</span>
-<span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">right_way</span><span class="hljs-params">()</span> </span>&#123;
-    std::vector&lt;<span class="hljs-type">int</span>&gt; result;
-    <span class="hljs-comment">// ... 填充数据 ...</span>
-    <span class="hljs-keyword">return</span> result;  <span class="hljs-comment">// 让编译器决定最优方式</span>
+// 正确做法：信任编译器
+std::vector&lt;int&gt; right_way() &#123;
+    std::vector&lt;int&gt; result;
+    // ... 填充数据 ...
+    return result;  // 让编译器决定最优方式
 &#125;
 </code></pre>
-<h2>RVO 与移动语义的关系</h2>
-<p>RVO 和移动语义是互补的技术：</p>
-<pre><code class="hljs language-cpp"><span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">create_vector</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-function">std::vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">local</span><span class="hljs-params">(<span class="hljs-number">1000</span>)</span></span>;
-    <span class="hljs-keyword">return</span> local;  <span class="hljs-comment">// 编译器决策流程：</span>
-                   <span class="hljs-comment">// 1. 尝试RVO（最佳）</span>
-                   <span class="hljs-comment">// 2. 如果RVO失败，尝试移动构造（良好）</span>
-                   <span class="hljs-comment">// 3. 如果移动不可用，使用复制构造（最差）</span>
+<h2 id="RVO-与移动语义的关系"><a href="#RVO-与移动语义的关系" class="headerlink" title="RVO 与移动语义的关系"></a>RVO 与移动语义的关系</h2><p>RVO 和移动语义是互补的技术：</p>
+<pre><code class="cpp">std::vector&lt;int&gt; create_vector() &#123;
+    std::vector&lt;int&gt; local(1000);
+    return local;  // 编译器决策流程：
+                   // 1. 尝试RVO（最佳）
+                   // 2. 如果RVO失败，尝试移动构造（良好）
+                   // 3. 如果移动不可用，使用复制构造（最差）
 &#125;
 </code></pre>
 <p><strong>移动语义是 RVO 的安全网</strong>：即使编译器无法进行 RVO，移动语义也能保证不错的性能。</p>
-<h2>实际性能影响</h2>
-<p>让我们看看 RVO 在不同场景下的性能提升：</p>
-<h3 id="小对象-vs-大对象">小对象 vs 大对象</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 基准测试示例</span>
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">SmallObject</span> &#123; <span class="hljs-type">int</span> data[<span class="hljs-number">10</span>]; &#125;;
-<span class="hljs-keyword">struct</span> <span class="hljs-title class_">LargeObject</span> &#123; <span class="hljs-type">int</span> data[<span class="hljs-number">10000</span>]; &#125;;
+<h2 id="实际性能影响"><a href="#实际性能影响" class="headerlink" title="实际性能影响"></a>实际性能影响</h2><p>让我们看看 RVO 在不同场景下的性能提升：</p>
+<h3 id="小对象-vs-大对象"><a href="#小对象-vs-大对象" class="headerlink" title="小对象 vs 大对象"></a>小对象 vs 大对象</h3><pre><code class="cpp">// 基准测试示例
+struct SmallObject &#123; int data[10]; &#125;;
+struct LargeObject &#123; int data[10000]; &#125;;
 
-<span class="hljs-function">SmallObject <span class="hljs-title">create_small</span><span class="hljs-params">()</span> </span>&#123;
+SmallObject create_small() &#123;
     SmallObject obj;
-    <span class="hljs-comment">// 初始化</span>
-    <span class="hljs-keyword">return</span> obj;
+    // 初始化
+    return obj;
 &#125;
 
-<span class="hljs-function">LargeObject <span class="hljs-title">create_large</span><span class="hljs-params">()</span> </span>&#123;
+LargeObject create_large() &#123;
     LargeObject obj;
-    <span class="hljs-comment">// 初始化</span>
-    <span class="hljs-keyword">return</span> obj;
+    // 初始化
+    return obj;
 &#125;
 </code></pre>
 <p><strong>典型性能结果：</strong></p>
@@ -737,86 +721,77 @@ std::vector&lt;<span class="hljs-type">int</span>&gt; result; <span class="hljs-
 <li>大对象(几 MB)：RVO 提升 10-100 倍</li>
 <li>极大对象：避免栈溢出，RVO 至关重要</li>
 </ul>
-<h2>最佳实践指南</h2>
-<h3 id="1-编写-RVO-友好的代码">1. 编写 RVO 友好的代码</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// ✅ 好的模式：单一返回路径 + 局部变量</span>
-<span class="hljs-function">std::vector&lt;Data&gt; <span class="hljs-title">process_data</span><span class="hljs-params">(<span class="hljs-type">const</span> Input&amp; input)</span> </span>&#123;
+<h2 id="最佳实践指南"><a href="#最佳实践指南" class="headerlink" title="最佳实践指南"></a>最佳实践指南</h2><h3 id="1-编写-RVO-友好的代码"><a href="#1-编写-RVO-友好的代码" class="headerlink" title="1. 编写 RVO 友好的代码"></a>1. 编写 RVO 友好的代码</h3><pre><code class="cpp">// ✅ 好的模式：单一返回路径 + 局部变量
+std::vector&lt;Data&gt; process_data(const Input&amp; input) &#123;
     std::vector&lt;Data&gt; result;
 
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; item : input) &#123;
-        result.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">process_item</span>(item));
+    for (const auto&amp; item : input) &#123;
+        result.push_back(process_item(item));
     &#125;
 
-    <span class="hljs-keyword">return</span> result;  <span class="hljs-comment">// 让编译器优化</span>
+    return result;  // 让编译器优化
 &#125;
 </code></pre>
-<h3 id="2-了解编译器能力">2. 了解编译器能力</h3>
-<ul>
-<li><strong>GCC/Clang</strong>: RVO 支持非常成熟</li>
+<h3 id="2-了解编译器能力"><a href="#2-了解编译器能力" class="headerlink" title="2. 了解编译器能力"></a>2. 了解编译器能力</h3><ul>
+<li><strong>GCC&#x2F;Clang</strong>: RVO 支持非常成熟</li>
 <li><strong>MSVC</strong>: 良好支持，特别是新版</li>
 <li><strong>ICC</strong>: 优秀的优化能力</li>
 </ul>
-<h3 id="3-合理使用移动语义作为保障">3. 合理使用移动语义作为保障</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 当无法避免多返回路径时</span>
-<span class="hljs-function">std::unique_ptr&lt;BigObject&gt; <span class="hljs-title">create_object</span><span class="hljs-params">(Config config)</span> </span>&#123;
-    <span class="hljs-keyword">if</span> (config.type == <span class="hljs-string">&quot;A&quot;</span>) &#123;
-        <span class="hljs-keyword">return</span> std::<span class="hljs-built_in">make_unique</span>&lt;TypeA&gt;();  <span class="hljs-comment">// 移动语义保证效率</span>
-    &#125; <span class="hljs-keyword">else</span> &#123;
-        <span class="hljs-keyword">return</span> std::<span class="hljs-built_in">make_unique</span>&lt;TypeB&gt;();  <span class="hljs-comment">// 移动语义保证效率</span>
+<h3 id="3-合理使用移动语义作为保障"><a href="#3-合理使用移动语义作为保障" class="headerlink" title="3. 合理使用移动语义作为保障"></a>3. 合理使用移动语义作为保障</h3><pre><code class="cpp">// 当无法避免多返回路径时
+std::unique_ptr&lt;BigObject&gt; create_object(Config config) &#123;
+    if (config.type == &quot;A&quot;) &#123;
+        return std::make_unique&lt;TypeA&gt;();  // 移动语义保证效率
+    &#125; else &#123;
+        return std::make_unique&lt;TypeB&gt;();  // 移动语义保证效率
     &#125;
 &#125;
 </code></pre>
-<h3 id="4-生产环境代码示例">4. 生产环境代码示例</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 工厂函数 - 充分利用RVO</span>
-<span class="hljs-function">std::unique_ptr&lt;Connection&gt; <span class="hljs-title">create_connection</span><span class="hljs-params">(<span class="hljs-type">const</span> Config&amp; config)</span> </span>&#123;
-    <span class="hljs-keyword">auto</span> connection = std::<span class="hljs-built_in">make_unique</span>&lt;Connection&gt;();
+<h3 id="4-生产环境代码示例"><a href="#4-生产环境代码示例" class="headerlink" title="4. 生产环境代码示例"></a>4. 生产环境代码示例</h3><pre><code class="cpp">// 工厂函数 - 充分利用RVO
+std::unique_ptr&lt;Connection&gt; create_connection(const Config&amp; config) &#123;
+    auto connection = std::make_unique&lt;Connection&gt;();
 
-    <span class="hljs-comment">// 复杂初始化逻辑</span>
-    <span class="hljs-keyword">if</span> (!connection-&gt;<span class="hljs-built_in">initialize</span>(config)) &#123;
-        <span class="hljs-keyword">throw</span> std::<span class="hljs-built_in">runtime_error</span>(<span class="hljs-string">&quot;初始化失败&quot;</span>);
+    // 复杂初始化逻辑
+    if (!connection-&gt;initialize(config)) &#123;
+        throw std::runtime_error(&quot;初始化失败&quot;);
     &#125;
 
-    <span class="hljs-keyword">return</span> connection;  <span class="hljs-comment">// NRVO或移动语义</span>
+    return connection;  // NRVO或移动语义
 &#125;
 
-<span class="hljs-comment">// 数据处理 - 返回大结果集</span>
-<span class="hljs-function">std::vector&lt;Result&gt; <span class="hljs-title">process_batch</span><span class="hljs-params">(<span class="hljs-type">const</span> std::vector&lt;Input&gt;&amp; batch)</span> </span>&#123;
+// 数据处理 - 返回大结果集
+std::vector&lt;Result&gt; process_batch(const std::vector&lt;Input&gt;&amp; batch) &#123;
     std::vector&lt;Result&gt; results;
-    results.<span class="hljs-built_in">reserve</span>(batch.<span class="hljs-built_in">size</span>());  <span class="hljs-comment">// 预分配，避免重分配</span>
+    results.reserve(batch.size());  // 预分配，避免重分配
 
-    <span class="hljs-keyword">for</span> (<span class="hljs-type">const</span> <span class="hljs-keyword">auto</span>&amp; input : batch) &#123;
-        results.<span class="hljs-built_in">push_back</span>(<span class="hljs-built_in">process_single</span>(input));
+    for (const auto&amp; input : batch) &#123;
+        results.push_back(process_single(input));
     &#125;
 
-    <span class="hljs-keyword">return</span> results;  <span class="hljs-comment">// RVO确保高效返回</span>
+    return results;  // RVO确保高效返回
 &#125;
 </code></pre>
-<h2>调试和验证技巧</h2>
-<h3 id="检查编译器优化">检查编译器优化</h3>
-<pre><code class="hljs language-bash"><span class="hljs-comment"># GCC/Clang: 检查汇编输出</span>
+<h2 id="调试和验证技巧"><a href="#调试和验证技巧" class="headerlink" title="调试和验证技巧"></a>调试和验证技巧</h2><h3 id="检查编译器优化"><a href="#检查编译器优化" class="headerlink" title="检查编译器优化"></a>检查编译器优化</h3><pre><code class="bash"># GCC/Clang: 检查汇编输出
 g++ -O2 -S -fverbose-asm test.cpp
 
-<span class="hljs-comment"># 查看优化报告</span>
+# 查看优化报告
 g++ -O2 -fdump-tree-optimized test.cpp
 </code></pre>
-<h3 id="运行时检测">运行时检测</h3>
-<pre><code class="hljs language-cpp"><span class="hljs-comment">// 使用自定义类型跟踪构造</span>
-<span class="hljs-keyword">class</span> <span class="hljs-title class_">RvoDetector</span> &#123;
-<span class="hljs-keyword">public</span>:
-    <span class="hljs-built_in">RvoDetector</span>() &#123;
-        std::cout &lt;&lt; <span class="hljs-string">&quot;构造地址: &quot;</span> &lt;&lt; <span class="hljs-keyword">this</span> &lt;&lt; std::endl;
+<h3 id="运行时检测"><a href="#运行时检测" class="headerlink" title="运行时检测"></a>运行时检测</h3><pre><code class="cpp">// 使用自定义类型跟踪构造
+class RvoDetector &#123;
+public:
+    RvoDetector() &#123;
+        std::cout &lt;&lt; &quot;构造地址: &quot; &lt;&lt; this &lt;&lt; std::endl;
     &#125;
-    <span class="hljs-comment">// ... 其他特殊成员函数</span>
+    // ... 其他特殊成员函数
 &#125;;
 
-<span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">test_rvo</span><span class="hljs-params">()</span> </span>&#123;
-    <span class="hljs-keyword">auto</span> obj = <span class="hljs-built_in">create_rvo_detector</span>();
-    std::cout &lt;&lt; <span class="hljs-string">&quot;最终地址: &quot;</span> &lt;&lt; &amp;obj &lt;&lt; std::endl;
-    <span class="hljs-comment">// 如果地址相同，说明发生了RVO</span>
+void test_rvo() &#123;
+    auto obj = create_rvo_detector();
+    std::cout &lt;&lt; &quot;最终地址: &quot; &lt;&lt; &amp;obj &lt;&lt; std::endl;
+    // 如果地址相同，说明发生了RVO
 &#125;
 </code></pre>
-<h2>总结</h2>
-<p>RVO 是现代 C++中最重要的优化之一，它让我们能够：</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>RVO 是现代 C++中最重要的优化之一，它让我们能够：</p>
 <ol>
 <li><strong>编写更清晰的代码</strong>：自然返回对象，无需复杂指针操作</li>
 <li><strong>获得更好的性能</strong>：消除不必要的复制操作</li>
@@ -831,15 +806,15 @@ g++ -O2 -fdump-tree-optimized test.cpp
 <li>避免使用<code>std::move</code>返回局部对象</li>
 </ul>
 <p>在现代 C++中，你应该放心地这样写：</p>
-<pre><code class="hljs language-cpp"><span class="hljs-function">BigObject <span class="hljs-title">compute_complex_result</span><span class="hljs-params">()</span> </span>&#123;
+<pre><code class="cpp">BigObject compute_complex_result() &#123;
     BigObject result;
-    <span class="hljs-comment">// ... 复杂计算 ...</span>
-    <span class="hljs-keyword">return</span> result;  <span class="hljs-comment">// 清晰、安全、高效</span>
+    // ... 复杂计算 ...
+    return result;  // 清晰、安全、高效
 &#125;
 
-<span class="hljs-keyword">auto</span> data = <span class="hljs-built_in">compute_complex_result</span>(); <span class="hljs-comment">// 享受零成本抽象</span>
+auto data = compute_complex_result(); // 享受零成本抽象
 </code></pre>
-<p>RVO 让 C<ins>程序员能够以值语义编写清晰、安全的代码，同时享受接近手动优化的性能。这是 C</ins>&quot;零成本抽象&quot;哲学的美好体现！</p>
+<p>RVO 让 C++程序员能够以值语义编写清晰、安全的代码，同时享受接近手动优化的性能。这是 C++”零成本抽象”哲学的美好体现！</p>
 
         </div>
         <!-- .entry-content -->
@@ -954,7 +929,7 @@ g++ -O2 -fdump-tree-optimized test.cpp
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -966,10 +941,10 @@ g++ -O2 -fdump-tree-optimized test.cpp
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
