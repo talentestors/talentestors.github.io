@@ -495,7 +495,7 @@
 </ul>
 <h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><h3 id="Swing-简介"><a href="#Swing-简介" class="headerlink" title="Swing 简介"></a>Swing 简介</h3><p>Swing 是 Java 的一个 GUI 工具包，它提供了一套丰富的组件，用于开发图形用户界面（GUI）应用程序，这些组件既可用于 Java 应用程序，也可用于 Applet。</p>
 <h3 id="Swing-组件"><a href="#Swing-组件" class="headerlink" title="Swing 组件"></a>Swing 组件</h3><p>JFrame 是一个顶层容器，它包含并管理其他 Swing 组件。Component 是所有 Swing 组件的超类。我们将使用 JFrame 和 JPanel 来创建一个简单的窗口。添加我们自定义的组件到 JFrame 中。</p>
-<h2 id="自定义的组件-ClockPanel-的实现"><a href="#自定义的组件-ClockPanel-的实现" class="headerlink" title="自定义的组件 ClockPanel 的实现"></a>自定义的组件 ClockPanel 的实现</h2><pre><code class="lang-java">private static class ClockPanel extends Component &#123;
+<h2 id="自定义的组件-ClockPanel-的实现"><a href="#自定义的组件-ClockPanel-的实现" class="headerlink" title="自定义的组件 ClockPanel 的实现"></a>自定义的组件 ClockPanel 的实现</h2><pre><code class="java">private static class ClockPanel extends Component &#123;
     private static final SimpleDateFormat DATE_FORMAT;
     private static final SimpleDateFormat TIME_FORMAT;
     static &#123;
@@ -515,7 +515,7 @@
 &#125;
 </code></pre>
 <p>获取时间需要用到 <strong>Calender</strong> 类，再使用 <strong>SimpleDateFormat</strong> 类去对我们的日期进行自定义的格式化。</p>
-<h2 id="另附源码"><a href="#另附源码" class="headerlink" title="另附源码"></a>另附源码</h2><pre><code class="lang-java">import javax.swing.*;
+<h2 id="另附源码"><a href="#另附源码" class="headerlink" title="另附源码"></a>另附源码</h2><pre><code class="java">import javax.swing.*;
 import java.awt.*;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -619,8 +619,9 @@ public class DynamicClock &#123;
 <p style="text-align: center; color: #66CCFF;"><b>END</b></p>
 
 <hr>
-<p><a data-fancybox="anime" data-caption="pixiv" target="_blank" rel="noopener" href="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png"><br>    <img src="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png" width="600">
-</a></p>
+<a data-fancybox="anime" data-caption="pixiv" target="_blank" rel="noopener" href="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png">
+    <img src="https://pic.leetcode.cn/1702137234-fvofiU-QQ%E5%9B%BE%E7%89%8720231209235339.png" width="600">
+</a>
 
         </div>
         <!-- .entry-content -->
@@ -735,7 +736,7 @@ public class DynamicClock &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -747,10 +748,10 @@ public class DynamicClock &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

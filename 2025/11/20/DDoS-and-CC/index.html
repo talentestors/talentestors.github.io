@@ -507,10 +507,10 @@
 <h4 id="🛡️-Cloudflare-如何防御-DDoS-攻击"><a href="#🛡️-Cloudflare-如何防御-DDoS-攻击" class="headerlink" title="🛡️ Cloudflare 如何防御 DDoS 攻击"></a>🛡️ Cloudflare 如何防御 DDoS 攻击</h4><p>Cloudflare 防御 DDoS 攻击的核心，可以概括为“全局调度，边缘拦截”。</p>
 <p>海量容量与智能调度：Cloudflare 构建了一个拥有超过 449 Tbps 网络容量的全球 Anycast 网络。当攻击流量涌来时，会被分散到全球 300 多个数据中心的边缘节点，避免单点被压垮。</p>
 <p>多层次协同防御：Cloudflare 的防护体系覆盖网络层（L3）、传输层（L4）到应用层（L7）。</p>
-<p>L3/L4 防御：在数据包到达服务器网卡时，内核中的 L4Drop 程序（基于 eXpress Data Path, XDP）会第一时间根据已有规则丢弃恶意包。同时，运行在每个边缘服务器上的 dosd 程序会持续分析流量样本，一旦检测到攻击，能即时生成签名并推送缓解规则。</p>
-<p>L7 防御：对于 HTTP/HTTPS 洪水攻击，dosd 同样会分析请求样本，并通过 Web 应用防火墙（WAF）等组件对攻击请求进行封堵、速率限制或发起质询。</p>
+<p>L3&#x2F;L4 防御：在数据包到达服务器网卡时，内核中的 L4Drop 程序（基于 eXpress Data Path, XDP）会第一时间根据已有规则丢弃恶意包。同时，运行在每个边缘服务器上的 dosd 程序会持续分析流量样本，一旦检测到攻击，能即时生成签名并推送缓解规则。</p>
+<p>L7 防御：对于 HTTP&#x2F;HTTPS 洪水攻击，dosd 同样会分析请求样本，并通过 Web 应用防火墙（WAF）等组件对攻击请求进行封堵、速率限制或发起质询。</p>
 <h3 id="2-CC-攻击（Challenge-Collapsar，挑战黑洞攻击）"><a href="#2-CC-攻击（Challenge-Collapsar，挑战黑洞攻击）" class="headerlink" title="2. CC 攻击（Challenge Collapsar，挑战黑洞攻击）"></a>2. CC 攻击（Challenge Collapsar，挑战黑洞攻击）</h3><p>一种应用层 DDoS 攻击，通过模拟正常用户行为（如频繁请求动态页面、API 接口），消耗服务器 CPU、数据库等资源。</p>
-<p>攻击层次集中在应用层（如 HTTP/HTTPS）</p>
+<p>攻击层次集中在应用层（如 HTTP&#x2F;HTTPS）</p>
 <p>特点：</p>
 <ul>
 <li>低流量、高成本请求：单次请求可能触发复杂操作（如数据库查询），导致服务器资源过载。</li>
@@ -655,7 +655,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -667,10 +667,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

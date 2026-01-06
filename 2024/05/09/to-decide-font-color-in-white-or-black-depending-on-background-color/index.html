@@ -491,7 +491,7 @@
         <div class="entry-content">
           <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>之前想做一个网页色卡，需要背景颜色和文字颜色对比良好。已获得更好视觉效果。这里分享一下如何根据背景颜色自动选择黑色或白色作为文本颜色。</p>
 <p>就像这样<br><img src="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" alt="exmple"></p>
-<pre><code class="lang-javascript">/* 
+<pre><code class="javascript">/* 
 用于填充字符串 `str` 到指定长度 `len`，默认为 2
 例如：padZero(&#39;F&#39;, 2) =&gt; &#39;0F&#39; */
 function padZero(str, len) &#123;
@@ -532,7 +532,7 @@ function invertColor(hex, bw) &#123;
 <p>当第二个参数为 <code>false</code> 时，返回背景颜色的反色 HEX 值。</p>
 <p>这里<code>(r * 0.299 + g * 0.587 + b * 0.114) &gt; 186</code> 186 的阈值是基于理论的，但可以根据口味进行调整。</p>
 <p>还实现了一个Java类HexColor, 它可以实现合适文本前景色效果。</p>
-<pre><code class="lang-java">package cn.yuhiri.tools;
+<pre><code class="java">package cn.yuhiri.tools;
 
 import java.io.Serial;
 import java.io.Serializable;
@@ -822,7 +822,7 @@ public class HexColor implements Serializable &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -834,10 +834,10 @@ public class HexColor implements Serializable &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

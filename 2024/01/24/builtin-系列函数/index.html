@@ -490,17 +490,17 @@
         
         <div class="entry-content">
           <h2 id="内置函数系列：-builtin"><a href="#内置函数系列：-builtin" class="headerlink" title="内置函数系列：__builtin__"></a>内置函数系列：__builtin__</h2><p>在C++编程中，我们经常需要进行位运算操作。为了方便处理二进制数，C++提供了一组内置函数，称为__builtin__系列函数。这些函数能够高效地执行一些位运算操作，使得我们可以更方便地处理二进制数据。本篇文章将介绍一些常用的__builtin__函数。</p>
-<h3 id="1-builtin-popcount-x"><a href="#1-builtin-popcount-x" class="headerlink" title="1. __builtin_popcount(x)"></a>1. __builtin_popcount(x)</h3><p>__builtin_popcount(x)函数用于统计一个数x的二进制表示中有多少个1。例如，对于数值x=5（二进制表示为101），__builtin_popcount(x)的返回值为2，表示二进制数中有2个1。</p>
-<h3 id="2-builtin-clz-x"><a href="#2-builtin-clz-x" class="headerlink" title="2. __builtin_clz(x)"></a>2. __builtin_clz(x)</h3><p>__builtin_clz(x)函数用于统计一个数x的二进制表示中有多少个前导0。注意，这里要计算表示符号的第一位。可以将其理解为计算前导零的个数（count leading zeroes）。例如，对于数值x=8（二进制表示为1000），__builtin_clz(x)的返回值为28，表示二进制数中有28个前导0。</p>
-<h3 id="3-builtin-ctz-x"><a href="#3-builtin-ctz-x" class="headerlink" title="3. __builtin_ctz(x)"></a>3. __builtin_ctz(x)</h3><p>__builtin_ctz(x)函数用于统计一个数x的二进制表示中末尾有多少个0。可以将其理解为计算末尾零的个数（count trailing zeroes）。例如，对于数值x=16（二进制表示为10000），__builtin_ctz(x)的返回值为4，表示二进制数中有4个末尾0。</p>
-<h3 id="4-builtin-ffs-x"><a href="#4-builtin-ffs-x" class="headerlink" title="4. __builtin_ffs(x)"></a>4. __builtin_ffs(x)</h3><p>__builtin_ffs(x)函数用于统计一个数x的二进制表示中最后一个1是从后往前的第几位。例如，对于数值x=10（二进制表示为1010），__builtin_ffs(x)的返回值为2，表示二进制数中最后一个1是从后往前的第2位。</p>
-<h3 id="5-builtin-parity-x"><a href="#5-builtin-parity-x" class="headerlink" title="5. __builtin_parity(x)"></a>5. __builtin_parity(x)</h3><p>__builtin_parity(x)函数用于判断一个数x的二进制表示中1的个数的奇偶性。返回值为1表示1的个数为奇数，返回值为0表示1的个数为偶数。这里的parity表示”奇偶性”。例如，对于数值x=6（二进制表示为110），__builtin_parity(x)的返回值为0，表示二进制数中1的个数为偶数。</p>
+<h3 id="1-builtin-popcount-x"><a href="#1-builtin-popcount-x" class="headerlink" title="1. __builtin_popcount(x)"></a>1. __builtin_popcount(x)</h3><p>__builtin_popcount(x)函数用于统计一个数x的二进制表示中有多少个1。例如，对于数值x&#x3D;5（二进制表示为101），__builtin_popcount(x)的返回值为2，表示二进制数中有2个1。</p>
+<h3 id="2-builtin-clz-x"><a href="#2-builtin-clz-x" class="headerlink" title="2. __builtin_clz(x)"></a>2. __builtin_clz(x)</h3><p>__builtin_clz(x)函数用于统计一个数x的二进制表示中有多少个前导0。注意，这里要计算表示符号的第一位。可以将其理解为计算前导零的个数（count leading zeroes）。例如，对于数值x&#x3D;8（二进制表示为1000），__builtin_clz(x)的返回值为28，表示二进制数中有28个前导0。</p>
+<h3 id="3-builtin-ctz-x"><a href="#3-builtin-ctz-x" class="headerlink" title="3. __builtin_ctz(x)"></a>3. __builtin_ctz(x)</h3><p>__builtin_ctz(x)函数用于统计一个数x的二进制表示中末尾有多少个0。可以将其理解为计算末尾零的个数（count trailing zeroes）。例如，对于数值x&#x3D;16（二进制表示为10000），__builtin_ctz(x)的返回值为4，表示二进制数中有4个末尾0。</p>
+<h3 id="4-builtin-ffs-x"><a href="#4-builtin-ffs-x" class="headerlink" title="4. __builtin_ffs(x)"></a>4. __builtin_ffs(x)</h3><p>__builtin_ffs(x)函数用于统计一个数x的二进制表示中最后一个1是从后往前的第几位。例如，对于数值x&#x3D;10（二进制表示为1010），__builtin_ffs(x)的返回值为2，表示二进制数中最后一个1是从后往前的第2位。</p>
+<h3 id="5-builtin-parity-x"><a href="#5-builtin-parity-x" class="headerlink" title="5. __builtin_parity(x)"></a>5. __builtin_parity(x)</h3><p>__builtin_parity(x)函数用于判断一个数x的二进制表示中1的个数的奇偶性。返回值为1表示1的个数为奇数，返回值为0表示1的个数为偶数。这里的parity表示”奇偶性”。例如，对于数值x&#x3D;6（二进制表示为110），__builtin_parity(x)的返回值为0，表示二进制数中1的个数为偶数。</p>
 <p>需要注意的是，以上函数仅适用于int或unsigned int范围内的数值。如果超出此范围，需要在函数末尾加上”ll”，例如__builtin_popcount(x)应改为__builtin_popcountll(x)，在__builtin_clz(x)中也因总位数不同而答案有所不同。</p>
-<p>另外，C++20引入了\<bit\>库，并定义了std::popcount函数，功能与__builtin_popcount相同。std::popcount函数的使用方式如下：</p>
-<pre><code class="lang-cpp">template&lt;class T&gt;
+<p>另外，C++20引入了&lt;bit&gt;库，并定义了std::popcount函数，功能与__builtin_popcount相同。std::popcount函数的使用方式如下：</p>
+<pre><code class="cpp">template&lt;class T&gt;
 constexpr int popcount(T x) noexcept;
 </code></pre>
-<p>如果你对这些函数的复杂度感兴趣，可以参考<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/59268?#comment-428632">Codeforces上关于__builtin_popcount()的复杂度证明</a>。</p>
+<p>如果你对这些函数的复杂度感兴趣，可以参考<a target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/59268#comment-428632">Codeforces上关于__builtin_popcount()的复杂度证明</a>。</p>
 <h2 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h2><p>在使用__builtin__系列函数时，有几个注意事项需要注意：</p>
 <p>平台兼容性：__builtin__系列函数是GCC和Clang编译器的扩展功能，因此在使用这些函数时，需要确保编译器支持这些扩展。如果你使用的是其他编译器，这些函数可能不可用或具有不同的实现方式。</p>
 <p>优化建议：__builtin__系列函数通常比手动实现的位运算更高效，因为编译器可以根据硬件平台和编译选项进行优化。然而，对于一些简单的位运算操作，编译器可能会自动进行优化，因此在使用__builtin__函数之前，最好进行性能测试，以确定是否真正需要使用这些函数。</p>
@@ -624,7 +624,7 @@ constexpr int popcount(T x) noexcept;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -636,10 +636,10 @@ constexpr int popcount(T x) noexcept;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
