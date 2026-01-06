@@ -490,9 +490,9 @@
         
         <div class="entry-content">
           <h2 id="memset-函数的应用"><a href="#memset-函数的应用" class="headerlink" title="memset 函数的应用"></a>memset 函数的应用</h2><h3 id="函数的原型，参数和返回值"><a href="#函数的原型，参数和返回值" class="headerlink" title="函数的原型，参数和返回值"></a>函数的原型，参数和返回值</h3><p>memset 函数是 C 语言的一个标准库函数，定义在<code>&lt;string.h&gt;</code>和<code>memory.h</code>头文件中（如果是 c++那么它也定义在<code>&lt;cstring&gt;</code>头文件中）。它的功能是将一块内存中的前 n 个字节设置为特定的值。它的原型如下：</p>
-<pre><code class="c">void *memset(void *str, int c, size_t n);
+<pre><code class="lang-c">void *memset(void *str, int c, size_t n);
 </code></pre>
-<pre><code class="cpp">void * __cdecl memset(void *_Dst,int _Val,size_t _Size);
+<pre><code class="lang-cpp">void * __cdecl memset(void *_Dst,int _Val,size_t _Size);
 </code></pre>
 <p><em>参数说明：</em></p>
 <ul>
@@ -508,19 +508,19 @@
 <ul>
 <li>初始化数组：如果想要将一个数组中的所有元素都初始化为 0 或者其他某个值，可以使用 memset 函数。例如：</li>
 </ul>
-<pre><code class="c">int arr[10];
+<pre><code class="lang-c">int arr[10];
 memset(arr, 0, sizeof(arr)); // 将arr数组中的10个元素都初始化为0
 </code></pre>
 <ul>
 <li>清空字符串：如果想要将一个字符串变量清空，即将其内容全部设置为 ‘\0’，可以使用 memset 函数。例如：</li>
 </ul>
-<pre><code class="c">char str[20] = &quot;Hello world&quot;;
+<pre><code class="lang-c">char str[20] = &quot;Hello world&quot;;
 memset(str, &#39;\0&#39;, sizeof(str)); // 将str字符串中的20个字符都清空
 </code></pre>
 <ul>
 <li>设置内存块：如果想要将一块内存中的某些字节都设置为某个值，可以使用 memset 函数。例如：</li>
 </ul>
-<pre><code class="c">struct student &#123;
+<pre><code class="lang-c">struct student &#123;
     char name[20];
     int age;
     float score;
@@ -531,812 +531,165 @@ memset(&amp;stu, -1, sizeof(stu)); // 将stu结构体中的所有字节都设置
 <h3 id="效率和安全性"><a href="#效率和安全性" class="headerlink" title="效率和安全性"></a>效率和安全性</h3><p>memset 函数是一个简单而高效的函数，它可以快速地对一块内存进行赋值操作。它比使用循环语句或者赋值语句逐个赋值要快得多。它也比使用 memcpy 函数或者 strcpy 函数复制一个相同值的源数据要快得多。</p>
 <p>但是，memset 函数也有一些缺点和风险。首先，它只能对内存进行字节级别的赋值，不能对更高级别的数据类型进行赋值。例如，如果想要将一个 int 数组中的所有元素都赋值为 1，不能使用 <code>memset(arr, 1, sizeof(arr))</code>，因为这样会导致每个元素都变成 16,843,009(0x01010101) 。正确的做法是使用循环语句或者赋值语句逐个赋值。</p>
 <p>其次，它不能保证对齐和字节序的一致性。不同的编译器和平台可能会有不同的对齐方式和字节序规则，这可能会影响到 memset 函数对内存赋值的结果。例如，在 <strong>小端字节序（Little Endian）</strong> 的系统中，如果想要将一个 int 变量赋值为 0x12345678，不能使用<code>memset(&amp;x, 0x12345678, sizeof(x))</code>，因为这样会导致 x 变成 0x78787878。正确的做法是使用直接赋值语句 <code>x = 0x12345678</code>。</p>
-<p>利用 memset 函数的特性，在 OI&#x2F;ACM 竞赛中我们使用 memset 函数初始化数组，使数组每个元素为一个极小值或极大值。例如：</p>
-<pre><code class="cpp">int nums[5];
+<p>利用 memset 函数的特性，在 OI/ACM 竞赛中我们使用 memset 函数初始化数组，使数组每个元素为一个极小值或极大值。例如：</p>
+<pre><code class="lang-cpp">int nums[5];
 memset(nums, 0x7f, sizeof(nums));
 </code></pre>
 <p>运行结果：</p>
-<pre><code class="text">2139062143
+<pre><code class="lang-text">2139062143
 2139062143
 2139062143
 2139062143
 2139062143
 </code></pre>
-<pre><code class="cpp">int nums[5];
+<pre><code class="lang-cpp">int nums[5];
 memset(nums, 0x80, sizeof(nums));
 </code></pre>
 <p>运行结果：</p>
-<pre><code class="text">-2139062144
+<pre><code class="lang-text">-2139062144
 -2139062144
 -2139062144
 -2139062144
 -2139062144
 </code></pre>
-<p>可以给一个数组赋极大值和极小值，但是 char 数组不适用这个方法，char 只有 1 个字节（C&#x2F;C++）</p>
+<p>可以给一个数组赋极大值和极小值，但是 char 数组不适用这个方法，char 只有 1 个字节（C/C++）</p>
 <p>memset()函数的范围为 <code>0~0xff</code> ，且只会对 1 个字节进行赋值，剩下的字节由上一个字节复制过来。</p>
 <p>因此如果赋 0，会将一段内存全部置为 0，如果赋 0x7f，就会赋一个极大值；如果赋 0x80，就会赋一个为负数的极小值；如果赋 0xff，就会赋一个为-1 的值。</p>
 <p>负数在计算机在以补码的形式存在所以 -1 的二进制为 11111111，0xff 的二进制为 11111111</p>
 <p><strong>附表：</strong></p>
 <div style="overflow-x:auto;">
 
-<table>
-<thead>
-<tr>
-<th align="center">memset 设置的值</th>
-<th>int 类型的值</th>
-<th align="center">memset 设置的值</th>
-<th>int 类型的值</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">0</td>
-<td>0</td>
-<td align="center">80</td>
-<td>-2139062144</td>
-</tr>
-<tr>
-<td align="center">1</td>
-<td>16843009</td>
-<td align="center">81</td>
-<td>-2122219135</td>
-</tr>
-<tr>
-<td align="center">2</td>
-<td>33686018</td>
-<td align="center">82</td>
-<td>-2105376126</td>
-</tr>
-<tr>
-<td align="center">3</td>
-<td>50529027</td>
-<td align="center">83</td>
-<td>-2088533117</td>
-</tr>
-<tr>
-<td align="center">4</td>
-<td>67372036</td>
-<td align="center">84</td>
-<td>-2071690108</td>
-</tr>
-<tr>
-<td align="center">5</td>
-<td>84215045</td>
-<td align="center">85</td>
-<td>-2054847099</td>
-</tr>
-<tr>
-<td align="center">6</td>
-<td>101058054</td>
-<td align="center">86</td>
-<td>-2038004090</td>
-</tr>
-<tr>
-<td align="center">7</td>
-<td>117901063</td>
-<td align="center">87</td>
-<td>-2021161081</td>
-</tr>
-<tr>
-<td align="center">8</td>
-<td>134744072</td>
-<td align="center">88</td>
-<td>-2004318072</td>
-</tr>
-<tr>
-<td align="center">9</td>
-<td>151587081</td>
-<td align="center">89</td>
-<td>-1987475063</td>
-</tr>
-<tr>
-<td align="center">A</td>
-<td>168430090</td>
-<td align="center">8A</td>
-<td>-1970632054</td>
-</tr>
-<tr>
-<td align="center">B</td>
-<td>185273099</td>
-<td align="center">8B</td>
-<td>-1953789045</td>
-</tr>
-<tr>
-<td align="center">C</td>
-<td>202116108</td>
-<td align="center">8C</td>
-<td>-1936946036</td>
-</tr>
-<tr>
-<td align="center">D</td>
-<td>218959117</td>
-<td align="center">8D</td>
-<td>-1920103027</td>
-</tr>
-<tr>
-<td align="center">E</td>
-<td>235802126</td>
-<td align="center">8E</td>
-<td>-1903260018</td>
-</tr>
-<tr>
-<td align="center">F</td>
-<td>252645135</td>
-<td align="center">8F</td>
-<td>-1886417009</td>
-</tr>
-<tr>
-<td align="center">10</td>
-<td>269488144</td>
-<td align="center">90</td>
-<td>-1869574000</td>
-</tr>
-<tr>
-<td align="center">11</td>
-<td>286331153</td>
-<td align="center">91</td>
-<td>-1852730991</td>
-</tr>
-<tr>
-<td align="center">12</td>
-<td>303174162</td>
-<td align="center">92</td>
-<td>-1835887982</td>
-</tr>
-<tr>
-<td align="center">13</td>
-<td>320017171</td>
-<td align="center">93</td>
-<td>-1819044973</td>
-</tr>
-<tr>
-<td align="center">14</td>
-<td>336860180</td>
-<td align="center">94</td>
-<td>-1802201964</td>
-</tr>
-<tr>
-<td align="center">15</td>
-<td>353703189</td>
-<td align="center">95</td>
-<td>-1785358955</td>
-</tr>
-<tr>
-<td align="center">16</td>
-<td>370546198</td>
-<td align="center">96</td>
-<td>-1768515946</td>
-</tr>
-<tr>
-<td align="center">17</td>
-<td>387389207</td>
-<td align="center">97</td>
-<td>-1751672937</td>
-</tr>
-<tr>
-<td align="center">18</td>
-<td>404232216</td>
-<td align="center">98</td>
-<td>-1734829928</td>
-</tr>
-<tr>
-<td align="center">19</td>
-<td>421075225</td>
-<td align="center">99</td>
-<td>-1717986919</td>
-</tr>
-<tr>
-<td align="center">1A</td>
-<td>437918234</td>
-<td align="center">9A</td>
-<td>-1701143910</td>
-</tr>
-<tr>
-<td align="center">1B</td>
-<td>454761243</td>
-<td align="center">9B</td>
-<td>-1684300901</td>
-</tr>
-<tr>
-<td align="center">1C</td>
-<td>471604252</td>
-<td align="center">9C</td>
-<td>-1667457892</td>
-</tr>
-<tr>
-<td align="center">1D</td>
-<td>488447261</td>
-<td align="center">9D</td>
-<td>-1650614883</td>
-</tr>
-<tr>
-<td align="center">1E</td>
-<td>505290270</td>
-<td align="center">9E</td>
-<td>-1633771874</td>
-</tr>
-<tr>
-<td align="center">1F</td>
-<td>522133279</td>
-<td align="center">9F</td>
-<td>-1616928865</td>
-</tr>
-<tr>
-<td align="center">20</td>
-<td>538976288</td>
-<td align="center">A0</td>
-<td>-1600085856</td>
-</tr>
-<tr>
-<td align="center">21</td>
-<td>555819297</td>
-<td align="center">A1</td>
-<td>-1583242847</td>
-</tr>
-<tr>
-<td align="center">22</td>
-<td>572662306</td>
-<td align="center">A2</td>
-<td>-1566399838</td>
-</tr>
-<tr>
-<td align="center">23</td>
-<td>589505315</td>
-<td align="center">A3</td>
-<td>-1549556829</td>
-</tr>
-<tr>
-<td align="center">24</td>
-<td>606348324</td>
-<td align="center">A4</td>
-<td>-1532713820</td>
-</tr>
-<tr>
-<td align="center">25</td>
-<td>623191333</td>
-<td align="center">A5</td>
-<td>-1515870811</td>
-</tr>
-<tr>
-<td align="center">26</td>
-<td>640034342</td>
-<td align="center">A6</td>
-<td>-1499027802</td>
-</tr>
-<tr>
-<td align="center">27</td>
-<td>656877351</td>
-<td align="center">A7</td>
-<td>-1482184793</td>
-</tr>
-<tr>
-<td align="center">28</td>
-<td>673720360</td>
-<td align="center">A8</td>
-<td>-1465341784</td>
-</tr>
-<tr>
-<td align="center">29</td>
-<td>690563369</td>
-<td align="center">A9</td>
-<td>-1448498775</td>
-</tr>
-<tr>
-<td align="center">2A</td>
-<td>707406378</td>
-<td align="center">AA</td>
-<td>-1431655766</td>
-</tr>
-<tr>
-<td align="center">2B</td>
-<td>724249387</td>
-<td align="center">AB</td>
-<td>-1414812757</td>
-</tr>
-<tr>
-<td align="center">2C</td>
-<td>741092396</td>
-<td align="center">AC</td>
-<td>-1397969748</td>
-</tr>
-<tr>
-<td align="center">2D</td>
-<td>757935405</td>
-<td align="center">AD</td>
-<td>-1381126739</td>
-</tr>
-<tr>
-<td align="center">2E</td>
-<td>774778414</td>
-<td align="center">AE</td>
-<td>-1364283730</td>
-</tr>
-<tr>
-<td align="center">2F</td>
-<td>791621423</td>
-<td align="center">AF</td>
-<td>-1347440721</td>
-</tr>
-<tr>
-<td align="center">30</td>
-<td>808464432</td>
-<td align="center">B0</td>
-<td>-1330597712</td>
-</tr>
-<tr>
-<td align="center">31</td>
-<td>825307441</td>
-<td align="center">B1</td>
-<td>-1313754703</td>
-</tr>
-<tr>
-<td align="center">32</td>
-<td>842150450</td>
-<td align="center">B2</td>
-<td>-1296911694</td>
-</tr>
-<tr>
-<td align="center">33</td>
-<td>858993459</td>
-<td align="center">B3</td>
-<td>-1280068685</td>
-</tr>
-<tr>
-<td align="center">34</td>
-<td>875836468</td>
-<td align="center">B4</td>
-<td>-1263225676</td>
-</tr>
-<tr>
-<td align="center">35</td>
-<td>892679477</td>
-<td align="center">B5</td>
-<td>-1246382667</td>
-</tr>
-<tr>
-<td align="center">36</td>
-<td>909522486</td>
-<td align="center">B6</td>
-<td>-1229539658</td>
-</tr>
-<tr>
-<td align="center">37</td>
-<td>926365495</td>
-<td align="center">B7</td>
-<td>-1212696649</td>
-</tr>
-<tr>
-<td align="center">38</td>
-<td>943208504</td>
-<td align="center">B8</td>
-<td>-1195853640</td>
-</tr>
-<tr>
-<td align="center">39</td>
-<td>960051513</td>
-<td align="center">B9</td>
-<td>-1179010631</td>
-</tr>
-<tr>
-<td align="center">3A</td>
-<td>976894522</td>
-<td align="center">BA</td>
-<td>-1162167622</td>
-</tr>
-<tr>
-<td align="center">3B</td>
-<td>993737531</td>
-<td align="center">BB</td>
-<td>-1145324613</td>
-</tr>
-<tr>
-<td align="center">3C</td>
-<td>1010580540</td>
-<td align="center">BC</td>
-<td>-1128481604</td>
-</tr>
-<tr>
-<td align="center">3D</td>
-<td>1027423549</td>
-<td align="center">BD</td>
-<td>-1111638595</td>
-</tr>
-<tr>
-<td align="center">3E</td>
-<td>1044266558</td>
-<td align="center">BE</td>
-<td>-1094795586</td>
-</tr>
-<tr>
-<td align="center">3F</td>
-<td>1061109567</td>
-<td align="center">BF</td>
-<td>-1077952577</td>
-</tr>
-<tr>
-<td align="center">40</td>
-<td>1077952576</td>
-<td align="center">C0</td>
-<td>-1061109568</td>
-</tr>
-<tr>
-<td align="center">41</td>
-<td>1094795585</td>
-<td align="center">C1</td>
-<td>-1044266559</td>
-</tr>
-<tr>
-<td align="center">42</td>
-<td>1111638594</td>
-<td align="center">C2</td>
-<td>-1027423550</td>
-</tr>
-<tr>
-<td align="center">43</td>
-<td>1128481603</td>
-<td align="center">C3</td>
-<td>-1010580541</td>
-</tr>
-<tr>
-<td align="center">44</td>
-<td>1145324612</td>
-<td align="center">C4</td>
-<td>-993737532</td>
-</tr>
-<tr>
-<td align="center">45</td>
-<td>1162167621</td>
-<td align="center">C5</td>
-<td>-976894523</td>
-</tr>
-<tr>
-<td align="center">46</td>
-<td>1179010630</td>
-<td align="center">C6</td>
-<td>-960051514</td>
-</tr>
-<tr>
-<td align="center">47</td>
-<td>1195853639</td>
-<td align="center">C7</td>
-<td>-943208505</td>
-</tr>
-<tr>
-<td align="center">48</td>
-<td>1212696648</td>
-<td align="center">C8</td>
-<td>-926365496</td>
-</tr>
-<tr>
-<td align="center">49</td>
-<td>1229539657</td>
-<td align="center">C9</td>
-<td>-909522487</td>
-</tr>
-<tr>
-<td align="center">4A</td>
-<td>1246382666</td>
-<td align="center">CA</td>
-<td>-892679478</td>
-</tr>
-<tr>
-<td align="center">4B</td>
-<td>1263225675</td>
-<td align="center">CB</td>
-<td>-875836469</td>
-</tr>
-<tr>
-<td align="center">4C</td>
-<td>1280068684</td>
-<td align="center">CC</td>
-<td>-858993460</td>
-</tr>
-<tr>
-<td align="center">4D</td>
-<td>1296911693</td>
-<td align="center">CD</td>
-<td>-842150451</td>
-</tr>
-<tr>
-<td align="center">4E</td>
-<td>1313754702</td>
-<td align="center">CE</td>
-<td>-825307442</td>
-</tr>
-<tr>
-<td align="center">4F</td>
-<td>1330597711</td>
-<td align="center">CF</td>
-<td>-808464433</td>
-</tr>
-<tr>
-<td align="center">50</td>
-<td>1347440720</td>
-<td align="center">D0</td>
-<td>-791621424</td>
-</tr>
-<tr>
-<td align="center">51</td>
-<td>1364283729</td>
-<td align="center">D1</td>
-<td>-774778415</td>
-</tr>
-<tr>
-<td align="center">52</td>
-<td>1381126738</td>
-<td align="center">D2</td>
-<td>-757935406</td>
-</tr>
-<tr>
-<td align="center">53</td>
-<td>1397969747</td>
-<td align="center">D3</td>
-<td>-741092397</td>
-</tr>
-<tr>
-<td align="center">54</td>
-<td>1414812756</td>
-<td align="center">D4</td>
-<td>-724249388</td>
-</tr>
-<tr>
-<td align="center">55</td>
-<td>1431655765</td>
-<td align="center">D5</td>
-<td>-707406379</td>
-</tr>
-<tr>
-<td align="center">56</td>
-<td>1448498774</td>
-<td align="center">D6</td>
-<td>-690563370</td>
-</tr>
-<tr>
-<td align="center">57</td>
-<td>1465341783</td>
-<td align="center">D7</td>
-<td>-673720361</td>
-</tr>
-<tr>
-<td align="center">58</td>
-<td>1482184792</td>
-<td align="center">D8</td>
-<td>-656877352</td>
-</tr>
-<tr>
-<td align="center">59</td>
-<td>1499027801</td>
-<td align="center">D9</td>
-<td>-640034343</td>
-</tr>
-<tr>
-<td align="center">5A</td>
-<td>1515870810</td>
-<td align="center">DA</td>
-<td>-623191334</td>
-</tr>
-<tr>
-<td align="center">5B</td>
-<td>1532713819</td>
-<td align="center">DB</td>
-<td>-606348325</td>
-</tr>
-<tr>
-<td align="center">5C</td>
-<td>1549556828</td>
-<td align="center">DC</td>
-<td>-589505316</td>
-</tr>
-<tr>
-<td align="center">5D</td>
-<td>1566399837</td>
-<td align="center">DD</td>
-<td>-572662307</td>
-</tr>
-<tr>
-<td align="center">5E</td>
-<td>1583242846</td>
-<td align="center">DE</td>
-<td>-555819298</td>
-</tr>
-<tr>
-<td align="center">5F</td>
-<td>1600085855</td>
-<td align="center">DF</td>
-<td>-538976289</td>
-</tr>
-<tr>
-<td align="center">60</td>
-<td>1616928864</td>
-<td align="center">E0</td>
-<td>-522133280</td>
-</tr>
-<tr>
-<td align="center">61</td>
-<td>1633771873</td>
-<td align="center">E1</td>
-<td>-505290271</td>
-</tr>
-<tr>
-<td align="center">62</td>
-<td>1650614882</td>
-<td align="center">E2</td>
-<td>-488447262</td>
-</tr>
-<tr>
-<td align="center">63</td>
-<td>1667457891</td>
-<td align="center">E3</td>
-<td>-471604253</td>
-</tr>
-<tr>
-<td align="center">64</td>
-<td>1684300900</td>
-<td align="center">E4</td>
-<td>-454761244</td>
-</tr>
-<tr>
-<td align="center">65</td>
-<td>1701143909</td>
-<td align="center">E5</td>
-<td>-437918235</td>
-</tr>
-<tr>
-<td align="center">66</td>
-<td>1717986918</td>
-<td align="center">E6</td>
-<td>-421075226</td>
-</tr>
-<tr>
-<td align="center">67</td>
-<td>1734829927</td>
-<td align="center">E7</td>
-<td>-404232217</td>
-</tr>
-<tr>
-<td align="center">68</td>
-<td>1751672936</td>
-<td align="center">E8</td>
-<td>-387389208</td>
-</tr>
-<tr>
-<td align="center">69</td>
-<td>1768515945</td>
-<td align="center">E9</td>
-<td>-370546199</td>
-</tr>
-<tr>
-<td align="center">6A</td>
-<td>1785358954</td>
-<td align="center">EA</td>
-<td>-353703190</td>
-</tr>
-<tr>
-<td align="center">6B</td>
-<td>1802201963</td>
-<td align="center">EB</td>
-<td>-336860181</td>
-</tr>
-<tr>
-<td align="center">6C</td>
-<td>1819044972</td>
-<td align="center">EC</td>
-<td>-320017172</td>
-</tr>
-<tr>
-<td align="center">6D</td>
-<td>1835887981</td>
-<td align="center">ED</td>
-<td>-303174163</td>
-</tr>
-<tr>
-<td align="center">6E</td>
-<td>1852730990</td>
-<td align="center">EE</td>
-<td>-286331154</td>
-</tr>
-<tr>
-<td align="center">6F</td>
-<td>1869573999</td>
-<td align="center">EF</td>
-<td>-269488145</td>
-</tr>
-<tr>
-<td align="center">70</td>
-<td>1886417008</td>
-<td align="center">F0</td>
-<td>-252645136</td>
-</tr>
-<tr>
-<td align="center">71</td>
-<td>1903260017</td>
-<td align="center">F1</td>
-<td>-235802127</td>
-</tr>
-<tr>
-<td align="center">72</td>
-<td>1920103026</td>
-<td align="center">F2</td>
-<td>-218959118</td>
-</tr>
-<tr>
-<td align="center">73</td>
-<td>1936946035</td>
-<td align="center">F3</td>
-<td>-202116109</td>
-</tr>
-<tr>
-<td align="center">74</td>
-<td>1953789044</td>
-<td align="center">F4</td>
-<td>-185273100</td>
-</tr>
-<tr>
-<td align="center">75</td>
-<td>1970632053</td>
-<td align="center">F5</td>
-<td>-168430091</td>
-</tr>
-<tr>
-<td align="center">76</td>
-<td>1987475062</td>
-<td align="center">F6</td>
-<td>-151587082</td>
-</tr>
-<tr>
-<td align="center">77</td>
-<td>2004318071</td>
-<td align="center">F7</td>
-<td>-134744073</td>
-</tr>
-<tr>
-<td align="center">78</td>
-<td>2021161080</td>
-<td align="center">F8</td>
-<td>-117901064</td>
-</tr>
-<tr>
-<td align="center">79</td>
-<td>2038004089</td>
-<td align="center">F9</td>
-<td>-101058055</td>
-</tr>
-<tr>
-<td align="center">7A</td>
-<td>2054847098</td>
-<td align="center">FA</td>
-<td>-84215046</td>
-</tr>
-<tr>
-<td align="center">7B</td>
-<td>2071690107</td>
-<td align="center">FB</td>
-<td>-67372037</td>
-</tr>
-<tr>
-<td align="center">7C</td>
-<td>2088533116</td>
-<td align="center">FC</td>
-<td>-50529028</td>
-</tr>
-<tr>
-<td align="center">7D</td>
-<td>2105376125</td>
-<td align="center">FD</td>
-<td>-33686019</td>
-</tr>
-<tr>
-<td align="center">7E</td>
-<td>2122219134</td>
-<td align="center">FE</td>
-<td>-16843010</td>
-</tr>
-<tr>
-<td align="center">7F</td>
-<td>2139062143</td>
-<td align="center">FF</td>
-<td>-1</td>
-</tr>
-</tbody></table>
+| memset 设置的值 | int 类型的值 | memset 设置的值 | int 类型的值 |
+| :-------------: | ------------ | :-------------: | ------------ |
+|        0        | 0            |       80        | -2139062144  |
+|        1        | 16843009     |       81        | -2122219135  |
+|        2        | 33686018     |       82        | -2105376126  |
+|        3        | 50529027     |       83        | -2088533117  |
+|        4        | 67372036     |       84        | -2071690108  |
+|        5        | 84215045     |       85        | -2054847099  |
+|        6        | 101058054    |       86        | -2038004090  |
+|        7        | 117901063    |       87        | -2021161081  |
+|        8        | 134744072    |       88        | -2004318072  |
+|        9        | 151587081    |       89        | -1987475063  |
+|        A        | 168430090    |       8A        | -1970632054  |
+|        B        | 185273099    |       8B        | -1953789045  |
+|        C        | 202116108    |       8C        | -1936946036  |
+|        D        | 218959117    |       8D        | -1920103027  |
+|        E        | 235802126    |       8E        | -1903260018  |
+|        F        | 252645135    |       8F        | -1886417009  |
+|       10        | 269488144    |       90        | -1869574000  |
+|       11        | 286331153    |       91        | -1852730991  |
+|       12        | 303174162    |       92        | -1835887982  |
+|       13        | 320017171    |       93        | -1819044973  |
+|       14        | 336860180    |       94        | -1802201964  |
+|       15        | 353703189    |       95        | -1785358955  |
+|       16        | 370546198    |       96        | -1768515946  |
+|       17        | 387389207    |       97        | -1751672937  |
+|       18        | 404232216    |       98        | -1734829928  |
+|       19        | 421075225    |       99        | -1717986919  |
+|       1A        | 437918234    |       9A        | -1701143910  |
+|       1B        | 454761243    |       9B        | -1684300901  |
+|       1C        | 471604252    |       9C        | -1667457892  |
+|       1D        | 488447261    |       9D        | -1650614883  |
+|       1E        | 505290270    |       9E        | -1633771874  |
+|       1F        | 522133279    |       9F        | -1616928865  |
+|       20        | 538976288    |       A0        | -1600085856  |
+|       21        | 555819297    |       A1        | -1583242847  |
+|       22        | 572662306    |       A2        | -1566399838  |
+|       23        | 589505315    |       A3        | -1549556829  |
+|       24        | 606348324    |       A4        | -1532713820  |
+|       25        | 623191333    |       A5        | -1515870811  |
+|       26        | 640034342    |       A6        | -1499027802  |
+|       27        | 656877351    |       A7        | -1482184793  |
+|       28        | 673720360    |       A8        | -1465341784  |
+|       29        | 690563369    |       A9        | -1448498775  |
+|       2A        | 707406378    |       AA        | -1431655766  |
+|       2B        | 724249387    |       AB        | -1414812757  |
+|       2C        | 741092396    |       AC        | -1397969748  |
+|       2D        | 757935405    |       AD        | -1381126739  |
+|       2E        | 774778414    |       AE        | -1364283730  |
+|       2F        | 791621423    |       AF        | -1347440721  |
+|       30        | 808464432    |       B0        | -1330597712  |
+|       31        | 825307441    |       B1        | -1313754703  |
+|       32        | 842150450    |       B2        | -1296911694  |
+|       33        | 858993459    |       B3        | -1280068685  |
+|       34        | 875836468    |       B4        | -1263225676  |
+|       35        | 892679477    |       B5        | -1246382667  |
+|       36        | 909522486    |       B6        | -1229539658  |
+|       37        | 926365495    |       B7        | -1212696649  |
+|       38        | 943208504    |       B8        | -1195853640  |
+|       39        | 960051513    |       B9        | -1179010631  |
+|       3A        | 976894522    |       BA        | -1162167622  |
+|       3B        | 993737531    |       BB        | -1145324613  |
+|       3C        | 1010580540   |       BC        | -1128481604  |
+|       3D        | 1027423549   |       BD        | -1111638595  |
+|       3E        | 1044266558   |       BE        | -1094795586  |
+|       3F        | 1061109567   |       BF        | -1077952577  |
+|       40        | 1077952576   |       C0        | -1061109568  |
+|       41        | 1094795585   |       C1        | -1044266559  |
+|       42        | 1111638594   |       C2        | -1027423550  |
+|       43        | 1128481603   |       C3        | -1010580541  |
+|       44        | 1145324612   |       C4        | -993737532   |
+|       45        | 1162167621   |       C5        | -976894523   |
+|       46        | 1179010630   |       C6        | -960051514   |
+|       47        | 1195853639   |       C7        | -943208505   |
+|       48        | 1212696648   |       C8        | -926365496   |
+|       49        | 1229539657   |       C9        | -909522487   |
+|       4A        | 1246382666   |       CA        | -892679478   |
+|       4B        | 1263225675   |       CB        | -875836469   |
+|       4C        | 1280068684   |       CC        | -858993460   |
+|       4D        | 1296911693   |       CD        | -842150451   |
+|       4E        | 1313754702   |       CE        | -825307442   |
+|       4F        | 1330597711   |       CF        | -808464433   |
+|       50        | 1347440720   |       D0        | -791621424   |
+|       51        | 1364283729   |       D1        | -774778415   |
+|       52        | 1381126738   |       D2        | -757935406   |
+|       53        | 1397969747   |       D3        | -741092397   |
+|       54        | 1414812756   |       D4        | -724249388   |
+|       55        | 1431655765   |       D5        | -707406379   |
+|       56        | 1448498774   |       D6        | -690563370   |
+|       57        | 1465341783   |       D7        | -673720361   |
+|       58        | 1482184792   |       D8        | -656877352   |
+|       59        | 1499027801   |       D9        | -640034343   |
+|       5A        | 1515870810   |       DA        | -623191334   |
+|       5B        | 1532713819   |       DB        | -606348325   |
+|       5C        | 1549556828   |       DC        | -589505316   |
+|       5D        | 1566399837   |       DD        | -572662307   |
+|       5E        | 1583242846   |       DE        | -555819298   |
+|       5F        | 1600085855   |       DF        | -538976289   |
+|       60        | 1616928864   |       E0        | -522133280   |
+|       61        | 1633771873   |       E1        | -505290271   |
+|       62        | 1650614882   |       E2        | -488447262   |
+|       63        | 1667457891   |       E3        | -471604253   |
+|       64        | 1684300900   |       E4        | -454761244   |
+|       65        | 1701143909   |       E5        | -437918235   |
+|       66        | 1717986918   |       E6        | -421075226   |
+|       67        | 1734829927   |       E7        | -404232217   |
+|       68        | 1751672936   |       E8        | -387389208   |
+|       69        | 1768515945   |       E9        | -370546199   |
+|       6A        | 1785358954   |       EA        | -353703190   |
+|       6B        | 1802201963   |       EB        | -336860181   |
+|       6C        | 1819044972   |       EC        | -320017172   |
+|       6D        | 1835887981   |       ED        | -303174163   |
+|       6E        | 1852730990   |       EE        | -286331154   |
+|       6F        | 1869573999   |       EF        | -269488145   |
+|       70        | 1886417008   |       F0        | -252645136   |
+|       71        | 1903260017   |       F1        | -235802127   |
+|       72        | 1920103026   |       F2        | -218959118   |
+|       73        | 1936946035   |       F3        | -202116109   |
+|       74        | 1953789044   |       F4        | -185273100   |
+|       75        | 1970632053   |       F5        | -168430091   |
+|       76        | 1987475062   |       F6        | -151587082   |
+|       77        | 2004318071   |       F7        | -134744073   |
+|       78        | 2021161080   |       F8        | -117901064   |
+|       79        | 2038004089   |       F9        | -101058055   |
+|       7A        | 2054847098   |       FA        | -84215046    |
+|       7B        | 2071690107   |       FB        | -67372037    |
+|       7C        | 2088533116   |       FC        | -50529028    |
+|       7D        | 2105376125   |       FD        | -33686019    |
+|       7E        | 2122219134   |       FE        | -16843010    |
+|       7F        | 2139062143   |       FF        | -1           |
+
 </div>
 
         </div>
@@ -1452,7 +805,7 @@ memset(nums, 0x80, sizeof(nums));
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -1464,10 +817,10 @@ memset(nums, 0x80, sizeof(nums));
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

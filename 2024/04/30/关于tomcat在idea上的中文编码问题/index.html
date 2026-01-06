@@ -495,8 +495,8 @@
 <p>大段的红色乱码信息，冲击着初学者的心灵。</p>
 <p>虽然不会实际开发造成影响，但看着这些云里雾里的信息时还是挺~影响心情的。😱</p>
 <blockquote>
-<p>淇℃伅 –&gt; 信息</p>
-<p>鍛戒护琛屽弬鏁帮細 –&gt; 命令行参数：</p>
+<p>淇℃伅 —&gt; 信息</p>
+<p>鍛戒护琛屽弬鏁帮細 —&gt; 命令行参数：</p>
 </blockquote>
 <h2 id="三、问题分析"><a href="#三、问题分析" class="headerlink" title="三、问题分析"></a>三、问题分析</h2><p>在以前的 javase 学习中，中文乱码问题是通过统一编码的方式解决的（GBK和UTF-8）。</p>
 <p>但如下图所示，很明显这次绝对不像之前那样能轻松解决。我们可以看到在idea的console下的输出出现了两种（可能不止两种）不同的流，且两种不同的流使用了两种不同的编码格式。（即白色的<code>你好！Hello!!!</code>可以正常显示，而红色的信息却是乱码）</p>
@@ -508,21 +508,21 @@
 <blockquote>
 <p>Tomcat启动时会检查本地语言环境，来调用对应的i18n文本，中文环境默认会显示中文日志，但在终端中容易出现乱码，虽然乱码问题可以通过修改字符集处理，还是想尝试一下改成英文输出。刚研究了一下，发现可以通过修改参数来设置输出日志的语言，将运行参数中的语言环境设置为英文即可，在此记录一下修改步骤</p>
 <p>此文档所使用的环境如下</p>
-<p>Server version name:   Apache Tomcat&#x2F;9.0.62<br>OS Name:               Windows 10<br>JVM Version:           1.8.0_301-b09</p>
+<p>Server version name:   Apache Tomcat/9.0.62<br>OS Name:               Windows 10<br>JVM Version:           1.8.0_301-b09</p>
 <h4 id="修改catalina"><a href="#修改catalina" class="headerlink" title="修改catalina"></a>修改catalina</h4><p>修改<code>bin/catalina.bat</code>文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间</p>
-<pre><code class="cpp">if not &quot;%CATALINA_LOGGING_CONFIG%&quot; == &quot;&quot; goto noJuliConfig
+<pre><code class="lang-cpp">if not &quot;%CATALINA_LOGGING_CONFIG%&quot; == &quot;&quot; goto noJuliConfig
 set CATALINA_LOGGING_CONFIG=-Dnop
 if not exist &quot;%CATALINA_BASE%\conf\logging.properties&quot; goto noJuliConfig
 set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot;
 :noJuliConfig
 </code></pre>
 <p>将其中的set语句后面添加language配置<code>-Duser.language=en -Duser.region=US</code>，如下</p>
-<pre><code class="bash">set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot; -Duser.language=en -Duser.region=US
+<pre><code class="lang-bash">set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot; -Duser.language=en -Duser.region=US
 </code></pre>
 <p>注意空格。</p>
 <p>提示：如果是在Linux系统，则修改<code>bin/catalina.sh</code>文件</p>
 <h4 id="修改时间格式"><a href="#修改时间格式" class="headerlink" title="修改时间格式"></a>修改时间格式</h4><p>顺便改一下显示日志中的时间格式，修改<code>conf/logging.properties</code>，在<code>ConsoleHandler</code>区添加<code>timeFormat</code>配置</p>
-<pre><code class="sh">java.util.logging.ConsoleHandler.level = FINE
+<pre><code class="lang-sh">java.util.logging.ConsoleHandler.level = FINE
 java.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatter
 java.util.logging.ConsoleHandler.encoding = UTF-8
 org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
@@ -554,14 +554,14 @@ org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
 <p>我们只要在idea里面配置一下项目配置就可以了。</p>
 <p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png" alt="你好！Hello!!!"></p>
 <p>在此处（红色的框）添加一句VM option 参数就可以了。</p>
-<pre><code class="text">-Dfile.encoding=UTF-8
+<pre><code class="lang-text">-Dfile.encoding=UTF-8
 </code></pre>
 <p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png" alt="你好！Hello!!!"></p>
 <p>完美解决！</p>
 <blockquote>
 <p><code>-Dfile.encoding=UTF-8</code>这条参数很常见。</p>
 </blockquote>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img src="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we" alt="mrfz黍"></p>
+<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img src="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&amp;w=1280&amp;h=600&amp;a=top&amp;fit=cover&amp;we" alt="mrfz黍"></p>
 
         </div>
         <!-- .entry-content -->
@@ -676,7 +676,7 @@ org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -688,10 +688,10 @@ org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

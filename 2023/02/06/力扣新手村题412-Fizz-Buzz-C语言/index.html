@@ -504,19 +504,16 @@
 <p>示例 1：</p>
 <pre><code> 输入：n = 3
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;]
-</code></pre>
-<p>示例 2：</p>
+</code></pre><p>示例 2：</p>
 <pre><code> 输入：n = 5
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;,&quot;4&quot;,&quot;Buzz&quot;]
-</code></pre>
-<p>示例 3：</p>
+</code></pre><p>示例 3：</p>
 <pre><code> 输入：n = 15
  输出：[&quot;1&quot;,&quot;2&quot;,&quot;Fizz&quot;,&quot;4&quot;,&quot;Buzz&quot;,&quot;Fizz&quot;,&quot;7&quot;,&quot;8&quot;,&quot;Fizz&quot;,&quot;Buzz&quot;,&quot;11&quot;,&quot;Fizz&quot;,&quot;13&quot;,&quot;14&quot;,&quot;FizzBuzz&quot;]
-</code></pre>
-<blockquote>
+</code></pre><blockquote>
 <p>提示： <code>1 &lt;= n &lt;= 104</code></p>
 </blockquote>
-<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="C">#include &lt;stdlib.h&gt;
+<h3 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h3><pre><code class="lang-C">#include &lt;stdlib.h&gt;
 #include &lt;stdio.h&gt;
 
 char ** fizzBuzz(int n, int* returnSize)&#123;
@@ -526,7 +523,7 @@ char ** fizzBuzz(int n, int* returnSize)&#123;
     char **pChar = (char ** )malloc(n * sizeof(char *));/*等同于char *p[n];指针数组*/
     for (int i = 0; i &lt; n; ++i)
         *(pChar+i) = (char * ) malloc(sizeof(char)*9);
-       
+
     for (int i = 1; i &lt;= n; ++i) &#123;
         if (i % 15 == 0) pChar[i-1] = &quot;FizzBuzz&quot;;
         else if (i % 3 == 0) pChar[i-1] = &quot;Fizz&quot;;
@@ -540,7 +537,7 @@ char ** fizzBuzz(int n, int* returnSize)&#123;
 <p>分析：<br>该题最重要的是如何使用二级指针，动态分配二维Char数组</p>
 </blockquote>
 <h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><h4 id="sprintf函数"><a href="#sprintf函数" class="headerlink" title="sprintf函数"></a>sprintf函数</h4><p>sprintf指的是字符串格式化命令,主要功能是把格式化的数据写入某个字符串中</p>
-<h5 id="sprintf原型"><a href="#sprintf原型" class="headerlink" title="sprintf原型"></a><code>sprintf</code>原型</h5><pre><code class="C">int sprintf (char *__restrict, const char *__restrict, ...)
+<h5 id="sprintf原型"><a href="#sprintf原型" class="headerlink" title="sprintf原型"></a><code>sprintf</code>原型</h5><pre><code class="lang-C">int sprintf (char *__restrict, const char *__restrict, ...)
                _ATTRIBUTE ((__format__ (__printf__, 2, 3)));
 </code></pre>
 <p> 在本题中主要解决整数的传入字符串的问题<br><code>sprintf(pChar[i-1],&quot;%d&quot;,i);  //不要把一个整数对应一个“%s”</code></p>
@@ -677,7 +674,7 @@ char ** fizzBuzz(int n, int* returnSize)&#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -689,10 +686,10 @@ char ** fizzBuzz(int n, int* returnSize)&#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
