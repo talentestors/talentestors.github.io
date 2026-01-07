@@ -1,1 +1,1 @@
-{"origins":["https://yuhiri.me","https://talentestors.github.io"],"originsRegex":"(https://|http://)([a-zA-Z0-9-_]\\.)*yuhiri\\.(me|top)+"}
+{"origins":["https://yuhiri.me","https://talentestors.github.io"],"originsRegex":"(https://|http://)([a-zA-Z0-9-_]\\.)*yuhiri\\.(me|top)+","defaultCommentOrder":"newest"}

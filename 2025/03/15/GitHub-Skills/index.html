@@ -612,9 +612,9 @@
       
   
       <div id="giscus-container" class="comment-respond"></div>
-      <script data-cfasync="false" type="text/javascript" async>
+      <script data-cfasync="false" type="text/javascript">
         (function () {
-          var giscus = document.createElement('script');
+          let giscus = document.createElement('script');
           giscus.type = 'text/javascript';
           giscus.async = true;
           giscus.src = 'https://giscus.yuhiri.me/client.js';
@@ -629,7 +629,7 @@
           giscus.setAttribute('data-input-position', 'top');
           giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.1/css/giscus.min.css');
           giscus.setAttribute('data-lang', 'zh-CN');
-          giscus.setAttribute('data-loading', 'lazy');
+          // giscus.setAttribute('data-loading', 'lazy');
           document.getElementById('giscus-container').appendChild(giscus);
         })();
       </script> 
