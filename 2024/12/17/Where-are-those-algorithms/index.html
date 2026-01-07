@@ -439,6 +439,13 @@
                         </a>
                       </li>
                     
+                      <li>
+                        <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                          <i class="fa " aria-hidden="true"></i>
+                          站点检测
+                        </a>
+                      </li>
+                    
                   </ul>
                 
               </li>
@@ -506,12 +513,11 @@
 </ul>
 </blockquote>
 <p>本文来源于一篇stackexchange的<a target="_blank" rel="noopener" href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/">问题</a>回答。提问者问到，我们在计算机科学和数学课程里面学习到的那些算法，到底在什么地方用到了？结果<a target="_blank" rel="noopener" href="http://cstheory.stackexchange.com/users/4155/vijay-d">Vijay D</a>给出一个洋洋洒洒的<a target="_blank" rel="noopener" href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773">深入回答</a>，得到了提问者和众多围观。我们将这篇回答翻译过来以飨读者。</p>
-<p><img src="https://pic.superbed.cc/item/676196e7fa9f77b4dca6a68b.gif" alt=""></p>
+<p><img src="https://pic.superbed.cc/item/676196e7fa9f77b4dca6a68b.gif" alt="linux.cn"></p>
 <p><a target="_blank" rel="noopener" href="http://cstheory.stackexchange.com/users/4155/vijay-d">Vijay D</a>写到：</p>
 <p>在我看来，一个系统背后主要发挥作用的算法更容易在非算法课程上找到，这和应用数学中的成果比理论数学中更容易出现在应用中是一个道理。在讲座中，很少有实际问题能够精确匹配到一个抽象问题。归根结底，我认为没有理由让流行的算法课程，诸如Strassen乘法，AKS素性测试、或者Moser-Tardos算法与底层实际问题，如实现视频数据库、优化的编译器、操作系统、网络拥堵控制系统或者其他系统相关。这些课程的价值是学习利用错综复杂的方法发现问题的脉络而找出有效的解决方案。高级算法和简单算法的分析都不简单。正是由于这个原因，我不会忽略简单随机算法或者PageRank。</p>
 <p>我想你可以选择任何一个大型软件，并在内部找到它所采用的基础和高级的算法。作为一个研究案例，我选择了Linux内核，并会示例一些Chromium里面的例子。</p>
-<h3 id="Linux内核中的基本数据结构和算法">Linux内核中的基本数据结构和算法</h3>
-<p>Linux内核(<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6">源代码的链接在github</a>)。</p>
+<h3 id="Linux内核中的基本数据结构和算法"><a href="#Linux内核中的基本数据结构和算法" class="headerlink" title="Linux内核中的基本数据结构和算法"></a>Linux内核中的基本数据结构和算法</h3><p>Linux内核(<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6">源代码的链接在github</a>)。</p>
 <p>1.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/master/lib/llist.c">链表</a>、<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/list.h">双向链表</a>、<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/llist.h">无锁链表</a>。</p>
 <p>2.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/39caa0916ef27cf1da5026eb708a2b8413156f75/lib/btree.c">B+ 树</a>，这是一些你无法在教科书上找到的说明。</p>
 <blockquote>
@@ -555,7 +561,7 @@
 <p>18.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/drivers/media/common/saa7146/saa7146_hlp.c">冒泡排序</a>在一个驱动库中也有一个令人惊讶的实现。</p>
 <p>19.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/lib/ts_kmp.c">Knuth-Morris-Pratt 字符串匹配</a>,</p>
 <blockquote>
-<p>根据Knuth、Morris和Pratt[1]实现了一个线性时间的字符串匹配算法。他们的算法避免了转换函数的显式地计算DELTA。对于长度为n的文本，其匹配时间是O(n)，对于长度为m的模式(pattern)，仅使用一个辅助函数PI[1 . .m]，预先计算模式的时间为O(m)。数组PI允许转换函数DELTA被实时有效地计算。粗略地说，对于任何状态&quot;q&quot;= 0,1,…、m和在SIGMA中的任何字符&quot;a&quot;,PI[“q”]的值包含的信息是独立的&quot;a&quot;并需要计算DELTA(“q”,“a”) [2]。既然PI只有m个记录，而DELTA有O(m |SIGMA|)个记录，在预处理时间计算PI而不是DELTA的时候，我们可以节省一个因数|SIGMA|</p>
+<p>根据Knuth、Morris和Pratt[1]实现了一个线性时间的字符串匹配算法。他们的算法避免了转换函数的显式地计算DELTA。对于长度为n的文本，其匹配时间是O(n)，对于长度为m的模式(pattern)，仅使用一个辅助函数PI[1 . .m]，预先计算模式的时间为O(m)。数组PI允许转换函数DELTA被实时有效地计算。粗略地说，对于任何状态”q”= 0,1,…、m和在SIGMA中的任何字符”a”,PI[“q”]的值包含的信息是独立的”a”并需要计算DELTA(“q”,”a”) [2]。既然PI只有m个记录，而DELTA有O(m |SIGMA|)个记录，在预处理时间计算PI而不是DELTA的时候，我们可以节省一个因数|SIGMA|</p>
 <p>[1] Cormen, Leiserson, Rivest, Stein，算法介绍，第二版，MIT出版社</p>
 <p>[2] 见有限自动机原理</p>
 </blockquote>
@@ -568,8 +574,7 @@
 <p>如果你希望确保这样的事情永远不会发生，那使用Knuth-Pratt-Morris(KMP)实现。总之，根据您的设置适当地选择字符串搜索算法。</p>
 <p>如果你正在用文本搜索器进行过滤，NIDS或任何类似的注重安全的目的，那么使用KMP。否则，如果你真的关心性能，并且你对数据包进行分类以使用服务质量(QoS)政策，当你不介意匹配可能分布分散，那么用BM。</p>
 </blockquote>
-<h3 id="Chromium-浏览器中的数据结构和算法">Chromium 浏览器中的数据结构和算法</h3>
-<p>Chromium的(<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/">源代码在 Google code</a>)。我只会列出一部分。我建议使用搜索来找到你最喜欢的算法或者数据结构。</p>
+<h3 id="Chromium-浏览器中的数据结构和算法"><a href="#Chromium-浏览器中的数据结构和算法" class="headerlink" title="Chromium 浏览器中的数据结构和算法"></a>Chromium 浏览器中的数据结构和算法</h3><p>Chromium的(<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/">源代码在 Google code</a>)。我只会列出一部分。我建议使用搜索来找到你最喜欢的算法或者数据结构。</p>
 <p>1.<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/codesearch#chromium/src/v8/src/splay-tree.h">伸展树</a>。</p>
 <blockquote>
 <p>这个树通过分配策略（分配器）参数化。这个策略用于C的可用存储区的列表分配，参见zone.h。</p>
@@ -590,13 +595,11 @@
 <p>5.<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/codesearch#chromium/src/native_client/src/trusted/validator_ragel/dfa_traversal.py">自动机后缀的计算</a>。</p>
 <p>6.由Apple公司实现的<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/WebKit/Source/wtf/BloomFilter.h">bloom过滤器</a>。</p>
 <p>7.<a target="_blank" rel="noopener" href="https://code.google.com/p/chromium/codesearch#chromium/src/third_party/libvpx/source/libvpx/vp8/common/textblit.c">Bresenham 算法</a>。</p>
-<h3 id="编程语言库">编程语言库</h3>
-<p>我想这个问题值得思考。编程语言设计者们认为值得花一些工程师的时间和精力来实现这些数据结构和算法，这样其他人就不必这么做了。这些库是我们在JAVA里面比C更少的发现需要重新实现基本数据结构的部分原因。</p>
+<h3 id="编程语言库"><a href="#编程语言库" class="headerlink" title="编程语言库"></a>编程语言库</h3><p>我想这个问题值得思考。编程语言设计者们认为值得花一些工程师的时间和精力来实现这些数据结构和算法，这样其他人就不必这么做了。这些库是我们在JAVA里面比C更少的发现需要重新实现基本数据结构的部分原因。</p>
 <p>1.<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/stl/">C++ STL</a>包含了链表、栈、队列、映射、向量和<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/">排序</a>、<a target="_blank" rel="noopener" href="http://www.cplusplus.com/reference/algorithm/">搜索和堆操作</a>算法。</p>
 <p>2.<a target="_blank" rel="noopener" href="http://docs.oracle.com/javase/7/docs/api/">Java API</a>易于扩展的并且越来越多。</p>
 <p>3.<a target="_blank" rel="noopener" href="http://www.boost.org/doc/libs/1_55_0/libs/algorithm/doc/html/index.html#algorithm.description_and_rationale">Boost C++ 库</a>包含了像 Boyer-Moore以及Knuth-Morris-Pratt字符串匹配算法。</p>
-<h3 id="分配和调度算法">分配和调度算法</h3>
-<p>我发现这些很有趣，因为即使他们被称为启发式，您使用的策略规定了算法类型和需要的数据结构，因此，所以需要人们知道栈和队列。</p>
+<h3 id="分配和调度算法"><a href="#分配和调度算法" class="headerlink" title="分配和调度算法"></a>分配和调度算法</h3><p>我发现这些很有趣，因为即使他们被称为启发式，您使用的策略规定了算法类型和需要的数据结构，因此，所以需要人们知道栈和队列。</p>
 <p>1.最近最少使用（LRU）算法可以用不同的方法实现。Linux内核有一种<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/list_lru.h">基于列表的实现</a>。</p>
 <p>2.其他的还有先入先出（FIFO）、最常使用和轮询。</p>
 <p>3.FIFO的一个变种用于VAX/VMS系统。</p>
@@ -604,29 +607,24 @@
 <p>5.Intel i860处理器是一种随机替代策略。</p>
 <p>6.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Adaptive_Replacement_Cache">自适应置换高速缓存</a>用于一些IBM存储控制器中，也曾经用于PostgreSQL中(<a target="_blank" rel="noopener" href="http://www.varlena.com/GeneralBits/96.php">虽然仅仅因为一些专利问题</a>）。</p>
 <p>7.Knuth在《计算机程序设计艺术 卷1》中讨论过的<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Buddy_memory_allocation">Buddy内存分配算法</a>内用于Linux内核中，jemalloc并发分配器被用于FreeBSD和<a target="_blank" rel="noopener" href="http://www.facebook.com/notes/facebook-engineering/scalable-memory-allocation-using-jemalloc/480222803919">facebook</a>中。</p>
-<h3 id="nix系统核心工具">*nix系统核心工具</h3>
-<p>1.<em>grep</em>和<em>awk</em>同时从正则表达式中实现NFA的Thompson-McNaughton-Yamada构造，显然<a target="_blank" rel="noopener" href="http://swtch.com/%7Ersc/regexp/regexp1.html">这甚至击败了Perl的实现</a>。</p>
+<h3 id="nix系统核心工具"><a href="#nix系统核心工具" class="headerlink" title="*nix系统核心工具"></a>*nix系统核心工具</h3><p>1.<em>grep</em>和<em>awk</em>同时从正则表达式中实现NFA的Thompson-McNaughton-Yamada构造，显然<a target="_blank" rel="noopener" href="http://swtch.com/%7Ersc/regexp/regexp1.html">这甚至击败了Perl的实现</a>。</p>
 <p>2.<em>tsort</em>实现了拓扑排序。</p>
 <p>3.<em>fgrep</em>实现了<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Aho%E2%80%93Corasick_string_matching_algorithm">Aho-Corasick字符串匹配算法</a>。</p>
 <p>4.<em>GNU grep</em>，根据作者Mike Haertel实现了<a target="_blank" rel="noopener" href="http://lists.freebsd.org/pipermail/freebsd-current/2010-August/019310.html">Boyer-Mooresuan算法</a>。</p>
 <p>5.Unix上的crypt(1)实现了一个在Enigma机器上的不同加密算法。</p>
 <p>6.<a target="_blank" rel="noopener" href="http://www.cs.dartmouth.edu/%7Edoug/diff.pdf"><em>Unix diff</em></a>由Doug McIllroy实现，基于和James Hunt合作编写的原形。它比用于计算Levenshtein距离的标准动态规划算法执行地更好。<a target="_blank" rel="noopener" href="http://linux.die.net/man/3/diff">Linux 版本</a>计算最短编辑距离。</p>
-<h3 id="加密算法">加密算法</h3>
-<p>这本是一个非常长的列表。加密算法在所有执行安全通信和交易的程序中都有实现。</p>
+<h3 id="加密算法"><a href="#加密算法" class="headerlink" title="加密算法"></a>加密算法</h3><p>这本是一个非常长的列表。加密算法在所有执行安全通信和交易的程序中都有实现。</p>
 <p>1.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Merkle_tree">Merkle 树</a>，特别是 Tiger Tree Hash变种，被用于点对点应用，比如<a target="_blank" rel="noopener" href="https://github.com/gtk-gnutella/bitter">GTK Gnutella</a>和<a target="_blank" rel="noopener" href="http://en.wikibooks.org/wiki/LimeWire">LimeWire</a>。</p>
 <p>2.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/MD5">MD5</a>被用于提供软件包的校验和并被用于在*nix系统上的完整性检测(<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/crypto/md5.c">Linux 实现</a>)，同样也支持Windows和OSX。</p>
 <p>3.<a target="_blank" rel="noopener" href="http://www.openssl.org/">OpenSSL</a>实现了很多加密算法包括AES、Blowfish、DES、SHA-1、SHA-2、RSA、DES等等。</p>
-<h3 id="编译器">编译器</h3>
-<p>1.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/LALR_parser">LALR 解析</a>在yacc和bison实现。</p>
+<h3 id="编译器"><a href="#编译器" class="headerlink" title="编译器"></a>编译器</h3><p>1.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/LALR_parser">LALR 解析</a>在yacc和bison实现。</p>
 <p>2.支配算法被用于大多数基于SSA形式的编译器优化。</p>
 <p>3.lex和flex将正则表达式编译为NFA。</p>
-<h3 id="压缩和图像处理">压缩和图像处理</h3>
-<p>1.用于GIF图片格式的<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Lempel_Ziv">Lempel-Ziv</a>算法在图像处理程序中实现，从*unix工具转化到复杂的程序。</p>
+<h3 id="压缩和图像处理"><a href="#压缩和图像处理" class="headerlink" title="压缩和图像处理"></a>压缩和图像处理</h3><p>1.用于GIF图片格式的<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Lempel_Ziv">Lempel-Ziv</a>算法在图像处理程序中实现，从*unix工具转化到复杂的程序。</p>
 <p>2.行程长度编码用于产生PCX文件(用于原来的画笔程序)，它是被压缩的BMP和TIFF文件。</p>
 <p>3.小波压缩是JPEG2000的基础，所以所有生成JPEG2000文件的数码相机会支持这个算法。</p>
 <p>4.Reed-Solomon纠错在<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/lib/reed_solomon/reed_solomon.c">Linux内核</a>、CD驱动器、条形码读取器、结合从Voyager中的卷积图像传输中实现。</p>
-<h3 id="冲突驱动语句学习算法-CDCL">冲突驱动语句学习算法 (CDCL)</h3>
-<p>自2000年以来，SAT求解器在工业标准的运行时间(通常是硬件工业，虽然其他地方也被使用)以近乎指数的方式每年下跌。这发展中很重要的一部分是冲突驱动语句学习算法，它结合了Davis Logemann和Loveland在约束规划和人工智能研究中关于语句学习的原始论文中的布尔约束传播算法。特定地，工业造型，SAT被认为是一个简单的问题(<a target="_blank" rel="noopener" href="http://rjlipton.wordpress.com/2009/07/13/sat-solvers-is-sat-hard-or-easy/">见这个讨论</a>)。对我而言，这个一个最近最好的成功故事，因为它结合了这几年算法的不断发展、清晰的工程理念、实验性的评估、齐心协力地解决一个问题。<a target="_blank" rel="noopener" href="http://dl.acm.org/citation.cfm?id=1536637">Malik 和 Zhang的CACM文章</a>值得阅读。这个算法在许多大学中教授(我参加过的4个地方都是如此)，但是通常在一个逻辑或者形式方法课上。</p>
+<h3 id="冲突驱动语句学习算法-CDCL"><a href="#冲突驱动语句学习算法-CDCL" class="headerlink" title="冲突驱动语句学习算法 (CDCL)"></a>冲突驱动语句学习算法 (CDCL)</h3><p>自2000年以来，SAT求解器在工业标准的运行时间(通常是硬件工业，虽然其他地方也被使用)以近乎指数的方式每年下跌。这发展中很重要的一部分是冲突驱动语句学习算法，它结合了Davis Logemann和Loveland在约束规划和人工智能研究中关于语句学习的原始论文中的布尔约束传播算法。特定地，工业造型，SAT被认为是一个简单的问题(<a target="_blank" rel="noopener" href="http://rjlipton.wordpress.com/2009/07/13/sat-solvers-is-sat-hard-or-easy/">见这个讨论</a>)。对我而言，这个一个最近最好的成功故事，因为它结合了这几年算法的不断发展、清晰的工程理念、实验性的评估、齐心协力地解决一个问题。<a target="_blank" rel="noopener" href="http://dl.acm.org/citation.cfm?id=1536637">Malik 和 Zhang的CACM文章</a>值得阅读。这个算法在许多大学中教授(我参加过的4个地方都是如此)，但是通常在一个逻辑或者形式方法课上。</p>
 <p>SAT求解器的应用有很多。IBM，Intel和许多其他公司都有他们的SAT求解器实现。OpenSuse的<a target="_blank" rel="noopener" href="http://dl.acm.org/citation.cfm?id=1536637">包管理器</a>同样使用了一个SAT求解器。</p>
 <hr>
 <p>via: <a target="_blank" rel="noopener" href="http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773">http://cstheory.stackexchange.com/questions/19759/core-algorithms-deployed/19773#19773</a></p>
@@ -1177,6 +1175,13 @@ id="canvas_sakura"></canvas>
                 </a>
               </li>
             
+              <li>
+                <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                  <i class="fa " aria-hidden="true"></i>
+                  站点检测
+                </a>
+              </li>
+            
           </ul>
         
       </li>
@@ -1470,6 +1475,13 @@ id="canvas_sakura"></canvas>
                 <a href="/lab/">
                   <i class="fa fa-cogs" aria-hidden="true"></i>
                   Lab
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                  <i class="fa " aria-hidden="true"></i>
+                  站点检测
                 </a>
               </li>
             

@@ -439,6 +439,13 @@
                         </a>
                       </li>
                     
+                      <li>
+                        <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                          <i class="fa " aria-hidden="true"></i>
+                          站点检测
+                        </a>
+                      </li>
+                    
                   </ul>
                 
               </li>
@@ -496,60 +503,51 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>一、Lombok的双刃剑效应</h2>
-<p>在Java开发领域，Lombok 凭借其强大的代码简化能力几乎无人不晓。通过 <code>@Data</code>、<code>@Builder</code> 等注解，开发者可以轻松消除冗长的 getter/setter 方法，将开发效率提升 40% 以上。但正如所有技术选型都需要权衡利弊，Lombok 在实际应用中暴露出的问题同样值得警惕：</p>
+          <h2 id="一、Lombok的双刃剑效应"><a href="#一、Lombok的双刃剑效应" class="headerlink" title="一、Lombok的双刃剑效应"></a>一、Lombok的双刃剑效应</h2><p>在Java开发领域，Lombok 凭借其强大的代码简化能力几乎无人不晓。通过 <code>@Data</code>、<code>@Builder</code> 等注解，开发者可以轻松消除冗长的 getter/setter 方法，将开发效率提升 40% 以上。但正如所有技术选型都需要权衡利弊，Lombok 在实际应用中暴露出的问题同样值得警惕：</p>
 <ol>
 <li><strong>强工具依赖困境</strong>：开发团队中只要有一位成员使用 Lombok，所有协作者都必须安装插件，否则将面临编译失败的风险</li>
-<li><strong>代码可追溯性缺失</strong>：生成的字节码与源码存在&quot;断层&quot;，审计时难以验证代码真实性，给金融、政务等强合规场景埋下隐患</li>
-<li><strong>版本兼容性陷阱</strong>：不同 Lombok 版本生成的代码可能存在差异，在持续集成环境中容易引发&quot;本地可编译，服务器失败&quot;的诡异问题</li>
+<li><strong>代码可追溯性缺失</strong>：生成的字节码与源码存在”断层”，审计时难以验证代码真实性，给金融、政务等强合规场景埋下隐患</li>
+<li><strong>版本兼容性陷阱</strong>：不同 Lombok 版本生成的代码可能存在差异，在持续集成环境中容易引发”本地可编译，服务器失败”的诡异问题</li>
 </ol>
 <p>正是这些痛点，使得包括阿里、华为在内的多家头部科技企业，在《Java开发规范》中明确禁止生产环境使用 Lombok。</p>
-<h2>二、Delombok：鱼与熊掌兼得的解决方案</h2>
-<p>Project Lombok 团队提供的 <a target="_blank" rel="noopener" href="https://projectlombok.org/features/delombok">Delombok 工具</a> 恰是破解困局的关键。其核心原理是在编译阶段将 Lombok 注解转换为标准 Java 代码，既保留了开发效率，又确保了代码完整性。</p>
-<h2>三、IntelliJ全链路配置指南</h2>
-<h3 id="3-1-开发环境配置">3.1 开发环境配置</h3>
-<ol>
+<h2 id="二、Delombok：鱼与熊掌兼得的解决方案"><a href="#二、Delombok：鱼与熊掌兼得的解决方案" class="headerlink" title="二、Delombok：鱼与熊掌兼得的解决方案"></a>二、Delombok：鱼与熊掌兼得的解决方案</h2><p>Project Lombok 团队提供的 <a target="_blank" rel="noopener" href="https://projectlombok.org/features/delombok">Delombok 工具</a> 恰是破解困局的关键。其核心原理是在编译阶段将 Lombok 注解转换为标准 Java 代码，既保留了开发效率，又确保了代码完整性。</p>
+<h2 id="三、IntelliJ全链路配置指南"><a href="#三、IntelliJ全链路配置指南" class="headerlink" title="三、IntelliJ全链路配置指南"></a>三、IntelliJ全链路配置指南</h2><h3 id="3-1-开发环境配置"><a href="#3-1-开发环境配置" class="headerlink" title="3.1 开发环境配置"></a>3.1 开发环境配置</h3><ol>
 <li>安装官方 Lombok 插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/6317-lombok">JetBrains Marketplace</a></li>
 <li>同步安装 Delombok 插件：<a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14831-delombok">Delombok Plugin</a></li>
 <li>启用注解处理：<code>Settings → Build → Compiler → Annotation Processors → Enable annotation processing</code></li>
 </ol>
-<h3 id="3-2-版本控制集成">3.2 版本控制集成</h3>
-<p>在提交代码前，通过 VCS 操作菜单勾选 “Delombok code” 选项，即可自动生成合规代码。对于存量项目，可通过 <code>Build → Delombok Project</code> 一键转换整个代码库。</p>
-<h2>四、构建工具深度集成</h2>
-<h3 id="4-1-Maven-配置">4.1 Maven 配置</h3>
-<pre><code class="hljs language-xml"><span class="hljs-tag">&lt;<span class="hljs-name">dependency</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">groupId</span>&gt;</span>org.projectlombok<span class="hljs-tag">&lt;/<span class="hljs-name">groupId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">artifactId</span>&gt;</span>lombok<span class="hljs-tag">&lt;/<span class="hljs-name">artifactId</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">version</span>&gt;</span>1.18.30<span class="hljs-tag">&lt;/<span class="hljs-name">version</span>&gt;</span>
-    <span class="hljs-tag">&lt;<span class="hljs-name">scope</span>&gt;</span>provided<span class="hljs-tag">&lt;/<span class="hljs-name">scope</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">dependency</span>&gt;</span>
+<h3 id="3-2-版本控制集成"><a href="#3-2-版本控制集成" class="headerlink" title="3.2 版本控制集成"></a>3.2 版本控制集成</h3><p>在提交代码前，通过 VCS 操作菜单勾选 “Delombok code” 选项，即可自动生成合规代码。对于存量项目，可通过 <code>Build → Delombok Project</code> 一键转换整个代码库。</p>
+<h2 id="四、构建工具深度集成"><a href="#四、构建工具深度集成" class="headerlink" title="四、构建工具深度集成"></a>四、构建工具深度集成</h2><h3 id="4-1-Maven-配置"><a href="#4-1-Maven-配置" class="headerlink" title="4.1 Maven 配置"></a>4.1 Maven 配置</h3><pre><code class="lang-xml">&lt;dependency&gt;
+    &lt;groupId&gt;org.projectlombok&lt;/groupId&gt;
+    &lt;artifactId&gt;lombok&lt;/artifactId&gt;
+    &lt;version&gt;1.18.30&lt;/version&gt;
+    &lt;scope&gt;provided&lt;/scope&gt;
+&lt;/dependency&gt;
 </code></pre>
-<h3 id="4-2-Gradle-配置">4.2 Gradle 配置</h3>
-<pre><code class="hljs language-groovy">dependencies &#123;
-    compileOnly <span class="hljs-string">&#x27;org.projectlombok:lombok:1.18.22&#x27;</span>
-    annotationProcessor <span class="hljs-string">&#x27;org.projectlombok:lombok:1.18.22&#x27;</span>
+<h3 id="4-2-Gradle-配置"><a href="#4-2-Gradle-配置" class="headerlink" title="4.2 Gradle 配置"></a>4.2 Gradle 配置</h3><pre><code class="lang-groovy">dependencies &#123;
+    compileOnly &#39;org.projectlombok:lombok:1.18.22&#39;
+    annotationProcessor &#39;org.projectlombok:lombok:1.18.22&#39;
 
-    testCompileOnly <span class="hljs-string">&#x27;org.projectlombok:lombok:1.18.22&#x27;</span>
-    testAnnotationProcessor <span class="hljs-string">&#x27;org.projectlombok:lombok:1.18.22&#x27;</span>
+    testCompileOnly &#39;org.projectlombok:lombok:1.18.22&#39;
+    testAnnotationProcessor &#39;org.projectlombok:lombok:1.18.22&#39;
 &#125;
 </code></pre>
-<h3 id="4-3-“io-freefair-lombok”-插件：Gradle-最佳实践">4.3 “io.freefair.lombok” 插件：Gradle 最佳实践</h3>
-<p>推荐使用 <code>io.freefair.lombok</code> 插件实现 lombok 和 delombok 的管理：</p>
-<pre><code class="hljs language-groovy">plugins &#123;
-    id <span class="hljs-string">&quot;io.freefair.lombok&quot;</span> version <span class="hljs-string">&quot;8.13&quot;</span>
+<h3 id="4-3-“io-freefair-lombok”-插件：Gradle-最佳实践"><a href="#4-3-“io-freefair-lombok”-插件：Gradle-最佳实践" class="headerlink" title="4.3 “io.freefair.lombok” 插件：Gradle 最佳实践"></a>4.3 “io.freefair.lombok” 插件：Gradle 最佳实践</h3><p>推荐使用 <code>io.freefair.lombok</code> 插件实现 lombok 和 delombok 的管理：</p>
+<pre><code class="lang-groovy">plugins &#123;
+    id &quot;io.freefair.lombok&quot; version &quot;8.13&quot;
 &#125;
 
-<span class="hljs-comment">// 自动处理：</span>
-<span class="hljs-comment">// 1. 注解处理器配置</span>
-<span class="hljs-comment">// 2. Delombok 任务注册</span>
-<span class="hljs-comment">// 3. 测试环境支持</span>
+// 自动处理：
+// 1. 注解处理器配置
+// 2. Delombok 任务注册
+// 3. 测试环境支持
 </code></pre>
 <p>直接声明使用最新版本</p>
-<pre><code class="hljs language-groovy">plugins &#123;
-      id <span class="hljs-string">&quot;io.freefair.lombok&quot;</span> version <span class="hljs-string">&quot;lastest.release&quot;</span>
+<pre><code class="lang-groovy">plugins &#123;
+      id &quot;io.freefair.lombok&quot; version &quot;lastest.release&quot;
 &#125;
 </code></pre>
-<h3 id="版本兼容矩阵（2025-3-最新）">版本兼容矩阵（2025.3 最新）</h3>
+<h3 id="版本兼容矩阵（2025-3-最新）"><a href="#版本兼容矩阵（2025-3-最新）" class="headerlink" title="版本兼容矩阵（2025.3 最新）"></a>版本兼容矩阵（2025.3 最新）</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -646,6 +644,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>本文档示例代码已通过 Java 21、Gradle 8.13 环境验证，建议定期访问 <a target="_blank" rel="noopener" href="https://projectlombok.org/">Lombok 官网</a>，以获取最新版本信息。</p>
 </blockquote>
@@ -1194,6 +1193,13 @@ id="canvas_sakura"></canvas>
                 </a>
               </li>
             
+              <li>
+                <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                  <i class="fa " aria-hidden="true"></i>
+                  站点检测
+                </a>
+              </li>
+            
           </ul>
         
       </li>
@@ -1487,6 +1493,13 @@ id="canvas_sakura"></canvas>
                 <a href="/lab/">
                   <i class="fa fa-cogs" aria-hidden="true"></i>
                   Lab
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://status.yuhiri.me/status/all">
+                  <i class="fa " aria-hidden="true"></i>
+                  站点检测
                 </a>
               </li>
             
