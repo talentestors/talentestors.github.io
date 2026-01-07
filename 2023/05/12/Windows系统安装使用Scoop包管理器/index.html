@@ -494,7 +494,7 @@
 <p>Scoop一般用来管理绿色软件，即是一种通过解压压缩包即可就地使用的软件，对于比较专业软件（比如Office、Adobe等）支持不好</p>
 <p><img src="//img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162343005-1130367297.png" alt="img"></p>
 <h2 id="基础环境配置"><a href="#基础环境配置" class="headerlink" title="基础环境配置"></a>基础环境配置</h2><p>在准备安装之前，建议进行配置（如果你能解决GitHub访问问题，请跳过😄）</p>
-<p>如果你是win10系统，建议安装<code>Terminal</code>（win11已经自带，请跳转至<a href="/2023/05/12/Windows%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85%E4%BD%BF%E7%94%A8Scoop%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/#%E6%AD%A3%E5%BC%8F%E5%BC%80%E5%A7%8BScoop%E7%9A%84%E5%AE%89%E8%A3%85">正式开始Scoop的安装</a>）</p>
+<p>如果你是win10系统，建议安装<code>Terminal</code>（win11已经自带，请跳转至<a href="/2023/05/12/Windows系统安装使用Scoop包管理器/#正式开始Scoop的安装">正式开始Scoop的安装</a>）</p>
 <blockquote>
 <p>新一代终端Windows Terminal<br>支持标签页、多种命令行工具多开…<br>可定制美化</p>
 </blockquote>
@@ -523,40 +523,40 @@
 <p><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340930-1075855706.png" alt="Watt-Toolkit"></p>
 <p>然后，给GitHub打上勾点一键加速.</p>
 <p><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162341074-1179702106.png" alt="Watt-Toolkit"></p>
-<p>打开GitHub链接看看是否能访问：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com</a></p>
+<p>打开GitHub链接看看是否能访问：<a target="_blank" rel="noopener" href="https://github.com">https://github.com</a></p>
 <h2 id="正式开始Scoop的安装"><a href="#正式开始Scoop的安装" class="headerlink" title="正式开始Scoop的安装"></a>正式开始Scoop的安装</h2><p>github地址：<a target="_blank" rel="noopener" href="https://github.com/ScoopInstaller/Scoop">https://github.com/ScoopInstaller/Scoop</a></p>
 <p>文档地址：<a target="_blank" rel="noopener" href="https://scoop.sh/">https://scoop.sh/</a></p>
 <h3 id="命令安装"><a href="#命令安装" class="headerlink" title="命令安装"></a>命令安装</h3><p><strong>为了让PowerShell可以执行脚本</strong>，首先需要设置PowerShell执行策略，通过输入以下命令<code>Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser</code>（在之前安装好的Terminal执行）</p>
-<p>从非管理员 PowerShell 运行此命令以使用默认配置安装 scoop， Scoop将安装到 C:\Users&lt;YOUR USERNAME&gt;\scoop</p>
-<pre><code class="shell">irm get.scoop.sh | iex
+<p>从非管理员 PowerShell 运行此命令以使用默认配置安装 scoop， Scoop将安装到 C:\Users\<YOUR USERNAME>\scoop</p>
+<pre><code class="lang-shell">irm get.scoop.sh | iex
 # 使用镜像安装
 irm get.scoop.sh -Proxy &#39;http://&lt;ip:port&gt;&#39; | iex
 </code></pre>
 <p>或者以下命令：</p>
-<pre><code class="shell">Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;)
+<pre><code class="lang-shell">Invoke-Expression (New-Object System.Net.WebClient).DownloadString(&#39;https://get.scoop.sh&#39;)
 </code></pre>
 <h3 id="高级安装"><a href="#高级安装" class="headerlink" title="高级安装"></a>高级安装</h3><p>如果你不想安装到C盘，可采用此方法（小白不推荐）</p>
 <p>先执行</p>
-<pre><code class="shell">irm get.scoop.sh -outfile &#39;install.ps1&#39;
+<pre><code class="lang-shell">irm get.scoop.sh -outfile &#39;install.ps1&#39;
 </code></pre>
 <p>下载安装程序</p>
 <p>可以<code>explorer .</code>在当前打开资源管理器，查看下载的文件</p>
 <p>查看安装程序的所有可配置参数。</p>
-<pre><code class="shell">.\install.ps1 -?
+<pre><code class="lang-shell">.\install.ps1 -?
 </code></pre>
 <p><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340443-955218283.png" alt="scoop-install"></p>
 <p>例如，可以将 scoop 安装到自定义目录，配置 scoop 进行安装全局程序到自定义目录，并在安装过程中绕过系统代理。</p>
-<pre><code class="shell">.\install.ps1 -ScoopDir &#39;D:\Applications\Scoop&#39; -ScoopGlobalDir &#39;F:\GlobalScoopApps&#39; -NoProxy
+<pre><code class="lang-shell">.\install.ps1 -ScoopDir &#39;D:\Applications\Scoop&#39; -ScoopGlobalDir &#39;F:\GlobalScoopApps&#39; -NoProxy
 </code></pre>
 <p>或者，可以使用旧方法通过设置环境变量来配置自定义目录。<strong>（不推荐）</strong></p>
-<pre><code class="shell">$env:SCOOP=&#39;D:\Applications\Scoop&#39;
+<pre><code class="lang-shell">$env:SCOOP=&#39;D:\Applications\Scoop&#39;
 $env:SCOOP_GLOBAL=&#39;F:\GlobalScoopApps&#39;
 [Environment]::SetEnvironmentVariable(&#39;SCOOP_GLOBAL&#39;, $env:SCOOP_GLOBAL, &#39;Machine&#39;)
 irm get.scoop.sh | iex
 </code></pre>
 <blockquote>
 <p>默认情况下已禁用管理员控制台下Scoop的安装，如果需要使用 <code>-RunAsAdmin</code></p>
-<pre><code class="shell">irm get.scoop.sh -outfile &#39;install.ps1&#39;
+<pre><code class="lang-shell">irm get.scoop.sh -outfile &#39;install.ps1&#39;
 .\install.ps1 -RunAsAdmin [-OtherParameters ...]
 # I don&#39;t care about other parameters and want a one-line command
 iex &quot;&amp; &#123;$(irm get.scoop.sh)&#125; -RunAsAdmin&quot;
@@ -572,131 +572,66 @@ iex &quot;&amp; &#123;$(irm get.scoop.sh)&#125; -RunAsAdmin&quot;
 <p>我们先在Terminal中输入<code>scoop -v</code>看看scoop命令是否可以使用<br><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340309-1931898434.png" alt="scoop"></p>
 <p>可以看到我这边可以正常显示版本号</p>
 <p>输入<code>scoop help</code>就可以看Scoop命令</p>
-<p>部分命令:</p>
-<table>
-<thead>
-<tr>
-<th align="left">Command</th>
-<th align="left">Summary</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">update</td>
-<td align="left">更新</td>
-</tr>
-<tr>
-<td align="left">list</td>
-<td align="left">显示已安装列表</td>
-</tr>
-<tr>
-<td align="left">install</td>
-<td align="left">安装</td>
-</tr>
-<tr>
-<td align="left">uninstall</td>
-<td align="left">卸载</td>
-</tr>
-<tr>
-<td align="left">search</td>
-<td align="left">搜索app</td>
-</tr>
-<tr>
-<td align="left">status</td>
-<td align="left">检查更新</td>
-</tr>
-<tr>
-<td align="left">bucket</td>
-<td align="left">Scoop buckets</td>
-</tr>
-<tr>
-<td align="left">cache</td>
-<td align="left">缓存</td>
-</tr>
-<tr>
-<td align="left">reset</td>
-<td align="left">重设</td>
-</tr>
-<tr>
-<td align="left">cleanup</td>
-<td align="left">清除旧版</td>
-</tr>
-<tr>
-<td align="left">help</td>
-<td align="left">帮助</td>
-</tr>
-<tr>
-<td align="left">shim</td>
-<td align="left">shims</td>
-</tr>
-</tbody></table>
+<p>部分命令:<br>|Command    |Summary|<br>|:———-   |:———-|<br>|update     |更新|<br>|list       |显示已安装列表|<br>|install    |安装|<br>|uninstall  |卸载|<br>|search     |搜索app|<br>|status     |检查更新|<br>|bucket     |Scoop buckets|<br>|cache      |缓存|<br>|reset      |重设|<br>|cleanup    |清除旧版|<br>|help       |帮助|<br>|shim       |shims|</p>
 <h3 id="安装apps"><a href="#安装apps" class="headerlink" title="安装apps"></a>安装apps</h3><p>由于Scoop的软件仓库，是基于Git和7zip工具管理的，所以我们首先需要安装的就是git。</p>
-<pre><code class="shell">scoop install git
+<pre><code class="lang-shell">scoop install git
 git config --global http.sslVerifyfalse # git 配置
 </code></pre>
 <p>注意：安装时会自动安装7zip。安装会很慢..等</p>
 <p>好吧，其实可以先安装aria2多线程加速(笑</p>
-<pre><code class="shell">scoop install aria2
+<pre><code class="lang-shell">scoop install aria2
 </code></pre>
 <p>如果使用代理，有时需要通过如下命令关闭 aria2</p>
-<pre><code class="shell">scoop config aria2-enabled false
+<pre><code class="lang-shell">scoop config aria2-enabled false
 </code></pre>
-<pre><code class="shell">scoop update # 更新一下Scoop
+<pre><code class="lang-shell">scoop update # 更新一下Scoop
 </code></pre>
 <pre><code>scoop全局安装软件可以附加`-g`,如：scoop install git -g;但是必须以管理员的身份执行。
-</code></pre>
-<h3 id="bucket"><a href="#bucket" class="headerlink" title="bucket"></a>bucket</h3><p>在 Scoop 中，存储桶是应用程序的集合。或者，更具体地说，存储桶是一个 Git 存储库，其中包含描述如何安装应用程序的 JSON 应用程序清单。</p>
+</code></pre><h3 id="bucket"><a href="#bucket" class="headerlink" title="bucket"></a>bucket</h3><p>在 Scoop 中，存储桶是应用程序的集合。或者，更具体地说，存储桶是一个 Git 存储库，其中包含描述如何安装应用程序的 JSON 应用程序清单。</p>
 <p>Scoop默认的bucket是main</p>
-<pre><code class="shell">scoop bucket known # 查看社区的bucket列表
+<pre><code class="lang-shell">scoop bucket known # 查看社区的bucket列表
 </code></pre>
 <p>我们可以为main bucket配置镜像来加速</p>
 <ol>
-<li>先卸载 main的bucket</li>
-</ol>
-<pre><code class="shell">scoop bucket rm main
+<li>先卸载 main的bucket<pre><code class="lang-shell">scoop bucket rm main
 </code></pre>
-<ol start="2">
-<li>添加 main 镜像代理</li>
-</ol>
-<pre><code class="shell">scoop bucket add main https://mirror.ghproxy.com/github.com/ScoopInstaller/Main.git
+</li>
+<li>添加 main 镜像代理<pre><code class="lang-shell">scoop bucket add main https://mirror.ghproxy.com/github.com/ScoopInstaller/Main.git
 </code></pre>
+</li>
+</ol>
 <h4 id="添加其他-bucket"><a href="#添加其他-bucket" class="headerlink" title="添加其他 bucket"></a>添加其他 bucket</h4><p>常用bucket：<a target="_blank" rel="noopener" href="https://rasa.github.io/scoop-directory/by-score.html">https://rasa.github.io/scoop-directory/by-score.html</a></p>
-<pre><code class="shell">scoop bucket add extras # 添加了多种软件包
+<pre><code class="lang-shell">scoop bucket add extras # 添加了多种软件包
 scoop bucket add versions # 保留了旧版本
 scoop bucket add dorado https://github.com/chawyehsu/dorado # 许多国内应用qq、微信
 </code></pre>
 <p>国内推荐：</p>
-<pre><code class="shell">scoop bucket add scoop-cn https://mirror.ghproxy.com/github.com/duzyn/scoop-cn
+<pre><code class="lang-shell">scoop bucket add scoop-cn https://mirror.ghproxy.com/github.com/duzyn/scoop-cn
 </code></pre>
 <p><strong>指定仓库安装</strong></p>
-<pre><code class="shell">scoop install &lt;bucket_Name&gt;/&lt;packName&gt;
+<pre><code class="lang-shell">scoop install &lt;bucket_Name&gt;/&lt;packName&gt;
 </code></pre>
 <h4 id="jdk安装实例演示"><a href="#jdk安装实例演示" class="headerlink" title="jdk安装实例演示"></a>jdk安装实例演示</h4><ol>
-<li>先添加Java的bucket</li>
-</ol>
-<pre><code class="shell">scoop bucket add java
+<li>先添加Java的bucket<pre><code class="lang-shell">scoop bucket add java
 </code></pre>
-<ol start="2">
-<li>再使用scoop search来搜索jdk的包</li>
-</ol>
-<pre><code class="shell">scoop search jdk
+</li>
+<li>再使用scoop search来搜索jdk的包<pre><code class="lang-shell">scoop search jdk
 </code></pre>
-<p><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340648-333727383.png" alt="scoop"></p>
-<ol>
-<li>选择自己需要的jdk版本，以下以oraclejdk-lts做演示</li>
-</ol>
-<pre><code class="shell">scoop install oraclejdk-lts
+<img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340648-333727383.png" alt="scoop"></li>
+<li>选择自己需要的jdk版本，以下以oraclejdk-lts做演示<pre><code class="lang-shell">scoop install oraclejdk-lts
 </code></pre>
-<p><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340559-1213081098.png" alt="scoop"></p>
+<img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340559-1213081098.png" alt="scoop"></li>
+</ol>
 <p>安装成功！</p>
 <p>安装后scoop会保留安装包，可以使用<code>scoop cache show</code>查看缓存。<br><img src="https://img2023.cnblogs.com/blog/3092919/202308/3092919-20230801162340542-669794949.png" alt="scoop"></p>
-<pre><code class="shell">scoop cache rm * # 清除所有缓存
+<pre><code class="lang-shell">scoop cache rm * # 清除所有缓存
 </code></pre>
 <h3 id="scoop-版本控制"><a href="#scoop-版本控制" class="headerlink" title="scoop 版本控制"></a>scoop 版本控制</h3><p>scoop可以使用<code>scoop reset</code>切换软件版本,用法是<code>scoop reset &lt;pack name&gt;@&lt;version number&gt;</code>、<code>scoop reset &lt;对应的软件包名&gt;</code></p>
 <p><code>scoop install &lt;pack name&gt;@&lt;version number&gt;</code>安装指定的版本（这个不太好用）</p>
 <p><code>scoop cleanup</code>用来清理旧版本</p>
-<pre><code class="shell">scoop cleanup * # 清理所有旧版
+<pre><code class="lang-shell">scoop cleanup * # 清理所有旧版
 </code></pre>
-<h2 id="软件推荐"><a href="#软件推荐" class="headerlink" title="软件推荐"></a>软件推荐</h2><pre><code class="shell">#调用管理员权限
+<h2 id="软件推荐"><a href="#软件推荐" class="headerlink" title="软件推荐"></a>软件推荐</h2><pre><code class="lang-shell">#调用管理员权限
 scoop install sudo
 #使用
 sudo scoop install git -g
@@ -709,7 +644,7 @@ scoop-search jdk
 scoop install scoop-completion
 </code></pre>
 <p>我的安装列表</p>
-<pre><code class="shell">adb                  35.0.2
+<pre><code class="lang-shell">adb                  35.0.2
 age                  1.2.0
 alist                3.39.1
 aria2                1.37.0-1
@@ -743,7 +678,7 @@ snipaste-beta        2.9.2-Beta
 starship             1.21.1
 </code></pre>
 <h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><p>常用命令</p>
-<pre><code class="shell"># 查看已安装程序
+<pre><code class="lang-shell"># 查看已安装程序
 scoop list
 # 查看更新
 scoop status
@@ -755,13 +690,13 @@ scoop cleanup
 scoop checkup
 </code></pre>
 <p>Aria2 的参数</p>
-<pre><code class="shell">scoop config aria2-retry-wait 4
+<pre><code class="lang-shell">scoop config aria2-retry-wait 4
 scoop config aria2-split 16
 scoop config aria2-max-connection-per-server 16
 scoop config aria2-min-split-size 4M
 </code></pre>
 <p>Scoop代理</p>
-<pre><code class="shell">#设置代理
+<pre><code class="lang-shell">#设置代理
 scoop config proxy 127.0.0.1:7890
 #关闭代理
 scoop config proxy false # 2024年4月19日更新 false不在支持 请使用none
@@ -771,7 +706,7 @@ scoop config proxy currentuser@default
 scoop config proxy none
 </code></pre>
 <hr>
-<h3 id="2024-11-25更新"><a href="#2024-11-25更新" class="headerlink" title="2024&#x2F;11&#x2F;25更新"></a>2024&#x2F;11&#x2F;25更新</h3><p>最近把Windows11升级到了24H2，24H2系统自带了sudo所以就把scoop安装的sudo卸载掉了。</p>
+<h3 id="2024-11-25更新"><a href="#2024-11-25更新" class="headerlink" title="2024/11/25更新"></a>2024/11/25更新</h3><p>最近把Windows11升级到了24H2，24H2系统自带了sudo所以就把scoop安装的sudo卸载掉了。</p>
 <p>下面教你如何启用24H2的 <code>sudo</code></p>
 <p>首先你应该先升级到24H2</p>
 <ul>
@@ -779,12 +714,12 @@ scoop config proxy none
 <li>保证开发人员模式是打开的，然后打开<code>启用sudo</code>开关</li>
 <li>以管理员身份打开powershell或者cmd，执行<code>sudo config --enable normal</code>命令</li>
 </ul>
-<pre><code class="bash">sudo config --enable normal
+<pre><code class="lang-bash">sudo config --enable normal
 sudo config --enable 启用模式
 </code></pre>
 <blockquote>
 <p>模式可选：<code>forceNewWindow</code>、<code>disableInput</code>、<code>normal</code>，“在新窗口中”、“禁用输入”、“内联”模式。</p>
-<p>比如内联模式，就和linux终端一样。<br>sudo config –enable normal</p>
+<p>比如内联模式，就和linux终端一样。<br>sudo config —enable normal</p>
 </blockquote>
 <p>关于sudo：<a target="_blank" rel="noopener" href="https://github.com/microsoft/sudo">https://github.com/microsoft/sudo</a></p>
 <hr>
@@ -872,7 +807,7 @@ sudo config --enable 启用模式
           giscus.setAttribute('data-reactions-enabled', '1');
           giscus.setAttribute('data-emit-metadata', '0');
           giscus.setAttribute('data-input-position', 'top');
-          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.2/css/giscus.min.css');
+          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.3/css/giscus.min.css');
           giscus.setAttribute('data-lang', 'zh-CN');
           // giscus.setAttribute('data-loading', 'lazy');
           document.getElementById('giscus-container').appendChild(giscus);
@@ -904,7 +839,7 @@ sudo config --enable 启用模式
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -916,10 +851,10 @@ sudo config --enable 启用模式
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

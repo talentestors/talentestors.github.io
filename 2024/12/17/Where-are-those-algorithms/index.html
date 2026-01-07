@@ -547,7 +547,7 @@
 <p>18.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/drivers/media/common/saa7146/saa7146_hlp.c">冒泡排序</a>在一个驱动库中也有一个令人惊讶的实现。</p>
 <p>19.<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/b3a3a9c441e2c8f6b6760de9331023a7906a4ac6/lib/ts_kmp.c">Knuth-Morris-Pratt 字符串匹配</a>,</p>
 <blockquote>
-<p>根据Knuth、Morris和Pratt[1]实现了一个线性时间的字符串匹配算法。他们的算法避免了转换函数的显式地计算DELTA。对于长度为n的文本，其匹配时间是O(n)，对于长度为m的模式(pattern)，仅使用一个辅助函数PI[1 . .m]，预先计算模式的时间为O(m)。数组PI允许转换函数DELTA被实时有效地计算。粗略地说，对于任何状态”q”&#x3D; 0,1,…、m和在SIGMA中的任何字符”a”,PI[“q”]的值包含的信息是独立的”a”并需要计算DELTA(“q”,”a”) [2]。既然PI只有m个记录，而DELTA有O(m |SIGMA|)个记录，在预处理时间计算PI而不是DELTA的时候，我们可以节省一个因数|SIGMA|</p>
+<p>根据Knuth、Morris和Pratt[1]实现了一个线性时间的字符串匹配算法。他们的算法避免了转换函数的显式地计算DELTA。对于长度为n的文本，其匹配时间是O(n)，对于长度为m的模式(pattern)，仅使用一个辅助函数PI[1 . .m]，预先计算模式的时间为O(m)。数组PI允许转换函数DELTA被实时有效地计算。粗略地说，对于任何状态”q”= 0,1,…、m和在SIGMA中的任何字符”a”,PI[“q”]的值包含的信息是独立的”a”并需要计算DELTA(“q”,”a”) [2]。既然PI只有m个记录，而DELTA有O(m |SIGMA|)个记录，在预处理时间计算PI而不是DELTA的时候，我们可以节省一个因数|SIGMA|</p>
 <p>[1] Cormen, Leiserson, Rivest, Stein，算法介绍，第二版，MIT出版社</p>
 <p>[2] 见有限自动机原理</p>
 </blockquote>
@@ -555,7 +555,7 @@
 <blockquote>
 <p>实现了Boyer-Moore字符串匹配算法:</p>
 <p>[1] 《一个快速的字符串搜索算法》，R.S. Boyer and Moore.计算机通信协会，20(10), 1977, pp. 762-772. <a target="_blank" rel="noopener" href="http://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf">http://www.cs.utexas.edu/users/moore/publications/fstrpos.pdf</a></p>
-<p>[2] 《准确的字符串匹配算法手册》，Thierry Lecroq, 2004 <a target="_blank" rel="noopener" href="http://www-igm.univ-mlv.fr/%7Elecroq/string/string.pdf">http://www-igm.univ-mlv.fr/~lecroq&#x2F;string&#x2F;string.pdf</a></p>
+<p>[2] 《准确的字符串匹配算法手册》，Thierry Lecroq, 2004 <a target="_blank" rel="noopener" href="http://www-igm.univ-mlv.fr/%7Elecroq/string/string.pdf">http://www-igm.univ-mlv.fr/~lecroq/string/string.pdf</a></p>
 <p>注:由于Boyer-Moore(BM)从右到左搜索匹配，仍然有可能匹配分布在多个块，在这种情况下该算法并没有优势。</p>
 <p>如果你希望确保这样的事情永远不会发生，那使用Knuth-Pratt-Morris(KMP)实现。总之，根据您的设置适当地选择字符串搜索算法。</p>
 <p>如果你正在用文本搜索器进行过滤，NIDS或任何类似的注重安全的目的，那么使用KMP。否则，如果你真的关心性能，并且你对数据包进行分类以使用服务质量(QoS)政策，当你不介意匹配可能分布分散，那么用BM。</p>
@@ -588,7 +588,7 @@
 <h3 id="分配和调度算法"><a href="#分配和调度算法" class="headerlink" title="分配和调度算法"></a>分配和调度算法</h3><p>我发现这些很有趣，因为即使他们被称为启发式，您使用的策略规定了算法类型和需要的数据结构，因此，所以需要人们知道栈和队列。</p>
 <p>1.最近最少使用（LRU）算法可以用不同的方法实现。Linux内核有一种<a target="_blank" rel="noopener" href="https://github.com/mirrors/linux-2.6/blob/master/include/linux/list_lru.h">基于列表的实现</a>。</p>
 <p>2.其他的还有先入先出（FIFO）、最常使用和轮询。</p>
-<p>3.FIFO的一个变种用于VAX&#x2F;VMS系统。</p>
+<p>3.FIFO的一个变种用于VAX/VMS系统。</p>
 <p>4.<a target="_blank" rel="noopener" href="http://dl.acm.org/citation.cfm?id=4750">Richard Carr</a>的<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Page_replacement_algorithm#Clock">时钟算法</a>用于Linux中的页面替换。</p>
 <p>5.Intel i860处理器是一种随机替代策略。</p>
 <p>6.<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Adaptive_Replacement_Cache">自适应置换高速缓存</a>用于一些IBM存储控制器中，也曾经用于PostgreSQL中(<a target="_blank" rel="noopener" href="http://www.varlena.com/GeneralBits/96.php">虽然仅仅因为一些专利问题</a>）。</p>
@@ -698,7 +698,7 @@
           giscus.setAttribute('data-reactions-enabled', '1');
           giscus.setAttribute('data-emit-metadata', '0');
           giscus.setAttribute('data-input-position', 'top');
-          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.2/css/giscus.min.css');
+          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.3/css/giscus.min.css');
           giscus.setAttribute('data-lang', 'zh-CN');
           // giscus.setAttribute('data-loading', 'lazy');
           document.getElementById('giscus-container').appendChild(giscus);
@@ -730,7 +730,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -742,10 +742,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

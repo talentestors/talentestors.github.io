@@ -516,6 +516,7 @@
 </li>
 </ol>
 <h3 id="信息来源全景"><a href="#信息来源全景" class="headerlink" title="信息来源全景"></a>信息来源全景</h3><p>OSINT 的数据来源远超互联网范畴，可分为两大维度：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -523,17 +524,20 @@
 <th><strong>典型来源</strong></th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><strong>数字公开源</strong></td>
 <td>搜索引擎索引内容、社交媒体动态、政府开放数据库、学术期刊、电商平台评论、开源代码仓库</td>
 </tr>
 <tr>
 <td><strong>非数字公开源</strong></td>
-<td>报纸&#x2F;电视新闻、公开会议记录、商业黄页、卫星影像、专利文献、图书馆档案资料</td>
+<td>报纸/电视新闻、公开会议记录、商业黄页、卫星影像、专利文献、图书馆档案资料</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
+</div>
 <blockquote>
-<p>💡 关键认知：**”公开”不等于”易得”**<br>深网（Deep Web）中大量合法公开信息（如政府数据库未被搜索引擎收录的部分）仍属于 OSINT 范畴，但需通过合规途径访问。</p>
+<p>💡 关键认知：<strong>“公开”不等于”易得”</strong><br>深网（Deep Web）中大量合法公开信息（如政府数据库未被搜索引擎收录的部分）仍属于 OSINT 范畴，但需通过合规途径访问。</p>
 </blockquote>
 <hr>
 <h3 id="为什么需要-OSINT？"><a href="#为什么需要-OSINT？" class="headerlink" title="为什么需要 OSINT？"></a>为什么需要 OSINT？</h3><ul>
@@ -553,7 +557,7 @@
 <p>在信息自由与隐私保护的平衡时代，理解 OSINT 的本质，即是理解<strong>如何负责任地驾驭公开数据的力量</strong>。</p>
 <h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><blockquote>
 <p><a target="_blank" rel="noopener" href="https://www.osintfoundation.com/">美国开源情报基金会 (OSINT Foundation)</a></p>
-<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0006320722004293?via=ihub">Protecting biodiversity via conservation networks: Taxonomic, functional, and phylogenetic considerations</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.sciencedirect.com/science/article/pii/S0006320722004293?via%3Dihub">Protecting biodiversity via conservation networks: Taxonomic, functional, and phylogenetic considerations</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.iso.org/standard/75280.html">https://www.iso.org/standard/75280.html</a></p>
 </blockquote>
 
@@ -638,7 +642,7 @@
           giscus.setAttribute('data-reactions-enabled', '1');
           giscus.setAttribute('data-emit-metadata', '0');
           giscus.setAttribute('data-input-position', 'top');
-          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.2/css/giscus.min.css');
+          giscus.setAttribute('data-theme', 'https://gcore.jsdelivr.net/gh/talentestors/cdn@2.3/css/giscus.min.css');
           giscus.setAttribute('data-lang', 'zh-CN');
           // giscus.setAttribute('data-loading', 'lazy');
           document.getElementById('giscus-container').appendChild(giscus);
@@ -670,7 +674,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -682,10 +686,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
