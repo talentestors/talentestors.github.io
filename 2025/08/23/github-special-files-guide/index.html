@@ -426,6 +426,13 @@
                       </li>
                     
                       <li>
+                        <a target="_blank" rel="noopener" href="https://www.yuhiri.me/herta_kuru/">
+                          <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                          herta
+                        </a>
+                      </li>
+                    
+                      <li>
                         <a href="/lab/">
                           <i class="fa fa-cogs" aria-hidden="true"></i>
                           Lab
@@ -493,7 +500,8 @@
 <p>在开源的世界里，代码固然重要，但一个结构清晰、文档完备的 GitHub 仓库，往往才是项目能否长久发展的关键。除了我们熟知的 README 和 LICENSE，GitHub 还支持一系列具有特殊作用的文件，它们不仅是项目的“门面”，更是高效协作的“规则手册”。</p>
 <p>今天，我想结合自己的经验，跟大家聊聊这些文件的作用和使用技巧——无论你是刚入门的新手，还是经验丰富的维护者，相信这些小细节都能帮你把项目打理得更专业。</p>
 </blockquote>
-<h2 id="一、为什么这些文件如此重要？"><a href="#一、为什么这些文件如此重要？" class="headerlink" title="一、为什么这些文件如此重要？"></a>一、为什么这些文件如此重要？</h2><p>开源项目不只是代码的集合，更是一个小型社区。清晰的文件结构能显著降低参与门槛，让更多人愿意——并且能够——有效地参与进来。在我看来，这些文件至少带来四个好处：</p>
+<h2>一、为什么这些文件如此重要？</h2>
+<p>开源项目不只是代码的集合，更是一个小型社区。清晰的文件结构能显著降低参与门槛，让更多人愿意——并且能够——有效地参与进来。在我看来，这些文件至少带来四个好处：</p>
 <ul>
 <li><strong>提升可信度</strong>：规范的文档传递出“这是一个认真项目”的信号；</li>
 <li><strong>减少重复问题</strong>：很多常见疑问其实可以通过文档提前解答；</li>
@@ -501,7 +509,9 @@
 <li><strong>明确责任与期望</strong>：无论是行为准则还是贡献方式，写下来才算数。</li>
 </ul>
 <hr>
-<h2 id="二、核心文件：每一个仓库都应该有的基础"><a href="#二、核心文件：每一个仓库都应该有的基础" class="headerlink" title="二、核心文件：每一个仓库都应该有的基础"></a>二、核心文件：每一个仓库都应该有的基础</h2><h3 id="1-README-md：你的项目名片"><a href="#1-README-md：你的项目名片" class="headerlink" title="1. README.md：你的项目名片"></a>1. README.md：你的项目名片</h3><p>README 通常是用户第一眼看到的内容，它必须清晰说明三件事：项目是做什么的、为什么存在、如何开始使用。我一般会遵循这些原则：</p>
+<h2>二、核心文件：每一个仓库都应该有的基础</h2>
+<h3 id="1-README-md：你的项目名片">1. README.md：你的项目名片</h3>
+<p>README 通常是用户第一眼看到的内容，它必须清晰说明三件事：项目是做什么的、为什么存在、如何开始使用。我一般会遵循这些原则：</p>
 <ul>
 <li>开头用一两句话概括项目核心价值；</li>
 <li>提供至少一个完整的使用示例或代码片段；</li>
@@ -509,12 +519,16 @@
 <li>使用清晰的标题结构和徽标（比如构建状态、版本号等）。</li>
 </ul>
 <p>支持 Markdown、RST 或纯文本格式，但 <code>.md</code> 是最通用的选择。</p>
-<h3 id="2-LICENSE：开源的法律基础"><a href="#2-LICENSE：开源的法律基础" class="headerlink" title="2. LICENSE：开源的法律基础"></a>2. LICENSE：开源的法律基础</h3><p>没有许可证的开源项目几乎等同于“不可使用”。GitHub 会自动在仓库顶部显示许可证类型，这对使用者非常重要——我每次用别人代码前都会先确认许可证兼容性。</p>
+<h3 id="2-LICENSE：开源的法律基础">2. LICENSE：开源的法律基础</h3>
+<p>没有许可证的开源项目几乎等同于“不可使用”。GitHub 会自动在仓库顶部显示许可证类型，这对使用者非常重要——我每次用别人代码前都会先确认许可证兼容性。</p>
 <p>如果你不知道选哪个，可以用 GitHub 提供的许可证选择器，它很贴心地列出了常见需求对应的推荐。</p>
-<h3 id="3-CHANGELOG-md：记录项目的成长"><a href="#3-CHANGELOG-md：记录项目的成长" class="headerlink" title="3. CHANGELOG.md：记录项目的成长"></a>3. CHANGELOG.md：记录项目的成长</h3><p>每次发布新版本时维护更新日志，能帮助用户快速了解变动。我喜欢用 <a target="_blank" rel="noopener" href="https://keepachangelog.com/">Keep a Changelog</a> 推荐的格式，按 Added、Changed、Fixed 等分类组织内容。</p>
+<h3 id="3-CHANGELOG-md：记录项目的成长">3. CHANGELOG.md：记录项目的成长</h3>
+<p>每次发布新版本时维护更新日志，能帮助用户快速了解变动。我喜欢用 <a target="_blank" rel="noopener" href="https://keepachangelog.com/">Keep a Changelog</a> 推荐的格式，按 Added、Changed、Fixed 等分类组织内容。</p>
 <hr>
-<h2 id="三、社区协作文件：让协作更顺畅"><a href="#三、社区协作文件：让协作更顺畅" class="headerlink" title="三、社区协作文件：让协作更顺畅"></a>三、社区协作文件：让协作更顺畅</h2><p>当用户发起 Issue 或 Pull Request 时，GitHub 会自动提示这些文件：</p>
-<h3 id="1-CONTRIBUTING-md：降低贡献门槛"><a href="#1-CONTRIBUTING-md：降低贡献门槛" class="headerlink" title="1. CONTRIBUTING.md：降低贡献门槛"></a>1. CONTRIBUTING.md：降低贡献门槛</h3><p>贡献指南应明确说明：</p>
+<h2>三、社区协作文件：让协作更顺畅</h2>
+<p>当用户发起 Issue 或 Pull Request 时，GitHub 会自动提示这些文件：</p>
+<h3 id="1-CONTRIBUTING-md：降低贡献门槛">1. CONTRIBUTING.md：降低贡献门槛</h3>
+<p>贡献指南应明确说明：</p>
 <ul>
 <li>如何设置开发环境；</li>
 <li>代码提交或 PR 应遵循的规范；</li>
@@ -522,24 +536,36 @@
 <li>如何报告 Bug 或提议新功能。</li>
 </ul>
 <p>写的时候不妨站在初次参与者的角度思考：他们需要哪些信息才能顺利完成第一次贡献？</p>
-<h3 id="2-CODE-OF-CONDUCT-md：构建友好的社区环境"><a href="#2-CODE-OF-CONDUCT-md：构建友好的社区环境" class="headerlink" title="2. CODE_OF_CONDUCT.md：构建友好的社区环境"></a>2. CODE_OF_CONDUCT.md：构建友好的社区环境</h3><p>行为准则不是摆设，而是确保所有参与者感到安全、受尊重的基础。通常采用 <a target="_blank" rel="noopener" href="https://www.contributor-covenant.org/">Contributor Covenant</a> 这类成熟模板即可。</p>
-<h3 id="3-SECURITY-md：安全漏洞处理流程"><a href="#3-SECURITY-md：安全漏洞处理流程" class="headerlink" title="3. SECURITY.md：安全漏洞处理流程"></a>3. SECURITY.md：安全漏洞处理流程</h3><p>说明如何报告安全漏洞、响应时间承诺等，体现项目对安全问题的重视。</p>
-<h3 id="4-SUPPORT-md：在哪里可以获得帮助？"><a href="#4-SUPPORT-md：在哪里可以获得帮助？" class="headerlink" title="4. SUPPORT.md：在哪里可以获得帮助？"></a>4. SUPPORT.md：在哪里可以获得帮助？</h3><p>明确用户应在哪里寻求帮助（如论坛、Discord），避免维护者被重复问题淹没。</p>
+<h3 id="2-CODE-OF-CONDUCT-md：构建友好的社区环境">2. CODE_OF_CONDUCT.md：构建友好的社区环境</h3>
+<p>行为准则不是摆设，而是确保所有参与者感到安全、受尊重的基础。通常采用 <a target="_blank" rel="noopener" href="https://www.contributor-covenant.org/">Contributor Covenant</a> 这类成熟模板即可。</p>
+<h3 id="3-SECURITY-md：安全漏洞处理流程">3. SECURITY.md：安全漏洞处理流程</h3>
+<p>说明如何报告安全漏洞、响应时间承诺等，体现项目对安全问题的重视。</p>
+<h3 id="4-SUPPORT-md：在哪里可以获得帮助？">4. SUPPORT.md：在哪里可以获得帮助？</h3>
+<p>明确用户应在哪里寻求帮助（如论坛、Discord），避免维护者被重复问题淹没。</p>
 <hr>
-<h2 id="四、-github-目录：高级功能配置区"><a href="#四、-github-目录：高级功能配置区" class="headerlink" title="四、.github/ 目录：高级功能配置区"></a>四、<code>.github/</code> 目录：高级功能配置区</h2><p>这个目录下的文件会被 GitHub 自动识别并应用：</p>
-<h3 id="1-FUNDING-yml：开启赞助渠道"><a href="#1-FUNDING-yml：开启赞助渠道" class="headerlink" title="1. FUNDING.yml：开启赞助渠道"></a>1. FUNDING.yml：开启赞助渠道</h3><p>可以通过它配置 GitHub Sponsors、Open Collective 等资助方式，为项目提供持续发展的动力。</p>
-<h3 id="2-ISSUE-TEMPLATE-与-PULL-REQUEST-TEMPLATE-：规范化输入"><a href="#2-ISSUE-TEMPLATE-与-PULL-REQUEST-TEMPLATE-：规范化输入" class="headerlink" title="2. ISSUE_TEMPLATE/ 与 PULL_REQUEST_TEMPLATE/：规范化输入"></a>2. ISSUE_TEMPLATE/ 与 PULL_REQUEST_TEMPLATE/：规范化输入</h3><p>设计良好的模板可以极大提高处理效率。比如：</p>
+<h2>四、<code>.github/</code> 目录：高级功能配置区</h2>
+<p>这个目录下的文件会被 GitHub 自动识别并应用：</p>
+<h3 id="1-FUNDING-yml：开启赞助渠道">1. FUNDING.yml：开启赞助渠道</h3>
+<p>可以通过它配置 GitHub Sponsors、Open Collective 等资助方式，为项目提供持续发展的动力。</p>
+<h3 id="2-ISSUE-TEMPLATE-与-PULL-REQUEST-TEMPLATE-：规范化输入">2. ISSUE_TEMPLATE/ 与 PULL_REQUEST_TEMPLATE/：规范化输入</h3>
+<p>设计良好的模板可以极大提高处理效率。比如：</p>
 <ul>
 <li>Issue 模板可区分“Bug 报告”和“功能请求”；</li>
 <li>PR 模板可要求填写测试情况、关联的 Issue 等。</li>
 </ul>
-<h3 id="3-workflows-：自动化工作流"><a href="#3-workflows-：自动化工作流" class="headerlink" title="3. workflows/：自动化工作流"></a>3. workflows/：自动化工作流</h3><p>这里存放 GitHub Actions 的配置文件，实现 CI/CD、自动检查、部署等功能。好的自动化能节省大量人力。</p>
+<h3 id="3-workflows-：自动化工作流">3. workflows/：自动化工作流</h3>
+<p>这里存放 GitHub Actions 的配置文件，实现 CI/CD、自动检查、部署等功能。好的自动化能节省大量人力。</p>
 <hr>
-<h2 id="五、还有一些你可能没想到的"><a href="#五、还有一些你可能没想到的" class="headerlink" title="五、还有一些你可能没想到的"></a>五、还有一些你可能没想到的</h2><h3 id="1-GOVERNANCE-md：中大型项目的治理结构"><a href="#1-GOVERNANCE-md：中大型项目的治理结构" class="headerlink" title="1. GOVERNANCE.md：中大型项目的治理结构"></a>1. GOVERNANCE.md：中大型项目的治理结构</h3><p>适合团队项目，用于明确维护者职责、决策机制等。</p>
-<h3 id="2-CITATION-cff：方便学术引用"><a href="#2-CITATION-cff：方便学术引用" class="headerlink" title="2. CITATION.cff：方便学术引用"></a>2. CITATION.cff：方便学术引用</h3><p>如果你的项目被用于研究，这个文件能提供标准引用格式。</p>
-<h3 id="3-docs-：用-GitHub-Pages-构建项目文档"><a href="#3-docs-：用-GitHub-Pages-构建项目文档" class="headerlink" title="3. docs/：用 GitHub Pages 构建项目文档"></a>3. docs/：用 GitHub Pages 构建项目文档</h3><p>专业的文档站能极大提升用户体验，而 GitHub Pages 让它几乎零成本实现。</p>
+<h2>五、还有一些你可能没想到的</h2>
+<h3 id="1-GOVERNANCE-md：中大型项目的治理结构">1. GOVERNANCE.md：中大型项目的治理结构</h3>
+<p>适合团队项目，用于明确维护者职责、决策机制等。</p>
+<h3 id="2-CITATION-cff：方便学术引用">2. CITATION.cff：方便学术引用</h3>
+<p>如果你的项目被用于研究，这个文件能提供标准引用格式。</p>
+<h3 id="3-docs-：用-GitHub-Pages-构建项目文档">3. docs/：用 GitHub Pages 构建项目文档</h3>
+<p>专业的文档站能极大提升用户体验，而 GitHub Pages 让它几乎零成本实现。</p>
 <hr>
-<h2 id="几个实践建议"><a href="#几个实践建议" class="headerlink" title="几个实践建议"></a>几个实践建议</h2><p>从我踩过的坑里总结出这几条：</p>
+<h2>几个实践建议</h2>
+<p>从我踩过的坑里总结出这几条：</p>
 <ul>
 <li><strong>注意大小写</strong>：文件名必须准确，比如 <code>README</code> 不能写成 <code>readme</code>；</li>
 <li><strong>位置很重要</strong>：大部分文件放在根目录或 <code>.github/</code> 下都行，但行为准则和安全政策建议放在根目录，更显眼；</li>
@@ -547,7 +573,8 @@
 <li><strong>从简开始</strong>：不必一次性补全所有文件，可以从 README、LICENSE 和 CONTRIBUTING 开始，逐步扩展。</li>
 </ul>
 <hr>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p>维护开源项目不仅是写代码，更是经营一个微型的生态系统。这些特殊文件就像是路标和规则，帮助每一个路过或想要留下来的人更好地理解、使用和参与。</p>
+<h2>写在最后</h2>
+<p>维护开源项目不仅是写代码，更是经营一个微型的生态系统。这些特殊文件就像是路标和规则，帮助每一个路过或想要留下来的人更好地理解、使用和参与。</p>
 <p>不妨现在就打开你的仓库看看，有没有漏掉什么？哪怕只是补充一份清晰的 README，也会让项目显得更加可信、更易接近。</p>
 <!-- --- -->
 <!-- **📌 你用过哪些特殊文件？有没有什么经验或教训想分享？欢迎在评论区交流——**
@@ -666,7 +693,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -678,10 +705,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -1084,6 +1111,13 @@ id="canvas_sakura"></canvas>
               </li>
             
               <li>
+                <a target="_blank" rel="noopener" href="https://www.yuhiri.me/herta_kuru/">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                  herta
+                </a>
+              </li>
+            
+              <li>
                 <a href="/lab/">
                   <i class="fa fa-cogs" aria-hidden="true"></i>
                   Lab
@@ -1369,6 +1403,13 @@ id="canvas_sakura"></canvas>
                 <a href="/theme-sakura/">
                   <i class="fa fa-blog" aria-hidden="true"></i>
                   主题
+                </a>
+              </li>
+            
+              <li>
+                <a target="_blank" rel="noopener" href="https://www.yuhiri.me/herta_kuru/">
+                  <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+                  herta
                 </a>
               </li>
             
