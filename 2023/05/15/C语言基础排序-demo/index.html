@@ -503,174 +503,175 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="今日份的丧心病狂"><a href="#今日份的丧心病狂" class="headerlink" title="今日份的丧心病狂"></a>今日份的丧心病狂</h1><p>基础排序</p>
-<p>冒泡、插入、选择（157行警告🤤） :thinking:</p>
-<pre><code class="C">#include &lt;stdio.h&gt;
-#include &lt;stdbool.h&gt;
+          <h1>今日份的丧心病狂</h1>
+<p>基础排序</p>
+<p>冒泡、插入、选择（157行警告🤤） 🤔</p>
+<pre><code class="hljs language-C"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdbool.h&gt;</span></span>
 
-#define _comp_ comp(int a, int b)
+<span class="hljs-meta">#<span class="hljs-keyword">define</span> _comp_ comp(int a, int b)</span>
 
-int comp1(int a, int b) &#123; //升序
-    return a - b;
+<span class="hljs-type">int</span> <span class="hljs-title function_">comp1</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123; <span class="hljs-comment">//升序</span>
+    <span class="hljs-keyword">return</span> a - b;
 &#125;
 
-int comp2(int a, int b) &#123; //降序
-    return b - a;
+<span class="hljs-type">int</span> <span class="hljs-title function_">comp2</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> &#123; <span class="hljs-comment">//降序</span>
+    <span class="hljs-keyword">return</span> b - a;
 &#125;
 
-void printArray(int *nums, int size);
+<span class="hljs-type">void</span> <span class="hljs-title function_">printArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span>;
 
-void swap(int *a, int *b);
+<span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span>;
 
-//二分搜索
-int binarySearch(int nums[], int left, int right, int target, int _comp_);
+<span class="hljs-comment">//二分搜索</span>
+<span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span> nums[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> target, <span class="hljs-type">int</span> _comp_)</span>;
 
-//冒泡排序
-void bubbleSort(int *nums, int size, int _comp_);
+<span class="hljs-comment">//冒泡排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-//冒泡排序优化
-void bubbleSortPlus(int *nums, int size, int _comp_);
+<span class="hljs-comment">//冒泡排序优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-//插入排序
-void insertSort(int *nums, int size, int _comp_);
+<span class="hljs-comment">//插入排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-//插入排序的二分搜索算法优化
-void insertSortPlus(int *nums, int size, int _comp_);
+<span class="hljs-comment">//插入排序的二分搜索算法优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-//选择排序
-void selectSort(int *nums, int size, int _comp_);
+<span class="hljs-comment">//选择排序</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-//选择排序双轴优化
-void selectSortPlus(int *nums, int size, int _comp_);
+<span class="hljs-comment">//选择排序双轴优化</span>
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span>;
 
-int main() &#123;
-    int test[10] = &#123;9, 6, 5, 45, 3, 2, 1, 0, 7, 8&#125;;
-    printArray(test, 10);
-    bubbleSort(test, 10, comp2); //冒泡排序
-    printArray(test, 10);
-    bubbleSortPlus(test, 10, comp1); //冒泡排序优化
-    printArray(test, 10);
-    insertSort(test, 10, comp2); //插入排序
-    printArray(test, 10);
-    insertSortPlus(test, 10, comp1); //插入排序二分搜索算法优化
-    printArray(test, 10);
-    selectSort(test, 10, comp2); //选择排序
-    printArray(test, 10);
-    selectSortPlus(test, 10, comp1); //选择排序双轴优化
-    printArray(test, 10);
-    return 0;
+<span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;
+    <span class="hljs-type">int</span> test[<span class="hljs-number">10</span>] = &#123;<span class="hljs-number">9</span>, <span class="hljs-number">6</span>, <span class="hljs-number">5</span>, <span class="hljs-number">45</span>, <span class="hljs-number">3</span>, <span class="hljs-number">2</span>, <span class="hljs-number">1</span>, <span class="hljs-number">0</span>, <span class="hljs-number">7</span>, <span class="hljs-number">8</span>&#125;;
+    printArray(test, <span class="hljs-number">10</span>);
+    bubbleSort(test, <span class="hljs-number">10</span>, comp2); <span class="hljs-comment">//冒泡排序</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    bubbleSortPlus(test, <span class="hljs-number">10</span>, comp1); <span class="hljs-comment">//冒泡排序优化</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    insertSort(test, <span class="hljs-number">10</span>, comp2); <span class="hljs-comment">//插入排序</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    insertSortPlus(test, <span class="hljs-number">10</span>, comp1); <span class="hljs-comment">//插入排序二分搜索算法优化</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    selectSort(test, <span class="hljs-number">10</span>, comp2); <span class="hljs-comment">//选择排序</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    selectSortPlus(test, <span class="hljs-number">10</span>, comp1); <span class="hljs-comment">//选择排序双轴优化</span>
+    printArray(test, <span class="hljs-number">10</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
 &#125;
 
-void selectSortPlus(int *nums, int size, int _comp_) &#123;
-    int left = 0, right = size - 1;   //相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小
-    while (left &lt; right) &#123;
-        int min = left, max = right;
-        for (int i = left; i &lt;= right; i++) &#123;
-            if (nums[i] &lt; nums[min]) min = i;   //同时找最小的和最大的
-            if (nums[i] &gt; nums[max]) max = i;
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-type">int</span> left = <span class="hljs-number">0</span>, right = size - <span class="hljs-number">1</span>;   <span class="hljs-comment">//相当于左端和右端都是已经排好序的，中间是待排序的，所以说范围不断缩小</span>
+    <span class="hljs-keyword">while</span> (left &lt; right) &#123;
+        <span class="hljs-type">int</span> min = left, max = right;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = left; i &lt;= right; i++) &#123;
+            <span class="hljs-keyword">if</span> (nums[i] &lt; nums[min]) min = i;   <span class="hljs-comment">//同时找最小的和最大的</span>
+            <span class="hljs-keyword">if</span> (nums[i] &gt; nums[max]) max = i;
         &#125;
-        if (comp(1, 2) &gt; 0) &#123;
+        <span class="hljs-keyword">if</span> (comp(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>) &gt; <span class="hljs-number">0</span>) &#123;
             swap(&amp;nums[max], &amp;nums[left]);
-            if (min == left) min = max;
+            <span class="hljs-keyword">if</span> (min == left) min = max;
             swap(&amp;nums[min], &amp;nums[right]);
-        &#125; else &#123;
-            swap(&amp;nums[max], &amp;nums[right]);   //这里先把大的换到右边
-            //注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下
-            //如果遍历完发现最小的就是当前右边排序的第一个元素
-            //此时因为已经被换出来了，所以说需要将min改到换出来的那个位置
-            if (min == right) min = max;
-            swap(&amp;nums[min], &amp;nums[left]);   //接着把小的换到左边
+        &#125; <span class="hljs-keyword">else</span> &#123;
+            swap(&amp;nums[max], &amp;nums[right]);   <span class="hljs-comment">//这里先把大的换到右边</span>
+            <span class="hljs-comment">//注意大的换到右边之后，有可能被换出来的这个就是最小的，所以说需要判断一下</span>
+            <span class="hljs-comment">//如果遍历完发现最小的就是当前右边排序的第一个元素</span>
+            <span class="hljs-comment">//此时因为已经被换出来了，所以说需要将min改到换出来的那个位置</span>
+            <span class="hljs-keyword">if</span> (min == right) min = max;
+            swap(&amp;nums[min], &amp;nums[left]);   <span class="hljs-comment">//接着把小的换到左边</span>
         &#125;
-        left++;    //这一轮完事之后，缩小范围
+        left++;    <span class="hljs-comment">//这一轮完事之后，缩小范围</span>
         right--;
     &#125;
 &#125;
 
-void selectSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123; //因为最后一个元素一定是在对应位置上的，所以只需要进行N - 1轮排序
-        int copy = i;
-        for (int j = i + 1; j &lt; size; ++j)   //挨个遍历剩余的元素，并更新
-            if (comp(nums[copy], nums[j]) &gt; 0) copy = j;
-        int tmp = nums[i];    //找出元素之后，开始交换
+<span class="hljs-type">void</span> <span class="hljs-title function_">selectSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size - <span class="hljs-number">1</span>; ++i) &#123; <span class="hljs-comment">//因为最后一个元素一定是在对应位置上的，所以只需要进行N - 1轮排序</span>
+        <span class="hljs-type">int</span> copy = i;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = i + <span class="hljs-number">1</span>; j &lt; size; ++j)   <span class="hljs-comment">//挨个遍历剩余的元素，并更新</span>
+            <span class="hljs-keyword">if</span> (comp(nums[copy], nums[j]) &gt; <span class="hljs-number">0</span>) copy = j;
+        <span class="hljs-type">int</span> tmp = nums[i];    <span class="hljs-comment">//找出元素之后，开始交换</span>
         nums[i] = nums[copy];
         nums[copy] = tmp;
     &#125;
 &#125;
 
-void insertSortPlus(int *nums, int size, int _comp_) &#123; //二分搜索算法来查找对应的插入位置
-    for (int i = 1; i &lt; size; ++i) &#123;
-        int tmp = nums[i];
-        int j = binarySearch(nums, 0, i - 1, tmp, comp);   //由二分搜索来确定插入位置
-        for (int k = i; k &gt; j; k--) nums[k] = nums[k - 1];   //依然是将后面的元素后移
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123; <span class="hljs-comment">//二分搜索算法来查找对应的插入位置</span>
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; size; ++i) &#123;
+        <span class="hljs-type">int</span> tmp = nums[i];
+        <span class="hljs-type">int</span> j = binarySearch(nums, <span class="hljs-number">0</span>, i - <span class="hljs-number">1</span>, tmp, comp);   <span class="hljs-comment">//由二分搜索来确定插入位置</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> k = i; k &gt; j; k--) nums[k] = nums[k - <span class="hljs-number">1</span>];   <span class="hljs-comment">//依然是将后面的元素后移</span>
         nums[j] = tmp;
     &#125;
 &#125;
 
-void insertSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 1; i &lt; size; ++i) &#123; //左牌堆默认有序
-        int j = i, tmp = nums[i];
-        while (j &gt; 0 &amp;&amp; comp(nums[j - 1], tmp) &gt; 0) &#123;
-            nums[j] = nums[j - 1]; //不断进行后移操作，把位置腾出来
+<span class="hljs-type">void</span> <span class="hljs-title function_">insertSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt; size; ++i) &#123; <span class="hljs-comment">//左牌堆默认有序</span>
+        <span class="hljs-type">int</span> j = i, tmp = nums[i];
+        <span class="hljs-keyword">while</span> (j &gt; <span class="hljs-number">0</span> &amp;&amp; comp(nums[j - <span class="hljs-number">1</span>], tmp) &gt; <span class="hljs-number">0</span>) &#123;
+            nums[j] = nums[j - <span class="hljs-number">1</span>]; <span class="hljs-comment">//不断进行后移操作，把位置腾出来</span>
             --j;
         &#125;
         nums[j] = tmp;
     &#125;
 &#125;
 
-void bubbleSortPlus(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size - 1; ++i) &#123; //只需要size-1次即可
-        bool flag = true; //这里使用一个标记，默认为`true`表示数组是有序的
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (comp(nums[j], nums[j + 1]) &gt; 0) &#123;
-                swap(&amp;nums[j], &amp;nums[j + 1]);
-                flag = false; //如果发生交换，说明不是有序的，把标记变成`false`
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSortPlus</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size - <span class="hljs-number">1</span>; ++i) &#123; <span class="hljs-comment">//只需要size-1次即可</span>
+        <span class="hljs-type">bool</span> flag = <span class="hljs-literal">true</span>; <span class="hljs-comment">//这里使用一个标记，默认为`true`表示数组是有序的</span>
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; size - i - <span class="hljs-number">1</span>; ++j) &#123;
+            <span class="hljs-keyword">if</span> (comp(nums[j], nums[j + <span class="hljs-number">1</span>]) &gt; <span class="hljs-number">0</span>) &#123;
+                swap(&amp;nums[j], &amp;nums[j + <span class="hljs-number">1</span>]);
+                flag = <span class="hljs-literal">false</span>; <span class="hljs-comment">//如果发生交换，说明不是有序的，把标记变成`false`</span>
             &#125;
         &#125;
-        if (flag) break;//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出
+        <span class="hljs-keyword">if</span> (flag) <span class="hljs-keyword">break</span>;<span class="hljs-comment">//如果没有发生任何交换，flag一定是`true`，数组已经有序，所以说直接退出</span>
     &#125;
 &#125;
 
-void bubbleSort(int *nums, int size, int _comp_) &#123;
-    for (int i = 0; i &lt; size; ++i) &#123;
-        for (int j = 0; j &lt; size - i - 1; ++j) &#123;
-            if (comp(nums[j], nums[j + 1]) &gt; 0) swap(&amp;nums[j], &amp;nums[j + 1]);
+<span class="hljs-type">void</span> <span class="hljs-title function_">bubbleSort</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++i) &#123;
+        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; size - i - <span class="hljs-number">1</span>; ++j) &#123;
+            <span class="hljs-keyword">if</span> (comp(nums[j], nums[j + <span class="hljs-number">1</span>]) &gt; <span class="hljs-number">0</span>) swap(&amp;nums[j], &amp;nums[j + <span class="hljs-number">1</span>]);
         &#125;
     &#125;
 &#125;
 
-int binarySearch(int nums[], int left, int right, int target, int _comp_) &#123;
-    int mid;
-    while (left &lt;= right) &#123;
-        mid = (left + right) &gt;&gt; 1;
-        if (target == nums[mid]) return mid + 1;   //如果插入元素跟中间元素相等，直接返回后一位
-        else if (comp(target, nums[mid]) &lt; 0) &#123;
-            right = mid - 1;   //范围划到左边
-        &#125; else left = mid + 1;   //范围划到右边
+<span class="hljs-type">int</span> <span class="hljs-title function_">binarySearch</span><span class="hljs-params">(<span class="hljs-type">int</span> nums[], <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right, <span class="hljs-type">int</span> target, <span class="hljs-type">int</span> _comp_)</span> &#123;
+    <span class="hljs-type">int</span> mid;
+    <span class="hljs-keyword">while</span> (left &lt;= right) &#123;
+        mid = (left + right) &gt;&gt; <span class="hljs-number">1</span>;
+        <span class="hljs-keyword">if</span> (target == nums[mid]) <span class="hljs-keyword">return</span> mid + <span class="hljs-number">1</span>;   <span class="hljs-comment">//如果插入元素跟中间元素相等，直接返回后一位</span>
+        <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (comp(target, nums[mid]) &lt; <span class="hljs-number">0</span>) &#123;
+            right = mid - <span class="hljs-number">1</span>;   <span class="hljs-comment">//范围划到左边</span>
+        &#125; <span class="hljs-keyword">else</span> left = mid + <span class="hljs-number">1</span>;   <span class="hljs-comment">//范围划到右边</span>
     &#125;
-    return left;   //不断划分范围，left也就是待插入位置了
+    <span class="hljs-keyword">return</span> left;   <span class="hljs-comment">//不断划分范围，left也就是待插入位置了</span>
 &#125;
 
-void swap(int *a, int *b) &#123;
-    int tmp = *a;
+<span class="hljs-type">void</span> <span class="hljs-title function_">swap</span><span class="hljs-params">(<span class="hljs-type">int</span> *a, <span class="hljs-type">int</span> *b)</span> &#123;
+    <span class="hljs-type">int</span> tmp = *a;
     *a = *b;
     *b = tmp;
 &#125;
 
-void printArray(int *nums, int size) &#123;
-    for (int i = 0; i &lt; size; ++i) &#123;
-        printf(&quot;%d &quot;, nums[i]);
+<span class="hljs-type">void</span> <span class="hljs-title function_">printArray</span><span class="hljs-params">(<span class="hljs-type">int</span> *nums, <span class="hljs-type">int</span> size)</span> &#123;
+    <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; size; ++i) &#123;
+        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d &quot;</span>, nums[i]);
     &#125;
-    putchar(&#39;\n&#39;);
+    <span class="hljs-built_in">putchar</span>(<span class="hljs-string">&#x27;\n&#x27;</span>);
 &#125;
 </code></pre>
 <p><strong>output:</strong></p>
-<pre><code>9 6 5 45 3 2 1 0 7 8
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
-45 9 8 7 6 5 3 2 1 0
-0 1 2 3 5 6 7 8 9 45
+<pre><code class="hljs"><span class="hljs-symbol">9 </span><span class="hljs-number">6</span> <span class="hljs-number">5</span> <span class="hljs-number">45</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span>
+<span class="hljs-symbol">45 </span><span class="hljs-number">9</span> <span class="hljs-number">8</span> <span class="hljs-number">7</span> <span class="hljs-number">6</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>
+<span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> <span class="hljs-number">45</span>
+<span class="hljs-symbol">45 </span><span class="hljs-number">9</span> <span class="hljs-number">8</span> <span class="hljs-number">7</span> <span class="hljs-number">6</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>
+<span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> <span class="hljs-number">45</span>
+<span class="hljs-symbol">45 </span><span class="hljs-number">9</span> <span class="hljs-number">8</span> <span class="hljs-number">7</span> <span class="hljs-number">6</span> <span class="hljs-number">5</span> <span class="hljs-number">3</span> <span class="hljs-number">2</span> <span class="hljs-number">1</span> <span class="hljs-number">0</span>
+<span class="hljs-symbol">0 </span><span class="hljs-number">1</span> <span class="hljs-number">2</span> <span class="hljs-number">3</span> <span class="hljs-number">5</span> <span class="hljs-number">6</span> <span class="hljs-number">7</span> <span class="hljs-number">8</span> <span class="hljs-number">9</span> <span class="hljs-number">45</span>
 </code></pre>
 
         </div>
@@ -786,7 +787,7 @@ void printArray(int *nums, int size) &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -798,10 +799,10 @@ void printArray(int *nums, int size) &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

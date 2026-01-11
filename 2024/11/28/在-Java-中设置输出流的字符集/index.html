@@ -504,32 +504,37 @@
         
         <div class="entry-content">
           <p>在 Java 开发中，处理字符集是一个常见的需求，尤其是在涉及到输入输出操作时。本文将通过一个简单的示例，展示如何使用 <code>System.setOut</code> 方法来设置标准输出流的字符集，并验证其效果。</p>
-<h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>我们来看以下代码片段：</p>
-<pre><code class="java">import java.io.PrintStream;
-import java.nio.charset.StandardCharsets;
+<h2>示例代码</h2>
+<p>我们来看以下代码片段：</p>
+<pre><code class="hljs language-java"><span class="hljs-keyword">import</span> java.io.PrintStream;
+<span class="hljs-keyword">import</span> java.nio.charset.StandardCharsets;
 
-public class CharsetExample &#123;
-    public static void main(String[] args) &#123;
-        // 设置标准输出流的字符集为 UTF-8
-        System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));
+<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CharsetExample</span> &#123;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;
+        <span class="hljs-comment">// 设置标准输出流的字符集为 UTF-8</span>
+        System.setOut(<span class="hljs-keyword">new</span> <span class="hljs-title class_">PrintStream</span>(System.out, <span class="hljs-literal">true</span>, StandardCharsets.UTF_8));
         
-        // 打印当前输出流的字符集
+        <span class="hljs-comment">// 打印当前输出流的字符集</span>
         System.out.println(System.out.charset());
     &#125;
 &#125;
 </code></pre>
-<h3 id="代码解析"><a href="#代码解析" class="headerlink" title="代码解析"></a>代码解析</h3><ol>
-<li><p><strong>导入必要的类</strong>：</p>
+<h3 id="代码解析">代码解析</h3>
+<ol>
+<li>
+<p><strong>导入必要的类</strong>：</p>
 <ul>
 <li>我们需要导入 <code>PrintStream</code> 和 <code>StandardCharsets</code> 类，以便能够创建新的输出流并指定字符集。</li>
 </ul>
 </li>
-<li><p><strong>设置输出流</strong>：</p>
+<li>
+<p><strong>设置输出流</strong>：</p>
 <ul>
 <li><code>System.setOut(new PrintStream(System.out, true, StandardCharsets.UTF_8));</code> 这一行代码的作用是将标准输出流（<code>System.out</code>）重新设置为一个新的 <code>PrintStream</code> 实例。这个实例使用了 UTF-8 编码，这是一种广泛使用的字符编码方式，能够支持多种语言和符号。</li>
 </ul>
 </li>
-<li><p><strong>打印字符集</strong>：</p>
+<li>
+<p><strong>打印字符集</strong>：</p>
 <ul>
 <li><code>System.out.println(System.out.charset());</code> 这一行代码用于打印当前输出流的字符集。通过这种方式，我们可以确认我们的设置是否成功。(注意：<code>System.out.charset()</code> 是jdk 18 中新增的方法)</li>
 </ul>
@@ -538,12 +543,15 @@ public class CharsetExample &#123;
 <blockquote>
 <p><code>System.setOut()</code> 用在static代码块中，可以确保在程序运行时第一时间设置输出流的字符集，同时只执行一次。</p>
 </blockquote>
-<h3 id="输出结果"><a href="#输出结果" class="headerlink" title="输出结果"></a>输出结果</h3><p>当你运行上述代码时，控制台将输出当前设置的字符集，例如：</p>
-<pre><code class="shell">UTF-8
+<h3 id="输出结果">输出结果</h3>
+<p>当你运行上述代码时，控制台将输出当前设置的字符集，例如：</p>
+<pre><code class="hljs language-shell">UTF-8
 </code></pre>
 <p>这表明我们的标准输出流现在已经成功地设置为 UTF-8 编码。</p>
-<h2 id="为什么选择-UTF-8？"><a href="#为什么选择-UTF-8？" class="headerlink" title="为什么选择 UTF-8？"></a>为什么选择 UTF-8？</h2><p>UTF-8 是一种变长编码，可以表示 Unicode 字符集中的所有字符。它能够兼容 ASCII，并且在网络传输和文件存储中具有良好的通用性。因此，在处理多语言文本或需要支持特殊符号的应用程序时，使用 UTF-8 是一个明智的选择。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在 Java 中，通过 <code>System.setOut</code> 方法设置标准输出流的字符集，可以确保你的应用程序在处理文本输出时不会遇到编码问题。这个简单的示例展示了如何实现这一点，以及如何验证设置是否成功。通过使用 UTF-8 编码，你可以更好地支持多语言环境和各种字符。</p>
+<h2>为什么选择 UTF-8？</h2>
+<p>UTF-8 是一种变长编码，可以表示 Unicode 字符集中的所有字符。它能够兼容 ASCII，并且在网络传输和文件存储中具有良好的通用性。因此，在处理多语言文本或需要支持特殊符号的应用程序时，使用 UTF-8 是一个明智的选择。</p>
+<h2>总结</h2>
+<p>在 Java 中，通过 <code>System.setOut</code> 方法设置标准输出流的字符集，可以确保你的应用程序在处理文本输出时不会遇到编码问题。这个简单的示例展示了如何实现这一点，以及如何验证设置是否成功。通过使用 UTF-8 编码，你可以更好地支持多语言环境和各种字符。</p>
 <p>希望这篇博客能帮助你理解如何在 Java 中有效地管理输出流的字符集！如果你有任何问题或进一步的讨论，请随时留言。</p>
 
         </div>
@@ -659,7 +667,7 @@ public class CharsetExample &#123;
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -671,10 +679,10 @@ public class CharsetExample &#123;
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',

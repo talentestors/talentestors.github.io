@@ -503,79 +503,93 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2 id="一、问题引入"><a href="#一、问题引入" class="headerlink" title="一、问题引入"></a>一、问题引入</h2><p>在国内，无论是新手还是有一定码龄的开发人员，汉字编码问题一直都是绕不开的魔咒，本文主要对tomcat在jetbrain系列产品idea上的乱码问题提供解决经验。</p>
-<h2 id="二、详情描述"><a href="#二、详情描述" class="headerlink" title="二、详情描述"></a>二、详情描述</h2><p>新手在初学Java Web时，兴致冲冲的安装了tomcat 10.x.x 或其他版本&rarr;idea新建web项目&rarr;试运行:</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFbiuR.png" alt="你好！Hello!!!"></p>
+          <h2>一、问题引入</h2>
+<p>在国内，无论是新手还是有一定码龄的开发人员，汉字编码问题一直都是绕不开的魔咒，本文主要对tomcat在jetbrain系列产品idea上的乱码问题提供解决经验。</p>
+<h2>二、详情描述</h2>
+<p>新手在初学Java Web时，兴致冲冲的安装了tomcat 10.x.x 或其他版本→idea新建web项目→试运行:</p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFbiuR.png" alt=""></p>
 <p>大段的红色乱码信息，冲击着初学者的心灵。</p>
 <p>虽然不会实际开发造成影响，但看着这些云里雾里的信息时还是挺~影响心情的。😱</p>
 <blockquote>
-<p>淇℃伅 –&gt; 信息</p>
-<p>鍛戒护琛屽弬鏁帮細 –&gt; 命令行参数：</p>
+<p>淇℃伅 --&gt; 信息</p>
+<p>鍛戒护琛屽弬鏁帮細 --&gt; 命令行参数：</p>
 </blockquote>
-<h2 id="三、问题分析"><a href="#三、问题分析" class="headerlink" title="三、问题分析"></a>三、问题分析</h2><p>在以前的 javase 学习中，中文乱码问题是通过统一编码的方式解决的（GBK和UTF-8）。</p>
+<h2>三、问题分析</h2>
+<p>在以前的 javase 学习中，中文乱码问题是通过统一编码的方式解决的（GBK和UTF-8）。</p>
 <p>但如下图所示，很明显这次绝对不像之前那样能轻松解决。我们可以看到在idea的console下的输出出现了两种（可能不止两种）不同的流，且两种不同的流使用了两种不同的编码格式。（即白色的<code>你好！Hello!!!</code>可以正常显示，而红色的信息却是乱码）</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFbSCF.png" alt="你好！Hello!!!"></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFbSCF.png" alt=""></p>
 <p>这里解释一下：「你好！Hello!!!」这部分信息是我在代码里写的<code>System.out.println(&quot;你好！Hello!!!&quot;);</code>其他是Tomcat的输出的日志信息。</p>
 <p>综上，问题的解决方案应该从Tomcat下手。</p>
-<h2 id="四、解决方案"><a href="#四、解决方案" class="headerlink" title="四、解决方案"></a>四、解决方案</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>作者在遇到这个坑的时候一开始是从问题的根本下手的，既然会出现中文乱码问题那么直接让Tomcat输出英语不就解决了吗？😸</p>
+<h2>四、解决方案</h2>
+<h3 id="方法一">方法一</h3>
+<p>作者在遇到这个坑的时候一开始是从问题的根本下手的，既然会出现中文乱码问题那么直接让Tomcat输出英语不就解决了吗？😸</p>
 <p>于是就从网络上找到了解决方法；</p>
 <blockquote>
 <p>Tomcat启动时会检查本地语言环境，来调用对应的i18n文本，中文环境默认会显示中文日志，但在终端中容易出现乱码，虽然乱码问题可以通过修改字符集处理，还是想尝试一下改成英文输出。刚研究了一下，发现可以通过修改参数来设置输出日志的语言，将运行参数中的语言环境设置为英文即可，在此记录一下修改步骤</p>
 <p>此文档所使用的环境如下</p>
-<p>Server version name:   Apache Tomcat&#x2F;9.0.62<br>OS Name:               Windows 10<br>JVM Version:           1.8.0_301-b09</p>
-<h4 id="修改catalina"><a href="#修改catalina" class="headerlink" title="修改catalina"></a>修改catalina</h4><p>修改<code>bin/catalina.bat</code>文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间</p>
-<pre><code class="cpp">if not &quot;%CATALINA_LOGGING_CONFIG%&quot; == &quot;&quot; goto noJuliConfig
+<p>Server version name:   Apache Tomcat/9.0.62
+OS Name:               Windows 10
+JVM Version:           1.8.0_301-b09</p>
+<h4 id="修改catalina">修改catalina</h4>
+<p>修改<code>bin/catalina.bat</code>文件，其中有一项关于CATALINA_LOGGING_CONFIG的配置，大约是230行，不同版本所在行不一样，大致在那个区间</p>
+<pre><code class="hljs language-cpp"><span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> <span class="hljs-string">&quot;%CATALINA_LOGGING_CONFIG%&quot;</span> == <span class="hljs-string">&quot;&quot;</span> <span class="hljs-keyword">goto</span> noJuliConfig
 set CATALINA_LOGGING_CONFIG=-Dnop
-if not exist &quot;%CATALINA_BASE%\conf\logging.properties&quot; goto noJuliConfig
-set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot;
+<span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> exist <span class="hljs-string">&quot;%CATALINA_BASE%\conf\logging.properties&quot;</span> <span class="hljs-keyword">goto</span> noJuliConfig
+set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=<span class="hljs-string">&quot;%CATALINA_BASE%\conf\logging.properties&quot;</span>
 :noJuliConfig
 </code></pre>
 <p>将其中的set语句后面添加language配置<code>-Duser.language=en -Duser.region=US</code>，如下</p>
-<pre><code class="bash">set CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=&quot;%CATALINA_BASE%\conf\logging.properties&quot; -Duser.language=en -Duser.region=US
+<pre><code class="hljs language-bash"><span class="hljs-built_in">set</span> CATALINA_LOGGING_CONFIG=-Djava.util.logging.config.file=<span class="hljs-string">&quot;%CATALINA_BASE%\conf\logging.properties&quot;</span> -Duser.language=en -Duser.region=US
 </code></pre>
 <p>注意空格。</p>
 <p>提示：如果是在Linux系统，则修改<code>bin/catalina.sh</code>文件</p>
-<h4 id="修改时间格式"><a href="#修改时间格式" class="headerlink" title="修改时间格式"></a>修改时间格式</h4><p>顺便改一下显示日志中的时间格式，修改<code>conf/logging.properties</code>，在<code>ConsoleHandler</code>区添加<code>timeFormat</code>配置</p>
-<pre><code class="sh">java.util.logging.ConsoleHandler.level = FINE
+<h4 id="修改时间格式">修改时间格式</h4>
+<p>顺便改一下显示日志中的时间格式，修改<code>conf/logging.properties</code>，在<code>ConsoleHandler</code>区添加<code>timeFormat</code>配置</p>
+<pre><code class="hljs language-sh">java.util.logging.ConsoleHandler.level = FINE
 java.util.logging.ConsoleHandler.formatter = org.apache.juli.OneLineFormatter
 java.util.logging.ConsoleHandler.encoding = UTF-8
-org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
+org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-<span class="hljs-built_in">dd</span> HH:mm:ss
 </code></pre>
 <p>重启Tomcat检查修改是否生效。</p>
-<p>作者：zhouf_cq<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/da8386129a50">https://www.jianshu.com/p/da8386129a50</a><br>来源：简书<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>作者：zhouf_cq
+链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/da8386129a50">https://www.jianshu.com/p/da8386129a50</a>
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
 </blockquote>
 <p>不得不说，直接改成英文一定是乱码问题的通解。（直接绕开问题</p>
 <p>但是作者一直都有一个坏毛病（X，就是喜欢把所有工具更到最新。</p>
 <p>于是就在我的第一次更新Tomcat的时候，它又变成了中文。</p>
 <p>Tomcat更新时，会把之前辛苦配置的文件覆盖掉，每次都要改一遍。对于我这种懒人来说，一行命令更新后，我可不想重新再修改一遍（这个不是配置文件，更新后可能会有变动不适合直接copy）。</p>
 <p>于是，我就在idea上花费了一番功夫。</p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>我把idea上的配置全部统一成了utf-8。</p>
+<h3 id="方法二">方法二</h3>
+<p>我把idea上的配置全部统一成了utf-8。</p>
 <p>文件编码</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFHjEV.png" alt="文件编码"></p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFHx4U.png" alt="文件编码"></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFHjEV.png" alt=""></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFHx4U.png" alt=""></p>
 <p>上面是之前学javase的解决的方法。这次只要在上面的设置基础上添加一个设置。</p>
-<p>setting&rarr;Editor&rarr;General&rarr;Console下，修改成UTF-8</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFHvNT.png" alt="Console"></p>
+<p>setting→Editor→General→Console下，修改成UTF-8</p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFHvNT.png" alt=""></p>
 <p>Default Encoding 修改成UTF-8</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFbp34.png" alt="Console"></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFbp34.png" alt=""></p>
 <p>OK</p>
 <p>重启Tomcat</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFbCv9.png" alt="Tomcat"></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFbCv9.png" alt=""></p>
 <p>可以看到Tomcat日志输出正常了</p>
 <p>五、后续问题</p>
 <p>之前的问题这里并没有完全解决，可以看到<code>System.out.println(&quot;你好！Hello!!!&quot;);</code>输出的中文变成了乱码。</p>
-<p><img src="https://s21.ax1x.com/2024/05/01/pkFb9gJ.png" alt="你好！Hello!!!"></p>
+<p><img src="https://s21.ax1x.com/2024/05/01/pkFb9gJ.png" alt=""></p>
 <p>我们只要在idea里面配置一下项目配置就可以了。</p>
-<p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png" alt="你好！Hello!!!"></p>
+<p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000438801-1146491409.png" alt=""></p>
 <p>在此处（红色的框）添加一句VM option 参数就可以了。</p>
-<pre><code class="text">-Dfile.encoding=UTF-8
+<pre><code class="hljs language-text">-Dfile.encoding=UTF-8
 </code></pre>
-<p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png" alt="你好！Hello!!!"></p>
+<p><img src="//wsrv.nl/?url=img2024.cnblogs.com/blog/3092919/202405/3092919-20240501000458174-336791758.png" alt=""></p>
 <p>完美解决！</p>
 <blockquote>
 <p><code>-Dfile.encoding=UTF-8</code>这条参数很常见。</p>
 </blockquote>
-<h2 id="写在最后"><a href="#写在最后" class="headerlink" title="写在最后"></a>写在最后</h2><p><img src="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&w=1280&h=600&a=top&fit=cover&we" alt="mrfz黍"></p>
+<h2>写在最后</h2>
+<p><img src="//wsrv.nl/?url=s2.loli.net/2024/03/26/DcVmLoWGKHlCPh5.png&amp;w=1280&amp;h=600&amp;a=top&amp;fit=cover&amp;we" alt=""></p>
 
         </div>
         <!-- .entry-content -->
@@ -690,7 +704,7 @@ org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -702,10 +716,10 @@ org.apache.juli.OneLineFormatter.timeFormat = yyyy-MM-dd HH:mm:ss
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
