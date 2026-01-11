@@ -503,224 +503,221 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>引入</h2>
-<p>之前想做一个网页色卡，需要背景颜色和文字颜色对比良好。已获得更好视觉效果。这里分享一下如何根据背景颜色自动选择黑色或白色作为文本颜色。</p>
-<p>就像这样
-<img src="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" alt=""></p>
-<pre><code class="hljs language-javascript"><span class="hljs-comment">/* 
+          <h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><p>之前想做一个网页色卡，需要背景颜色和文字颜色对比良好。已获得更好视觉效果。这里分享一下如何根据背景颜色自动选择黑色或白色作为文本颜色。</p>
+<p>就像这样<br><img src="https://s21.ax1x.com/2024/05/10/pkZM7sf.png" alt="exmple"></p>
+<pre><code class="javascript">/* 
 用于填充字符串 `str` 到指定长度 `len`，默认为 2
-例如：padZero(&#x27;F&#x27;, 2) =&gt; &#x27;0F&#x27; */</span>
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">padZero</span>(<span class="hljs-params">str, len</span>) &#123;
-    len = len || <span class="hljs-number">2</span>;
-    <span class="hljs-keyword">const</span> zeros = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Array</span>(len).<span class="hljs-title function_">join</span>(<span class="hljs-string">&#x27;0&#x27;</span>);
-    <span class="hljs-keyword">return</span> (zeros + str).<span class="hljs-title function_">slice</span>(-len);
+例如：padZero(&#39;F&#39;, 2) =&gt; &#39;0F&#39; */
+function padZero(str, len) &#123;
+    len = len || 2;
+    const zeros = new Array(len).join(&#39;0&#39;);
+    return (zeros + str).slice(-len);
 &#125;
 
-<span class="hljs-keyword">function</span> <span class="hljs-title function_">invertColor</span>(<span class="hljs-params">hex, bw</span>) &#123;
-    <span class="hljs-keyword">if</span> (hex.<span class="hljs-title function_">indexOf</span>(<span class="hljs-string">&#x27;#&#x27;</span>) === <span class="hljs-number">0</span>) &#123;
-        hex = hex.<span class="hljs-title function_">slice</span>(<span class="hljs-number">1</span>);
+function invertColor(hex, bw) &#123;
+    if (hex.indexOf(&#39;#&#39;) === 0) &#123;
+        hex = hex.slice(1);
     &#125;
-    <span class="hljs-comment">// convert 3-digit hex to 6-digits.</span>
-    <span class="hljs-keyword">if</span> (hex.<span class="hljs-property">length</span> === <span class="hljs-number">3</span>) &#123;
-        hex = hex[<span class="hljs-number">0</span>] + hex[<span class="hljs-number">0</span>] + hex[<span class="hljs-number">1</span>] + hex[<span class="hljs-number">1</span>] + hex[<span class="hljs-number">2</span>] + hex[<span class="hljs-number">2</span>];
+    // convert 3-digit hex to 6-digits.
+    if (hex.length === 3) &#123;
+        hex = hex[0] + hex[0] + hex[1] + hex[1] + hex[2] + hex[2];
     &#125;
-    <span class="hljs-keyword">if</span> (hex.<span class="hljs-property">length</span> !== <span class="hljs-number">6</span>) &#123;
-        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Error</span>(<span class="hljs-string">&#x27;Invalid HEX color.&#x27;</span>);
+    if (hex.length !== 6) &#123;
+        throw new Error(&#39;Invalid HEX color.&#39;);
     &#125;
-    <span class="hljs-keyword">let</span> r = <span class="hljs-built_in">parseInt</span>(hex.<span class="hljs-title function_">slice</span>(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>),
-        g = <span class="hljs-built_in">parseInt</span>(hex.<span class="hljs-title function_">slice</span>(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>), <span class="hljs-number">16</span>),
-        b = <span class="hljs-built_in">parseInt</span>(hex.<span class="hljs-title function_">slice</span>(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>), <span class="hljs-number">16</span>);
-    <span class="hljs-keyword">if</span> (bw) &#123;
-        <span class="hljs-comment">// https://stackoverflow.com/a/3943023/112731</span>
-        <span class="hljs-keyword">return</span> (r * <span class="hljs-number">0.299</span> + g * <span class="hljs-number">0.587</span> + b * <span class="hljs-number">0.114</span>) &gt; <span class="hljs-number">186</span>
-            ? <span class="hljs-string">&#x27;#000000&#x27;</span>
-            : <span class="hljs-string">&#x27;#FFFFFF&#x27;</span>;
+    let r = parseInt(hex.slice(0, 2), 16),
+        g = parseInt(hex.slice(2, 4), 16),
+        b = parseInt(hex.slice(4, 6), 16);
+    if (bw) &#123;
+        // https://stackoverflow.com/a/3943023/112731
+        return (r * 0.299 + g * 0.587 + b * 0.114) &gt; 186
+            ? &#39;#000000&#39;
+            : &#39;#FFFFFF&#39;;
     &#125;
-    <span class="hljs-comment">// invert color components</span>
-    r = (<span class="hljs-number">255</span> - r).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>);
-    g = (<span class="hljs-number">255</span> - g).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>);
-    b = (<span class="hljs-number">255</span> - b).<span class="hljs-title function_">toString</span>(<span class="hljs-number">16</span>);
-    <span class="hljs-comment">// pad each with zeros and return</span>
-    <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;#&quot;</span> + <span class="hljs-title function_">padZero</span>(r) + <span class="hljs-title function_">padZero</span>(g) + <span class="hljs-title function_">padZero</span>(b);
+    // invert color components
+    r = (255 - r).toString(16);
+    g = (255 - g).toString(16);
+    b = (255 - b).toString(16);
+    // pad each with zeros and return
+    return &quot;#&quot; + padZero(r) + padZero(g) + padZero(b);
 &#125;
 </code></pre>
 <p>通过调用 <code>invertColor</code> 函数，传入背景颜色的 HEX 值，第二个参数为 <code>true</code> 时，返回黑色或白色的 HEX 值。</p>
 <p>当第二个参数为 <code>false</code> 时，返回背景颜色的反色 HEX 值。</p>
 <p>这里<code>(r * 0.299 + g * 0.587 + b * 0.114) &gt; 186</code> 186 的阈值是基于理论的，但可以根据口味进行调整。</p>
 <p>还实现了一个Java类HexColor, 它可以实现合适文本前景色效果。</p>
-<pre><code class="hljs language-java"><span class="hljs-keyword">package</span> cn.yuhiri.tools;
+<pre><code class="java">package cn.yuhiri.tools;
 
-<span class="hljs-keyword">import</span> java.io.Serial;
-<span class="hljs-keyword">import</span> java.io.Serializable;
-<span class="hljs-keyword">import</span> java.util.Objects;
+import java.io.Serial;
+import java.io.Serializable;
+import java.util.Objects;
 
-<span class="hljs-comment">/**
+/**
  * HexColor class
  * A class to represent hex color
- * <span class="hljs-doctag">@version</span> 1.0.0
- * <span class="hljs-doctag">@since</span> 1.0.0
- * <span class="hljs-doctag">@auther</span> yuhiri
- * <span class="hljs-doctag">@see</span> &lt;a href=&quot;https://yuhiri.me&quot;&gt;yuhiri&#x27;s blog&lt;/a&gt;
- */</span>
-<span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HexColor</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Serializable</span> &#123;
-    <span class="hljs-meta">@Serial</span>
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">long</span> <span class="hljs-variable">serialVersionUID</span> <span class="hljs-operator">=</span> -<span class="hljs-number">691002720950767165L</span>;
-    <span class="hljs-keyword">private</span> String hexColor;
-    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> r, g, b;
+ * @version 1.0.0
+ * @since 1.0.0
+ * @auther yuhiri
+ * @see &lt;a href=&quot;https://yuhiri.me&quot;&gt;yuhiri&#39;s blog&lt;/a&gt;
+ */
+public class HexColor implements Serializable &#123;
+    @Serial
+    private static final long serialVersionUID = -691002720950767165L;
+    private String hexColor;
+    private int r, g, b;
 
-    <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">final</span> <span class="hljs-type">String</span> <span class="hljs-variable">HEX_REGEX</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;(^#|^)([A-Fa-f0-9]&#123;6&#125;|[A-Fa-f0-9]&#123;3&#125;)$&quot;</span>;
+    private static final String HEX_REGEX = &quot;(^#|^)([A-Fa-f0-9]&#123;6&#125;|[A-Fa-f0-9]&#123;3&#125;)$&quot;;
 
-    <span class="hljs-comment">/**
+    /**
      * Convert 3-digit hex color to 6-digit hex color
      *
-     * <span class="hljs-doctag">@return</span> 6-digit hex color
-     */</span>
-    <span class="hljs-keyword">private</span> String <span class="hljs-title function_">doubleHex</span><span class="hljs-params">()</span> &#123;
-        <span class="hljs-keyword">return</span> hexColor.substring(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>).repeat(<span class="hljs-number">2</span>) + hexColor.substring(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>).repeat(<span class="hljs-number">2</span>) + hexColor.substring(<span class="hljs-number">2</span>, <span class="hljs-number">3</span>).repeat(<span class="hljs-number">2</span>);
+     * @return 6-digit hex color
+     */
+    private String doubleHex() &#123;
+        return hexColor.substring(0, 1).repeat(2) + hexColor.substring(1, 2).repeat(2) + hexColor.substring(2, 3).repeat(2);
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Constructor
      *
-     * <span class="hljs-doctag">@param</span> hexColor 3-digit or 6-digit hex color
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HexColor</span><span class="hljs-params">(String hexColor)</span> &#123;
-        hexColor = hexColor.replace(<span class="hljs-string">&quot;#&quot;</span>, <span class="hljs-string">&quot;&quot;</span>).toUpperCase();
-        <span class="hljs-keyword">if</span> (!hexColor.matches(HEX_REGEX)) &#123;
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Invalid hex color&quot;</span>);
+     * @param hexColor 3-digit or 6-digit hex color
+     */
+    public HexColor(String hexColor) &#123;
+        hexColor = hexColor.replace(&quot;#&quot;, &quot;&quot;).toUpperCase();
+        if (!hexColor.matches(HEX_REGEX)) &#123;
+            throw new IllegalArgumentException(&quot;Invalid hex color&quot;);
         &#125;
-        <span class="hljs-keyword">if</span> (hexColor.length() == <span class="hljs-number">3</span>) &#123;
-            <span class="hljs-built_in">this</span>.hexColor = doubleHex();
-        &#125; <span class="hljs-keyword">else</span> &#123;
-            <span class="hljs-built_in">this</span>.hexColor = hexColor;
+        if (hexColor.length() == 3) &#123;
+            this.hexColor = doubleHex();
+        &#125; else &#123;
+            this.hexColor = hexColor;
         &#125;
-        <span class="hljs-built_in">this</span>.r = Integer.parseInt(<span class="hljs-built_in">this</span>.hexColor.substring(<span class="hljs-number">0</span>, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>);
-        <span class="hljs-built_in">this</span>.g = Integer.parseInt(<span class="hljs-built_in">this</span>.hexColor.substring(<span class="hljs-number">2</span>, <span class="hljs-number">4</span>), <span class="hljs-number">16</span>);
-        <span class="hljs-built_in">this</span>.b = Integer.parseInt(<span class="hljs-built_in">this</span>.hexColor.substring(<span class="hljs-number">4</span>, <span class="hljs-number">6</span>), <span class="hljs-number">16</span>);
+        this.r = Integer.parseInt(this.hexColor.substring(0, 2), 16);
+        this.g = Integer.parseInt(this.hexColor.substring(2, 4), 16);
+        this.b = Integer.parseInt(this.hexColor.substring(4, 6), 16);
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Constructor
      * Default color: #000000
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HexColor</span><span class="hljs-params">()</span> &#123;
-        hexColor = <span class="hljs-string">&quot;000000&quot;</span>;
-        r = <span class="hljs-number">0</span>;
-        g = <span class="hljs-number">0</span>;
-        b = <span class="hljs-number">0</span>;
+     */
+    public HexColor() &#123;
+        hexColor = &quot;000000&quot;;
+        r = 0;
+        g = 0;
+        b = 0;
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Constructor
      *
-     * <span class="hljs-doctag">@param</span> r red value
-     * <span class="hljs-doctag">@param</span> g green value
-     * <span class="hljs-doctag">@param</span> b blue value
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-title function_">HexColor</span><span class="hljs-params">(<span class="hljs-type">int</span> r, <span class="hljs-type">int</span> g, <span class="hljs-type">int</span> b)</span> &#123;
-        <span class="hljs-keyword">if</span> (r &lt; <span class="hljs-number">0</span> || r &gt; <span class="hljs-number">255</span> || g &lt; <span class="hljs-number">0</span> || g &gt; <span class="hljs-number">255</span> || b &lt; <span class="hljs-number">0</span> || b &gt; <span class="hljs-number">255</span>) &#123;
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Invalid RGB value&quot;</span>);
+     * @param r red value
+     * @param g green value
+     * @param b blue value
+     */
+    public HexColor(int r, int g, int b) &#123;
+        if (r &lt; 0 || r &gt; 255 || g &lt; 0 || g &gt; 255 || b &lt; 0 || b &gt; 255) &#123;
+            throw new IllegalArgumentException(&quot;Invalid RGB value&quot;);
         &#125;
-        <span class="hljs-built_in">this</span>.r = r;
-        <span class="hljs-built_in">this</span>.g = g;
-        <span class="hljs-built_in">this</span>.b = b;
-        <span class="hljs-built_in">this</span>.hexColor = padZero(Integer.toHexString(r)) + padZero(Integer.toHexString(g)) + padZero(Integer.toHexString(b));
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.hexColor = padZero(Integer.toHexString(r)) + padZero(Integer.toHexString(g)) + padZero(Integer.toHexString(b));
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Pad zero to the left of a string
      *
-     * <span class="hljs-doctag">@param</span> str input string
-     * <span class="hljs-doctag">@return</span> string with zero padded
-     */</span>
-    <span class="hljs-keyword">private</span> String <span class="hljs-title function_">padZero</span><span class="hljs-params">(String str)</span> &#123;
-        <span class="hljs-keyword">return</span> String.format(<span class="hljs-string">&quot;%&quot;</span> + <span class="hljs-number">2</span> + <span class="hljs-string">&quot;s&quot;</span>, str).replace(<span class="hljs-string">&#x27; &#x27;</span>, <span class="hljs-string">&#x27;0&#x27;</span>).toUpperCase();
+     * @param str input string
+     * @return string with zero padded
+     */
+    private String padZero(String str) &#123;
+        return String.format(&quot;%&quot; + 2 + &quot;s&quot;, str).replace(&#39; &#39;, &#39;0&#39;).toUpperCase();
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Invert color
      *
-     * <span class="hljs-doctag">@param</span> bw whether to return black or white
-     * <span class="hljs-doctag">@return</span> inverted color
-     */</span>
-    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">invertColor</span><span class="hljs-params">(<span class="hljs-type">boolean</span> bw)</span> &#123;
-        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span>.hexColor == <span class="hljs-literal">null</span>) &#123;
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;
+     * @param bw whether to return black or white
+     * @return inverted color
+     */
+    public String invertColor(boolean bw) &#123;
+        if (this.hexColor == null) &#123;
+            return null;
         &#125;
-        <span class="hljs-keyword">if</span> (bw) &#123;
-            <span class="hljs-type">int</span> <span class="hljs-variable">threshold</span> <span class="hljs-operator">=</span> <span class="hljs-number">186</span>;
-            <span class="hljs-type">int</span> <span class="hljs-variable">bgDelta</span> <span class="hljs-operator">=</span> (<span class="hljs-type">int</span>) (r * <span class="hljs-number">0.299</span> + g * <span class="hljs-number">0.587</span> + b * <span class="hljs-number">0.114</span>);
-            <span class="hljs-keyword">return</span> (bgDelta &gt; threshold) ? <span class="hljs-string">&quot;#000&quot;</span> : <span class="hljs-string">&quot;#FFF&quot;</span>;
+        if (bw) &#123;
+            int threshold = 186;
+            int bgDelta = (int) (r * 0.299 + g * 0.587 + b * 0.114);
+            return (bgDelta &gt; threshold) ? &quot;#000&quot; : &quot;#FFF&quot;;
         &#125;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;#&quot;</span> + padZero(Integer.toHexString(<span class="hljs-number">255</span> - r)) + padZero(Integer.toHexString(<span class="hljs-number">255</span> - g)) + padZero(Integer.toHexString(<span class="hljs-number">255</span> - b));
+        return &quot;#&quot; + padZero(Integer.toHexString(255 - r)) + padZero(Integer.toHexString(255 - g)) + padZero(Integer.toHexString(255 - b));
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Get red value
      *
-     * <span class="hljs-doctag">@return</span> red value
-     */</span>
-    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getHexColor</span><span class="hljs-params">()</span> &#123;
-        <span class="hljs-keyword">return</span> hexColor;
+     * @return red value
+     */
+    public String getHexColor() &#123;
+        return hexColor;
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Set hex color
      *
-     * <span class="hljs-doctag">@param</span> hexColor 3-digit or 6-digit hex color
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHexColor</span><span class="hljs-params">(String hexColor)</span> &#123;
-        <span class="hljs-keyword">if</span> (!hexColor.matches(HEX_REGEX)) &#123;
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Invalid hex color&quot;</span>);
+     * @param hexColor 3-digit or 6-digit hex color
+     */
+    public void setHexColor(String hexColor) &#123;
+        if (!hexColor.matches(HEX_REGEX)) &#123;
+            throw new IllegalArgumentException(&quot;Invalid hex color&quot;);
         &#125;
-        hexColor = hexColor.replace(<span class="hljs-string">&quot;#&quot;</span>, <span class="hljs-string">&quot;&quot;</span>).toUpperCase();
-        <span class="hljs-keyword">if</span> (hexColor.length() == <span class="hljs-number">3</span>) &#123;
-            hexColor = <span class="hljs-built_in">this</span>.doubleHex();
+        hexColor = hexColor.replace(&quot;#&quot;, &quot;&quot;).toUpperCase();
+        if (hexColor.length() == 3) &#123;
+            hexColor = this.doubleHex();
         &#125;
-        <span class="hljs-built_in">this</span>.hexColor = hexColor;
+        this.hexColor = hexColor;
     &#125;
 
-    <span class="hljs-comment">/**
+    /**
      * Set red value
      *
-     * <span class="hljs-doctag">@param</span> r red value
+     * @param r red value
      *          range: 0-255
-     * <span class="hljs-doctag">@param</span> g green value
+     * @param g green value
      *          range: 0-255
-     * <span class="hljs-doctag">@param</span> b blue value
+     * @param b blue value
      *          range: 0-255
-     */</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setHexColor</span><span class="hljs-params">(<span class="hljs-type">int</span> r, <span class="hljs-type">int</span> g, <span class="hljs-type">int</span> b)</span> &#123;
-        <span class="hljs-keyword">if</span> (r &lt; <span class="hljs-number">0</span> || r &gt; <span class="hljs-number">255</span> || g &lt; <span class="hljs-number">0</span> || g &gt; <span class="hljs-number">255</span> || b &lt; <span class="hljs-number">0</span> || b &gt; <span class="hljs-number">255</span>) &#123;
-            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllegalArgumentException</span>(<span class="hljs-string">&quot;Invalid RGB value&quot;</span>);
+     */
+    public void setHexColor(int r, int g, int b) &#123;
+        if (r &lt; 0 || r &gt; 255 || g &lt; 0 || g &gt; 255 || b &lt; 0 || b &gt; 255) &#123;
+            throw new IllegalArgumentException(&quot;Invalid RGB value&quot;);
         &#125;
-        <span class="hljs-built_in">this</span>.r = r;
-        <span class="hljs-built_in">this</span>.g = g;
-        <span class="hljs-built_in">this</span>.b = b;
-        <span class="hljs-built_in">this</span>.hexColor = padZero(Integer.toHexString(r)) + padZero(Integer.toHexString(g)) + padZero(Integer.toHexString(b));
+        this.r = r;
+        this.g = g;
+        this.b = b;
+        this.hexColor = padZero(Integer.toHexString(r)) + padZero(Integer.toHexString(g)) + padZero(Integer.toHexString(b));
     &#125;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">equals</span><span class="hljs-params">(Object o)</span> &#123;
-        <span class="hljs-keyword">if</span> (<span class="hljs-built_in">this</span> == o) <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
-        <span class="hljs-keyword">if</span> (!(o <span class="hljs-keyword">instanceof</span> HexColor)) <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
-        <span class="hljs-keyword">return</span> Objects.equals(getHexColor(), ((HexColor) o).getHexColor());
+    @Override
+    public boolean equals(Object o) &#123;
+        if (this == o) return true;
+        if (!(o instanceof HexColor)) return false;
+        return Objects.equals(getHexColor(), ((HexColor) o).getHexColor());
     &#125;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">hashCode</span><span class="hljs-params">()</span> &#123;
-        <span class="hljs-keyword">return</span> Objects.hashCode(getHexColor());
+    @Override
+    public int hashCode() &#123;
+        return Objects.hashCode(getHexColor());
     &#125;
 
-    <span class="hljs-meta">@Override</span>
-    <span class="hljs-keyword">public</span> String <span class="hljs-title function_">toString</span><span class="hljs-params">()</span> &#123;
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;#&quot;</span> + hexColor;
+    @Override
+    public String toString() &#123;
+        return &quot;#&quot; + hexColor;
     &#125;
 &#125;
-
 </code></pre>
 <p>效果如下：</p>
-<p><img src="https://s21.ax1x.com/2024/05/10/pkZ3rkD.png" alt=""></p>
+<p><img src="https://s21.ax1x.com/2024/05/10/pkZ3rkD.png" alt="exmple"></p>
 <hr>
 <blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="https://stackoverflow.com/a/3943023/112731">https://stackoverflow.com/a/3943023/112731</a></p>
@@ -839,7 +836,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -851,10 +848,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
