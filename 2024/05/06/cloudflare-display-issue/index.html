@@ -503,11 +503,10 @@
         <div class="toc-entry-content"><!-- 套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h2>问题描述</h2>
-<p>由于gitee的pages服务前几天挂了（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/654754629">原因不明</a>，官方没什么反应），所以我只好将之前部署在gitee上的知识库迁移。</p>
+          <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>由于gitee的pages服务前几天挂了（<a target="_blank" rel="noopener" href="https://www.zhihu.com/question/654754629">原因不明</a>，官方没什么反应），所以我只好将之前部署在gitee上的知识库迁移。</p>
 <p>知识库是基于vuepress搭建的，迁移过程中，我将域名解析到了cloudflare上，然后使用cloudflare的CDN服务。但是，当我访问我的网站时，发现一个页面居然渲染了两次，于是每个页面都有两个重复的内容。</p>
 <p>就像这样：</p>
-<pre><code class="hljs language-text">|------|
+<pre><code class="text">|------|
 | 内容 |
 |------|
 |------|
@@ -522,8 +521,7 @@
 <p>Rocket Loader is a feature by Cloudflare that can help with page load time. Unfortunately, the method in which it does this is very aggressive, is a beta product, and can often break JavaScript (including Mediavine ads).</p>
 </blockquote>
 <p>是因为cloudflare的Rocket Loader导致的。</p>
-<h2>解决方法</h2>
-<p>Rocket Loader是cloudflare的一个js优化工具，可以延迟加载js，提高页面加载速度。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>Rocket Loader是cloudflare的一个js优化工具，可以延迟加载js，提高页面加载速度。</p>
 <p>但是，由于vuepress的页面是通过js生成的，所以Rocket Loader会导致页面重复渲染。</p>
 <p>解决方法很简单，只需要在cloudflare的设置中关闭Rocket Loader即可。</p>
 <ol>
@@ -648,7 +646,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -660,10 +658,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: '文章',
-            // PAGES: '页面',
-            CATEGORIES: '分类',
-            TAGS: '标签',
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
