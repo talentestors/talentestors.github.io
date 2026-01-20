@@ -512,7 +512,7 @@
 <p>因此，可以很方便地将 <code>gitalk</code> 的评论迁移到 <code>utteranc</code>。</p>
 <p>与 <code>gitalk</code> 不同的是，<code>utteranc</code> 不需要配置 OAuth Application，不会把 clientSecret 暴露在前端，因此更加安全。</p>
 <p>在我重构后的博客主题中，需要在配置文件中添加如下配置：</p>
-<pre><code class="lang-yaml">comment: utteranc # 选择utteranc评论系统
+<pre><code class="yaml">comment: utteranc # 选择utteranc评论系统
 ## Utteranc
 utteranc:
   owner: talentestors
@@ -527,7 +527,7 @@ utteranc:
 <p><code>giscus</code> 同样不会把敏感信息暴露在前端。</p>
 <p>同时，基于 Discussions，它的回复功能更加完善，可以直接回复评论。</p>
 <p>配置方法：</p>
-<pre><code class="lang-yaml">comment: giscus # 选择giscus评论系统
+<pre><code class="yaml">comment: giscus # 选择giscus评论系统
 ## giscus
 giscus:
   owner: talentestors
